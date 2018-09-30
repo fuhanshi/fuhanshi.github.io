@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="凡希的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="当一个样本数据集的特征数目较多时，通常会造成运行速度缓慢，尤其是在做回归分析的时候，还有可能产生多重共线性，虽然我们可以用岭回归的方法来减小多重共线性，但是仍然存在，那我们何不找个更好的解决办法呢？ 于是乎，降维技术应运而生 通过降维，我们可以将高维特征缩减至低维 这样做的好处，一方面在于可以节约计算机运行的时间成本，另一方面，通过降维，可以方便的对数据进行可视化，在前一期的聚类分析中，我们已经了">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python降维处理">
+<meta property="og:url" content="http://yoursite.com/2018/09/30/降维/index.html">
+<meta property="og:site_name" content="凡希的博客">
+<meta property="og:description" content="当一个样本数据集的特征数目较多时，通常会造成运行速度缓慢，尤其是在做回归分析的时候，还有可能产生多重共线性，虽然我们可以用岭回归的方法来减小多重共线性，但是仍然存在，那我们何不找个更好的解决办法呢？ 于是乎，降维技术应运而生 通过降维，我们可以将高维特征缩减至低维 这样做的好处，一方面在于可以节约计算机运行的时间成本，另一方面，通过降维，可以方便的对数据进行可视化，在前一期的聚类分析中，我们已经了">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/降维/output_42_0.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/降维/output_70_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/降维/output_72_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/降维/output_79_1.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/降维/output_95_0.png">
+<meta property="og:updated_time" content="2018-09-30T10:00:09.585Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python降维处理">
+<meta name="twitter:description" content="当一个样本数据集的特征数目较多时，通常会造成运行速度缓慢，尤其是在做回归分析的时候，还有可能产生多重共线性，虽然我们可以用岭回归的方法来减小多重共线性，但是仍然存在，那我们何不找个更好的解决办法呢？ 于是乎，降维技术应运而生 通过降维，我们可以将高维特征缩减至低维 这样做的好处，一方面在于可以节约计算机运行的时间成本，另一方面，通过降维，可以方便的对数据进行可视化，在前一期的聚类分析中，我们已经了">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/30/降维/output_42_0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/30/降维/"/>
+
+
+
+
+
+  <title>Python降维处理 | 凡希的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凡希的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">期望设置为零，方差交给时间</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/降维/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凡希的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python降维处理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-30T18:00:09+08:00">
+                2018-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Analysis-Mining-with-Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Analysis&Mining with Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>当一个样本数据集的特征数目较多时，通常会造成运行速度缓慢，尤其是在做回归分析的时候，还有可能产生多重共线性，虽然我们可以用岭回归的方法来减小多重共线性，但是仍然存在，那我们何不找个更好的解决办法呢？</p>
+<p>于是乎，降维技术应运而生</p>
+<p>通过降维，我们可以将高维特征缩减至低维</p>
+<p>这样做的好处，一方面在于可以节约计算机运行的时间成本，另一方面，通过降维，可以方便的对数据进行可视化，在前一期的聚类分析中，我们已经了解到，一般地，我们仅能对二维数据进行可视化.</p>
+<p>关于降维的数学原理，这里不做讨论，先站在上帝视角学会证明使用这一技术，再去深入研究其构造原理</p>
+<p>本次采用sklearn自带的数据集load_digits，这是一个关于手写数字识别的数据集，总共1797条数据，64个特征，对应的目标是0到9这10个数字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加载数据集</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_digits</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">digits=load_digits()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">digits.data.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(1797, 64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">digits.target.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(1797,)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X=digits.data</span><br><span class="line">y=digits.target</span><br></pre></td></tr></table></figure>
+<p>在降维之前，我们可以先试一下用KNN来训练这个分类器，我们称之为knnclassifier</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knnclassifier= KNeighborsClassifier()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knnclassifier</span><br></pre></td></tr></table></figure>
+<pre><code>KNeighborsClassifier(algorithm=&apos;auto&apos;, leaf_size=30, metric=&apos;minkowski&apos;,
+           metric_params=None, n_jobs=1, n_neighbors=5, p=2,
+           weights=&apos;uniform&apos;)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#分割据集</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=<span class="number">33</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%%time</span><br><span class="line">knnclassifier.fit(X_train,y_train)<span class="comment">#模型拟合</span></span><br></pre></td></tr></table></figure>
+<pre><code>CPU times: user 12 ms, sys: 0 ns, total: 12 ms
+Wall time: 10.3 ms
+
+
+
+
+
+KNeighborsClassifier(algorithm=&apos;auto&apos;, leaf_size=30, metric=&apos;minkowski&apos;,
+           metric_params=None, n_jobs=1, n_neighbors=5, p=2,
+           weights=&apos;uniform&apos;)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pre=knnclassifier.predict(X_test)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> knnclassifier.score(X_test,y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>0.984444444444
+</code></pre><p>可以看到，此时准确度是0.98,运行时间是11.2ms</p>
+<p>接下来我们将尝试降维操作，把64个特征降到两维</p>
+<p>sklearn中的decomposition模块已经为我们封装好了PCA这个降维方法，我们直接调用即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line">pca=PCA(n_components=<span class="number">2</span>)<span class="comment">#n_components是指要降成几维，这里降为２维</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#拟合模型</span></span><br><span class="line">pca.fit(X_train)</span><br><span class="line">X_train_reduced=pca.transform(X_train)</span><br><span class="line">X_test_reduced=pca.transform(X_test)</span><br></pre></td></tr></table></figure>
+<p>现在利用降维后的数据再重新训练一个KNN模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%%time</span><br><span class="line">knn_reduced=KNeighborsClassifier()</span><br><span class="line">knn_reduced.fit(X_train_reduced,y_train)</span><br></pre></td></tr></table></figure>
+<pre><code>CPU times: user 4 ms, sys: 0 ns, total: 4 ms
+Wall time: 7.79 ms
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pre=knn_reduced.predict(X_test_reduced)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knn_reduced.score(X_test_reduced,y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>0.5822222222222222
+</code></pre><p>可以看出，虽然运行时间缩减了，但是精确度却大幅度下降</p>
+<p>我们所降维度太低了，导致信息量大幅度减少，所以如何才能明确降到多少维合适呢？</p>
+<p>这里需要了解一个概念叫做”解释方差比率”（explained_variance_ratio），代表的是每一个维度（特征）能解释总体的百分比，我们要做的就是找到这个比率排名靠前多少的特征，把这些特征作为主成分，其余的解释方差比率较小的特征就剔除掉.</p>
+<p>我们可以先查看一下刚才做的两个特征维度的解释方差比率</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca.explained_variance_ratio_</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 0.15035598,  0.13838039])
+</code></pre><p>总体加起来才0.3不到，丢失了总体70%多的信息，很显然这样子是不行的</p>
+<p>我们可以尝试在n_components中传入X_train的特征数，往下看你就明白了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca=PCA(n_components=X_train.shape[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca<span class="comment">#此时的值肯定是６４</span></span><br></pre></td></tr></table></figure>
+<pre><code>PCA(copy=True, iterated_power=&apos;auto&apos;, n_components=64, random_state=None,
+  svd_solver=&apos;auto&apos;, tol=0.0, whiten=False)
+</code></pre><p>接下来再fit一下新的pca模型并查看解释方差比率</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca.fit(X_train)</span><br></pre></td></tr></table></figure>
+<pre><code>PCA(copy=True, iterated_power=&apos;auto&apos;, n_components=64, random_state=None,
+  svd_solver=&apos;auto&apos;, tol=0.0, whiten=False)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> pca.explained_variance_ratio_</span><br></pre></td></tr></table></figure>
+<pre><code>[  1.50355979e-01   1.38380388e-01   1.19425901e-01   8.24718418e-02
+   5.91243713e-02   4.96975094e-02   4.23449789e-02   3.56664467e-02
+   3.23294141e-02   3.03973702e-02   2.34758387e-02   2.23682826e-02
+   1.82648603e-02   1.77678251e-02   1.45825518e-02   1.37044626e-02
+   1.30959900e-02   1.25622026e-02   1.02151829e-02   9.12424514e-03
+   8.91759754e-03   7.95889667e-03   7.55729053e-03   7.36310540e-03
+   6.86397508e-03   5.97732760e-03   5.70365442e-03   5.11943388e-03
+   4.81884444e-03   4.07489205e-03   3.74656189e-03   3.57400245e-03
+   3.31144332e-03   3.24522870e-03   3.04902907e-03   2.87135997e-03
+   2.57153779e-03   2.21866132e-03   2.15818927e-03   2.04639853e-03
+   1.85231174e-03   1.53306454e-03   1.48233877e-03   1.36725744e-03
+   1.14492332e-03   1.02513374e-03   9.51122042e-04   7.75946877e-04
+   5.59969368e-04   3.59004930e-04   2.22920251e-04   7.96771455e-05
+   4.21882118e-05   3.98867466e-05   3.23086994e-05   1.60861117e-05
+   7.16567372e-06   3.66786169e-06   8.50034737e-07   7.03829770e-07
+   4.01254157e-07   6.85795787e-34   6.85795787e-34   6.34067110e-34]
+</code></pre><p>以上便是按照从大到小顺序排列的每一个特征维度一次可以解释的方差比率</p>
+<p>我们要做的是丢掉那些解释方差比率较小的，也就是后面的那些，保留前面的，那证明判断保留多少个合适呢？下面提供一种方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.plot([i <span class="keyword">for</span> i <span class="keyword">in</span> range(X_train.shape[<span class="number">1</span>])],</span><br><span class="line">         [np.sum(pca.explained_variance_ratio_[:i+<span class="number">1</span>]) <span class="keyword">for</span> i <span class="keyword">in</span> range(X_train.shape[<span class="number">1</span>])])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_42_0.png" alt="png"></p>
+<p>横轴代表的是特征数目，纵轴代表的是所有被选中的主成分特征变量所能解释的方差比率之和</p>
+<p>通过上图，比如我们要求所选取的主成分能解释总体80%的方差，那么对应横轴大约是20，也就是说我们的n_components应该传入20</p>
+<p>这样，我们就可以通过观察上图来确定n_components了</p>
+<p>其实，在sklearn中，这个功能已经封装好了，我们不必画图观察，而是传入我们所想要的主成分变量能解释的方差比率之和这个参数就可以了</p>
+<p>调用方法很简单，直接在初始化模型的时候传入这个参数就行了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca=PCA(<span class="number">0.95</span>)<span class="comment">#要保留原始样本95%的解释方差</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca.fit(X_train)<span class="comment">#重新训练模型</span></span><br></pre></td></tr></table></figure>
+<pre><code>PCA(copy=True, iterated_power=&apos;auto&apos;, n_components=0.95, random_state=None,
+  svd_solver=&apos;auto&apos;, tol=0.0, whiten=False)
+</code></pre><p>我们可以看一下自动确定的最佳的保留的特征数，也就是主成分的个数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> pca.n_components_</span><br></pre></td></tr></table></figure>
+<pre><code>28
+</code></pre><p>28,说明保留了28个主成分，这28个特征变量加起来就能解释总体95%的方差</p>
+<p>那既然已经构建好了降维模型，那就拿来操练一下吧</p>
+<p>先降维处理数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pca.fit(X_train)</span><br><span class="line">X_train_reduction=pca.transform(X_train)</span><br><span class="line">X_test_reduction=pca.transform(X_test)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_train_reduction.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(1347, 28)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_test_reduction.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(450, 28)
+</code></pre><p>再次重新训练KNN模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%%time</span><br><span class="line">knn_reduced=KNeighborsClassifier()</span><br><span class="line">knn_reduced.fit(X_train_reduction,y_train)</span><br></pre></td></tr></table></figure>
+<pre><code>CPU times: user 4 ms, sys: 0 ns, total: 4 ms
+Wall time: 5.25 ms
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knn_reduced.score(X_test_reduction,y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>0.97999999999999998
+</code></pre><p>从中可以看出，精确度将近0.98，而运行时间也比刚开始的节省了不少｜</p>
+<p>说完了PCA的使用，最后来看看如何对降维结果进行可视化，当然，这里我们只能对二维或者三维数据进行</p>
+<p>我们把特征降到３维（不考虑解释方差比率，这里只是为了讲解可视化的方法）</p>
+<p>以下用的是整个样本，没有划分数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line">pca=PCA(n_components=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca.fit(X)</span><br></pre></td></tr></table></figure>
+<pre><code>PCA(copy=True, iterated_power=&apos;auto&apos;, n_components=3, random_state=None,
+  svd_solver=&apos;auto&apos;, tol=0.0, whiten=False)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_vis=pca.transform(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_vis.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(1797, 3)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入三维数据可视化工具</span></span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#数据可视化</span></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = Axes3D(fig)</span><br><span class="line">plt.scatter(X_vis[:, <span class="number">0</span>], X_vis[:, <span class="number">1</span>], X_vis[:, <span class="number">2</span>],marker=<span class="string">'*'</span>,c=y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>/home/fantasy/anaconda2/lib/python2.7/site-packages/matplotlib/collections.py:865: RuntimeWarning: invalid value encountered in sqrt
+  scale = np.sqrt(self._sizes) * dpi / 72.0 * self._factor
+</code></pre><p><img src="output_70_1.png" alt="png"></p>
+<p>我们再继续降到２维</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line">pca = PCA(n_components=<span class="number">2</span>)</span><br><span class="line">pca.fit(X)</span><br><span class="line"><span class="keyword">print</span> pca.explained_variance_ratio_</span><br><span class="line"><span class="keyword">print</span> pca.explained_variance_</span><br><span class="line">X_new = pca.transform(X)</span><br><span class="line">plt.scatter(X_new[:, <span class="number">0</span>], X_new[:, <span class="number">1</span>],marker=<span class="string">'o'</span>,c=y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>[ 0.14890594  0.13618771]
+[ 178.90731578  163.62664073]
+</code></pre><p><img src="output_72_1.png" alt="png"></p>
+<p>是不是螺旋爆炸式的混乱？</p>
+<p>由于PCA没有利用类别信息，我们可以看到降维后，样本特征和类别的信息关联几乎完全丢失。</p>
+<p>于是LDA(线性判别式分析)应运而生！</p>
+<p>与PCA一样，LDA是一种线性降维算法。不同于PCA只会选择数据变化最大的方向，由于LDA是有监督的（分类标签），所以LDA会主要以类别为思考因素，使得投影后的样本尽可能可分。它通过在k维空间选择一个投影超平面，使得不同类别在该超平面上的投影之间的距离尽可能近，同时不同类别的投影之间的距离尽可能远。从而试图明确地模拟数据类之间的差异。</p>
+<p>一般来说，如果我们的数据是有类别标签的，那么优先选择LDA去尝试降维；当然也可以使用PCA做很小幅度的降维去消去噪声，然后再使用LDA降维。如果没有类别标签，那么肯定PCA是最先考虑的一个选择了。</p>
+<p>而我们使用的数据集是有分类标签的（０，１，２，．．．，９），所以接下来我们将尝试LDA降维，最后再来可视化一下降维结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.discriminant_analysis <span class="keyword">import</span> LinearDiscriminantAnalysis</span><br><span class="line">lda = LinearDiscriminantAnalysis(n_components=<span class="number">3</span>)</span><br><span class="line">lda.fit(X,y)</span><br><span class="line">X_new = lda.transform(X)</span><br><span class="line">plt.scatter(X_new[:, <span class="number">0</span>], X_new[:, <span class="number">1</span>],marker=<span class="string">'o'</span>,c=y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>/home/fantasy/anaconda2/lib/python2.7/site-packages/sklearn/discriminant_analysis.py:387: UserWarning: Variables are collinear.
+  warnings.warn(&quot;Variables are collinear.&quot;)
+</code></pre><p><img src="output_79_1.png" alt="png"></p>
+<p>LDA降维后可以把数据归为簇，利用了样本类别标签信息</p>
+<p><strong>总结来说，如果样本没有标签，则使用PCA,若有标签，则最好使用LDA</strong></p>
+<hr>
+<p>主成分分析(PCA)和LDA都是直接选择对评价结果贡献度较高的几个维度，或者直接去掉对评价结果贡献度较低的几个维度；</p>
+<p>而下面要讲的FA(<strong>因子分析</strong>)，则是以已知的所有维度为基础，创造数量更少的全新的一组维度来进行评价。先对原始的一组维度进行相关性分析，合并相关性高的，保留相关性低的。或者说，找出一组能够『代表』原维度组的新维度，同时能保留新维度组没有涵盖的特色部分。</p>
+<p>通俗地说，就是造变量，用造的变量去替换原有的变量，并且造的变量的个数小于原有变量的个数</p>
+<p>因子分析（Factor Analysis）是指研究从变量群中提取共性因子的统计技术，这里的共性因子指的是不同变量之间内在的隐藏因子。例如，一个学生的英语、数据、语文成绩都很好，那么潜在的共性因子可能是智力水平高。因此，因子分析的过程其实是寻找共性因子和个性因子并得到最优解释的过程。（摘自网络）</p>
+<p>来看一下在sklearn中的调用方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> FactorAnalysis</span><br><span class="line">fa = FactorAnalysis(n_components=<span class="number">2</span>)<span class="comment">#降到二维</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fa.fit(X)</span><br></pre></td></tr></table></figure>
+<pre><code>FactorAnalysis(copy=True, iterated_power=3, max_iter=1000, n_components=2,
+        noise_variance_init=None, random_state=0, svd_method=&apos;randomized&apos;,
+        tol=0.01)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_two_dim=fa.transform(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_two_dim.shape<span class="comment">#已经降到二维了</span></span><br></pre></td></tr></table></figure>
+<pre><code>(1797, 2)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_two_dim<span class="comment">#并且是新的两个因子（这两个因子是全部64个变量的线性组合）</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.06629194,  0.30635624],
+       [-0.99445736,  0.14948677],
+       [-1.07480679, -0.40291119],
+       ..., 
+       [-0.7385388 ,  0.0977223 ],
+       [-0.40362928, -0.25358677],
+       [ 0.67042921, -0.89378447]])
+</code></pre><p>降维结束，现在你可以重新训练之前的KNN模型，试一下效果了</p>
+<p>最后的最后，我们来可视化一下降维后的数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f = plt.figure(figsize=(<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line">ax = f.add_subplot(<span class="number">111</span>)</span><br><span class="line"><span class="comment">#这里的c=y代表颜色按照y的不同来区分，由于我们的y是０－９,故10中颜色</span></span><br><span class="line">ax.scatter(data_two_dim[:,<span class="number">0</span>],data_two_dim[:,<span class="number">1</span>],marker=<span class="string">'o'</span>,c=y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_95_0.png" alt="png"></p>
+<p>Over!</p>
+<p>参考：<br><br><a href="https://blog.csdn.net/u013719780/article/details/51767314" target="_blank" rel="noopener">https://blog.csdn.net/u013719780/article/details/51767314</a><br><br><a href="https://www.cnblogs.com/pinard/p/6249328.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6249328.html</a><br><br><a href="https://blog.csdn.net/sm9sun/article/details/78791985" target="_blank" rel="noopener">https://blog.csdn.net/sm9sun/article/details/78791985</a><br><br>bobo老师机器学习视频教程</p>
+
+      
+    </div>
+    
+    
+    
+
+<div>
+      
+        
+
+      
+</div>
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>微信端扫描二维码关注我的个人微信公众号，获取更多干货资源</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我吃包辣条吧</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+
+  
+</div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/30/数据预处理/" rel="next" title="Python数据预处理">
+                <i class="fa fa-chevron-left"></i> Python数据预处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/30/聚类/" rel="prev" title="Python聚类分析">
+                Python聚类分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="凡希" />
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">因为喜欢，所以热爱，软件&书籍&技术干货分享站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

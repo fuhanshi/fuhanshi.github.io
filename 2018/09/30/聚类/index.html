@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="凡希的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Kmean聚类  以下使用的是sklearn自带的鸢尾花数据集 123import numpy as np  from sklearn.cluster import KMeansimport matplotlib.pyplot as plt 123##加载数据集from sklearn.datasets import load_irisiris=load_iris() 12import pand">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python聚类分析">
+<meta property="og:url" content="http://yoursite.com/2018/09/30/聚类/index.html">
+<meta property="og:site_name" content="凡希的博客">
+<meta property="og:description" content="Kmean聚类  以下使用的是sklearn自带的鸢尾花数据集 123import numpy as np  from sklearn.cluster import KMeansimport matplotlib.pyplot as plt 123##加载数据集from sklearn.datasets import load_irisiris=load_iris() 12import pand">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/聚类/output_9_0.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/聚类/output_12_0.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/30/聚类/output_45_1.png">
+<meta property="og:updated_time" content="2018-09-30T10:01:36.205Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python聚类分析">
+<meta name="twitter:description" content="Kmean聚类  以下使用的是sklearn自带的鸢尾花数据集 123import numpy as np  from sklearn.cluster import KMeansimport matplotlib.pyplot as plt 123##加载数据集from sklearn.datasets import load_irisiris=load_iris() 12import pand">
+<meta name="twitter:image" content="http://yoursite.com/2018/09/30/聚类/output_9_0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/30/聚类/"/>
+
+
+
+
+
+  <title>Python聚类分析 | 凡希的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凡希的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">期望设置为零，方差交给时间</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/聚类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凡希的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python聚类分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-30T18:01:36+08:00">
+                2018-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Analysis-Mining-with-Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Analysis&Mining with Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>Kmean聚类</li>
+</ul>
+<p>以下使用的是sklearn自带的鸢尾花数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np  </span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##加载数据集</span></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris=load_iris()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.array(iris)</span><br></pre></td></tr></table></figure>
+<pre><code>array({&apos;target_names&apos;: array([&apos;setosa&apos;, &apos;versicolor&apos;, &apos;virginica&apos;], 
+      dtype=&apos;|S10&apos;), &apos;data&apos;: array([[ 5.1,  3.5,  1.4,  0.2],
+       [ 4.9,  3. ,  1.4,  0.2],
+       [ 4.7,  3.2,  1.3,  0.2],
+       [ 4.6,  3.1,  1.5,  0.2],
+       [ 5. ,  3.6,  1.4,  0.2],
+       [ 5.4,  3.9,  1.7,  0.4],
+       [ 4.6,  3.4,  1.4,  0.3],
+       [ 5. ,  3.4,  1.5,  0.2],
+       [ 4.4,  2.9,  1.4,  0.2],
+       [ 4.9,  3.1,  1.5,  0.1],
+       [ 5.4,  3.7,  1.5,  0.2],
+       [ 4.8,  3.4,  1.6,  0.2],
+       [ 4.8,  3. ,  1.4,  0.1],
+       [ 4.3,  3. ,  1.1,  0.1],
+       [ 5.8,  4. ,  1.2,  0.2],
+       [ 5.7,  4.4,  1.5,  0.4],
+       [ 5.4,  3.9,  1.3,  0.4],
+       [ 5.1,  3.5,  1.4,  0.3],
+       [ 5.7,  3.8,  1.7,  0.3],
+       [ 5.1,  3.8,  1.5,  0.3],
+       [ 5.4,  3.4,  1.7,  0.2],
+       [ 5.1,  3.7,  1.5,  0.4],
+       [ 4.6,  3.6,  1. ,  0.2],
+       [ 5.1,  3.3,  1.7,  0.5],
+       [ 4.8,  3.4,  1.9,  0.2],
+       [ 5. ,  3. ,  1.6,  0.2],
+       [ 5. ,  3.4,  1.6,  0.4],
+       [ 5.2,  3.5,  1.5,  0.2],
+       [ 5.2,  3.4,  1.4,  0.2],
+       [ 4.7,  3.2,  1.6,  0.2],
+       [ 4.8,  3.1,  1.6,  0.2],
+       [ 5.4,  3.4,  1.5,  0.4],
+       [ 5.2,  4.1,  1.5,  0.1],
+       [ 5.5,  4.2,  1.4,  0.2],
+       [ 4.9,  3.1,  1.5,  0.1],
+       [ 5. ,  3.2,  1.2,  0.2],
+       [ 5.5,  3.5,  1.3,  0.2],
+       [ 4.9,  3.1,  1.5,  0.1],
+       [ 4.4,  3. ,  1.3,  0.2],
+       [ 5.1,  3.4,  1.5,  0.2],
+       [ 5. ,  3.5,  1.3,  0.3],
+       [ 4.5,  2.3,  1.3,  0.3],
+       [ 4.4,  3.2,  1.3,  0.2],
+       [ 5. ,  3.5,  1.6,  0.6],
+       [ 5.1,  3.8,  1.9,  0.4],
+       [ 4.8,  3. ,  1.4,  0.3],
+       [ 5.1,  3.8,  1.6,  0.2],
+       [ 4.6,  3.2,  1.4,  0.2],
+       [ 5.3,  3.7,  1.5,  0.2],
+       [ 5. ,  3.3,  1.4,  0.2],
+       [ 7. ,  3.2,  4.7,  1.4],
+       [ 6.4,  3.2,  4.5,  1.5],
+       [ 6.9,  3.1,  4.9,  1.5],
+       [ 5.5,  2.3,  4. ,  1.3],
+       [ 6.5,  2.8,  4.6,  1.5],
+       [ 5.7,  2.8,  4.5,  1.3],
+       [ 6.3,  3.3,  4.7,  1.6],
+       [ 4.9,  2.4,  3.3,  1. ],
+       [ 6.6,  2.9,  4.6,  1.3],
+       [ 5.2,  2.7,  3.9,  1.4],
+       [ 5. ,  2. ,  3.5,  1. ],
+       [ 5.9,  3. ,  4.2,  1.5],
+       [ 6. ,  2.2,  4. ,  1. ],
+       [ 6.1,  2.9,  4.7,  1.4],
+       [ 5.6,  2.9,  3.6,  1.3],
+       [ 6.7,  3.1,  4.4,  1.4],
+       [ 5.6,  3. ,  4.5,  1.5],
+       [ 5.8,  2.7,  4.1,  1. ],
+       [ 6.2,  2.2,  4.5,  1.5],
+       [ 5.6,  2.5,  3.9,  1.1],
+       [ 5.9,  3.2,  4.8,  1.8],
+       [ 6.1,  2.8,  4. ,  1.3],
+       [ 6.3,  2.5,  4.9,  1.5],
+       [ 6.1,  2.8,  4.7,  1.2],
+       [ 6.4,  2.9,  4.3,  1.3],
+       [ 6.6,  3. ,  4.4,  1.4],
+       [ 6.8,  2.8,  4.8,  1.4],
+       [ 6.7,  3. ,  5. ,  1.7],
+       [ 6. ,  2.9,  4.5,  1.5],
+       [ 5.7,  2.6,  3.5,  1. ],
+       [ 5.5,  2.4,  3.8,  1.1],
+       [ 5.5,  2.4,  3.7,  1. ],
+       [ 5.8,  2.7,  3.9,  1.2],
+       [ 6. ,  2.7,  5.1,  1.6],
+       [ 5.4,  3. ,  4.5,  1.5],
+       [ 6. ,  3.4,  4.5,  1.6],
+       [ 6.7,  3.1,  4.7,  1.5],
+       [ 6.3,  2.3,  4.4,  1.3],
+       [ 5.6,  3. ,  4.1,  1.3],
+       [ 5.5,  2.5,  4. ,  1.3],
+       [ 5.5,  2.6,  4.4,  1.2],
+       [ 6.1,  3. ,  4.6,  1.4],
+       [ 5.8,  2.6,  4. ,  1.2],
+       [ 5. ,  2.3,  3.3,  1. ],
+       [ 5.6,  2.7,  4.2,  1.3],
+       [ 5.7,  3. ,  4.2,  1.2],
+       [ 5.7,  2.9,  4.2,  1.3],
+       [ 6.2,  2.9,  4.3,  1.3],
+       [ 5.1,  2.5,  3. ,  1.1],
+       [ 5.7,  2.8,  4.1,  1.3],
+       [ 6.3,  3.3,  6. ,  2.5],
+       [ 5.8,  2.7,  5.1,  1.9],
+       [ 7.1,  3. ,  5.9,  2.1],
+       [ 6.3,  2.9,  5.6,  1.8],
+       [ 6.5,  3. ,  5.8,  2.2],
+       [ 7.6,  3. ,  6.6,  2.1],
+       [ 4.9,  2.5,  4.5,  1.7],
+       [ 7.3,  2.9,  6.3,  1.8],
+       [ 6.7,  2.5,  5.8,  1.8],
+       [ 7.2,  3.6,  6.1,  2.5],
+       [ 6.5,  3.2,  5.1,  2. ],
+       [ 6.4,  2.7,  5.3,  1.9],
+       [ 6.8,  3. ,  5.5,  2.1],
+       [ 5.7,  2.5,  5. ,  2. ],
+       [ 5.8,  2.8,  5.1,  2.4],
+       [ 6.4,  3.2,  5.3,  2.3],
+       [ 6.5,  3. ,  5.5,  1.8],
+       [ 7.7,  3.8,  6.7,  2.2],
+       [ 7.7,  2.6,  6.9,  2.3],
+       [ 6. ,  2.2,  5. ,  1.5],
+       [ 6.9,  3.2,  5.7,  2.3],
+       [ 5.6,  2.8,  4.9,  2. ],
+       [ 7.7,  2.8,  6.7,  2. ],
+       [ 6.3,  2.7,  4.9,  1.8],
+       [ 6.7,  3.3,  5.7,  2.1],
+       [ 7.2,  3.2,  6. ,  1.8],
+       [ 6.2,  2.8,  4.8,  1.8],
+       [ 6.1,  3. ,  4.9,  1.8],
+       [ 6.4,  2.8,  5.6,  2.1],
+       [ 7.2,  3. ,  5.8,  1.6],
+       [ 7.4,  2.8,  6.1,  1.9],
+       [ 7.9,  3.8,  6.4,  2. ],
+       [ 6.4,  2.8,  5.6,  2.2],
+       [ 6.3,  2.8,  5.1,  1.5],
+       [ 6.1,  2.6,  5.6,  1.4],
+       [ 7.7,  3. ,  6.1,  2.3],
+       [ 6.3,  3.4,  5.6,  2.4],
+       [ 6.4,  3.1,  5.5,  1.8],
+       [ 6. ,  3. ,  4.8,  1.8],
+       [ 6.9,  3.1,  5.4,  2.1],
+       [ 6.7,  3.1,  5.6,  2.4],
+       [ 6.9,  3.1,  5.1,  2.3],
+       [ 5.8,  2.7,  5.1,  1.9],
+       [ 6.8,  3.2,  5.9,  2.3],
+       [ 6.7,  3.3,  5.7,  2.5],
+       [ 6.7,  3. ,  5.2,  2.3],
+       [ 6.3,  2.5,  5. ,  1.9],
+       [ 6.5,  3. ,  5.2,  2. ],
+       [ 6.2,  3.4,  5.4,  2.3],
+       [ 5.9,  3. ,  5.1,  1.8]]), &apos;target&apos;: array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]), &apos;DESCR&apos;: &apos;Iris Plants Database\n====================\n\nNotes\n-----\nData Set Characteristics:\n    :Number of Instances: 150 (50 in each of three classes)\n    :Number of Attributes: 4 numeric, predictive attributes and the class\n    :Attribute Information:\n        - sepal length in cm\n        - sepal width in cm\n        - petal length in cm\n        - petal width in cm\n        - class:\n                - Iris-Setosa\n                - Iris-Versicolour\n                - Iris-Virginica\n    :Summary Statistics:\n\n    ============== ==== ==== ======= ===== ====================\n                    Min  Max   Mean    SD   Class Correlation\n    ============== ==== ==== ======= ===== ====================\n    sepal length:   4.3  7.9   5.84   0.83    0.7826\n    sepal width:    2.0  4.4   3.05   0.43   -0.4194\n    petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)\n    petal width:    0.1  2.5   1.20  0.76     0.9565  (high!)\n    ============== ==== ==== ======= ===== ====================\n\n    :Missing Attribute Values: None\n    :Class Distribution: 33.3% for each of 3 classes.\n    :Creator: R.A. Fisher\n    :Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)\n    :Date: July, 1988\n\nThis is a copy of UCI ML iris datasets.\nhttp://archive.ics.uci.edu/ml/datasets/Iris\n\nThe famous Iris database, first used by Sir R.A Fisher\n\nThis is perhaps the best known database to be found in the\npattern recognition literature.  Fisher\&apos;s paper is a classic in the field and\nis referenced frequently to this day.  (See Duda &amp; Hart, for example.)  The\ndata set contains 3 classes of 50 instances each, where each class refers to a\ntype of iris plant.  One class is linearly separable from the other 2; the\nlatter are NOT linearly separable from each other.\n\nReferences\n----------\n   - Fisher,R.A. &quot;The use of multiple measurements in taxonomic problems&quot;\n     Annual Eugenics, 7, Part II, 179-188 (1936); also in &quot;Contributions to\n     Mathematical Statistics&quot; (John Wiley, NY, 1950).\n   - Duda,R.O., &amp; Hart,P.E. (1973) Pattern Classification and Scene Analysis.\n     (Q327.D83) John Wiley &amp; Sons.  ISBN 0-471-22361-1.  See page 218.\n   - Dasarathy, B.V. (1980) &quot;Nosing Around the Neighborhood: A New System\n     Structure and Classification Rule for Recognition in Partially Exposed\n     Environments&quot;.  IEEE Transactions on Pattern Analysis and Machine\n     Intelligence, Vol. PAMI-2, No. 1, 67-71.\n   - Gates, G.W. (1972) &quot;The Reduced Nearest Neighbor Rule&quot;.  IEEE Transactions\n     on Information Theory, May 1972, 431-433.\n   - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al&quot;s AUTOCLASS II\n     conceptual clustering system finds 3 classes in the data.\n   - Many, many more ...\n&apos;, &apos;feature_names&apos;: [&apos;sepal length (cm)&apos;, &apos;sepal width (cm)&apos;, &apos;petal length (cm)&apos;, &apos;petal width (cm)&apos;]}, dtype=object)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X = iris.data[:, <span class="number">2</span>:<span class="number">4</span>] <span class="comment">##表示我们只取特征空间中的后两个维度</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 1.4,  0.2],
+       [ 1.4,  0.2],
+       [ 1.3,  0.2],
+       [ 1.5,  0.2],
+       [ 1.4,  0.2],
+       [ 1.7,  0.4],
+       [ 1.4,  0.3],
+       [ 1.5,  0.2],
+       [ 1.4,  0.2],
+       [ 1.5,  0.1],
+       [ 1.5,  0.2],
+       [ 1.6,  0.2],
+       [ 1.4,  0.1],
+       [ 1.1,  0.1],
+       [ 1.2,  0.2],
+       [ 1.5,  0.4],
+       [ 1.3,  0.4],
+       [ 1.4,  0.3],
+       [ 1.7,  0.3],
+       [ 1.5,  0.3],
+       [ 1.7,  0.2],
+       [ 1.5,  0.4],
+       [ 1. ,  0.2],
+       [ 1.7,  0.5],
+       [ 1.9,  0.2],
+       [ 1.6,  0.2],
+       [ 1.6,  0.4],
+       [ 1.5,  0.2],
+       [ 1.4,  0.2],
+       [ 1.6,  0.2],
+       [ 1.6,  0.2],
+       [ 1.5,  0.4],
+       [ 1.5,  0.1],
+       [ 1.4,  0.2],
+       [ 1.5,  0.1],
+       [ 1.2,  0.2],
+       [ 1.3,  0.2],
+       [ 1.5,  0.1],
+       [ 1.3,  0.2],
+       [ 1.5,  0.2],
+       [ 1.3,  0.3],
+       [ 1.3,  0.3],
+       [ 1.3,  0.2],
+       [ 1.6,  0.6],
+       [ 1.9,  0.4],
+       [ 1.4,  0.3],
+       [ 1.6,  0.2],
+       [ 1.4,  0.2],
+       [ 1.5,  0.2],
+       [ 1.4,  0.2],
+       [ 4.7,  1.4],
+       [ 4.5,  1.5],
+       [ 4.9,  1.5],
+       [ 4. ,  1.3],
+       [ 4.6,  1.5],
+       [ 4.5,  1.3],
+       [ 4.7,  1.6],
+       [ 3.3,  1. ],
+       [ 4.6,  1.3],
+       [ 3.9,  1.4],
+       [ 3.5,  1. ],
+       [ 4.2,  1.5],
+       [ 4. ,  1. ],
+       [ 4.7,  1.4],
+       [ 3.6,  1.3],
+       [ 4.4,  1.4],
+       [ 4.5,  1.5],
+       [ 4.1,  1. ],
+       [ 4.5,  1.5],
+       [ 3.9,  1.1],
+       [ 4.8,  1.8],
+       [ 4. ,  1.3],
+       [ 4.9,  1.5],
+       [ 4.7,  1.2],
+       [ 4.3,  1.3],
+       [ 4.4,  1.4],
+       [ 4.8,  1.4],
+       [ 5. ,  1.7],
+       [ 4.5,  1.5],
+       [ 3.5,  1. ],
+       [ 3.8,  1.1],
+       [ 3.7,  1. ],
+       [ 3.9,  1.2],
+       [ 5.1,  1.6],
+       [ 4.5,  1.5],
+       [ 4.5,  1.6],
+       [ 4.7,  1.5],
+       [ 4.4,  1.3],
+       [ 4.1,  1.3],
+       [ 4. ,  1.3],
+       [ 4.4,  1.2],
+       [ 4.6,  1.4],
+       [ 4. ,  1.2],
+       [ 3.3,  1. ],
+       [ 4.2,  1.3],
+       [ 4.2,  1.2],
+       [ 4.2,  1.3],
+       [ 4.3,  1.3],
+       [ 3. ,  1.1],
+       [ 4.1,  1.3],
+       [ 6. ,  2.5],
+       [ 5.1,  1.9],
+       [ 5.9,  2.1],
+       [ 5.6,  1.8],
+       [ 5.8,  2.2],
+       [ 6.6,  2.1],
+       [ 4.5,  1.7],
+       [ 6.3,  1.8],
+       [ 5.8,  1.8],
+       [ 6.1,  2.5],
+       [ 5.1,  2. ],
+       [ 5.3,  1.9],
+       [ 5.5,  2.1],
+       [ 5. ,  2. ],
+       [ 5.1,  2.4],
+       [ 5.3,  2.3],
+       [ 5.5,  1.8],
+       [ 6.7,  2.2],
+       [ 6.9,  2.3],
+       [ 5. ,  1.5],
+       [ 5.7,  2.3],
+       [ 4.9,  2. ],
+       [ 6.7,  2. ],
+       [ 4.9,  1.8],
+       [ 5.7,  2.1],
+       [ 6. ,  1.8],
+       [ 4.8,  1.8],
+       [ 4.9,  1.8],
+       [ 5.6,  2.1],
+       [ 5.8,  1.6],
+       [ 6.1,  1.9],
+       [ 6.4,  2. ],
+       [ 5.6,  2.2],
+       [ 5.1,  1.5],
+       [ 5.6,  1.4],
+       [ 6.1,  2.3],
+       [ 5.6,  2.4],
+       [ 5.5,  1.8],
+       [ 4.8,  1.8],
+       [ 5.4,  2.1],
+       [ 5.6,  2.4],
+       [ 5.1,  2.3],
+       [ 5.1,  1.9],
+       [ 5.9,  2.3],
+       [ 5.7,  2.5],
+       [ 5.2,  2.3],
+       [ 5. ,  1.9],
+       [ 5.2,  2. ],
+       [ 5.4,  2.3],
+       [ 5.1,  1.8]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘制数据分布图</span></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c = <span class="string">"green"</span>, marker=<span class="string">'*'</span>, label=<span class="string">'point'</span>)  </span><br><span class="line">plt.xlabel(<span class="string">'petal length'</span>)  </span><br><span class="line">plt.ylabel(<span class="string">'petal width'</span>)  </span><br><span class="line">plt.legend(loc=<span class="number">2</span>)  </span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_9_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">estimator = KMeans(n_clusters=<span class="number">3</span>)<span class="comment">#构造聚类器</span></span><br><span class="line">estimator.fit(X)<span class="comment">#聚类</span></span><br><span class="line">label_pred = estimator.labels_ <span class="comment">#获取聚类标签</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_pred</span><br></pre></td></tr></table></figure>
+<pre><code>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], dtype=int32)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘制k-means结果</span></span><br><span class="line">x0 = X[label_pred == <span class="number">0</span>]</span><br><span class="line">x1 = X[label_pred == <span class="number">1</span>]</span><br><span class="line">x2 = X[label_pred == <span class="number">2</span>]</span><br><span class="line">plt.scatter(x0[:, <span class="number">0</span>], x0[:, <span class="number">1</span>], c = <span class="string">"red"</span>, marker=<span class="string">'o'</span>, label=<span class="string">'label0'</span>)  </span><br><span class="line">plt.scatter(x1[:, <span class="number">0</span>], x1[:, <span class="number">1</span>], c = <span class="string">"green"</span>, marker=<span class="string">'*'</span>, label=<span class="string">'label1'</span>)  </span><br><span class="line">plt.scatter(x2[:, <span class="number">0</span>], x2[:, <span class="number">1</span>], c = <span class="string">"blue"</span>, marker=<span class="string">'+'</span>, label=<span class="string">'label2'</span>)  </span><br><span class="line">plt.xlabel(<span class="string">'petal length'</span>)  </span><br><span class="line">plt.ylabel(<span class="string">'petal width'</span>)  </span><br><span class="line">plt.legend(loc=<span class="number">2</span>)  </span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_12_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(150, 2)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X=X.tolist()</span><br><span class="line">label_pred=label_pred.tolist()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X</span><br></pre></td></tr></table></figure>
+<pre><code>[[1.4, 0.2],
+ [1.4, 0.2],
+ [1.3, 0.2],
+ [1.5, 0.2],
+ [1.4, 0.2],
+ [1.7, 0.4],
+ [1.4, 0.3],
+ [1.5, 0.2],
+ [1.4, 0.2],
+ [1.5, 0.1],
+ [1.5, 0.2],
+ [1.6, 0.2],
+ [1.4, 0.1],
+ [1.1, 0.1],
+ [1.2, 0.2],
+ [1.5, 0.4],
+ [1.3, 0.4],
+ [1.4, 0.3],
+ [1.7, 0.3],
+ [1.5, 0.3],
+ [1.7, 0.2],
+ [1.5, 0.4],
+ [1.0, 0.2],
+ [1.7, 0.5],
+ [1.9, 0.2],
+ [1.6, 0.2],
+ [1.6, 0.4],
+ [1.5, 0.2],
+ [1.4, 0.2],
+ [1.6, 0.2],
+ [1.6, 0.2],
+ [1.5, 0.4],
+ [1.5, 0.1],
+ [1.4, 0.2],
+ [1.5, 0.1],
+ [1.2, 0.2],
+ [1.3, 0.2],
+ [1.5, 0.1],
+ [1.3, 0.2],
+ [1.5, 0.2],
+ [1.3, 0.3],
+ [1.3, 0.3],
+ [1.3, 0.2],
+ [1.6, 0.6],
+ [1.9, 0.4],
+ [1.4, 0.3],
+ [1.6, 0.2],
+ [1.4, 0.2],
+ [1.5, 0.2],
+ [1.4, 0.2],
+ [4.7, 1.4],
+ [4.5, 1.5],
+ [4.9, 1.5],
+ [4.0, 1.3],
+ [4.6, 1.5],
+ [4.5, 1.3],
+ [4.7, 1.6],
+ [3.3, 1.0],
+ [4.6, 1.3],
+ [3.9, 1.4],
+ [3.5, 1.0],
+ [4.2, 1.5],
+ [4.0, 1.0],
+ [4.7, 1.4],
+ [3.6, 1.3],
+ [4.4, 1.4],
+ [4.5, 1.5],
+ [4.1, 1.0],
+ [4.5, 1.5],
+ [3.9, 1.1],
+ [4.8, 1.8],
+ [4.0, 1.3],
+ [4.9, 1.5],
+ [4.7, 1.2],
+ [4.3, 1.3],
+ [4.4, 1.4],
+ [4.8, 1.4],
+ [5.0, 1.7],
+ [4.5, 1.5],
+ [3.5, 1.0],
+ [3.8, 1.1],
+ [3.7, 1.0],
+ [3.9, 1.2],
+ [5.1, 1.6],
+ [4.5, 1.5],
+ [4.5, 1.6],
+ [4.7, 1.5],
+ [4.4, 1.3],
+ [4.1, 1.3],
+ [4.0, 1.3],
+ [4.4, 1.2],
+ [4.6, 1.4],
+ [4.0, 1.2],
+ [3.3, 1.0],
+ [4.2, 1.3],
+ [4.2, 1.2],
+ [4.2, 1.3],
+ [4.3, 1.3],
+ [3.0, 1.1],
+ [4.1, 1.3],
+ [6.0, 2.5],
+ [5.1, 1.9],
+ [5.9, 2.1],
+ [5.6, 1.8],
+ [5.8, 2.2],
+ [6.6, 2.1],
+ [4.5, 1.7],
+ [6.3, 1.8],
+ [5.8, 1.8],
+ [6.1, 2.5],
+ [5.1, 2.0],
+ [5.3, 1.9],
+ [5.5, 2.1],
+ [5.0, 2.0],
+ [5.1, 2.4],
+ [5.3, 2.3],
+ [5.5, 1.8],
+ [6.7, 2.2],
+ [6.9, 2.3],
+ [5.0, 1.5],
+ [5.7, 2.3],
+ [4.9, 2.0],
+ [6.7, 2.0],
+ [4.9, 1.8],
+ [5.7, 2.1],
+ [6.0, 1.8],
+ [4.8, 1.8],
+ [4.9, 1.8],
+ [5.6, 2.1],
+ [5.8, 1.6],
+ [6.1, 1.9],
+ [6.4, 2.0],
+ [5.6, 2.2],
+ [5.1, 1.5],
+ [5.6, 1.4],
+ [6.1, 2.3],
+ [5.6, 2.4],
+ [5.5, 1.8],
+ [4.8, 1.8],
+ [5.4, 2.1],
+ [5.6, 2.4],
+ [5.1, 2.3],
+ [5.1, 1.9],
+ [5.9, 2.3],
+ [5.7, 2.5],
+ [5.2, 2.3],
+ [5.0, 1.9],
+ [5.2, 2.0],
+ [5.4, 2.3],
+ [5.1, 1.8]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cluster_result=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> zip(X,label_pred):</span><br><span class="line">    i[<span class="number">0</span>].append(i[<span class="number">1</span>])</span><br><span class="line">    cluster_result.append(i[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cluster_result</span><br></pre></td></tr></table></figure>
+<pre><code>[[1.4, 0.2, 0],
+ [1.4, 0.2, 0],
+ [1.3, 0.2, 0],
+ [1.5, 0.2, 0],
+ [1.4, 0.2, 0],
+ [1.7, 0.4, 0],
+ [1.4, 0.3, 0],
+ [1.5, 0.2, 0],
+ [1.4, 0.2, 0],
+ [1.5, 0.1, 0],
+ [1.5, 0.2, 0],
+ [1.6, 0.2, 0],
+ [1.4, 0.1, 0],
+ [1.1, 0.1, 0],
+ [1.2, 0.2, 0],
+ [1.5, 0.4, 0],
+ [1.3, 0.4, 0],
+ [1.4, 0.3, 0],
+ [1.7, 0.3, 0],
+ [1.5, 0.3, 0],
+ [1.7, 0.2, 0],
+ [1.5, 0.4, 0],
+ [1.0, 0.2, 0],
+ [1.7, 0.5, 0],
+ [1.9, 0.2, 0],
+ [1.6, 0.2, 0],
+ [1.6, 0.4, 0],
+ [1.5, 0.2, 0],
+ [1.4, 0.2, 0],
+ [1.6, 0.2, 0],
+ [1.6, 0.2, 0],
+ [1.5, 0.4, 0],
+ [1.5, 0.1, 0],
+ [1.4, 0.2, 0],
+ [1.5, 0.1, 0],
+ [1.2, 0.2, 0],
+ [1.3, 0.2, 0],
+ [1.5, 0.1, 0],
+ [1.3, 0.2, 0],
+ [1.5, 0.2, 0],
+ [1.3, 0.3, 0],
+ [1.3, 0.3, 0],
+ [1.3, 0.2, 0],
+ [1.6, 0.6, 0],
+ [1.9, 0.4, 0],
+ [1.4, 0.3, 0],
+ [1.6, 0.2, 0],
+ [1.4, 0.2, 0],
+ [1.5, 0.2, 0],
+ [1.4, 0.2, 0],
+ [4.7, 1.4, 2],
+ [4.5, 1.5, 2],
+ [4.9, 1.5, 2],
+ [4.0, 1.3, 2],
+ [4.6, 1.5, 2],
+ [4.5, 1.3, 2],
+ [4.7, 1.6, 2],
+ [3.3, 1.0, 2],
+ [4.6, 1.3, 2],
+ [3.9, 1.4, 2],
+ [3.5, 1.0, 2],
+ [4.2, 1.5, 2],
+ [4.0, 1.0, 2],
+ [4.7, 1.4, 2],
+ [3.6, 1.3, 2],
+ [4.4, 1.4, 2],
+ [4.5, 1.5, 2],
+ [4.1, 1.0, 2],
+ [4.5, 1.5, 2],
+ [3.9, 1.1, 2],
+ [4.8, 1.8, 2],
+ [4.0, 1.3, 2],
+ [4.9, 1.5, 2],
+ [4.7, 1.2, 2],
+ [4.3, 1.3, 2],
+ [4.4, 1.4, 2],
+ [4.8, 1.4, 2],
+ [5.0, 1.7, 1],
+ [4.5, 1.5, 2],
+ [3.5, 1.0, 2],
+ [3.8, 1.1, 2],
+ [3.7, 1.0, 2],
+ [3.9, 1.2, 2],
+ [5.1, 1.6, 1],
+ [4.5, 1.5, 2],
+ [4.5, 1.6, 2],
+ [4.7, 1.5, 2],
+ [4.4, 1.3, 2],
+ [4.1, 1.3, 2],
+ [4.0, 1.3, 2],
+ [4.4, 1.2, 2],
+ [4.6, 1.4, 2],
+ [4.0, 1.2, 2],
+ [3.3, 1.0, 2],
+ [4.2, 1.3, 2],
+ [4.2, 1.2, 2],
+ [4.2, 1.3, 2],
+ [4.3, 1.3, 2],
+ [3.0, 1.1, 2],
+ [4.1, 1.3, 2],
+ [6.0, 2.5, 1],
+ [5.1, 1.9, 1],
+ [5.9, 2.1, 1],
+ [5.6, 1.8, 1],
+ [5.8, 2.2, 1],
+ [6.6, 2.1, 1],
+ [4.5, 1.7, 2],
+ [6.3, 1.8, 1],
+ [5.8, 1.8, 1],
+ [6.1, 2.5, 1],
+ [5.1, 2.0, 1],
+ [5.3, 1.9, 1],
+ [5.5, 2.1, 1],
+ [5.0, 2.0, 1],
+ [5.1, 2.4, 1],
+ [5.3, 2.3, 1],
+ [5.5, 1.8, 1],
+ [6.7, 2.2, 1],
+ [6.9, 2.3, 1],
+ [5.0, 1.5, 2],
+ [5.7, 2.3, 1],
+ [4.9, 2.0, 1],
+ [6.7, 2.0, 1],
+ [4.9, 1.8, 1],
+ [5.7, 2.1, 1],
+ [6.0, 1.8, 1],
+ [4.8, 1.8, 2],
+ [4.9, 1.8, 1],
+ [5.6, 2.1, 1],
+ [5.8, 1.6, 1],
+ [6.1, 1.9, 1],
+ [6.4, 2.0, 1],
+ [5.6, 2.2, 1],
+ [5.1, 1.5, 1],
+ [5.6, 1.4, 1],
+ [6.1, 2.3, 1],
+ [5.6, 2.4, 1],
+ [5.5, 1.8, 1],
+ [4.8, 1.8, 2],
+ [5.4, 2.1, 1],
+ [5.6, 2.4, 1],
+ [5.1, 2.3, 1],
+ [5.1, 1.9, 1],
+ [5.9, 2.3, 1],
+ [5.7, 2.5, 1],
+ [5.2, 2.3, 1],
+ [5.0, 1.9, 1],
+ [5.2, 2.0, 1],
+ [5.4, 2.3, 1],
+ [5.1, 1.8, 1]]
+</code></pre><p>接下来将３类数据点分别导出到csv文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#分类整合</span></span><br><span class="line">label0=[]<span class="comment">#第０类</span></span><br><span class="line">label1=[]<span class="comment">#第１类</span></span><br><span class="line">label2=[]<span class="comment">##第2类</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> cluster_result:</span><br><span class="line">    <span class="keyword">if</span> i[<span class="number">2</span>]==<span class="number">0</span>:</span><br><span class="line">        label0.append(i)</span><br><span class="line">    <span class="keyword">elif</span> i[<span class="number">2</span>]==<span class="number">1</span>:</span><br><span class="line">        label1.append(i)</span><br><span class="line">    <span class="keyword">elif</span> i[<span class="number">2</span>]==<span class="number">2</span>:</span><br><span class="line">        label2.append(i)</span><br></pre></td></tr></table></figure>
+<p>现在得到的是３个list，我们将先把list转换成array，再进行导出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#转化成array</span></span><br><span class="line">label0=np.array(label0)</span><br><span class="line">label1=np.array(label1)</span><br><span class="line">label2=np.array(label2)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#预先创建一个空的数据框</span></span><br><span class="line">label0_csv=pd.DataFrame()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将第０类样本信息进行填充到之前的看破那个数据框</span></span><br><span class="line">label0_csv[<span class="string">'feature1'</span>]=label0[:,<span class="number">0</span>]</span><br><span class="line">label0_csv[<span class="string">'feature2'</span>]=label0[:,<span class="number">1</span>]</span><br><span class="line">label0_csv[<span class="string">'kind'</span>]=label0[:,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#整合之后的样子</span></span><br><span class="line">label0_csv</span><br></pre></td></tr></table></figure>
+<div><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>feature1</th><br>      <th>feature2</th><br>      <th>kind</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>1.3</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>5</th><br>      <td>1.7</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>6</th><br>      <td>1.4</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>7</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>8</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>9</th><br>      <td>1.5</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>10</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>11</th><br>      <td>1.6</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>12</th><br>      <td>1.4</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>13</th><br>      <td>1.1</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>14</th><br>      <td>1.2</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>15</th><br>      <td>1.5</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>16</th><br>      <td>1.3</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>17</th><br>      <td>1.4</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>18</th><br>      <td>1.7</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>19</th><br>      <td>1.5</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>20</th><br>      <td>1.7</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>21</th><br>      <td>1.5</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>22</th><br>      <td>1.0</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>23</th><br>      <td>1.7</td><br>      <td>0.5</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>24</th><br>      <td>1.9</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>25</th><br>      <td>1.6</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>26</th><br>      <td>1.6</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>27</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>28</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>29</th><br>      <td>1.6</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>30</th><br>      <td>1.6</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>31</th><br>      <td>1.5</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>32</th><br>      <td>1.5</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>33</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>34</th><br>      <td>1.5</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>35</th><br>      <td>1.2</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>36</th><br>      <td>1.3</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>37</th><br>      <td>1.5</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>38</th><br>      <td>1.3</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>39</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>40</th><br>      <td>1.3</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>41</th><br>      <td>1.3</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>42</th><br>      <td>1.3</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>43</th><br>      <td>1.6</td><br>      <td>0.6</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>44</th><br>      <td>1.9</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>45</th><br>      <td>1.4</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>46</th><br>      <td>1.6</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>47</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>48</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>49</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#保存第０类样本信息文件</span></span><br><span class="line">label0_csv.to_csv(<span class="string">r'/home/fantasy/Desktop/数学建模Python/聚类/鸢尾花聚类结果csv/label0.csv'</span>,index=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<p>至于其他两类的数据导出方法也一样，这里不再赘述。<br>其实，可以把这个导出功能封装成一个函数，传入保存路径和第几类就可以了，当然也可以直接来个for循环解决.</p>
+<p>到现在，我们都做了些什么呢？来总结一下：</p>
+<p>首先，我们导入了sklearn自带的鸢尾花数据集并选取了其中两个特征(feature)，拟用这两个特征做聚类.</p>
+<p>接着，我们调用了sklearn的聚类方法做了聚类（聚成了３类），并将样本的特征与所属类别（int）整合在一个list里面，并由外围的list包裹住，然后再将这所有的list按照所属聚类数的不同而归类存储.</p>
+<p>最后，将归类的数据先转化成数组形式，然后做成csv文件，导出到指定目录下.</p>
+<p>有一点值得注意的是，在可视化的时候只能用二维数据，即两个特征，受维度限制.</p>
+<hr>
+<p>接下来我们再来看一个例子，同样是使用上面的数据，只不过这次采用dbscan算法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> DBSCAN</span><br><span class="line">db=DBSCAN(eps=<span class="number">1</span>,min_samples=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#这次使用全部特征进行聚类</span></span><br><span class="line">x=iris.data</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(150, 4)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.fit(x)<span class="comment">#训练数据集，构建模型</span></span><br></pre></td></tr></table></figure>
+<pre><code>DBSCAN(algorithm=&apos;auto&apos;, eps=1, leaf_size=30, metric=&apos;euclidean&apos;,
+    min_samples=10, n_jobs=1, p=None)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">labels=db.labels_</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">labels</span><br></pre></td></tr></table></figure>
+<pre><code>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#噪声比率</span></span><br><span class="line">ratio=len(labels[labels[:]==<span class="number">-1</span>])*<span class="number">1.0</span>/len(labels)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">"噪声比率:"</span>,ratio</span><br></pre></td></tr></table></figure>
+<pre><code>噪声比率: 0.0
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_clusters_=len(set(labels)) - (<span class="number">1</span> <span class="keyword">if</span> <span class="number">-1</span> <span class="keyword">in</span> labels <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'聚类总数为：'</span>,n_clusters_</span><br></pre></td></tr></table></figure>
+<pre><code>聚类总数为： 2
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">print</span> <span class="string">'聚类效果评价指标：'</span>,metrics.silhouette_score(X,labels)<span class="comment">#【-1,1】,越接近１越好</span></span><br></pre></td></tr></table></figure>
+<pre><code>聚类效果评价指标： 0.766723428068
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#总结</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n_clusters_):</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Cluter'</span>,i+<span class="number">1</span>,<span class="string">':'</span></span><br><span class="line">    count=len(x[labels==i])</span><br><span class="line">    mean=np.mean(x[labels==i][:,<span class="number">1</span>])</span><br><span class="line">    std=np.std(x[labels==i][:,<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'计数：'</span>,count</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'平均值'</span>,mean</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'标准差'</span>,std</span><br></pre></td></tr></table></figure>
+<pre><code>Cluter 1 :
+计数： 50
+平均值 3.418
+标准差 0.377194909828
+Cluter 2 :
+计数： 100
+平均值 2.872
+标准差 0.331083071147
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#可视化聚类结果，这里只选取前两个进行绘制,不太准确，只是拿来说明一下绘图做法</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n_clusters_):</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'簇 '</span>, i, <span class="string">'的所有样本:'</span></span><br><span class="line">    one_cluster = x[labels == i]</span><br><span class="line">    <span class="keyword">print</span> one_cluster</span><br><span class="line">    plt.plot(one_cluster[:,<span class="number">0</span>],one_cluster[:,<span class="number">1</span>],<span class="string">'o'</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>簇  0 的所有样本:
+[[ 5.1  3.5  1.4  0.2]
+ [ 4.9  3.   1.4  0.2]
+ [ 4.7  3.2  1.3  0.2]
+ [ 4.6  3.1  1.5  0.2]
+ [ 5.   3.6  1.4  0.2]
+ [ 5.4  3.9  1.7  0.4]
+ [ 4.6  3.4  1.4  0.3]
+ [ 5.   3.4  1.5  0.2]
+ [ 4.4  2.9  1.4  0.2]
+ [ 4.9  3.1  1.5  0.1]
+ [ 5.4  3.7  1.5  0.2]
+ [ 4.8  3.4  1.6  0.2]
+ [ 4.8  3.   1.4  0.1]
+ [ 4.3  3.   1.1  0.1]
+ [ 5.8  4.   1.2  0.2]
+ [ 5.7  4.4  1.5  0.4]
+ [ 5.4  3.9  1.3  0.4]
+ [ 5.1  3.5  1.4  0.3]
+ [ 5.7  3.8  1.7  0.3]
+ [ 5.1  3.8  1.5  0.3]
+ [ 5.4  3.4  1.7  0.2]
+ [ 5.1  3.7  1.5  0.4]
+ [ 4.6  3.6  1.   0.2]
+ [ 5.1  3.3  1.7  0.5]
+ [ 4.8  3.4  1.9  0.2]
+ [ 5.   3.   1.6  0.2]
+ [ 5.   3.4  1.6  0.4]
+ [ 5.2  3.5  1.5  0.2]
+ [ 5.2  3.4  1.4  0.2]
+ [ 4.7  3.2  1.6  0.2]
+ [ 4.8  3.1  1.6  0.2]
+ [ 5.4  3.4  1.5  0.4]
+ [ 5.2  4.1  1.5  0.1]
+ [ 5.5  4.2  1.4  0.2]
+ [ 4.9  3.1  1.5  0.1]
+ [ 5.   3.2  1.2  0.2]
+ [ 5.5  3.5  1.3  0.2]
+ [ 4.9  3.1  1.5  0.1]
+ [ 4.4  3.   1.3  0.2]
+ [ 5.1  3.4  1.5  0.2]
+ [ 5.   3.5  1.3  0.3]
+ [ 4.5  2.3  1.3  0.3]
+ [ 4.4  3.2  1.3  0.2]
+ [ 5.   3.5  1.6  0.6]
+ [ 5.1  3.8  1.9  0.4]
+ [ 4.8  3.   1.4  0.3]
+ [ 5.1  3.8  1.6  0.2]
+ [ 4.6  3.2  1.4  0.2]
+ [ 5.3  3.7  1.5  0.2]
+ [ 5.   3.3  1.4  0.2]]
+簇  1 的所有样本:
+[[ 7.   3.2  4.7  1.4]
+ [ 6.4  3.2  4.5  1.5]
+ [ 6.9  3.1  4.9  1.5]
+ [ 5.5  2.3  4.   1.3]
+ [ 6.5  2.8  4.6  1.5]
+ [ 5.7  2.8  4.5  1.3]
+ [ 6.3  3.3  4.7  1.6]
+ [ 4.9  2.4  3.3  1. ]
+ [ 6.6  2.9  4.6  1.3]
+ [ 5.2  2.7  3.9  1.4]
+ [ 5.   2.   3.5  1. ]
+ [ 5.9  3.   4.2  1.5]
+ [ 6.   2.2  4.   1. ]
+ [ 6.1  2.9  4.7  1.4]
+ [ 5.6  2.9  3.6  1.3]
+ [ 6.7  3.1  4.4  1.4]
+ [ 5.6  3.   4.5  1.5]
+ [ 5.8  2.7  4.1  1. ]
+ [ 6.2  2.2  4.5  1.5]
+ [ 5.6  2.5  3.9  1.1]
+ [ 5.9  3.2  4.8  1.8]
+ [ 6.1  2.8  4.   1.3]
+ [ 6.3  2.5  4.9  1.5]
+ [ 6.1  2.8  4.7  1.2]
+ [ 6.4  2.9  4.3  1.3]
+ [ 6.6  3.   4.4  1.4]
+ [ 6.8  2.8  4.8  1.4]
+ [ 6.7  3.   5.   1.7]
+ [ 6.   2.9  4.5  1.5]
+ [ 5.7  2.6  3.5  1. ]
+ [ 5.5  2.4  3.8  1.1]
+ [ 5.5  2.4  3.7  1. ]
+ [ 5.8  2.7  3.9  1.2]
+ [ 6.   2.7  5.1  1.6]
+ [ 5.4  3.   4.5  1.5]
+ [ 6.   3.4  4.5  1.6]
+ [ 6.7  3.1  4.7  1.5]
+ [ 6.3  2.3  4.4  1.3]
+ [ 5.6  3.   4.1  1.3]
+ [ 5.5  2.5  4.   1.3]
+ [ 5.5  2.6  4.4  1.2]
+ [ 6.1  3.   4.6  1.4]
+ [ 5.8  2.6  4.   1.2]
+ [ 5.   2.3  3.3  1. ]
+ [ 5.6  2.7  4.2  1.3]
+ [ 5.7  3.   4.2  1.2]
+ [ 5.7  2.9  4.2  1.3]
+ [ 6.2  2.9  4.3  1.3]
+ [ 5.1  2.5  3.   1.1]
+ [ 5.7  2.8  4.1  1.3]
+ [ 6.3  3.3  6.   2.5]
+ [ 5.8  2.7  5.1  1.9]
+ [ 7.1  3.   5.9  2.1]
+ [ 6.3  2.9  5.6  1.8]
+ [ 6.5  3.   5.8  2.2]
+ [ 7.6  3.   6.6  2.1]
+ [ 4.9  2.5  4.5  1.7]
+ [ 7.3  2.9  6.3  1.8]
+ [ 6.7  2.5  5.8  1.8]
+ [ 7.2  3.6  6.1  2.5]
+ [ 6.5  3.2  5.1  2. ]
+ [ 6.4  2.7  5.3  1.9]
+ [ 6.8  3.   5.5  2.1]
+ [ 5.7  2.5  5.   2. ]
+ [ 5.8  2.8  5.1  2.4]
+ [ 6.4  3.2  5.3  2.3]
+ [ 6.5  3.   5.5  1.8]
+ [ 7.7  3.8  6.7  2.2]
+ [ 7.7  2.6  6.9  2.3]
+ [ 6.   2.2  5.   1.5]
+ [ 6.9  3.2  5.7  2.3]
+ [ 5.6  2.8  4.9  2. ]
+ [ 7.7  2.8  6.7  2. ]
+ [ 6.3  2.7  4.9  1.8]
+ [ 6.7  3.3  5.7  2.1]
+ [ 7.2  3.2  6.   1.8]
+ [ 6.2  2.8  4.8  1.8]
+ [ 6.1  3.   4.9  1.8]
+ [ 6.4  2.8  5.6  2.1]
+ [ 7.2  3.   5.8  1.6]
+ [ 7.4  2.8  6.1  1.9]
+ [ 7.9  3.8  6.4  2. ]
+ [ 6.4  2.8  5.6  2.2]
+ [ 6.3  2.8  5.1  1.5]
+ [ 6.1  2.6  5.6  1.4]
+ [ 7.7  3.   6.1  2.3]
+ [ 6.3  3.4  5.6  2.4]
+ [ 6.4  3.1  5.5  1.8]
+ [ 6.   3.   4.8  1.8]
+ [ 6.9  3.1  5.4  2.1]
+ [ 6.7  3.1  5.6  2.4]
+ [ 6.9  3.1  5.1  2.3]
+ [ 5.8  2.7  5.1  1.9]
+ [ 6.8  3.2  5.9  2.3]
+ [ 6.7  3.3  5.7  2.5]
+ [ 6.7  3.   5.2  2.3]
+ [ 6.3  2.5  5.   1.9]
+ [ 6.5  3.   5.2  2. ]
+ [ 6.2  3.4  5.4  2.3]
+ [ 5.9  3.   5.1  1.8]]
+</code></pre><p><img src="output_45_1.png" alt="png"></p>
+<p>参考：<br><a href="https://blog.csdn.net/luanpeng825485697/article/details/79443512" target="_blank" rel="noopener">https://blog.csdn.net/luanpeng825485697/article/details/79443512</a><br><a href="https://blog.csdn.net/linzch3/article/details/76038172" target="_blank" rel="noopener">https://blog.csdn.net/linzch3/article/details/76038172</a><br><a href="https://blog.csdn.net/u010159842/article/details/78624135" target="_blank" rel="noopener">https://blog.csdn.net/u010159842/article/details/78624135</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+<div>
+      
+        
+
+      
+</div>
+
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>微信端扫描二维码关注我的个人微信公众号，获取更多干货资源</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请我吃包辣条吧</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------The End-------------</div>
+    
+</div>
+
+  
+</div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/30/降维/" rel="next" title="Python降维处理">
+                <i class="fa fa-chevron-left"></i> Python降维处理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/30/ｒｅｇ/" rel="prev" title="Python回归拟合">
+                Python回归拟合 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="凡希" />
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">因为喜欢，所以热爱，软件&书籍&技术干货分享站</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
