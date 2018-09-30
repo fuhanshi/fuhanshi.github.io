@@ -269,6 +269,314 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/diff/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/home/fantasy/Desktop/myblog/themes/next/source/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凡希的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/30/diff/" itemprop="url">差分方程的解析解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-30T16:12:08+08:00">
+                2018-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="差分方程的解析解"><a href="#差分方程的解析解" class="headerlink" title="差分方程的解析解"></a>差分方程的解析解</h3><p><strong>例题</strong>．求$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解<br></p>
+<hr>
+<p>当初始条件已知，即$y_0$已知时，迭代算法如下：</p>
+<ul>
+<li>向前迭代算法<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_3=a_0+a_1y_2+\epsilon_3$$<br>$$…$$<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br><br>以上列举了该差分方程的所有项，我们要做的就是通过这些递推关系来逐步迭代，当迭代完所有项之后，最终可以得到目标解析解.<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2=a_0+a_1(a_0+a_1y_0+\epsilon_1)+\epsilon_2=$$<br>$$a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2=[a_0(1+a_1)]+[a_1^2y_0]+[a_1\epsilon_1+\epsilon_2]$$<br>$$y_3=a_0+a_1y_2+\epsilon_3=a_0+a_1(a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2)+\epsilon_3=$$<br>$$[a_0+a_0a_1+a_0{a_1}^2]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]=[a_0(1+a_1+a_1^2)]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]$$<br>$$…$$<br>由数学归纳法，递推下去，则有：<br><br>$$y_t=[a_0(a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_1+a_1^{t-2}\epsilon_2+…+a_1^0\epsilon_t]=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$<br>上式便是目标解析解，因为$y_0$已知，即不含有任何未知项.<br><br>之所以称之为“向前迭代法”，是因为迭代的索引是从$y_1$开始，一步一步往前面跑去，逐步迭代得到到目标式$y_n$的.<br></li>
+</ul>
+<p>你肯定会想到，既然有向前迭代，那么一定有向后迭代了，没错，向后迭代就是从最后一项$y_t$逐渐向$y_0$进行迭代.</p>
+<ul>
+<li>向后迭代<br><br>同样是求解$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解:<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br>$$y_{t-1}=a_0+a_1y_{t-2}+\epsilon_{t-1}$$<br>$$y_{t-2}=a_0+a_1y_{t-3}+\epsilon_{t-2}$$<br>$$…$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_0=a_0+a_1y_{-1}+\epsilon_0$$<br>开始迭代：(前面写了两次迭代过程,总共迭代$t-1$次)<br><br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t=$$<br>$$a_0+a_1(a_0+a_1y_{t-2}+\epsilon_{t-1})+\epsilon_t=$$<br>$$a_0+a_1a_0+a_1^2y_{t-2}+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0(1+a_1)]+[a_1^2y_{t-2}]+[a_1\epsilon_{t-1}+\epsilon_t]$$<br>$$a_0+a_1a_0+a_1^2(a_0+a_1y_{t-3}+\epsilon_{t-2})+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0+a_1a_0+a_1^2a_0]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$[a_0(1+a_1+a_1^2)]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$…$$<br>$$=[a_0(1+a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_{1}+a_1^{t-2}\epsilon_{2}+…+a_1^0\epsilon_t]＝$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$</li>
+</ul>
+<hr>
+<p>而当初始条件未知，即$y_0$未知时，我们需要对上面得到的差分方程的解继续化：<br><br>$$y_t=a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^t(a_0+a_1y_{-1}+\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+(a_0a_1^t+a_1^{t+1}y_{-1}+a_1^t\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t}a_1^i+a_1^{t+1}y_{-1}+\sum_{i=0}^{t}a_1^i\epsilon_{t-i}=$$<br>$$…$$<br>$$=a_0\sum_{i=0}^{(t-1)+m}a_1^i+a_1^{t+m}y_{-m}+\sum_{i=0}^{(t-1)+m}a_1^i\epsilon_{t-i}$$</p>
+<p>由于初始条件未知，我们现在来讨论解是否存在，即解的敛散性:<br></p>
+<ul>
+<li>当$|a_1|&lt;1$时，第一项出现等比数列求和，由无穷递缩等比数列性质，当$m\rightarrow\infty$时，第一项收敛到$\frac{a_0}{1-a_1}$;第二项中的$a_1^{t+m}$会收敛到０，因此第二项将收敛到０;第三项是一个有界量，类似于白噪声序列.<br><br>所以此时的解为<br>$$y_t=\frac{a_0}{1-a_1}+\sum_{i=0}^{t+m-1}a_1^i\epsilon_{t-i}$$</li>
+<li>当$|a_1|&gt;1$时，发散；<br></li>
+<li>当$|a_1|＝1$时，直接代回到最开始的式子，即得<br>$$y_t=a_0t+y_0+\sum_{i=0}^{t-1}\epsilon_{t-i}=a_0t+y_0+\sum_{i=1}^{t}\epsilon_{i}$$</li>
+</ul>
+<hr>
+<p>以上便是针对例题展开的求解过程</p>
+<hr>
+<p>而对于一般的线性差分方程<br>$$y_t=a_0+a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}+x(t)．．．（１）$$<br>其齐次线性差分方程为<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}．．．（２）$$<br>我们首先要明确，<br></p>
+<ul>
+<li>对于齐次线性差分方程（２式），对任意常数$A$，如果$y_t^h$是其一个解，那么$Ay_t^h$也是其一个解.<br></li>
+<li>而对于非齐次线性差分方程（１式），我们需要求其一个特解及其对应的齐次线性差分方程的一个通解.<br></li>
+</ul>
+<hr>
+<p>我们接下来将介绍一种新的解法（不同于之前的迭代法），称之为<strong>备选（特征根法）解法</strong>，来求解非齐次线性差分方程，即（１）式.<br><br>步骤如下：<br><br><strong>(1)建立齐次线性差分方程（２）式，求齐次方程的解$y_t^{h_1},y_t^{h_2},…,y_t^{h_n}$；<br></strong><br>(2)求出非齐次线性差分方程(1)式的一个特解$y_t^p$；　<br><br>(3)非齐次线性差分方程（１）式的通解即为其自身的一个特解加上其对应的齐次线性差分方程的一个通解，即<br>$$y_t=y_t^p+A_1y_t^{h_1}+A_2y_t^{h_2}+…+A_ny_t^{h_n}$$<br><br>其中$A_1,A_2,…A_n$是任意常数；<br><br>(4)若已知初始条件$y_0,y_1,…$，则可以求出$A_1,A_2,…A_n$.(选)<br></p>
+<hr>
+<p>其中第一步是最麻烦的，所以下面我们将针对第一步，即齐次线性差分方程的求解问题展开讨论<br><br><strong>例题</strong>：解齐次线性差分方程<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}$$</p>
+<hr>
+<ul>
+<li>一阶齐次差分方程$y_t=ay_{t-1}$，<br>通解为$Aa^t$ ,可以用迭代法证明，用特征根法更为简单：<br><br>猜想其解的形式为$y_t=A\alpha^t$，代入上式，得$A\alpha^t=aA\alpha^{t-1}$，即$\alpha=a$，故通解为$y_t=aA\alpha^{t-1}=Aa^t$.</li>
+<li>二阶齐次差分方程$y_t=a_1y_{t-1}+a_2y_{t-2}$ ，<br><br>利用特征根法，猜想其解的形式为$y_t=A\alpha^t$，代入上式，得：<br>$$A\alpha^t=a_1A\alpha^{t-1}+a_2A\alpha^{t-2}$$<br>化简，得：<br>$$\alpha^2=a_1\alpha+a_2$$<br>移项，得：<br>$$\alpha^2-a_1\alpha-a_2=0$$<br>从而解得特征根为<br>$$\alpha_{1}=\frac{a_1{+}\sqrt{a_1^2+4a_2}}{2}$$<br>$$\alpha_{2}=\frac{a_1{-}\sqrt{a_1^2+4a_2}}{2}$$<br>其中$d=a_1^2+4a_2$　<br><br>$d$有三种情况：$d&gt;0,d＝０,d&lt;0$，下面就分这三种情况来讨论(<strong>下面的内容很重要!</strong>)<br></li>
+</ul>
+<blockquote>
+<p>(1)当$d=a_1^2+4a_2&gt;0$时，$\alpha_1,\alpha_2$为互不相同的实根，此时的通解为<strong>$y_t=A_1\alpha_1^t+A_2\alpha_2^t$</strong>，其中$A_1,A_2$为任意常数.<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$大于1时，发散；<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$小于1时，收敛.<br></p>
+</blockquote>
+<blockquote>
+<p>(2)当$d=a_1^2+4a_2=0$时，即$a_2=-\frac{a_1^2}{4}$时，$\alpha_1=\alpha_2$为重根，代回上面的特征根方程有$\alpha_1=\alpha_2=\frac{a_1}2$，此时$A\alpha_1^t=A{(\frac{a_1}2})^t$是方程的一个解（俩都一样，算一个），并且可以验证，$At{(\frac{a_1}2})^t$也是方程的一个解，所以此时方程的通解为$y_t=A_1{(\frac{a_1}2})^t+A_2t{(\frac{a_1}2})^t$，其中$A_1,A_2$为任意常数.<br><br>当$|\frac{a_1}2|&lt;1$时，收敛；<br><br>当$|\frac{a_1}2|&gt;1$时，发散.<br></p>
+</blockquote>
+<blockquote>
+<p>(3)当$d=a_1^2+4a_2&lt;0$时，即$a_2&lt;-{\frac{a_1^2}4}&lt;=0$，$\alpha_1,\alpha_2$为共轭复根，且<br><br> $$\alpha_1=\frac{a_1+i\sqrt{-d}}2$$<br> $$\alpha_1=\frac{a_1-i\sqrt{-d}}2$$<br> 由于$a+bi=r(cos\theta+isin\theta)$，所以得到$r=\sqrt{a^2+b^2}$，并且我们要知道$cos\theta=\frac{a}{r}$ <br><br> 回到题目，计算得$r=\sqrt{({\frac{a_1}{2})}^2+{-\frac{-d}{4}}}=\sqrt{-a_2}$，从而得$cos\theta=\frac{\frac{a_1}{2}}{\sqrt{-a_2}}=\frac{a_1}{2\sqrt{-a_2}}$. <br><br> 所以得到<br> $$\alpha_1=a+bi=r(cos\theta+isin\theta)=re^{i\theta}$$<br> $$\alpha_2=a-bi=r(cos\theta-isin\theta)=re^{-i\theta}$$<br> 所以<br> $${\alpha_1}^t={(a+bi)}^t=r^t(cos\theta+isin\theta)^t=r^te^{it\theta}$$<br> $${\alpha_2}^t={(a-bi)}^t=r^t(cos\theta-isin\theta)^t=r^te^{-it\theta}$$<br> 所以通解为<br> $$y_t=A_1r^te^{it\theta}+A_2r^te^{-it\theta}=r^t(A_1e^{it\theta}+A_2e^{-it\theta})$$<br> 其中$A_1,A_2$为任意常数.<br><br> 当$r=\sqrt{-a_2}&gt;1$时，即$a_2&lt;-1$时，发散；<br><br>  当$r=\sqrt{-a_2}&lt;1$时，即$-1&lt;a_2&lt;=0$时，收敛；<br><br>   当$r=\sqrt{-a_2}＝1$时，即$a_2=-1$时，波动增幅不变；<br></p>
+</blockquote>
+<p>以上便是二阶齐次差分方程所有可能情况下的解的求法以及解的敛散性的判别.</p>
+<p>下面呢，我们将推广到一般的$n$阶齐次差分方程：<br><br>$$y_t=a_1y_{t-1}+a_2y_{t-2}+…+a_ny_{t-n}，a_n!=0$$<br>假设解的形式为$A\alpha^t$，则特征方程为<br>$$\alpha^n-a_1\alpha^{n-1}-a_2\alpha^{n-2}-…-a_n=0$$<br>从中可以解出非零的<br>$$\alpha_1,\alpha_2,…,\alpha_n$$<br>同样分３种情况，即$\alpha_1,\alpha_2,…,\alpha_n$是互不相同的实根，$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根和$\alpha_1,\alpha_2,…,\alpha_n$有复根.<br></p>
+<blockquote>
+<p>(1)$\alpha_1,\alpha_2,…,\alpha_n$是$n$个互不相同的实根时，通解为$y_t=A_1\alpha_1^t+A_2\alpha_2^t+…+A_n\alpha_n^t$；<br>(2)$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根时，不妨设$\alpha_1=\alpha_2=…=\alpha_d$，$\alpha_{d+1},\alpha_{d+2},…,\alpha_n$互不相同，则通解为<br>$$y_t=(A_1+A_2t+A_3t^2+…+A_dt^{d-1})\alpha_1^t+A_{d+1}\alpha_{d+1}^t+A_{d+2}\alpha_{d+2}^t+…+A_{n}\alpha_{n}^t$$<br>(3)$\alpha_1,\alpha_2,…,\alpha_n$有复根时，不妨设$\alpha_1,\alpha_2$为复根，$\alpha_3,\alpha_2,…,\alpha_n$互不相同.<br><br>设$\alpha_1=a+bi,\alpha_2=a-bi$，由于$r=\sqrt{a^2+b^2}，cos\theta=\frac{a}r$，所以有<br>$$\alpha_1=re^{i\theta}$$<br>$$\alpha_2=re^{-i\theta}$$<br>所以通解为<br>$$y_t=r^t(A_1e^{it\theta}+A_2e^{-it\theta})+A_3\alpha_3^t+A_4\alpha_4^t+…+A_n\alpha_n^t$$<br>其中$A_1,A_2,…A_n$为任意常数.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+<div>
+      
+</div>
+
+
+    
+
+    
+
+    
+
+<div>
+  
+</div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/liman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/home/fantasy/Desktop/myblog/themes/next/source/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凡希的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/30/liman/" itemprop="url">黎曼函数的连续性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-30T16:10:59+08:00">
+                2018-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="黎曼函数的连续性"><a href="#黎曼函数的连续性" class="headerlink" title="黎曼函数的连续性"></a>黎曼函数的连续性</h2><p>黎曼函数，即<br><br>$$R(x)=\begin{cases}<br>0&amp;x为无理数\<br>\frac1{q}&amp;x=\frac{p}{q},p,q为正整数<br>\end{cases}$$<br>黎曼函数周期为１，所以只研究区间$[0,1]$的性质即可<br><br>性质：<strong>黎曼函数在区间$[0,1]$内的极限处处为零</strong><br><br>换句话说，<strong>黎曼函数在$[0,1]$上的无理点处处连续，在有理点间断</strong>.<br><br>下面我们来证明之~<br><br>证：对于有理数来说，可以写成$\frac{p}{q}$的既约真分数形式<br><br>$x=0$可以写成$x=\frac01$，即$R(0)=1$.　<br><br>所以，在$[0,1]$上，分母为1的有理点(既约)只有两个：$\frac01$和$\frac11$　<br><br>分母为2的有理点只有一个：$\frac12$　<br><br>分母为3的有理点只有两个：$\frac13$和$\frac23$　<br><br>分母为4的有理点只有两个：$\frac１４$和$\frac34$ <br><br>分母为5的有理点只有四个：$\frac15$,$\frac25$,$\frac35$和$\frac45$ <br><br>…<br><br>总之，对任意自然数$k$，分母不超过$k$的有理点个数是有限的<br><br>设$x_0$是$[0,1]$内任意一点，对任意给定的$\epsilon&gt;0$，设$k=[\frac{1}{\epsilon}]$，因为分母不超过$k$的有理点个数有限，设它们为$r_1,r_2,…,r_n$.<br><br>令$\delta=min{[r_i-x_0]}$，其中$1&lt;=i&lt;=n,r_i!=x_0$ <br><br>从而$\delta&gt;0$　<br><br>当$0&lt;|x-x_0|&lt;\delta$时，若$x$是无理数，则$R(x)=0$，若$x$为有理数，则其分母一定大于$k=[\frac{1}{\epsilon}]$(因为…)，于是$R(x)&lt;=\frac{1}{[\frac{1}{\epsilon}]+1}&lt;\epsilon$,因此成立$|R(x)-0|&lt;\epsilon$.<br><br>此即说明$R(x)$在$x_0$的极限为0（$x_0=0$时是指右极限，$x_0=1$时是指左极限）.根据$R(x)$的周期性，对一切$x_0属于(-\infty,+\infty)$成立$lim_{x{\rightarrow}x_0}R(x)=0$,证毕.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+<div>
+      
+</div>
+
+
+    
+
+    
+
+    
+
+<div>
+  
+</div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/数据预处理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -444,314 +752,6 @@
        [ 0.50257071,  0.57436653,  0.64616234]])
 </code></pre><p>今天就写到这儿吧，有时间继续，如果能帮到你，还请关注下微信公众号“我将在南极找寻你”，更多干货尽在其中！</p>
 <p>参考：<br> <a href="https://blog.csdn.net/gshgsh1228/article/details/52199870/" target="_blank" rel="noopener">https://blog.csdn.net/gshgsh1228/article/details/52199870/</a>　<br><br><a href="https://www.jianshu.com/p/0d8bb02f98fb" target="_blank" rel="noopener">https://www.jianshu.com/p/0d8bb02f98fb</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-<div>
-      
-</div>
-
-
-    
-
-    
-
-    
-
-<div>
-  
-</div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/liman/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="凡希">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/home/fantasy/Desktop/myblog/themes/next/source/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凡希的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/30/liman/" itemprop="url">黎曼函数的连续性</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-30T13:58:16+08:00">
-                2018-09-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="黎曼函数的连续性"><a href="#黎曼函数的连续性" class="headerlink" title="黎曼函数的连续性"></a>黎曼函数的连续性</h2><p>黎曼函数，即<br><br>$$R(x)=\begin{cases}<br>0&amp;x为无理数\<br>\frac1{q}&amp;x=\frac{p}{q},p,q为正整数<br>\end{cases}$$<br>黎曼函数周期为１，所以只研究区间$[0,1]$的性质即可<br><br>性质：<strong>黎曼函数在区间$[0,1]$内的极限处处为零</strong><br><br>换句话说，<strong>黎曼函数在$[0,1]$上的无理点处处连续，在有理点间断</strong>.<br><br>下面我们来证明之~<br><br>证：对于有理数来说，可以写成$\frac{p}{q}$的既约真分数形式<br><br>$x=0$可以写成$x=\frac01$，即$R(0)=1$.　<br><br>所以，在$[0,1]$上，分母为1的有理点(既约)只有两个：$\frac01$和$\frac11$　<br><br>分母为2的有理点只有一个：$\frac12$　<br><br>分母为3的有理点只有两个：$\frac13$和$\frac23$　<br><br>分母为4的有理点只有两个：$\frac１４$和$\frac34$ <br><br>分母为5的有理点只有四个：$\frac15$,$\frac25$,$\frac35$和$\frac45$ <br><br>…<br><br>总之，对任意自然数$k$，分母不超过$k$的有理点个数是有限的<br><br>设$x_0$是$[0,1]$内任意一点，对任意给定的$\epsilon&gt;0$，设$k=[\frac{1}{\epsilon}]$，因为分母不超过$k$的有理点个数有限，设它们为$r_1,r_2,…,r_n$.<br><br>令$\delta=min{[r_i-x_0]}$，其中$1&lt;=i&lt;=n,r_i!=x_0$ <br><br>从而$\delta&gt;0$　<br><br>当$0&lt;|x-x_0|&lt;\delta$时，若$x$是无理数，则$R(x)=0$，若$x$为有理数，则其分母一定大于$k=[\frac{1}{\epsilon}]$(因为…)，于是$R(x)&lt;=\frac{1}{[\frac{1}{\epsilon}]+1}&lt;\epsilon$,因此成立$|R(x)-0|&lt;\epsilon$.<br><br>此即说明$R(x)$在$x_0$的极限为0（$x_0=0$时是指右极限，$x_0=1$时是指左极限）.根据$R(x)$的周期性，对一切$x_0属于(-\infty,+\infty)$成立$lim_{x{\rightarrow}x_0}R(x)=0$,证毕.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-<div>
-      
-</div>
-
-
-    
-
-    
-
-    
-
-<div>
-  
-</div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/diff/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="凡希">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/home/fantasy/Desktop/myblog/themes/next/source/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凡希的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/30/diff/" itemprop="url">差分方程的解析解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-30T13:57:32+08:00">
-                2018-09-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="差分方程的解析解"><a href="#差分方程的解析解" class="headerlink" title="差分方程的解析解"></a>差分方程的解析解</h3><p><strong>例题</strong>．求$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解<br></p>
-<hr>
-<p>当初始条件已知，即$y_0$已知时，迭代算法如下：</p>
-<ul>
-<li>向前迭代算法<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_3=a_0+a_1y_2+\epsilon_3$$<br>$$…$$<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br><br>以上列举了该差分方程的所有项，我们要做的就是通过这些递推关系来逐步迭代，当迭代完所有项之后，最终可以得到目标解析解.<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2=a_0+a_1(a_0+a_1y_0+\epsilon_1)+\epsilon_2=$$<br>$$a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2=[a_0(1+a_1)]+[a_1^2y_0]+[a_1\epsilon_1+\epsilon_2]$$<br>$$y_3=a_0+a_1y_2+\epsilon_3=a_0+a_1(a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2)+\epsilon_3=$$<br>$$[a_0+a_0a_1+a_0{a_1}^2]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]=[a_0(1+a_1+a_1^2)]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]$$<br>$$…$$<br>由数学归纳法，递推下去，则有：<br><br>$$y_t=[a_0(a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_1+a_1^{t-2}\epsilon_2+…+a_1^0\epsilon_t]=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$<br>上式便是目标解析解，因为$y_0$已知，即不含有任何未知项.<br><br>之所以称之为“向前迭代法”，是因为迭代的索引是从$y_1$开始，一步一步往前面跑去，逐步迭代得到到目标式$y_n$的.<br></li>
-</ul>
-<p>你肯定会想到，既然有向前迭代，那么一定有向后迭代了，没错，向后迭代就是从最后一项$y_t$逐渐向$y_0$进行迭代.</p>
-<ul>
-<li>向后迭代<br><br>同样是求解$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解:<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br>$$y_{t-1}=a_0+a_1y_{t-2}+\epsilon_{t-1}$$<br>$$y_{t-2}=a_0+a_1y_{t-3}+\epsilon_{t-2}$$<br>$$…$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_0=a_0+a_1y_{-1}+\epsilon_0$$<br>开始迭代：(前面写了两次迭代过程,总共迭代$t-1$次)<br><br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t=$$<br>$$a_0+a_1(a_0+a_1y_{t-2}+\epsilon_{t-1})+\epsilon_t=$$<br>$$a_0+a_1a_0+a_1^2y_{t-2}+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0(1+a_1)]+[a_1^2y_{t-2}]+[a_1\epsilon_{t-1}+\epsilon_t]$$<br>$$a_0+a_1a_0+a_1^2(a_0+a_1y_{t-3}+\epsilon_{t-2})+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0+a_1a_0+a_1^2a_0]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$[a_0(1+a_1+a_1^2)]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$…$$<br>$$=[a_0(1+a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_{1}+a_1^{t-2}\epsilon_{2}+…+a_1^0\epsilon_t]＝$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$</li>
-</ul>
-<hr>
-<p>而当初始条件未知，即$y_0$未知时，我们需要对上面得到的差分方程的解继续化：<br><br>$$y_t=a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^t(a_0+a_1y_{-1}+\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+(a_0a_1^t+a_1^{t+1}y_{-1}+a_1^t\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t}a_1^i+a_1^{t+1}y_{-1}+\sum_{i=0}^{t}a_1^i\epsilon_{t-i}=$$<br>$$…$$<br>$$=a_0\sum_{i=0}^{(t-1)+m}a_1^i+a_1^{t+m}y_{-m}+\sum_{i=0}^{(t-1)+m}a_1^i\epsilon_{t-i}$$</p>
-<p>由于初始条件未知，我们现在来讨论解是否存在，即解的敛散性:<br></p>
-<ul>
-<li>当$|a_1|&lt;1$时，第一项出现等比数列求和，由无穷递缩等比数列性质，当$m\rightarrow\infty$时，第一项收敛到$\frac{a_0}{1-a_1}$;第二项中的$a_1^{t+m}$会收敛到０，因此第二项将收敛到０;第三项是一个有界量，类似于白噪声序列.<br><br>所以此时的解为<br>$$y_t=\frac{a_0}{1-a_1}+\sum_{i=0}^{t+m-1}a_1^i\epsilon_{t-i}$$</li>
-<li>当$|a_1|&gt;1$时，发散；<br></li>
-<li>当$|a_1|＝1$时，直接代回到最开始的式子，即得<br>$$y_t=a_0t+y_0+\sum_{i=0}^{t-1}\epsilon_{t-i}=a_0t+y_0+\sum_{i=1}^{t}\epsilon_{i}$$</li>
-</ul>
-<hr>
-<p>以上便是针对例题展开的求解过程</p>
-<hr>
-<p>而对于一般的线性差分方程<br>$$y_t=a_0+a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}+x(t)．．．（１）$$<br>其齐次线性差分方程为<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}．．．（２）$$<br>我们首先要明确，<br></p>
-<ul>
-<li>对于齐次线性差分方程（２式），对任意常数$A$，如果$y_t^h$是其一个解，那么$Ay_t^h$也是其一个解.<br></li>
-<li>而对于非齐次线性差分方程（１式），我们需要求其一个特解及其对应的齐次线性差分方程的一个通解.<br></li>
-</ul>
-<hr>
-<p>我们接下来将介绍一种新的解法（不同于之前的迭代法），称之为<strong>备选（特征根法）解法</strong>，来求解非齐次线性差分方程，即（１）式.<br><br>步骤如下：<br><br><strong>(1)建立齐次线性差分方程（２）式，求齐次方程的解$y_t^{h_1},y_t^{h_2},…,y_t^{h_n}$；<br></strong><br>(2)求出非齐次线性差分方程(1)式的一个特解$y_t^p$；　<br><br>(3)非齐次线性差分方程（１）式的通解即为其自身的一个特解加上其对应的齐次线性差分方程的一个通解，即<br>$$y_t=y_t^p+A_1y_t^{h_1}+A_2y_t^{h_2}+…+A_ny_t^{h_n}$$<br><br>其中$A_1,A_2,…A_n$是任意常数；<br><br>(4)若已知初始条件$y_0,y_1,…$，则可以求出$A_1,A_2,…A_n$.(选)<br></p>
-<hr>
-<p>其中第一步是最麻烦的，所以下面我们将针对第一步，即齐次线性差分方程的求解问题展开讨论<br><br><strong>例题</strong>：解齐次线性差分方程<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}$$</p>
-<hr>
-<ul>
-<li>一阶齐次差分方程$y_t=ay_{t-1}$，<br>通解为$Aa^t$ ,可以用迭代法证明，用特征根法更为简单：<br><br>猜想其解的形式为$y_t=A\alpha^t$，代入上式，得$A\alpha^t=aA\alpha^{t-1}$，即$\alpha=a$，故通解为$y_t=aA\alpha^{t-1}=Aa^t$.</li>
-<li>二阶齐次差分方程$y_t=a_1y_{t-1}+a_2y_{t-2}$ ，<br><br>利用特征根法，猜想其解的形式为$y_t=A\alpha^t$，代入上式，得：<br>$$A\alpha^t=a_1A\alpha^{t-1}+a_2A\alpha^{t-2}$$<br>化简，得：<br>$$\alpha^2=a_1\alpha+a_2$$<br>移项，得：<br>$$\alpha^2-a_1\alpha-a_2=0$$<br>从而解得特征根为<br>$$\alpha_{1}=\frac{a_1{+}\sqrt{a_1^2+4a_2}}{2}$$<br>$$\alpha_{2}=\frac{a_1{-}\sqrt{a_1^2+4a_2}}{2}$$<br>其中$d=a_1^2+4a_2$　<br><br>$d$有三种情况：$d&gt;0,d＝０,d&lt;0$，下面就分这三种情况来讨论(<strong>下面的内容很重要!</strong>)<br></li>
-</ul>
-<blockquote>
-<p>(1)当$d=a_1^2+4a_2&gt;0$时，$\alpha_1,\alpha_2$为互不相同的实根，此时的通解为<strong>$y_t=A_1\alpha_1^t+A_2\alpha_2^t$</strong>，其中$A_1,A_2$为任意常数.<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$大于1时，发散；<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$小于1时，收敛.<br></p>
-</blockquote>
-<blockquote>
-<p>(2)当$d=a_1^2+4a_2=0$时，即$a_2=-\frac{a_1^2}{4}$时，$\alpha_1=\alpha_2$为重根，代回上面的特征根方程有$\alpha_1=\alpha_2=\frac{a_1}2$，此时$A\alpha_1^t=A{(\frac{a_1}2})^t$是方程的一个解（俩都一样，算一个），并且可以验证，$At{(\frac{a_1}2})^t$也是方程的一个解，所以此时方程的通解为$y_t=A_1{(\frac{a_1}2})^t+A_2t{(\frac{a_1}2})^t$，其中$A_1,A_2$为任意常数.<br><br>当$|\frac{a_1}2|&lt;1$时，收敛；<br><br>当$|\frac{a_1}2|&gt;1$时，发散.<br></p>
-</blockquote>
-<blockquote>
-<p>(3)当$d=a_1^2+4a_2&lt;0$时，即$a_2&lt;-{\frac{a_1^2}4}&lt;=0$，$\alpha_1,\alpha_2$为共轭复根，且<br><br> $$\alpha_1=\frac{a_1+i\sqrt{-d}}2$$<br> $$\alpha_1=\frac{a_1-i\sqrt{-d}}2$$<br> 由于$a+bi=r(cos\theta+isin\theta)$，所以得到$r=\sqrt{a^2+b^2}$，并且我们要知道$cos\theta=\frac{a}{r}$ <br><br> 回到题目，计算得$r=\sqrt{({\frac{a_1}{2})}^2+{-\frac{-d}{4}}}=\sqrt{-a_2}$，从而得$cos\theta=\frac{\frac{a_1}{2}}{\sqrt{-a_2}}=\frac{a_1}{2\sqrt{-a_2}}$. <br><br> 所以得到<br> $$\alpha_1=a+bi=r(cos\theta+isin\theta)=re^{i\theta}$$<br> $$\alpha_2=a-bi=r(cos\theta-isin\theta)=re^{-i\theta}$$<br> 所以<br> $${\alpha_1}^t={(a+bi)}^t=r^t(cos\theta+isin\theta)^t=r^te^{it\theta}$$<br> $${\alpha_2}^t={(a-bi)}^t=r^t(cos\theta-isin\theta)^t=r^te^{-it\theta}$$<br> 所以通解为<br> $$y_t=A_1r^te^{it\theta}+A_2r^te^{-it\theta}=r^t(A_1e^{it\theta}+A_2e^{-it\theta})$$<br> 其中$A_1,A_2$为任意常数.<br><br> 当$r=\sqrt{-a_2}&gt;1$时，即$a_2&lt;-1$时，发散；<br><br>  当$r=\sqrt{-a_2}&lt;1$时，即$-1&lt;a_2&lt;=0$时，收敛；<br><br>   当$r=\sqrt{-a_2}＝1$时，即$a_2=-1$时，波动增幅不变；<br></p>
-</blockquote>
-<p>以上便是二阶齐次差分方程所有可能情况下的解的求法以及解的敛散性的判别.</p>
-<p>下面呢，我们将推广到一般的$n$阶齐次差分方程：<br><br>$$y_t=a_1y_{t-1}+a_2y_{t-2}+…+a_ny_{t-n}，a_n!=0$$<br>假设解的形式为$A\alpha^t$，则特征方程为<br>$$\alpha^n-a_1\alpha^{n-1}-a_2\alpha^{n-2}-…-a_n=0$$<br>从中可以解出非零的<br>$$\alpha_1,\alpha_2,…,\alpha_n$$<br>同样分３种情况，即$\alpha_1,\alpha_2,…,\alpha_n$是互不相同的实根，$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根和$\alpha_1,\alpha_2,…,\alpha_n$有复根.<br></p>
-<blockquote>
-<p>(1)$\alpha_1,\alpha_2,…,\alpha_n$是$n$个互不相同的实根时，通解为$y_t=A_1\alpha_1^t+A_2\alpha_2^t+…+A_n\alpha_n^t$；<br>(2)$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根时，不妨设$\alpha_1=\alpha_2=…=\alpha_d$，$\alpha_{d+1},\alpha_{d+2},…,\alpha_n$互不相同，则通解为<br>$$y_t=(A_1+A_2t+A_3t^2+…+A_dt^{d-1})\alpha_1^t+A_{d+1}\alpha_{d+1}^t+A_{d+2}\alpha_{d+2}^t+…+A_{n}\alpha_{n}^t$$<br>(3)$\alpha_1,\alpha_2,…,\alpha_n$有复根时，不妨设$\alpha_1,\alpha_2$为复根，$\alpha_3,\alpha_2,…,\alpha_n$互不相同.<br><br>设$\alpha_1=a+bi,\alpha_2=a-bi$，由于$r=\sqrt{a^2+b^2}，cos\theta=\frac{a}r$，所以有<br>$$\alpha_1=re^{i\theta}$$<br>$$\alpha_2=re^{-i\theta}$$<br>所以通解为<br>$$y_t=r^t(A_1e^{it\theta}+A_2e^{-it\theta})+A_3\alpha_3^t+A_4\alpha_4^t+…+A_n\alpha_n^t$$<br>其中$A_1,A_2,…A_n$为任意常数.</p>
-</blockquote>
 
           
         
