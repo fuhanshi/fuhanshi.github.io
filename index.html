@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
+<html class="theme-next muse use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -26,12 +26,15 @@
 
 
 
-
-
-
   
   
-  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
 
 
 
@@ -53,10 +56,6 @@
 
 
 
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -92,12 +91,12 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Muse',
     version: '6.4.2',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    fastclick: ,
-    lazyload: ,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -234,36 +233,41 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
-    <a href="/" rel="section">Home</a>
+          <li class="menu-item menu-item-主页 menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
   </li>
         
         
         
           
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">About</a>
+          <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
   </li>
         
         
         
           
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">Tags</a>
+          <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
         
         
         
           
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">Categories</a>
+          <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
   </li>
         
         
         
           
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">Archives</a>
+          <li class="menu-item menu-item-成果">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />成果</a>
   </li>
 
       
@@ -406,7 +410,7 @@
     
     
     
-    <div class="post-body han-init-context" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody">
 
       
       
@@ -414,16 +418,112 @@
       
         
           
-          标准化：数据的标准化（normalization）是将数据按比例缩放，使之落入一个小的特定区间。在某些比较和评价的指标处理中经常会用到，去除数据的单位限制，将其转化为无量纲的纯数值，便于不同单位或量级的指标能够进行比较和加权。
-标准化基于正态分布的假设，将数据变换为均值为0、标准差为1的标准正态分布
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/30/数据预处理/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>标准化：数据的标准化（normalization）是将数据按比例缩放，使之落入一个小的特定区间。在某些比较和评价的指标处理中经常会用到，去除数据的单位限制，将其转化为无量纲的纯数值，便于不同单位或量级的指标能够进行比较和加权。</p>
+<p>标准化基于正态分布的假设，将数据变换为均值为0、标准差为1的标准正态分布。但即使数据不服从正态分布，也可以用此法。特别适用于数据的最大值和最小值未知，或存在孤立点。</p>
+<p>主要方法：<br>z-score标准化，即零-均值标准化（常用方法）</p>
+<p>$$y=\frac{x-μ}σ$$</p>
+<p><del>~</del>~~ 下面看看在Python中的实现</p>
+<p>方法１.<strong>scale</strong>可以直接对数组进行标准化，请看下例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line">X_train=np.array([[<span class="number">1</span>,<span class="number">50</span>,<span class="number">500</span>],[<span class="number">2</span>,<span class="number">40</span>,<span class="number">400</span>],[<span class="number">5</span>,<span class="number">55</span>,<span class="number">666</span>]])</span><br><span class="line">X_scaled=preprocessing.scale(X_train,axis=<span class="number">0</span>)<span class="comment">#axis默认值就是０，所以也可以不写</span></span><br><span class="line"><span class="keyword">print</span> X_scaled       <span class="comment">#标准化后的数据</span></span><br></pre></td></tr></table></figure>
+<pre><code>[[-0.98058068  0.26726124 -0.20054214]
+ [-0.39223227 -1.33630621 -1.11209733]
+ [ 1.37281295  1.06904497  1.31263947]]
+</code></pre><p>咱们可以检验一下这个X_scaled的均值和方差</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> X_scaled.mean(axis=<span class="number">0</span>)<span class="comment">#均值</span></span><br><span class="line"><span class="keyword">print</span> X_scaled.std(axis=<span class="number">0</span>)<span class="comment">#方差</span></span><br></pre></td></tr></table></figure>
+<pre><code>[  7.40148683e-17  -2.96059473e-16   0.00000000e+00]
+[ 1.  1.  1.]
+</code></pre><p>注意这里的axis=0代表按行处理，也就是把行压缩，也就是对每一列进行标准化，常用！</p>
+<p>方法２．<strong>from skelearn.preprocessing import StandardScaler</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scaler = preprocessing.StandardScaler()</span><br><span class="line">scaler</span><br></pre></td></tr></table></figure>
+<pre><code>StandardScaler(copy=True, with_mean=True, with_std=True)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scaler.fit(X_train)</span><br></pre></td></tr></table></figure>
+<pre><code>StandardScaler(copy=True, with_mean=True, with_std=True)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scaler.transform(X_train)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.98058068,  0.26726124, -0.20054214],
+       [-0.39223227, -1.33630621, -1.11209733],
+       [ 1.37281295,  1.06904497,  1.31263947]])
+</code></pre><p>以上是把fit和transform两步分开进行的，我们也可以直接一步完成，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scaler.fit_transform(X_train)</span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.98058068,  0.26726124, -0.20054214],
+       [-0.39223227, -1.33630621, -1.11209733],
+       [ 1.37281295,  1.06904497,  1.31263947]])
+</code></pre><p>但是要注意，在实际的建模过程中，我们通常将数据集划分为训练数据集和测试数据集，这时候我们应该分两步进行，先fit训练数据集，并将其定义为一个变量，比如ss,然后用ss来transform训练数据集从而进行模型的拟合，之后在检验模型的拟合度时，首先也要对测试数据集进行transform，这是就要用之前fit好的ss来transform测试数据集了，当然，这里只针对于变量数据，不包括target</p>
+<p>同样可以用均值和方差来进行验证：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> scaler.fit_transform(X_train).mean(axis=<span class="number">0</span>)</span><br><span class="line"><span class="keyword">print</span> scaler.fit_transform(X_train).std(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>[  7.40148683e-17  -2.96059473e-16   0.00000000e+00]
+[ 1.  1.  1.]
+</code></pre><p>我们一般采用方法２，因为它可以保存训练集中的参数（均值、方差）直接使用其对象转换测试集数据.</p>
+<p>其实，对数据进行标准化的数学方法不止上面这一个，还有以下几个：</p>
+<ul>
+<li>离差标准化</li>
+</ul>
+<p>则是对原始数据的一个线性变换，公式如下：</p>
+<p>$$y=\frac{x-x_{min}}{x_{max}-x_{min}}$$</p>
+<p>这种方法有个缺陷就是当有新数据加入时，可能导致$x_{max}$和$x_{min}$的变化，需要重新定义。</p>
+<p>下面来编程模拟实现一个实例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x=np.array([[<span class="number">1.5</span>,<span class="number">8.8</span>,<span class="number">2.3</span>],[<span class="number">5.8</span>,<span class="number">5.0</span>,<span class="number">6.2</span>],[<span class="number">7.2</span>,<span class="number">8.3</span>,<span class="number">9.6</span>],[<span class="number">4.4</span>,<span class="number">5.5</span>,<span class="number">6.6</span>]])</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 1.5,  8.8,  2.3],
+       [ 5.8,  5. ,  6.2],
+       [ 7.2,  8.3,  9.6],
+       [ 4.4,  5.5,  6.6]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(4, 3)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X_NEW=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,x.shape[<span class="number">1</span>]):</span><br><span class="line">    x_new=(x[:,i]-min(x[:,i]))/(max(x[:,i])-min(x[:,i]))</span><br><span class="line">    <span class="keyword">print</span> x_new</span><br><span class="line">    X_NEW.append(x_new)</span><br></pre></td></tr></table></figure>
+<pre><code>[ 0.          0.75438596  1.          0.50877193]
+[ 1.          0.          0.86842105  0.13157895]
+[ 0.          0.53424658  1.          0.5890411 ]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.array(X_NEW).transpose()<span class="comment">#最终数据</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.        ,  1.        ,  0.        ],
+       [ 0.75438596,  0.        ,  0.53424658],
+       [ 1.        ,  0.86842105,  1.        ],
+       [ 0.50877193,  0.13157895,  0.5890411 ]])
+</code></pre><p>当然，我们也可以直接调用sklearn中的<strong>MinMaxScaler()</strong>来实现上述功能：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing   </span><br><span class="line">min_max_scaler = preprocessing.MinMaxScaler()  </span><br><span class="line">X_minMax = min_max_scaler.fit_transform(x)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_minMax<span class="comment">#最终数据</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.        ,  1.        ,  0.        ],
+       [ 0.75438596,  0.        ,  0.53424658],
+       [ 1.        ,  0.86842105,  1.        ],
+       [ 0.50877193,  0.13157895,  0.5890411 ]])
+</code></pre><p>结果是一模一样的！</p>
+<p>为了方便起见，我们今后就直接调用MinMaxScaler() 就好了.</p>
+<p>离差标准化可以扩展一下，比如我们想要把数据映射到－１和１之间，那么就采用以下数学公式：</p>
+<p>$$x_{new}=\frac{x-x_{mean}}{x_{max}-x_{min}}$$</p>
+<p>编程模拟一下，直接对之前的代码做一些改动就可以了，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">x=np.array([[<span class="number">1.0</span>,<span class="number">2.2</span>,<span class="number">3.3</span>],[<span class="number">5.2</span>,<span class="number">3.3</span>,<span class="number">2.2</span>],[<span class="number">1.3</span>,<span class="number">2.5</span>,<span class="number">6.8</span>]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X_NEW=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(x.shape[<span class="number">1</span>]):</span><br><span class="line">    x_new=(x[:,i]-np.mean(x[:,i]))/(max(x[:,i])-min(x[:,i]))</span><br><span class="line">    <span class="keyword">print</span> x_new</span><br><span class="line">    X_NEW.append(x_new)</span><br></pre></td></tr></table></figure>
+<pre><code>[-0.56578947  0.18859649  0.43421053 -0.05701754]
+[ 0.5        -0.5         0.36842105 -0.36842105]
+[-0.53082192  0.00342466  0.46917808  0.05821918]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.array(X_NEW).transpose()<span class="comment">#最终数据</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.56578947,  0.5       , -0.53082192],
+       [ 0.18859649, -0.5       ,  0.00342466],
+       [ 0.43421053,  0.36842105,  0.46917808],
+       [-0.05701754, -0.36842105,  0.05821918]])
+</code></pre><p>＊＊＊</p>
+<p>以上都是些常用的数据标准化方法，还有一些不太常用的方法，比如：</p>
+<ul>
+<li>对数Logistic模式：</li>
+</ul>
+<p>$$X_{new}=\frac{1}{1+e^{-X_{old}}}$$</p>
+<p>得出的数都在０和１之间</p>
+<p>最后来说一下<strong>数据正则化</strong></p>
+<p>正则化主要是用于解决过拟合，正则性衡量了函数光滑的程度，正则性越高，函数越光滑。（光滑衡量了函数的可导性，如果一个函数是光滑函数，则该函数无穷可导，即任意n阶可导）.<br><br>采用正则化方法会自动削弱不重要的特征变量，自动从许多的特征变量中”提取“重要的特征变量，减小特征变量的数量级。这个方法非常有效，当我们有很多特征变量时，其中每一个变量都能对预测产生一点影响。我们可以有很多特征变量，其中每一个变量都是有用的，因此我们不希望把它们删掉，这就导致了正则化概念的发生。</p>
+<p>看一下在sklearn中的调用方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> normalize</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]])</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<pre><code>array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">normalizer = preprocessing.Normalizer().fit(x)  <span class="comment"># fit does nothing</span></span><br><span class="line">normalizer</span><br></pre></td></tr></table></figure>
+<pre><code>Normalizer(copy=True, norm=&apos;l2&apos;)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">normalizer.transform(x)<span class="comment">#最终结果</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 0.26726124,  0.53452248,  0.80178373],
+       [ 0.45584231,  0.56980288,  0.68376346],
+       [ 0.50257071,  0.57436653,  0.64616234]])
+</code></pre><p>今天就写到这儿吧，有时间继续，如果能帮到你，还请关注下微信公众号“我将在南极找寻你”，更多干货尽在其中！</p>
+<p>参考：<br> <a href="https://blog.csdn.net/gshgsh1228/article/details/52199870/" target="_blank" rel="noopener">https://blog.csdn.net/gshgsh1228/article/details/52199870/</a>　<br><br><a href="https://www.jianshu.com/p/0d8bb02f98fb" target="_blank" rel="noopener">https://www.jianshu.com/p/0d8bb02f98fb</a></p>
+
+          
         
       
     </div>
@@ -567,7 +667,7 @@
     
     
     
-    <div class="post-body han-init-context" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody">
 
       
       
@@ -575,21 +675,408 @@
       
         
           
-          
-线性回归
+            <ul>
+<li>线性回归</li>
+</ul>
+<p>线性回归的经典解法是最小二乘法，关于最小二乘法的原理网络上都有介绍，咱们这里只看在sklearn中的实现</p>
+<p>我们将采用sklearn自带的美国波斯顿房价数据集进行演示</p>
+<p>首先导入数据并查看数据的基本信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_boston</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dataset=load_boston()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">type(dataset)<span class="comment">#数据类型是sklearn的数据集类型</span></span><br></pre></td></tr></table></figure>
+<pre><code>sklearn.datasets.base.Bunch
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dataset.data.shape<span class="comment">#自变量的维度</span></span><br></pre></td></tr></table></figure>
+<pre><code>(506, 13)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dataset.target.shape<span class="comment">#因变量的维度</span></span><br></pre></td></tr></table></figure>
+<pre><code>(506,)
+</code></pre><p>现在来分割数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.cross_validation <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="comment"># 随机采样25%的数据构建测试样本，其余作为训练样本。</span></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(dataset.data, dataset.target,random_state=<span class="number">33</span>, test_size=<span class="number">0.25</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 分析回归目标值的差异。</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"The max target value is"</span>, np.max(dataset.target)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"The min target value is"</span>, np.min(dataset.target)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"The average target value is"</span>, np.mean(dataset.target)</span><br></pre></td></tr></table></figure>
+<pre><code>The max target value is 50.0
+The min target value is 5.0
+The average target value is 22.5328063241
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.hist(dataset.target)</span><br><span class="line">plt.show()</span><br><span class="line">plt.hist(dataset.data)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_13_0.png" alt="png"></p>
+<p><img src="output_13_1.png" alt="png"></p>
+<p>发现差异较大，所以先进行标准化处理，关于标准化的方法，已经在上一篇文章中讲过，忘记的朋友可以去翻翻看</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#标准化数据</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">ss_x=StandardScaler()</span><br><span class="line">ss_y=StandardScaler()</span><br><span class="line">X_train=ss_x.fit_transform(X_train)</span><br><span class="line">X_test=ss_x.transform(X_test)</span><br><span class="line">y_train=ss_y.fit_transform(y_train)</span><br><span class="line">y_test=ss_y.transform(y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>/home/fantasy/anaconda2/lib/python2.7/site-packages/sklearn/preprocessing/data.py:586: DeprecationWarning: Passing 1d arrays as data is deprecated in 0.17 and will raise ValueError in 0.19. Reshape your data either using X.reshape(-1, 1) if your data has a single feature or X.reshape(1, -1) if it contains a single sample.
+  warnings.warn(DEPRECATION_MSG_1D, DeprecationWarning)
+/home/fantasy/anaconda2/lib/python2.7/site-packages/sklearn/preprocessing/data.py:649: DeprecationWarning: Passing 1d arrays as data is deprecated in 0.17 and will raise ValueError in 0.19. Reshape your data either using X.reshape(-1, 1) if your data has a single feature or X.reshape(1, -1) if it contains a single sample.
+  warnings.warn(DEPRECATION_MSG_1D, DeprecationWarning)
+/home/fantasy/anaconda2/lib/python2.7/site-packages/sklearn/preprocessing/data.py:649: DeprecationWarning: Passing 1d arrays as data is deprecated in 0.17 and will raise ValueError in 0.19. Reshape your data either using X.reshape(-1, 1) if your data has a single feature or X.reshape(1, -1) if it contains a single sample.
+  warnings.warn(DEPRECATION_MSG_1D, DeprecationWarning)
+</code></pre><p>标准化之后，就要开始拟合模型了</p>
+<p>基于最小二乘法的LinearRegression：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line">lr = LinearRegression()</span><br><span class="line">lr.fit(X_train, y_train)<span class="comment">#拟合模型</span></span><br><span class="line">lr_y_predict = lr.predict(X_test)<span class="comment">#做预测</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#评估模型</span></span><br><span class="line"><span class="comment"># 使用LinearRegression模型自带的评估模块，并输出评估结果。</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'The value of default measurement of LinearRegression is'</span>, lr.score(X_test, y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>The value of default measurement of LinearRegression is 0.6763403831
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从sklearn.metrics依次导入r2_score、mean_squared_error以及mean_absoluate_error用于回归性能的评估。</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score, mean_squared_error, mean_absolute_error</span><br><span class="line"><span class="comment"># 使用r2_score模块，并输出评估结果。</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'The value of R-squared of LinearRegression is'</span>, r2_score(y_test, lr_y_predict)</span><br></pre></td></tr></table></figure>
+<pre><code>The value of R-squared of LinearRegression is 0.6763403831
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#可视化因变量</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.scatter(np.arange(len(y_test)),y_test,color = <span class="string">'red'</span>,label=<span class="string">'y_test'</span>)</span><br><span class="line">plt.scatter(np.arange(len(lr_y_predict)),lr_y_predict,color = <span class="string">'blue'</span>,label=<span class="string">'y_pred'</span>)</span><br><span class="line">plt.legend(loc=<span class="number">2</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_21_0.png" alt="png"></p>
+<p>拟合效果还不错</p>
+<p>在模型评估时，两种方式是一样的，以后直接用第一种，即模型自带的score就可以了</p>
+<p>但是，一个拟合出来的模型并不是直接可以拿来用的。还需要对其统计性质进行检验</p>
+<p>主要有以下四个检验：<br>（数值型）自变量要与因变量有线性关系；<br>残差基本呈正态分布；<br>残差方差基本不变（同方差性）；<br>残差（样本）间相关独立。</p>
+<p>第一个可以直接绘制每隔变量与因变量之间的散点图（子图）,还是以波斯顿房价为例进行演示，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xlabel=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">13</span>):</span><br><span class="line">    x_i=np.array(dataset.data[:,i])</span><br><span class="line">    xlabel.append(x_i)</span><br><span class="line">    plt.style.use(<span class="string">'seaborn'</span>)</span><br><span class="line">    figurei=plt.subplot(<span class="number">2</span>,<span class="number">7</span>,i+<span class="number">1</span>)</span><br><span class="line">    <span class="comment">#figurei.patch.set_facecolor('blue')</span></span><br><span class="line">    figurei.scatter(x_i,dataset.target)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_27_0.png" alt="png"></p>
+<p>检验残差是否基本上呈正态分布也建议直接Spss</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不确定,建议SPSS</span></span><br><span class="line"><span class="keyword">from</span> scipy <span class="keyword">import</span> stats</span><br><span class="line">stats.probplot(dataset.target,dist=<span class="string">"norm"</span>, plot=plt)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_29_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#不确定，建议SPSS</span></span><br><span class="line">d= dataset.target</span><br><span class="line">sorted_ = np.sort(d)</span><br><span class="line">yvals = np.arange(len(sorted_))/float(len(sorted_))</span><br><span class="line">plt.plot(sorted_, yvals)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_30_0.png" alt="png"></p>
+<p>共线性检验可直接上Spss,看VIF,简单粗暴</p>
+<hr>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#这个是绘制VIF的程序，没看懂，以后再研究</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">vif2=np.zeros((<span class="number">15</span>,<span class="number">1</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">15</span>):</span><br><span class="line">    tmp=[k <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">13</span>) <span class="keyword">if</span> k!=i]</span><br><span class="line">    <span class="comment">#clf.fit(X2[:,tmp],X2[:,i])</span></span><br><span class="line">    vifi=<span class="number">1</span>/(<span class="number">1</span>-lr.score(X_test, y_test))</span><br><span class="line">    vif2[i]=vifi</span><br><span class="line"></span><br><span class="line">vif3=np.zeros((<span class="number">15</span>,<span class="number">1</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">15</span>):</span><br><span class="line">    tmp=[k <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">15</span>) <span class="keyword">if</span> k!=i]</span><br><span class="line">    <span class="comment">#clf.fit(X3[:,tmp],X3[:,i])</span></span><br><span class="line">    vifi=<span class="number">1</span>/(<span class="number">1</span>-lr.score(X_test, y_test))</span><br><span class="line">    vif3[i]=vifi  </span><br><span class="line">    </span><br><span class="line">plt.figure()</span><br><span class="line">ax = plt.gca()</span><br><span class="line">ax.plot(vif2)</span><br><span class="line">ax.plot(vif3)</span><br><span class="line">plt.xlabel(<span class="string">'feature'</span>)</span><br><span class="line">plt.ylabel(<span class="string">'VIF'</span>)</span><br><span class="line">plt.title(<span class="string">'VIF coefficients of the features'</span>)</span><br><span class="line">plt.axis(<span class="string">'tight'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_33_0.png" alt="png"></p>
+<p>说完了基于最小二乘法的线性回归，咱们接下来看一个<strong>随机梯度下降原理</strong>拟合的线性回归模型</p>
+<p>所谓梯度下降法，就是利用沿着梯度下降最快的方向求偏导数，得到损失函数的全局最小值时的参数θ，涉及到偏导数、学习速度、更新、收敛等问题。</p>
+<p>不过这里我们并不讨论这些，具体的可以看这篇文章<a href="https://github.com/endymecy/spark-ml-source-analysis/blob/master/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/gradient-descent.md" target="_blank" rel="noopener">https://github.com/endymecy/spark-ml-source-analysis/blob/master/%E6%9C%80%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/gradient-descent.md</a>　而是在sklearn中实现它，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> SGDRegressor</span><br><span class="line">model = SGDRegressor()</span><br><span class="line">model.fit(X_train,y_train)<span class="comment">#拟合模型</span></span><br></pre></td></tr></table></figure>
+<pre><code>SGDRegressor(alpha=0.0001, average=False, epsilon=0.1, eta0=0.01,
+       fit_intercept=True, l1_ratio=0.15, learning_rate=&apos;invscaling&apos;,
+       loss=&apos;squared_loss&apos;, n_iter=5, penalty=&apos;l2&apos;, power_t=0.25,
+       random_state=None, shuffle=True, verbose=0, warm_start=False)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sgdr_y_predict=model.predict(X_test)<span class="comment">#做预测</span></span><br></pre></td></tr></table></figure>
+<p>可视化结果y的真实值和预测值之间的差距：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(np.arange(len(y_test)),y_test,color = <span class="string">'red'</span>,label=<span class="string">'y_test'</span>)</span><br><span class="line">plt.scatter(np.arange(len(sgdr_y_predict)),sgdr_y_predict,color = <span class="string">'blue'</span>,label=<span class="string">'y_pre'</span>)</span><br><span class="line">plt.legend(loc=<span class="number">2</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_40_0.png" alt="png"></p>
+<p>看一下R方：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#模型model自带的</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"R_square:"</span>,model.score(X_test,y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>R_square: 0.66058562575
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从sklearn.metrics依次导入r2_score、mean_squared_error以及mean_absoluate_error用于回归性能的评估。</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score, mean_squared_error, mean_absolute_error</span><br><span class="line"><span class="comment"># 使用r2_score模块，并输出评估结果。</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'The value of R-squared of LinearRegression is'</span>, r2_score(y_test, sgdr_y_predict)</span><br></pre></td></tr></table></figure>
+<pre><code>The value of R-squared of LinearRegression is 0.66058562575
+</code></pre><p>还有一种方法，就是用<strong>岭回归</strong></p>
+<p>岭回归是一种专用于共线性数据分析的有偏估计回归方法，实质上是一种改良的最小二乘估计法，通过放弃最小二乘法的无偏性，以损失部分信息、降低精度为代价获得回归系数更为符合实际、更可靠的回归方法，对病态数据的拟合要强于最小二乘法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> linear_model</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Ridge,RidgeCV   <span class="comment"># Ridge岭回归,RidgeCV带有广义交叉验证的岭回归</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ========岭回归========</span></span><br><span class="line">model = Ridge(alpha=<span class="number">0.5</span>)</span><br><span class="line">model = RidgeCV(alphas=[<span class="number">0.1</span>, <span class="number">1.0</span>, <span class="number">10.0</span>])  <span class="comment"># 通过RidgeCV可以设置多个参数值，算法使用交叉验证获取最佳参数值</span></span><br><span class="line">model.fit(X_train, y_train)   <span class="comment"># 线性回归建模</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'系数矩阵:\n'</span>,model.coef_,model.intercept_</span><br><span class="line"><span class="keyword">print</span> <span class="string">'线性回归模型:\n'</span>,model</span><br><span class="line"><span class="comment"># print('交叉验证最佳alpha值',model.alpha_)  # 只有在使用RidgeCV算法时才有效</span></span><br><span class="line"><span class="comment"># 使用模型预测</span></span><br><span class="line">predicted = model.predict(X_test)</span><br></pre></td></tr></table></figure>
+<pre><code>系数矩阵:
+[-0.10354081  0.11293307 -0.01049108  0.09295071 -0.15094031  0.32557661
+ -0.02033021 -0.2991313   0.20061662 -0.15572242 -0.19759762  0.05583187
+ -0.39404276] 5.52785513551e-15
+线性回归模型:
+RidgeCV(alphas=[0.1, 1.0, 10.0], cv=None, fit_intercept=True, gcv_mode=None,
+    normalize=False, scoring=None, store_cv_values=False)
+</code></pre><p>结果可视化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(np.arange(len(y_test)),y_test,color = <span class="string">'red'</span>,label=<span class="string">'y_test'</span>)</span><br><span class="line">plt.scatter(np.arange(len(sgdr_y_predict)),sgdr_y_predict,color = <span class="string">'blue'</span>,label=<span class="string">'y_pre'</span>)</span><br><span class="line">plt.legend(loc=<span class="number">2</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_50_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#模型model自带的</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"R_square:"</span>,model.score(X_test,y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>R_square: 0.67691092236
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从sklearn.metrics依次导入r2_score、mean_squared_error以及mean_absoluate_error用于回归性能的评估。</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score, mean_squared_error, mean_absolute_error</span><br><span class="line"><span class="comment"># 使用r2_score模块，并输出评估结果。</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'The value of R-squared of LinearRegression is'</span>, r2_score(y_test, predicted)</span><br></pre></td></tr></table></figure>
+<pre><code>The value of R-squared of LinearRegression is 0.67691092236
+</code></pre><p>综合上面三种方法的比较，发现岭回归的效果最好</p>
+<p>线性模型掌握这三个完全够用了，下面来看一下非线性模型的回归拟合，主要是关于多项式拟合的，其余的对数，指数拟合这里不再讨论</p>
+<ul>
+<li>多项式拟合</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入线性模型和多项式特征构造模块</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span>  PolynomialFeatures</span><br><span class="line">poly_reg_x =PolynomialFeatures(degree=<span class="number">2</span>)</span><br><span class="line"><span class="comment">#poly_reg_y =PolynomialFeatures(degree=2)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> X_train.shape<span class="comment">#之前的ｓｉｚｅ</span></span><br><span class="line"><span class="keyword">print</span> X_test.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(379, 13)
+(127, 13)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X_train=poly_reg_x.fit_transform(X_train)<span class="comment">#每个训练集都被transform</span></span><br><span class="line">X_test=poly_reg_x.transform(X_test)</span><br><span class="line"><span class="comment">#y_train=poly_reg_y.fit_transform(y_train)</span></span><br><span class="line"><span class="comment">#y_test=poly_reg_y.transform(y_test)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> X_train.shape<span class="comment">#之后的ｓｉｚｅ</span></span><br><span class="line"><span class="keyword">print</span> X_test.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(379, 105)
+(127, 105)
+</code></pre><p>在构造完多项式特征之后，就可以用之前的线性回归lr来操作了</p>
+<p>注意：在先对数据标准化之后再构造多项式特征与先构造多项式特征再标准化的结果差距很大，就本例而言，前者似乎更有效</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line">lr=LinearRegression()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modeler=lr.fit(X_train,y_train)<span class="comment">#模型拟合</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poly_y_predict=modeler.predict(X_test)<span class="comment">#做预测</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#模型model自带的</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"R_square:"</span>,modeler.score(X_test,y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>R_square: 0.842818486817
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从sklearn.metrics依次导入r2_score、mean_squared_error以及mean_absoluate_error用于回归性能的评估。</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score, mean_squared_error, mean_absolute_error</span><br><span class="line"><span class="comment"># 使用mean_squared_error模块，并输出评估结果。</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'The value of mean_squared_error of LinearRegression is'</span>, mean_squared_error(y_test, predicted)</span><br></pre></td></tr></table></figure>
+<pre><code>The value of mean_squared_error of LinearRegression is 0.290920352888
+</code></pre><p>均方误差如此小，模型堪称完美</p>
+<p>模型效果可视化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(np.arange(len(y_test)),y_test,color = <span class="string">'red'</span>,label=<span class="string">'y_test'</span>)</span><br><span class="line">plt.scatter(np.arange(len(sgdr_y_predict)),sgdr_y_predict,color = <span class="string">'blue'</span>,label=<span class="string">'y_pre'</span>)</span><br><span class="line">plt.legend(loc=<span class="number">2</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_69_0.png" alt="png"></p>
+<p>以上是在sklearn中的多项式拟合方法，我们可以查看下模型的系数，比较多,这算是一个缺点了（模型难写，容易过拟合）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> modeler.coef_<span class="comment">#由低阶到高阶</span></span><br></pre></td></tr></table></figure>
+<pre><code>[  9.83736707e-13  -2.66737655e-03   3.16462828e-01   1.25375928e+00
+   3.17151400e+12  -1.61912385e-01   3.80770585e-01  -2.70605062e-01
+  -2.30644623e-01   6.36550903e-01  -1.23194122e+00   1.82800293e-01
+   1.47033691e-01  -3.51562500e-01   9.76562500e-03   1.60988998e+00
+   2.96385193e+00   5.17631531e-01  -2.71759033e-02   5.75256348e-02
+  -1.39862061e-01  -3.11294556e-01   1.75088501e+00  -4.04202271e+00
+   9.93446350e-01  -9.21630859e-03   1.07109070e-01  -4.19921875e-02
+  -4.53796387e-02  -1.73645020e-02  -2.53723145e-01   2.30712891e-02
+  -3.18298340e-02   1.45568848e-02  -5.79681396e-02   1.94564819e-01
+  -5.81054688e-02   2.40783691e-02  -1.19384766e-01   1.56875610e-01
+  -2.15034485e-02   2.81250000e-01   1.61010742e-01   3.10821533e-02
+   3.52600098e-01   6.44836426e-02  -4.64248657e-02   1.86462402e-02
+   7.94677734e-02  -3.62548828e-02  -9.95393091e+11  -1.26373291e-01
+  -9.04617310e-02   6.21032715e-03  -2.34451294e-02  -4.63104248e-02
+   8.61663818e-02  -5.27343750e-02   3.11126709e-02  -4.30259705e-02
+  -1.50436401e-01   7.12280273e-02  -1.96792603e-01   1.67648315e-01
+  -1.43829346e-01   2.98084259e-01  -2.63671875e-01   3.46069336e-02
+   9.91134644e-02   4.61425781e-02  -1.51935577e-01  -1.54113770e-03
+  -6.87255859e-02  -2.09899902e-01  -5.36499023e-02  -7.35473633e-03
+  -7.93457031e-02   1.32598877e-02  -2.28881836e-03   4.61242676e-01
+  -2.49618530e-01  -2.85339355e-02  -1.33331299e-01  -1.42181396e-01
+   1.50909424e-01  -7.42797852e-02  -1.14502907e-01  -5.12084961e-02
+   4.06494141e-02   9.94567871e-02  -8.89060974e-01   8.14544678e-01
+  -1.85592651e-01  -5.57861328e-02  -2.31964111e-01  -5.03234863e-02
+   1.87805176e-01   2.02636719e-02  -1.73187256e-02   4.75559235e-02
+   2.38952637e-02   3.66210938e-03  -3.41796875e-03  -2.86254883e-02
+   6.39343262e-02]
+</code></pre><p>以上也是基于最小二乘原理的，因为我们只是用sklearn的多项式构造模块将原来的线性数据通过列方向的扩充，变成了多项式的形式，但还是用的LinearRegression来拟合模型的，那么，我们可以试一下别的原理，比如下面的<strong>岭回归</strong>拟合多项式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Ridge</span><br><span class="line">ridge=Ridge(alpha=<span class="number">0.5</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> X_train.shape<span class="comment">#之前的ｓｉｚｅ</span></span><br><span class="line"><span class="keyword">print</span> X_test.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(379, 13)
+(127, 13)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入构造多项式特征模块</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span>  PolynomialFeatures</span><br><span class="line">poly_reg =PolynomialFeatures(degree=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="在下一步之前对原始数据进行了标准化！！！"><a href="#在下一步之前对原始数据进行了标准化！！！" class="headerlink" title="在下一步之前对原始数据进行了标准化！！！"></a>在下一步之前对原始数据进行了标准化！！！</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在这一步之前对原始数据进行了标准化！！！</span></span><br><span class="line">X_train=poly_reg.fit_transform(X_train)<span class="comment">#每个训练集都被transform</span></span><br><span class="line">X_test=poly_reg.transform(X_test)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> X_train.shape<span class="comment">#之后的ｓｉｚｅ</span></span><br><span class="line"><span class="keyword">print</span> X_test.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(379, 105)
+(127, 105)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poly_ridge=ridge.fit(X_train,y_train)<span class="comment">#模型拟合</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poly_ridge_y_predict=ridge.predict(X_test)<span class="comment">#做预测</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#模型ridge自带的</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">"R_square:"</span>,ridge.score(X_test,y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>R_square: 0.846155705955
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#从sklearn.metrics依次导入r2_score、mean_squared_error以及mean_absoluate_error用于回归性能的评估。</span></span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score, mean_squared_error, mean_absolute_error</span><br><span class="line"><span class="comment"># 使用mean_squared_error模块，并输出评估结果。</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'The value of mean_squared_error of RidgeRegression is'</span>, mean_squared_error(y_test, poly_ridge_y_predict)</span><br></pre></td></tr></table></figure>
+<pre><code>The value of mean_squared_error of RidgeRegression is 0.138526615137
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看模型的系数</span></span><br><span class="line"><span class="keyword">print</span> ridge.coef_,ridge.intercept_</span><br></pre></td></tr></table></figure>
+<pre><code>[ 0.         -0.01515184 -0.10580862  0.27932288  0.01645974 -0.14657861
+  0.36744518 -0.22397917 -0.21912044  0.05965385 -0.04161497 -0.08866449
+  0.11792374 -0.3637897   0.01224963  0.04046505  0.16591023  0.47025105
+ -0.0426397   0.06610476 -0.07187838 -0.14978614 -0.23375497 -0.01411628
+  0.05016413 -0.00793163  0.09939217 -0.0134973  -0.02031623  0.00222154
+ -0.13674295  0.02549065 -0.02315901  0.00183563 -0.00664953  0.17951566
+ -0.02818604 -0.03342595 -0.10510401  0.10889808 -0.00633295  0.33583991
+  0.14526388  0.04291548  0.32826641  0.07628581  0.00221103 -0.0020726
+  0.03954039 -0.02489515  0.05244391 -0.11941144 -0.08827233  0.01151196
+ -0.028727   -0.0410782   0.06641088 -0.0236821  -0.00505518 -0.04825191
+ -0.12339398  0.0680945  -0.1614648   0.13523431 -0.08524669  0.11271328
+ -0.182551    0.03326487  0.10387014  0.04437453 -0.14262386  0.00168108
+ -0.06360327 -0.20487222 -0.06044155 -0.01195337 -0.08105273  0.01500186
+  0.01720694  0.32904656 -0.16341483 -0.03929378 -0.13649985 -0.14039058
+  0.14996113 -0.11682082 -0.09929801 -0.06146238  0.0137472   0.07554982
+ -0.50475006  0.39750343 -0.098317   -0.06266169 -0.16932652 -0.04422031
+  0.18347525  0.04147819 -0.10451011  0.0364601   0.0112839   0.02664297
+ -0.00190007 -0.02998467  0.07018101] -0.190718574726
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#可视化效果</span></span><br><span class="line">plt.scatter(np.arange(len(y_test)),y_test,color = <span class="string">'red'</span>,label=<span class="string">'y_test'</span>)</span><br><span class="line">plt.scatter(np.arange(len(poly_ridge_y_predict)),poly_ridge_y_predict,color = <span class="string">'blue'</span>,label=<span class="string">'y_pre'</span>)</span><br><span class="line">plt.legend(loc=<span class="number">2</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_84_0.png" alt="png"></p>
+<p>总结一下关于sklearn中的PolynomialFeatures的用法，就是<strong>最好在构造多项式特征之前对原始的数据（x和y）进行标准化处理</strong>，然后就可以使用基于最小二乘法的LinearRegression或者基于别的原理的RidgeRegression了.</p>
+<hr>
+<p>其实，在numpy中也有多项式拟合的模块，只是只能拟合一元的多项式，即一个自变量和一个因变量，下面就一起来看一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">z1 = np.polyfit(X_train[:,<span class="number">1</span>], y_train, <span class="number">1</span>)  <span class="comment">#一次多项式拟合，相当于线性拟合,返回的是[k,b]，即模型的系数</span></span><br><span class="line">p1 = np.poly1d(z1)<span class="comment">#给出模型表达式，真ｔｍ人性化</span></span><br><span class="line"><span class="keyword">print</span> z1  <span class="comment">#[ 1.          1.49333333]</span></span><br><span class="line"><span class="keyword">print</span> p1  <span class="comment"># 1 x + 1.493</span></span><br></pre></td></tr></table></figure>
+<pre><code>[  0.13493869  21.35130147]
 
-线性回归的经典解法是最小二乘法，关于最小二乘法的原理网络上都有介绍，咱们这里只看在sklearn中的实现
-我们将采用sklearn自带的美国波斯顿房价数据集进行演示
-首先导入数据并查看数据的基本信息
-12from sklearn.datasets import load_bostoni
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/30/reg/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+0.1349 x + 21.35
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = np.polyval(z1, X_train[:,<span class="number">1</span>])<span class="comment">#用刚刚拟合处理的模型z1来代入X_train[:,1]求得预模型的测值并保存在z中</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 24.05007536,  21.35130147,  21.35130147,  28.77292967,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  34.17047745,  24.05007536,  23.03803515,
+        21.35130147,  21.35130147,  21.35130147,  24.05007536,
+        25.93921708,  32.14639703,  21.35130147,  25.80427839,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  32.14639703,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  24.31995275,  21.35130147,
+        21.35130147,  26.07415578,  21.35130147,  21.35130147,
+        32.14639703,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  24.31995275,  21.35130147,
+        24.72476883,  24.05007536,  21.35130147,  21.35130147,
+        21.35130147,  24.05007536,  25.12958491,  21.35130147,
+        21.35130147,  24.72476883,  21.35130147,  32.82109051,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  32.14639703,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  26.07415578,  28.43558293,
+        21.35130147,  31.47170356,  34.17047745,  24.18501405,
+        24.05007536,  21.35130147,  21.35130147,  24.05007536,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        32.14639703,  25.3994623 ,  21.35130147,  21.35130147,
+        21.35130147,  24.05007536,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        24.05007536,  24.72476883,  24.05007536,  21.35130147,
+        24.72476883,  23.03803515,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        32.14639703,  21.35130147,  25.93921708,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  23.03803515,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  26.74884925,  21.35130147,  28.43558293,
+        21.35130147,  21.35130147,  29.44762314,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  25.80427839,
+        24.05007536,  25.3994623 ,  21.35130147,  21.35130147,
+        21.35130147,  23.03803515,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  25.12958491,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        32.14639703,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  25.12958491,  24.72476883,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  28.77292967,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  26.74884925,  24.05007536,  26.74884925,
+        21.35130147,  21.35130147,  21.35130147,  24.05007536,
+        23.03803515,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  27.42354272,  21.35130147,  21.35130147,
+        24.31995275,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  24.05007536,
+        27.42354272,  21.35130147,  24.31995275,  21.35130147,
+        27.42354272,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  28.43558293,  21.35130147,  32.14639703,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  24.05007536,  21.35130147,
+        31.47170356,  25.80427839,  24.72476883,  26.74884925,
+        21.35130147,  21.35130147,  24.05007536,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  24.31995275,  21.35130147,  21.35130147,
+        24.18501405,  33.49578398,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  30.79701009,
+        21.35130147,  29.44762314,  21.35130147,  32.48374377,
+        21.35130147,  21.35130147,  21.35130147,  32.14639703,
+        32.14639703,  21.35130147,  24.31995275,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  25.3994623 ,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        33.49578398,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  23.03803515,  31.47170356,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        27.42354272,  24.05007536,  24.72476883,  34.17047745,
+        33.49578398,  24.18501405,  21.35130147,  21.35130147,
+        21.35130147,  24.05007536,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  24.31995275,
+        21.35130147,  21.35130147,  23.03803515,  21.35130147,
+        23.03803515,  24.72476883,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  28.77292967,
+        21.35130147,  21.35130147,  24.31995275,  21.35130147,
+        21.35130147,  24.72476883,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        32.14639703,  25.93921708,  21.35130147,  21.35130147,
+        21.35130147,  24.72476883,  21.35130147,  32.14639703,
+        34.84517093,  32.48374377,  21.35130147,  32.14639703,
+        21.35130147,  21.35130147,  21.35130147])
+</code></pre><p>或者我们直接把自变量的值代入拟合好的方程里面,得到的结果和上面的一样.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pre=p1(X_train[:,<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pre</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 24.05007536,  21.35130147,  21.35130147,  28.77292967,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  34.17047745,  24.05007536,  23.03803515,
+        21.35130147,  21.35130147,  21.35130147,  24.05007536,
+        25.93921708,  32.14639703,  21.35130147,  25.80427839,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  32.14639703,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  24.31995275,  21.35130147,
+        21.35130147,  26.07415578,  21.35130147,  21.35130147,
+        32.14639703,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  24.31995275,  21.35130147,
+        24.72476883,  24.05007536,  21.35130147,  21.35130147,
+        21.35130147,  24.05007536,  25.12958491,  21.35130147,
+        21.35130147,  24.72476883,  21.35130147,  32.82109051,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  32.14639703,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  26.07415578,  28.43558293,
+        21.35130147,  31.47170356,  34.17047745,  24.18501405,
+        24.05007536,  21.35130147,  21.35130147,  24.05007536,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        32.14639703,  25.3994623 ,  21.35130147,  21.35130147,
+        21.35130147,  24.05007536,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        24.05007536,  24.72476883,  24.05007536,  21.35130147,
+        24.72476883,  23.03803515,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        32.14639703,  21.35130147,  25.93921708,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  23.03803515,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  26.74884925,  21.35130147,  28.43558293,
+        21.35130147,  21.35130147,  29.44762314,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  25.80427839,
+        24.05007536,  25.3994623 ,  21.35130147,  21.35130147,
+        21.35130147,  23.03803515,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  25.12958491,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        32.14639703,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  25.12958491,  24.72476883,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  28.77292967,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  26.74884925,  24.05007536,  26.74884925,
+        21.35130147,  21.35130147,  21.35130147,  24.05007536,
+        23.03803515,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  27.42354272,  21.35130147,  21.35130147,
+        24.31995275,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  24.05007536,
+        27.42354272,  21.35130147,  24.31995275,  21.35130147,
+        27.42354272,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  28.43558293,  21.35130147,  32.14639703,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  24.05007536,  21.35130147,
+        31.47170356,  25.80427839,  24.72476883,  26.74884925,
+        21.35130147,  21.35130147,  24.05007536,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  24.31995275,  21.35130147,  21.35130147,
+        24.18501405,  33.49578398,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  30.79701009,
+        21.35130147,  29.44762314,  21.35130147,  32.48374377,
+        21.35130147,  21.35130147,  21.35130147,  32.14639703,
+        32.14639703,  21.35130147,  24.31995275,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  25.3994623 ,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        33.49578398,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  23.03803515,  31.47170356,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        27.42354272,  24.05007536,  24.72476883,  34.17047745,
+        33.49578398,  24.18501405,  21.35130147,  21.35130147,
+        21.35130147,  24.05007536,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  24.31995275,
+        21.35130147,  21.35130147,  23.03803515,  21.35130147,
+        23.03803515,  24.72476883,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  28.77292967,
+        21.35130147,  21.35130147,  24.31995275,  21.35130147,
+        21.35130147,  24.72476883,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        21.35130147,  21.35130147,  21.35130147,  21.35130147,
+        32.14639703,  25.93921708,  21.35130147,  21.35130147,
+        21.35130147,  24.72476883,  21.35130147,  32.14639703,
+        34.84517093,  32.48374377,  21.35130147,  32.14639703,
+        21.35130147,  21.35130147,  21.35130147])
+</code></pre><p>这种就可以直观的可视化真实值与预测曲线之间的关系了，如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(X_train[:,<span class="number">1</span>], y_train,color=<span class="string">'red'</span>,label=<span class="string">'true'</span>)</span><br><span class="line">plt.plot(X_train[:,<span class="number">1</span>],y_pre,color=<span class="string">'blue'</span>,label=<span class="string">'pre'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_95_0.png" alt="png"></p>
+<p>这里我在网上找了一个numpy拟合多项式的例子，贴在下面了，供大家参考</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#多项式拟合(从给定的x,y中解析出最接近数据的方程式)</span></span><br><span class="line"><span class="comment">#要拟合的x,y数据</span></span><br><span class="line">x = np.arange(<span class="number">1</span>, <span class="number">17</span>, <span class="number">1</span>)</span><br><span class="line">y = np.array([<span class="number">4.00</span>, <span class="number">6.40</span>, <span class="number">8.00</span>, <span class="number">8.80</span>, <span class="number">9.22</span>, <span class="number">9.50</span>, <span class="number">9.70</span>, <span class="number">9.86</span>, <span class="number">10.00</span>, <span class="number">10.20</span>, <span class="number">10.32</span>, <span class="number">10.42</span>, <span class="number">10.50</span>, <span class="number">10.55</span>, <span class="number">10.58</span>, <span class="number">10.60</span>])</span><br><span class="line">z1 = np.polyfit(x, y, <span class="number">4</span>)<span class="comment">#3为多项式最高次幂，结果为多项式的各个系数</span></span><br><span class="line"><span class="comment">#最高次幂3，得到4个系数,从高次到低次排列</span></span><br><span class="line"><span class="comment">#最高次幂取几要视情况而定</span></span><br><span class="line">p1 = np.poly1d(z1)<span class="comment">#将系数代入方程，得到函式p1</span></span><br><span class="line">print(z1)<span class="comment">#多项式系数</span></span><br><span class="line">print(p1)<span class="comment">#多项式方程</span></span><br><span class="line">print(p1(<span class="number">18</span>))<span class="comment">#调用，输入x值，得到y</span></span><br><span class="line">x1=np.linspace(x.min(),x.max(),<span class="number">100</span>)<span class="comment">#x给定数据太少，方程曲线不光滑，多取x值得到光滑曲线</span></span><br><span class="line">pp1=p1(x1)<span class="comment">#x1代入多项式，得到pp1,代入matplotlib中画多项式曲线</span></span><br><span class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>]=[<span class="string">'SimHei'</span>]<span class="comment">#显示中文</span></span><br><span class="line">plt.scatter(x,y,color=<span class="string">'g'</span>)<span class="comment">#x，y散点图</span></span><br><span class="line">plt.plot(x,y,color=<span class="string">'r'</span>)<span class="comment">#x,y线形图</span></span><br><span class="line">plt.plot(x1,pp1,color=<span class="string">'b'</span>)<span class="comment">#100个x及对应y值绘制的曲线</span></span><br><span class="line"><span class="comment">#可应用于各个行业的数值预估</span></span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br><span class="line"><span class="comment">#plt.savefig('polyfit.png',dpi=400,bbox_inches='tight')</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>[ -9.24538084e-04   3.76792011e-02  -5.54639386e-01   3.60545597e+00
+   1.03629808e+00]
+            4           3          2
+-0.0009245 x + 0.03768 x - 0.5546 x + 3.605 x + 1.036
+8.922135181
+</code></pre><p><img src="output_97_1.png" alt="png"></p>
+<p>关于回归拟合的问题就说这么多，在用到的时候直接拿以上代码稍微修改一下便可使用了，更多干货请关注微信公众号“我将在南极找寻你”！</p>
+<p>下课！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -733,7 +1220,7 @@
     
     
     
-    <div class="post-body han-init-context" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody">
 
       
       
@@ -741,20 +1228,853 @@
       
         
           
-          
-Kmean聚类
+            <ul>
+<li>Kmean聚类</li>
+</ul>
+<p>以下使用的是sklearn自带的鸢尾花数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np  </span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##加载数据集</span></span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line">iris=load_iris()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.array(iris)</span><br></pre></td></tr></table></figure>
+<pre><code>array({&apos;target_names&apos;: array([&apos;setosa&apos;, &apos;versicolor&apos;, &apos;virginica&apos;], 
+      dtype=&apos;|S10&apos;), &apos;data&apos;: array([[ 5.1,  3.5,  1.4,  0.2],
+       [ 4.9,  3. ,  1.4,  0.2],
+       [ 4.7,  3.2,  1.3,  0.2],
+       [ 4.6,  3.1,  1.5,  0.2],
+       [ 5. ,  3.6,  1.4,  0.2],
+       [ 5.4,  3.9,  1.7,  0.4],
+       [ 4.6,  3.4,  1.4,  0.3],
+       [ 5. ,  3.4,  1.5,  0.2],
+       [ 4.4,  2.9,  1.4,  0.2],
+       [ 4.9,  3.1,  1.5,  0.1],
+       [ 5.4,  3.7,  1.5,  0.2],
+       [ 4.8,  3.4,  1.6,  0.2],
+       [ 4.8,  3. ,  1.4,  0.1],
+       [ 4.3,  3. ,  1.1,  0.1],
+       [ 5.8,  4. ,  1.2,  0.2],
+       [ 5.7,  4.4,  1.5,  0.4],
+       [ 5.4,  3.9,  1.3,  0.4],
+       [ 5.1,  3.5,  1.4,  0.3],
+       [ 5.7,  3.8,  1.7,  0.3],
+       [ 5.1,  3.8,  1.5,  0.3],
+       [ 5.4,  3.4,  1.7,  0.2],
+       [ 5.1,  3.7,  1.5,  0.4],
+       [ 4.6,  3.6,  1. ,  0.2],
+       [ 5.1,  3.3,  1.7,  0.5],
+       [ 4.8,  3.4,  1.9,  0.2],
+       [ 5. ,  3. ,  1.6,  0.2],
+       [ 5. ,  3.4,  1.6,  0.4],
+       [ 5.2,  3.5,  1.5,  0.2],
+       [ 5.2,  3.4,  1.4,  0.2],
+       [ 4.7,  3.2,  1.6,  0.2],
+       [ 4.8,  3.1,  1.6,  0.2],
+       [ 5.4,  3.4,  1.5,  0.4],
+       [ 5.2,  4.1,  1.5,  0.1],
+       [ 5.5,  4.2,  1.4,  0.2],
+       [ 4.9,  3.1,  1.5,  0.1],
+       [ 5. ,  3.2,  1.2,  0.2],
+       [ 5.5,  3.5,  1.3,  0.2],
+       [ 4.9,  3.1,  1.5,  0.1],
+       [ 4.4,  3. ,  1.3,  0.2],
+       [ 5.1,  3.4,  1.5,  0.2],
+       [ 5. ,  3.5,  1.3,  0.3],
+       [ 4.5,  2.3,  1.3,  0.3],
+       [ 4.4,  3.2,  1.3,  0.2],
+       [ 5. ,  3.5,  1.6,  0.6],
+       [ 5.1,  3.8,  1.9,  0.4],
+       [ 4.8,  3. ,  1.4,  0.3],
+       [ 5.1,  3.8,  1.6,  0.2],
+       [ 4.6,  3.2,  1.4,  0.2],
+       [ 5.3,  3.7,  1.5,  0.2],
+       [ 5. ,  3.3,  1.4,  0.2],
+       [ 7. ,  3.2,  4.7,  1.4],
+       [ 6.4,  3.2,  4.5,  1.5],
+       [ 6.9,  3.1,  4.9,  1.5],
+       [ 5.5,  2.3,  4. ,  1.3],
+       [ 6.5,  2.8,  4.6,  1.5],
+       [ 5.7,  2.8,  4.5,  1.3],
+       [ 6.3,  3.3,  4.7,  1.6],
+       [ 4.9,  2.4,  3.3,  1. ],
+       [ 6.6,  2.9,  4.6,  1.3],
+       [ 5.2,  2.7,  3.9,  1.4],
+       [ 5. ,  2. ,  3.5,  1. ],
+       [ 5.9,  3. ,  4.2,  1.5],
+       [ 6. ,  2.2,  4. ,  1. ],
+       [ 6.1,  2.9,  4.7,  1.4],
+       [ 5.6,  2.9,  3.6,  1.3],
+       [ 6.7,  3.1,  4.4,  1.4],
+       [ 5.6,  3. ,  4.5,  1.5],
+       [ 5.8,  2.7,  4.1,  1. ],
+       [ 6.2,  2.2,  4.5,  1.5],
+       [ 5.6,  2.5,  3.9,  1.1],
+       [ 5.9,  3.2,  4.8,  1.8],
+       [ 6.1,  2.8,  4. ,  1.3],
+       [ 6.3,  2.5,  4.9,  1.5],
+       [ 6.1,  2.8,  4.7,  1.2],
+       [ 6.4,  2.9,  4.3,  1.3],
+       [ 6.6,  3. ,  4.4,  1.4],
+       [ 6.8,  2.8,  4.8,  1.4],
+       [ 6.7,  3. ,  5. ,  1.7],
+       [ 6. ,  2.9,  4.5,  1.5],
+       [ 5.7,  2.6,  3.5,  1. ],
+       [ 5.5,  2.4,  3.8,  1.1],
+       [ 5.5,  2.4,  3.7,  1. ],
+       [ 5.8,  2.7,  3.9,  1.2],
+       [ 6. ,  2.7,  5.1,  1.6],
+       [ 5.4,  3. ,  4.5,  1.5],
+       [ 6. ,  3.4,  4.5,  1.6],
+       [ 6.7,  3.1,  4.7,  1.5],
+       [ 6.3,  2.3,  4.4,  1.3],
+       [ 5.6,  3. ,  4.1,  1.3],
+       [ 5.5,  2.5,  4. ,  1.3],
+       [ 5.5,  2.6,  4.4,  1.2],
+       [ 6.1,  3. ,  4.6,  1.4],
+       [ 5.8,  2.6,  4. ,  1.2],
+       [ 5. ,  2.3,  3.3,  1. ],
+       [ 5.6,  2.7,  4.2,  1.3],
+       [ 5.7,  3. ,  4.2,  1.2],
+       [ 5.7,  2.9,  4.2,  1.3],
+       [ 6.2,  2.9,  4.3,  1.3],
+       [ 5.1,  2.5,  3. ,  1.1],
+       [ 5.7,  2.8,  4.1,  1.3],
+       [ 6.3,  3.3,  6. ,  2.5],
+       [ 5.8,  2.7,  5.1,  1.9],
+       [ 7.1,  3. ,  5.9,  2.1],
+       [ 6.3,  2.9,  5.6,  1.8],
+       [ 6.5,  3. ,  5.8,  2.2],
+       [ 7.6,  3. ,  6.6,  2.1],
+       [ 4.9,  2.5,  4.5,  1.7],
+       [ 7.3,  2.9,  6.3,  1.8],
+       [ 6.7,  2.5,  5.8,  1.8],
+       [ 7.2,  3.6,  6.1,  2.5],
+       [ 6.5,  3.2,  5.1,  2. ],
+       [ 6.4,  2.7,  5.3,  1.9],
+       [ 6.8,  3. ,  5.5,  2.1],
+       [ 5.7,  2.5,  5. ,  2. ],
+       [ 5.8,  2.8,  5.1,  2.4],
+       [ 6.4,  3.2,  5.3,  2.3],
+       [ 6.5,  3. ,  5.5,  1.8],
+       [ 7.7,  3.8,  6.7,  2.2],
+       [ 7.7,  2.6,  6.9,  2.3],
+       [ 6. ,  2.2,  5. ,  1.5],
+       [ 6.9,  3.2,  5.7,  2.3],
+       [ 5.6,  2.8,  4.9,  2. ],
+       [ 7.7,  2.8,  6.7,  2. ],
+       [ 6.3,  2.7,  4.9,  1.8],
+       [ 6.7,  3.3,  5.7,  2.1],
+       [ 7.2,  3.2,  6. ,  1.8],
+       [ 6.2,  2.8,  4.8,  1.8],
+       [ 6.1,  3. ,  4.9,  1.8],
+       [ 6.4,  2.8,  5.6,  2.1],
+       [ 7.2,  3. ,  5.8,  1.6],
+       [ 7.4,  2.8,  6.1,  1.9],
+       [ 7.9,  3.8,  6.4,  2. ],
+       [ 6.4,  2.8,  5.6,  2.2],
+       [ 6.3,  2.8,  5.1,  1.5],
+       [ 6.1,  2.6,  5.6,  1.4],
+       [ 7.7,  3. ,  6.1,  2.3],
+       [ 6.3,  3.4,  5.6,  2.4],
+       [ 6.4,  3.1,  5.5,  1.8],
+       [ 6. ,  3. ,  4.8,  1.8],
+       [ 6.9,  3.1,  5.4,  2.1],
+       [ 6.7,  3.1,  5.6,  2.4],
+       [ 6.9,  3.1,  5.1,  2.3],
+       [ 5.8,  2.7,  5.1,  1.9],
+       [ 6.8,  3.2,  5.9,  2.3],
+       [ 6.7,  3.3,  5.7,  2.5],
+       [ 6.7,  3. ,  5.2,  2.3],
+       [ 6.3,  2.5,  5. ,  1.9],
+       [ 6.5,  3. ,  5.2,  2. ],
+       [ 6.2,  3.4,  5.4,  2.3],
+       [ 5.9,  3. ,  5.1,  1.8]]), &apos;target&apos;: array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]), &apos;DESCR&apos;: &apos;Iris Plants Database\n====================\n\nNotes\n-----\nData Set Characteristics:\n    :Number of Instances: 150 (50 in each of three classes)\n    :Number of Attributes: 4 numeric, predictive attributes and the class\n    :Attribute Information:\n        - sepal length in cm\n        - sepal width in cm\n        - petal length in cm\n        - petal width in cm\n        - class:\n                - Iris-Setosa\n                - Iris-Versicolour\n                - Iris-Virginica\n    :Summary Statistics:\n\n    ============== ==== ==== ======= ===== ====================\n                    Min  Max   Mean    SD   Class Correlation\n    ============== ==== ==== ======= ===== ====================\n    sepal length:   4.3  7.9   5.84   0.83    0.7826\n    sepal width:    2.0  4.4   3.05   0.43   -0.4194\n    petal length:   1.0  6.9   3.76   1.76    0.9490  (high!)\n    petal width:    0.1  2.5   1.20  0.76     0.9565  (high!)\n    ============== ==== ==== ======= ===== ====================\n\n    :Missing Attribute Values: None\n    :Class Distribution: 33.3% for each of 3 classes.\n    :Creator: R.A. Fisher\n    :Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)\n    :Date: July, 1988\n\nThis is a copy of UCI ML iris datasets.\nhttp://archive.ics.uci.edu/ml/datasets/Iris\n\nThe famous Iris database, first used by Sir R.A Fisher\n\nThis is perhaps the best known database to be found in the\npattern recognition literature.  Fisher\&apos;s paper is a classic in the field and\nis referenced frequently to this day.  (See Duda &amp; Hart, for example.)  The\ndata set contains 3 classes of 50 instances each, where each class refers to a\ntype of iris plant.  One class is linearly separable from the other 2; the\nlatter are NOT linearly separable from each other.\n\nReferences\n----------\n   - Fisher,R.A. &quot;The use of multiple measurements in taxonomic problems&quot;\n     Annual Eugenics, 7, Part II, 179-188 (1936); also in &quot;Contributions to\n     Mathematical Statistics&quot; (John Wiley, NY, 1950).\n   - Duda,R.O., &amp; Hart,P.E. (1973) Pattern Classification and Scene Analysis.\n     (Q327.D83) John Wiley &amp; Sons.  ISBN 0-471-22361-1.  See page 218.\n   - Dasarathy, B.V. (1980) &quot;Nosing Around the Neighborhood: A New System\n     Structure and Classification Rule for Recognition in Partially Exposed\n     Environments&quot;.  IEEE Transactions on Pattern Analysis and Machine\n     Intelligence, Vol. PAMI-2, No. 1, 67-71.\n   - Gates, G.W. (1972) &quot;The Reduced Nearest Neighbor Rule&quot;.  IEEE Transactions\n     on Information Theory, May 1972, 431-433.\n   - See also: 1988 MLC Proceedings, 54-64.  Cheeseman et al&quot;s AUTOCLASS II\n     conceptual clustering system finds 3 classes in the data.\n   - Many, many more ...\n&apos;, &apos;feature_names&apos;: [&apos;sepal length (cm)&apos;, &apos;sepal width (cm)&apos;, &apos;petal length (cm)&apos;, &apos;petal width (cm)&apos;]}, dtype=object)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X = iris.data[:, <span class="number">2</span>:<span class="number">4</span>] <span class="comment">##表示我们只取特征空间中的后两个维度</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X</span><br></pre></td></tr></table></figure>
+<pre><code>array([[ 1.4,  0.2],
+       [ 1.4,  0.2],
+       [ 1.3,  0.2],
+       [ 1.5,  0.2],
+       [ 1.4,  0.2],
+       [ 1.7,  0.4],
+       [ 1.4,  0.3],
+       [ 1.5,  0.2],
+       [ 1.4,  0.2],
+       [ 1.5,  0.1],
+       [ 1.5,  0.2],
+       [ 1.6,  0.2],
+       [ 1.4,  0.1],
+       [ 1.1,  0.1],
+       [ 1.2,  0.2],
+       [ 1.5,  0.4],
+       [ 1.3,  0.4],
+       [ 1.4,  0.3],
+       [ 1.7,  0.3],
+       [ 1.5,  0.3],
+       [ 1.7,  0.2],
+       [ 1.5,  0.4],
+       [ 1. ,  0.2],
+       [ 1.7,  0.5],
+       [ 1.9,  0.2],
+       [ 1.6,  0.2],
+       [ 1.6,  0.4],
+       [ 1.5,  0.2],
+       [ 1.4,  0.2],
+       [ 1.6,  0.2],
+       [ 1.6,  0.2],
+       [ 1.5,  0.4],
+       [ 1.5,  0.1],
+       [ 1.4,  0.2],
+       [ 1.5,  0.1],
+       [ 1.2,  0.2],
+       [ 1.3,  0.2],
+       [ 1.5,  0.1],
+       [ 1.3,  0.2],
+       [ 1.5,  0.2],
+       [ 1.3,  0.3],
+       [ 1.3,  0.3],
+       [ 1.3,  0.2],
+       [ 1.6,  0.6],
+       [ 1.9,  0.4],
+       [ 1.4,  0.3],
+       [ 1.6,  0.2],
+       [ 1.4,  0.2],
+       [ 1.5,  0.2],
+       [ 1.4,  0.2],
+       [ 4.7,  1.4],
+       [ 4.5,  1.5],
+       [ 4.9,  1.5],
+       [ 4. ,  1.3],
+       [ 4.6,  1.5],
+       [ 4.5,  1.3],
+       [ 4.7,  1.6],
+       [ 3.3,  1. ],
+       [ 4.6,  1.3],
+       [ 3.9,  1.4],
+       [ 3.5,  1. ],
+       [ 4.2,  1.5],
+       [ 4. ,  1. ],
+       [ 4.7,  1.4],
+       [ 3.6,  1.3],
+       [ 4.4,  1.4],
+       [ 4.5,  1.5],
+       [ 4.1,  1. ],
+       [ 4.5,  1.5],
+       [ 3.9,  1.1],
+       [ 4.8,  1.8],
+       [ 4. ,  1.3],
+       [ 4.9,  1.5],
+       [ 4.7,  1.2],
+       [ 4.3,  1.3],
+       [ 4.4,  1.4],
+       [ 4.8,  1.4],
+       [ 5. ,  1.7],
+       [ 4.5,  1.5],
+       [ 3.5,  1. ],
+       [ 3.8,  1.1],
+       [ 3.7,  1. ],
+       [ 3.9,  1.2],
+       [ 5.1,  1.6],
+       [ 4.5,  1.5],
+       [ 4.5,  1.6],
+       [ 4.7,  1.5],
+       [ 4.4,  1.3],
+       [ 4.1,  1.3],
+       [ 4. ,  1.3],
+       [ 4.4,  1.2],
+       [ 4.6,  1.4],
+       [ 4. ,  1.2],
+       [ 3.3,  1. ],
+       [ 4.2,  1.3],
+       [ 4.2,  1.2],
+       [ 4.2,  1.3],
+       [ 4.3,  1.3],
+       [ 3. ,  1.1],
+       [ 4.1,  1.3],
+       [ 6. ,  2.5],
+       [ 5.1,  1.9],
+       [ 5.9,  2.1],
+       [ 5.6,  1.8],
+       [ 5.8,  2.2],
+       [ 6.6,  2.1],
+       [ 4.5,  1.7],
+       [ 6.3,  1.8],
+       [ 5.8,  1.8],
+       [ 6.1,  2.5],
+       [ 5.1,  2. ],
+       [ 5.3,  1.9],
+       [ 5.5,  2.1],
+       [ 5. ,  2. ],
+       [ 5.1,  2.4],
+       [ 5.3,  2.3],
+       [ 5.5,  1.8],
+       [ 6.7,  2.2],
+       [ 6.9,  2.3],
+       [ 5. ,  1.5],
+       [ 5.7,  2.3],
+       [ 4.9,  2. ],
+       [ 6.7,  2. ],
+       [ 4.9,  1.8],
+       [ 5.7,  2.1],
+       [ 6. ,  1.8],
+       [ 4.8,  1.8],
+       [ 4.9,  1.8],
+       [ 5.6,  2.1],
+       [ 5.8,  1.6],
+       [ 6.1,  1.9],
+       [ 6.4,  2. ],
+       [ 5.6,  2.2],
+       [ 5.1,  1.5],
+       [ 5.6,  1.4],
+       [ 6.1,  2.3],
+       [ 5.6,  2.4],
+       [ 5.5,  1.8],
+       [ 4.8,  1.8],
+       [ 5.4,  2.1],
+       [ 5.6,  2.4],
+       [ 5.1,  2.3],
+       [ 5.1,  1.9],
+       [ 5.9,  2.3],
+       [ 5.7,  2.5],
+       [ 5.2,  2.3],
+       [ 5. ,  1.9],
+       [ 5.2,  2. ],
+       [ 5.4,  2.3],
+       [ 5.1,  1.8]])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘制数据分布图</span></span><br><span class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c = <span class="string">"green"</span>, marker=<span class="string">'*'</span>, label=<span class="string">'point'</span>)  </span><br><span class="line">plt.xlabel(<span class="string">'petal length'</span>)  </span><br><span class="line">plt.ylabel(<span class="string">'petal width'</span>)  </span><br><span class="line">plt.legend(loc=<span class="number">2</span>)  </span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_9_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">estimator = KMeans(n_clusters=<span class="number">3</span>)<span class="comment">#构造聚类器</span></span><br><span class="line">estimator.fit(X)<span class="comment">#聚类</span></span><br><span class="line">label_pred = estimator.labels_ <span class="comment">#获取聚类标签</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label_pred</span><br></pre></td></tr></table></figure>
+<pre><code>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], dtype=int32)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘制k-means结果</span></span><br><span class="line">x0 = X[label_pred == <span class="number">0</span>]</span><br><span class="line">x1 = X[label_pred == <span class="number">1</span>]</span><br><span class="line">x2 = X[label_pred == <span class="number">2</span>]</span><br><span class="line">plt.scatter(x0[:, <span class="number">0</span>], x0[:, <span class="number">1</span>], c = <span class="string">"red"</span>, marker=<span class="string">'o'</span>, label=<span class="string">'label0'</span>)  </span><br><span class="line">plt.scatter(x1[:, <span class="number">0</span>], x1[:, <span class="number">1</span>], c = <span class="string">"green"</span>, marker=<span class="string">'*'</span>, label=<span class="string">'label1'</span>)  </span><br><span class="line">plt.scatter(x2[:, <span class="number">0</span>], x2[:, <span class="number">1</span>], c = <span class="string">"blue"</span>, marker=<span class="string">'+'</span>, label=<span class="string">'label2'</span>)  </span><br><span class="line">plt.xlabel(<span class="string">'petal length'</span>)  </span><br><span class="line">plt.ylabel(<span class="string">'petal width'</span>)  </span><br><span class="line">plt.legend(loc=<span class="number">2</span>)  </span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_12_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(150, 2)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X=X.tolist()</span><br><span class="line">label_pred=label_pred.tolist()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X</span><br></pre></td></tr></table></figure>
+<pre><code>[[1.4, 0.2],
+ [1.4, 0.2],
+ [1.3, 0.2],
+ [1.5, 0.2],
+ [1.4, 0.2],
+ [1.7, 0.4],
+ [1.4, 0.3],
+ [1.5, 0.2],
+ [1.4, 0.2],
+ [1.5, 0.1],
+ [1.5, 0.2],
+ [1.6, 0.2],
+ [1.4, 0.1],
+ [1.1, 0.1],
+ [1.2, 0.2],
+ [1.5, 0.4],
+ [1.3, 0.4],
+ [1.4, 0.3],
+ [1.7, 0.3],
+ [1.5, 0.3],
+ [1.7, 0.2],
+ [1.5, 0.4],
+ [1.0, 0.2],
+ [1.7, 0.5],
+ [1.9, 0.2],
+ [1.6, 0.2],
+ [1.6, 0.4],
+ [1.5, 0.2],
+ [1.4, 0.2],
+ [1.6, 0.2],
+ [1.6, 0.2],
+ [1.5, 0.4],
+ [1.5, 0.1],
+ [1.4, 0.2],
+ [1.5, 0.1],
+ [1.2, 0.2],
+ [1.3, 0.2],
+ [1.5, 0.1],
+ [1.3, 0.2],
+ [1.5, 0.2],
+ [1.3, 0.3],
+ [1.3, 0.3],
+ [1.3, 0.2],
+ [1.6, 0.6],
+ [1.9, 0.4],
+ [1.4, 0.3],
+ [1.6, 0.2],
+ [1.4, 0.2],
+ [1.5, 0.2],
+ [1.4, 0.2],
+ [4.7, 1.4],
+ [4.5, 1.5],
+ [4.9, 1.5],
+ [4.0, 1.3],
+ [4.6, 1.5],
+ [4.5, 1.3],
+ [4.7, 1.6],
+ [3.3, 1.0],
+ [4.6, 1.3],
+ [3.9, 1.4],
+ [3.5, 1.0],
+ [4.2, 1.5],
+ [4.0, 1.0],
+ [4.7, 1.4],
+ [3.6, 1.3],
+ [4.4, 1.4],
+ [4.5, 1.5],
+ [4.1, 1.0],
+ [4.5, 1.5],
+ [3.9, 1.1],
+ [4.8, 1.8],
+ [4.0, 1.3],
+ [4.9, 1.5],
+ [4.7, 1.2],
+ [4.3, 1.3],
+ [4.4, 1.4],
+ [4.8, 1.4],
+ [5.0, 1.7],
+ [4.5, 1.5],
+ [3.5, 1.0],
+ [3.8, 1.1],
+ [3.7, 1.0],
+ [3.9, 1.2],
+ [5.1, 1.6],
+ [4.5, 1.5],
+ [4.5, 1.6],
+ [4.7, 1.5],
+ [4.4, 1.3],
+ [4.1, 1.3],
+ [4.0, 1.3],
+ [4.4, 1.2],
+ [4.6, 1.4],
+ [4.0, 1.2],
+ [3.3, 1.0],
+ [4.2, 1.3],
+ [4.2, 1.2],
+ [4.2, 1.3],
+ [4.3, 1.3],
+ [3.0, 1.1],
+ [4.1, 1.3],
+ [6.0, 2.5],
+ [5.1, 1.9],
+ [5.9, 2.1],
+ [5.6, 1.8],
+ [5.8, 2.2],
+ [6.6, 2.1],
+ [4.5, 1.7],
+ [6.3, 1.8],
+ [5.8, 1.8],
+ [6.1, 2.5],
+ [5.1, 2.0],
+ [5.3, 1.9],
+ [5.5, 2.1],
+ [5.0, 2.0],
+ [5.1, 2.4],
+ [5.3, 2.3],
+ [5.5, 1.8],
+ [6.7, 2.2],
+ [6.9, 2.3],
+ [5.0, 1.5],
+ [5.7, 2.3],
+ [4.9, 2.0],
+ [6.7, 2.0],
+ [4.9, 1.8],
+ [5.7, 2.1],
+ [6.0, 1.8],
+ [4.8, 1.8],
+ [4.9, 1.8],
+ [5.6, 2.1],
+ [5.8, 1.6],
+ [6.1, 1.9],
+ [6.4, 2.0],
+ [5.6, 2.2],
+ [5.1, 1.5],
+ [5.6, 1.4],
+ [6.1, 2.3],
+ [5.6, 2.4],
+ [5.5, 1.8],
+ [4.8, 1.8],
+ [5.4, 2.1],
+ [5.6, 2.4],
+ [5.1, 2.3],
+ [5.1, 1.9],
+ [5.9, 2.3],
+ [5.7, 2.5],
+ [5.2, 2.3],
+ [5.0, 1.9],
+ [5.2, 2.0],
+ [5.4, 2.3],
+ [5.1, 1.8]]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cluster_result=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> zip(X,label_pred):</span><br><span class="line">    i[<span class="number">0</span>].append(i[<span class="number">1</span>])</span><br><span class="line">    cluster_result.append(i[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cluster_result</span><br></pre></td></tr></table></figure>
+<pre><code>[[1.4, 0.2, 0],
+ [1.4, 0.2, 0],
+ [1.3, 0.2, 0],
+ [1.5, 0.2, 0],
+ [1.4, 0.2, 0],
+ [1.7, 0.4, 0],
+ [1.4, 0.3, 0],
+ [1.5, 0.2, 0],
+ [1.4, 0.2, 0],
+ [1.5, 0.1, 0],
+ [1.5, 0.2, 0],
+ [1.6, 0.2, 0],
+ [1.4, 0.1, 0],
+ [1.1, 0.1, 0],
+ [1.2, 0.2, 0],
+ [1.5, 0.4, 0],
+ [1.3, 0.4, 0],
+ [1.4, 0.3, 0],
+ [1.7, 0.3, 0],
+ [1.5, 0.3, 0],
+ [1.7, 0.2, 0],
+ [1.5, 0.4, 0],
+ [1.0, 0.2, 0],
+ [1.7, 0.5, 0],
+ [1.9, 0.2, 0],
+ [1.6, 0.2, 0],
+ [1.6, 0.4, 0],
+ [1.5, 0.2, 0],
+ [1.4, 0.2, 0],
+ [1.6, 0.2, 0],
+ [1.6, 0.2, 0],
+ [1.5, 0.4, 0],
+ [1.5, 0.1, 0],
+ [1.4, 0.2, 0],
+ [1.5, 0.1, 0],
+ [1.2, 0.2, 0],
+ [1.3, 0.2, 0],
+ [1.5, 0.1, 0],
+ [1.3, 0.2, 0],
+ [1.5, 0.2, 0],
+ [1.3, 0.3, 0],
+ [1.3, 0.3, 0],
+ [1.3, 0.2, 0],
+ [1.6, 0.6, 0],
+ [1.9, 0.4, 0],
+ [1.4, 0.3, 0],
+ [1.6, 0.2, 0],
+ [1.4, 0.2, 0],
+ [1.5, 0.2, 0],
+ [1.4, 0.2, 0],
+ [4.7, 1.4, 2],
+ [4.5, 1.5, 2],
+ [4.9, 1.5, 2],
+ [4.0, 1.3, 2],
+ [4.6, 1.5, 2],
+ [4.5, 1.3, 2],
+ [4.7, 1.6, 2],
+ [3.3, 1.0, 2],
+ [4.6, 1.3, 2],
+ [3.9, 1.4, 2],
+ [3.5, 1.0, 2],
+ [4.2, 1.5, 2],
+ [4.0, 1.0, 2],
+ [4.7, 1.4, 2],
+ [3.6, 1.3, 2],
+ [4.4, 1.4, 2],
+ [4.5, 1.5, 2],
+ [4.1, 1.0, 2],
+ [4.5, 1.5, 2],
+ [3.9, 1.1, 2],
+ [4.8, 1.8, 2],
+ [4.0, 1.3, 2],
+ [4.9, 1.5, 2],
+ [4.7, 1.2, 2],
+ [4.3, 1.3, 2],
+ [4.4, 1.4, 2],
+ [4.8, 1.4, 2],
+ [5.0, 1.7, 1],
+ [4.5, 1.5, 2],
+ [3.5, 1.0, 2],
+ [3.8, 1.1, 2],
+ [3.7, 1.0, 2],
+ [3.9, 1.2, 2],
+ [5.1, 1.6, 1],
+ [4.5, 1.5, 2],
+ [4.5, 1.6, 2],
+ [4.7, 1.5, 2],
+ [4.4, 1.3, 2],
+ [4.1, 1.3, 2],
+ [4.0, 1.3, 2],
+ [4.4, 1.2, 2],
+ [4.6, 1.4, 2],
+ [4.0, 1.2, 2],
+ [3.3, 1.0, 2],
+ [4.2, 1.3, 2],
+ [4.2, 1.2, 2],
+ [4.2, 1.3, 2],
+ [4.3, 1.3, 2],
+ [3.0, 1.1, 2],
+ [4.1, 1.3, 2],
+ [6.0, 2.5, 1],
+ [5.1, 1.9, 1],
+ [5.9, 2.1, 1],
+ [5.6, 1.8, 1],
+ [5.8, 2.2, 1],
+ [6.6, 2.1, 1],
+ [4.5, 1.7, 2],
+ [6.3, 1.8, 1],
+ [5.8, 1.8, 1],
+ [6.1, 2.5, 1],
+ [5.1, 2.0, 1],
+ [5.3, 1.9, 1],
+ [5.5, 2.1, 1],
+ [5.0, 2.0, 1],
+ [5.1, 2.4, 1],
+ [5.3, 2.3, 1],
+ [5.5, 1.8, 1],
+ [6.7, 2.2, 1],
+ [6.9, 2.3, 1],
+ [5.0, 1.5, 2],
+ [5.7, 2.3, 1],
+ [4.9, 2.0, 1],
+ [6.7, 2.0, 1],
+ [4.9, 1.8, 1],
+ [5.7, 2.1, 1],
+ [6.0, 1.8, 1],
+ [4.8, 1.8, 2],
+ [4.9, 1.8, 1],
+ [5.6, 2.1, 1],
+ [5.8, 1.6, 1],
+ [6.1, 1.9, 1],
+ [6.4, 2.0, 1],
+ [5.6, 2.2, 1],
+ [5.1, 1.5, 1],
+ [5.6, 1.4, 1],
+ [6.1, 2.3, 1],
+ [5.6, 2.4, 1],
+ [5.5, 1.8, 1],
+ [4.8, 1.8, 2],
+ [5.4, 2.1, 1],
+ [5.6, 2.4, 1],
+ [5.1, 2.3, 1],
+ [5.1, 1.9, 1],
+ [5.9, 2.3, 1],
+ [5.7, 2.5, 1],
+ [5.2, 2.3, 1],
+ [5.0, 1.9, 1],
+ [5.2, 2.0, 1],
+ [5.4, 2.3, 1],
+ [5.1, 1.8, 1]]
+</code></pre><p>接下来将３类数据点分别导出到csv文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#分类整合</span></span><br><span class="line">label0=[]<span class="comment">#第０类</span></span><br><span class="line">label1=[]<span class="comment">#第１类</span></span><br><span class="line">label2=[]<span class="comment">##第2类</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> cluster_result:</span><br><span class="line">    <span class="keyword">if</span> i[<span class="number">2</span>]==<span class="number">0</span>:</span><br><span class="line">        label0.append(i)</span><br><span class="line">    <span class="keyword">elif</span> i[<span class="number">2</span>]==<span class="number">1</span>:</span><br><span class="line">        label1.append(i)</span><br><span class="line">    <span class="keyword">elif</span> i[<span class="number">2</span>]==<span class="number">2</span>:</span><br><span class="line">        label2.append(i)</span><br></pre></td></tr></table></figure>
+<p>现在得到的是３个list，我们将先把list转换成array，再进行导出</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#转化成array</span></span><br><span class="line">label0=np.array(label0)</span><br><span class="line">label1=np.array(label1)</span><br><span class="line">label2=np.array(label2)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#预先创建一个空的数据框</span></span><br><span class="line">label0_csv=pd.DataFrame()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将第０类样本信息进行填充到之前的看破那个数据框</span></span><br><span class="line">label0_csv[<span class="string">'feature1'</span>]=label0[:,<span class="number">0</span>]</span><br><span class="line">label0_csv[<span class="string">'feature2'</span>]=label0[:,<span class="number">1</span>]</span><br><span class="line">label0_csv[<span class="string">'kind'</span>]=label0[:,<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#整合之后的样子</span></span><br><span class="line">label0_csv</span><br></pre></td></tr></table></figure>
+<div><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>feature1</th><br>      <th>feature2</th><br>      <th>kind</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>1.3</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>5</th><br>      <td>1.7</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>6</th><br>      <td>1.4</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>7</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>8</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>9</th><br>      <td>1.5</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>10</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>11</th><br>      <td>1.6</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>12</th><br>      <td>1.4</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>13</th><br>      <td>1.1</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>14</th><br>      <td>1.2</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>15</th><br>      <td>1.5</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>16</th><br>      <td>1.3</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>17</th><br>      <td>1.4</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>18</th><br>      <td>1.7</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>19</th><br>      <td>1.5</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>20</th><br>      <td>1.7</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>21</th><br>      <td>1.5</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>22</th><br>      <td>1.0</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>23</th><br>      <td>1.7</td><br>      <td>0.5</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>24</th><br>      <td>1.9</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>25</th><br>      <td>1.6</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>26</th><br>      <td>1.6</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>27</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>28</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>29</th><br>      <td>1.6</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>30</th><br>      <td>1.6</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>31</th><br>      <td>1.5</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>32</th><br>      <td>1.5</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>33</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>34</th><br>      <td>1.5</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>35</th><br>      <td>1.2</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>36</th><br>      <td>1.3</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>37</th><br>      <td>1.5</td><br>      <td>0.1</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>38</th><br>      <td>1.3</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>39</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>40</th><br>      <td>1.3</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>41</th><br>      <td>1.3</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>42</th><br>      <td>1.3</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>43</th><br>      <td>1.6</td><br>      <td>0.6</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>44</th><br>      <td>1.9</td><br>      <td>0.4</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>45</th><br>      <td>1.4</td><br>      <td>0.3</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>46</th><br>      <td>1.6</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>47</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>48</th><br>      <td>1.5</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>    <tr><br>      <th>49</th><br>      <td>1.4</td><br>      <td>0.2</td><br>      <td>0.0</td><br>    </tr><br>  </tbody><br></table><br></div>
 
-以下使用的是sklearn自带的鸢尾花数据集
-123import numpy as np  from sklearn.cluster import KMeansimport matplotlib.pyplot as plt
-123##加载数据集from sklearn.datas
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/30/聚类/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#保存第０类样本信息文件</span></span><br><span class="line">label0_csv.to_csv(<span class="string">r'/home/fantasy/Desktop/数学建模Python/聚类/鸢尾花聚类结果csv/label0.csv'</span>,index=<span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<p>至于其他两类的数据导出方法也一样，这里不再赘述。<br>其实，可以把这个导出功能封装成一个函数，传入保存路径和第几类就可以了，当然也可以直接来个for循环解决.</p>
+<p>到现在，我们都做了些什么呢？来总结一下：</p>
+<p>首先，我们导入了sklearn自带的鸢尾花数据集并选取了其中两个特征(feature)，拟用这两个特征做聚类.</p>
+<p>接着，我们调用了sklearn的聚类方法做了聚类（聚成了３类），并将样本的特征与所属类别（int）整合在一个list里面，并由外围的list包裹住，然后再将这所有的list按照所属聚类数的不同而归类存储.</p>
+<p>最后，将归类的数据先转化成数组形式，然后做成csv文件，导出到指定目录下.</p>
+<p>有一点值得注意的是，在可视化的时候只能用二维数据，即两个特征，受维度限制.</p>
+<hr>
+<p>接下来我们再来看一个例子，同样是使用上面的数据，只不过这次采用dbscan算法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> DBSCAN</span><br><span class="line">db=DBSCAN(eps=<span class="number">1</span>,min_samples=<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#这次使用全部特征进行聚类</span></span><br><span class="line">x=iris.data</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(150, 4)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.fit(x)<span class="comment">#训练数据集，构建模型</span></span><br></pre></td></tr></table></figure>
+<pre><code>DBSCAN(algorithm=&apos;auto&apos;, eps=1, leaf_size=30, metric=&apos;euclidean&apos;,
+    min_samples=10, n_jobs=1, p=None)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">labels=db.labels_</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">labels</span><br></pre></td></tr></table></figure>
+<pre><code>array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#噪声比率</span></span><br><span class="line">ratio=len(labels[labels[:]==<span class="number">-1</span>])*<span class="number">1.0</span>/len(labels)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">"噪声比率:"</span>,ratio</span><br></pre></td></tr></table></figure>
+<pre><code>噪声比率: 0.0
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">n_clusters_=len(set(labels)) - (<span class="number">1</span> <span class="keyword">if</span> <span class="number">-1</span> <span class="keyword">in</span> labels <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'聚类总数为：'</span>,n_clusters_</span><br></pre></td></tr></table></figure>
+<pre><code>聚类总数为： 2
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">print</span> <span class="string">'聚类效果评价指标：'</span>,metrics.silhouette_score(X,labels)<span class="comment">#【-1,1】,越接近１越好</span></span><br></pre></td></tr></table></figure>
+<pre><code>聚类效果评价指标： 0.766723428068
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#总结</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n_clusters_):</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'Cluter'</span>,i+<span class="number">1</span>,<span class="string">':'</span></span><br><span class="line">    count=len(x[labels==i])</span><br><span class="line">    mean=np.mean(x[labels==i][:,<span class="number">1</span>])</span><br><span class="line">    std=np.std(x[labels==i][:,<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'计数：'</span>,count</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'平均值'</span>,mean</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'标准差'</span>,std</span><br></pre></td></tr></table></figure>
+<pre><code>Cluter 1 :
+计数： 50
+平均值 3.418
+标准差 0.377194909828
+Cluter 2 :
+计数： 100
+平均值 2.872
+标准差 0.331083071147
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#可视化聚类结果，这里只选取前两个进行绘制,不太准确，只是拿来说明一下绘图做法</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(n_clusters_):</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'簇 '</span>, i, <span class="string">'的所有样本:'</span></span><br><span class="line">    one_cluster = x[labels == i]</span><br><span class="line">    <span class="keyword">print</span> one_cluster</span><br><span class="line">    plt.plot(one_cluster[:,<span class="number">0</span>],one_cluster[:,<span class="number">1</span>],<span class="string">'o'</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>簇  0 的所有样本:
+[[ 5.1  3.5  1.4  0.2]
+ [ 4.9  3.   1.4  0.2]
+ [ 4.7  3.2  1.3  0.2]
+ [ 4.6  3.1  1.5  0.2]
+ [ 5.   3.6  1.4  0.2]
+ [ 5.4  3.9  1.7  0.4]
+ [ 4.6  3.4  1.4  0.3]
+ [ 5.   3.4  1.5  0.2]
+ [ 4.4  2.9  1.4  0.2]
+ [ 4.9  3.1  1.5  0.1]
+ [ 5.4  3.7  1.5  0.2]
+ [ 4.8  3.4  1.6  0.2]
+ [ 4.8  3.   1.4  0.1]
+ [ 4.3  3.   1.1  0.1]
+ [ 5.8  4.   1.2  0.2]
+ [ 5.7  4.4  1.5  0.4]
+ [ 5.4  3.9  1.3  0.4]
+ [ 5.1  3.5  1.4  0.3]
+ [ 5.7  3.8  1.7  0.3]
+ [ 5.1  3.8  1.5  0.3]
+ [ 5.4  3.4  1.7  0.2]
+ [ 5.1  3.7  1.5  0.4]
+ [ 4.6  3.6  1.   0.2]
+ [ 5.1  3.3  1.7  0.5]
+ [ 4.8  3.4  1.9  0.2]
+ [ 5.   3.   1.6  0.2]
+ [ 5.   3.4  1.6  0.4]
+ [ 5.2  3.5  1.5  0.2]
+ [ 5.2  3.4  1.4  0.2]
+ [ 4.7  3.2  1.6  0.2]
+ [ 4.8  3.1  1.6  0.2]
+ [ 5.4  3.4  1.5  0.4]
+ [ 5.2  4.1  1.5  0.1]
+ [ 5.5  4.2  1.4  0.2]
+ [ 4.9  3.1  1.5  0.1]
+ [ 5.   3.2  1.2  0.2]
+ [ 5.5  3.5  1.3  0.2]
+ [ 4.9  3.1  1.5  0.1]
+ [ 4.4  3.   1.3  0.2]
+ [ 5.1  3.4  1.5  0.2]
+ [ 5.   3.5  1.3  0.3]
+ [ 4.5  2.3  1.3  0.3]
+ [ 4.4  3.2  1.3  0.2]
+ [ 5.   3.5  1.6  0.6]
+ [ 5.1  3.8  1.9  0.4]
+ [ 4.8  3.   1.4  0.3]
+ [ 5.1  3.8  1.6  0.2]
+ [ 4.6  3.2  1.4  0.2]
+ [ 5.3  3.7  1.5  0.2]
+ [ 5.   3.3  1.4  0.2]]
+簇  1 的所有样本:
+[[ 7.   3.2  4.7  1.4]
+ [ 6.4  3.2  4.5  1.5]
+ [ 6.9  3.1  4.9  1.5]
+ [ 5.5  2.3  4.   1.3]
+ [ 6.5  2.8  4.6  1.5]
+ [ 5.7  2.8  4.5  1.3]
+ [ 6.3  3.3  4.7  1.6]
+ [ 4.9  2.4  3.3  1. ]
+ [ 6.6  2.9  4.6  1.3]
+ [ 5.2  2.7  3.9  1.4]
+ [ 5.   2.   3.5  1. ]
+ [ 5.9  3.   4.2  1.5]
+ [ 6.   2.2  4.   1. ]
+ [ 6.1  2.9  4.7  1.4]
+ [ 5.6  2.9  3.6  1.3]
+ [ 6.7  3.1  4.4  1.4]
+ [ 5.6  3.   4.5  1.5]
+ [ 5.8  2.7  4.1  1. ]
+ [ 6.2  2.2  4.5  1.5]
+ [ 5.6  2.5  3.9  1.1]
+ [ 5.9  3.2  4.8  1.8]
+ [ 6.1  2.8  4.   1.3]
+ [ 6.3  2.5  4.9  1.5]
+ [ 6.1  2.8  4.7  1.2]
+ [ 6.4  2.9  4.3  1.3]
+ [ 6.6  3.   4.4  1.4]
+ [ 6.8  2.8  4.8  1.4]
+ [ 6.7  3.   5.   1.7]
+ [ 6.   2.9  4.5  1.5]
+ [ 5.7  2.6  3.5  1. ]
+ [ 5.5  2.4  3.8  1.1]
+ [ 5.5  2.4  3.7  1. ]
+ [ 5.8  2.7  3.9  1.2]
+ [ 6.   2.7  5.1  1.6]
+ [ 5.4  3.   4.5  1.5]
+ [ 6.   3.4  4.5  1.6]
+ [ 6.7  3.1  4.7  1.5]
+ [ 6.3  2.3  4.4  1.3]
+ [ 5.6  3.   4.1  1.3]
+ [ 5.5  2.5  4.   1.3]
+ [ 5.5  2.6  4.4  1.2]
+ [ 6.1  3.   4.6  1.4]
+ [ 5.8  2.6  4.   1.2]
+ [ 5.   2.3  3.3  1. ]
+ [ 5.6  2.7  4.2  1.3]
+ [ 5.7  3.   4.2  1.2]
+ [ 5.7  2.9  4.2  1.3]
+ [ 6.2  2.9  4.3  1.3]
+ [ 5.1  2.5  3.   1.1]
+ [ 5.7  2.8  4.1  1.3]
+ [ 6.3  3.3  6.   2.5]
+ [ 5.8  2.7  5.1  1.9]
+ [ 7.1  3.   5.9  2.1]
+ [ 6.3  2.9  5.6  1.8]
+ [ 6.5  3.   5.8  2.2]
+ [ 7.6  3.   6.6  2.1]
+ [ 4.9  2.5  4.5  1.7]
+ [ 7.3  2.9  6.3  1.8]
+ [ 6.7  2.5  5.8  1.8]
+ [ 7.2  3.6  6.1  2.5]
+ [ 6.5  3.2  5.1  2. ]
+ [ 6.4  2.7  5.3  1.9]
+ [ 6.8  3.   5.5  2.1]
+ [ 5.7  2.5  5.   2. ]
+ [ 5.8  2.8  5.1  2.4]
+ [ 6.4  3.2  5.3  2.3]
+ [ 6.5  3.   5.5  1.8]
+ [ 7.7  3.8  6.7  2.2]
+ [ 7.7  2.6  6.9  2.3]
+ [ 6.   2.2  5.   1.5]
+ [ 6.9  3.2  5.7  2.3]
+ [ 5.6  2.8  4.9  2. ]
+ [ 7.7  2.8  6.7  2. ]
+ [ 6.3  2.7  4.9  1.8]
+ [ 6.7  3.3  5.7  2.1]
+ [ 7.2  3.2  6.   1.8]
+ [ 6.2  2.8  4.8  1.8]
+ [ 6.1  3.   4.9  1.8]
+ [ 6.4  2.8  5.6  2.1]
+ [ 7.2  3.   5.8  1.6]
+ [ 7.4  2.8  6.1  1.9]
+ [ 7.9  3.8  6.4  2. ]
+ [ 6.4  2.8  5.6  2.2]
+ [ 6.3  2.8  5.1  1.5]
+ [ 6.1  2.6  5.6  1.4]
+ [ 7.7  3.   6.1  2.3]
+ [ 6.3  3.4  5.6  2.4]
+ [ 6.4  3.1  5.5  1.8]
+ [ 6.   3.   4.8  1.8]
+ [ 6.9  3.1  5.4  2.1]
+ [ 6.7  3.1  5.6  2.4]
+ [ 6.9  3.1  5.1  2.3]
+ [ 5.8  2.7  5.1  1.9]
+ [ 6.8  3.2  5.9  2.3]
+ [ 6.7  3.3  5.7  2.5]
+ [ 6.7  3.   5.2  2.3]
+ [ 6.3  2.5  5.   1.9]
+ [ 6.5  3.   5.2  2. ]
+ [ 6.2  3.4  5.4  2.3]
+ [ 5.9  3.   5.1  1.8]]
+</code></pre><p><img src="output_45_1.png" alt="png"></p>
+<p>参考：<br><a href="https://blog.csdn.net/luanpeng825485697/article/details/79443512" target="_blank" rel="noopener">https://blog.csdn.net/luanpeng825485697/article/details/79443512</a><br><a href="https://blog.csdn.net/linzch3/article/details/76038172" target="_blank" rel="noopener">https://blog.csdn.net/linzch3/article/details/76038172</a><br><a href="https://blog.csdn.net/u010159842/article/details/78624135" target="_blank" rel="noopener">https://blog.csdn.net/u010159842/article/details/78624135</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -898,7 +2218,7 @@ Kmean聚类
     
     
     
-    <div class="post-body han-init-context" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody">
 
       
       
@@ -906,18 +2226,179 @@ Kmean聚类
       
         
           
-          当一个样本数据集的特征数目较多时，通常会造成运行速度缓慢，尤其是在做回归分析的时候，还有可能产生多重共线性，虽然我们可以用岭回归的方法来减小多重共线性，但是仍然存在，那我们何不找个更好的解决办法呢？
-于是乎，降维技术应运而生
-通过降维，我们可以将高维特征缩减至低维
-这样做的好处，一方面在于可以节约计
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/30/降维/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>当一个样本数据集的特征数目较多时，通常会造成运行速度缓慢，尤其是在做回归分析的时候，还有可能产生多重共线性，虽然我们可以用岭回归的方法来减小多重共线性，但是仍然存在，那我们何不找个更好的解决办法呢？</p>
+<p>于是乎，降维技术应运而生</p>
+<p>通过降维，我们可以将高维特征缩减至低维</p>
+<p>这样做的好处，一方面在于可以节约计算机运行的时间成本，另一方面，通过降维，可以方便的对数据进行可视化，在前一期的聚类分析中，我们已经了解到，一般地，我们仅能对二维数据进行可视化.</p>
+<p>关于降维的数学原理，这里不做讨论，先站在上帝视角学会证明使用这一技术，再去深入研究其构造原理</p>
+<p>本次采用sklearn自带的数据集load_digits，这是一个关于手写数字识别的数据集，总共1797条数据，64个特征，对应的目标是0到9这10个数字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加载数据集</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_digits</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">digits=load_digits()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">digits.data.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(1797, 64)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">digits.target.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(1797,)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X=digits.data</span><br><span class="line">y=digits.target</span><br></pre></td></tr></table></figure>
+<p>在降维之前，我们可以先试一下用KNN来训练这个分类器，我们称之为knnclassifier</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knnclassifier= KNeighborsClassifier()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knnclassifier</span><br></pre></td></tr></table></figure>
+<pre><code>KNeighborsClassifier(algorithm=&apos;auto&apos;, leaf_size=30, metric=&apos;minkowski&apos;,
+           metric_params=None, n_jobs=1, n_neighbors=5, p=2,
+           weights=&apos;uniform&apos;)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#分割据集</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X_train,X_test,y_train,y_test=train_test_split(X,y,random_state=<span class="number">33</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%%time</span><br><span class="line">knnclassifier.fit(X_train,y_train)<span class="comment">#模型拟合</span></span><br></pre></td></tr></table></figure>
+<pre><code>CPU times: user 12 ms, sys: 0 ns, total: 12 ms
+Wall time: 10.3 ms
+
+
+
+
+
+KNeighborsClassifier(algorithm=&apos;auto&apos;, leaf_size=30, metric=&apos;minkowski&apos;,
+           metric_params=None, n_jobs=1, n_neighbors=5, p=2,
+           weights=&apos;uniform&apos;)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pre=knnclassifier.predict(X_test)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> knnclassifier.score(X_test,y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>0.984444444444
+</code></pre><p>可以看到，此时准确度是0.98,运行时间是11.2ms</p>
+<p>接下来我们将尝试降维操作，把64个特征降到两维</p>
+<p>sklearn中的decomposition模块已经为我们封装好了PCA这个降维方法，我们直接调用即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line">pca=PCA(n_components=<span class="number">2</span>)<span class="comment">#n_components是指要降成几维，这里降为２维</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#拟合模型</span></span><br><span class="line">pca.fit(X_train)</span><br><span class="line">X_train_reduced=pca.transform(X_train)</span><br><span class="line">X_test_reduced=pca.transform(X_test)</span><br></pre></td></tr></table></figure>
+<p>现在利用降维后的数据再重新训练一个KNN模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%%time</span><br><span class="line">knn_reduced=KNeighborsClassifier()</span><br><span class="line">knn_reduced.fit(X_train_reduced,y_train)</span><br></pre></td></tr></table></figure>
+<pre><code>CPU times: user 4 ms, sys: 0 ns, total: 4 ms
+Wall time: 7.79 ms
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y_pre=knn_reduced.predict(X_test_reduced)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knn_reduced.score(X_test_reduced,y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>0.5822222222222222
+</code></pre><p>可以看出，虽然运行时间缩减了，但是精确度却大幅度下降</p>
+<p>我们所降维度太低了，导致信息量大幅度减少，所以如何才能明确降到多少维合适呢？</p>
+<p>这里需要了解一个概念叫做”解释方差比率”（explained_variance_ratio），代表的是每一个维度（特征）能解释总体的百分比，我们要做的就是找到这个比率排名靠前多少的特征，把这些特征作为主成分，其余的解释方差比率较小的特征就剔除掉.</p>
+<p>我们可以先查看一下刚才做的两个特征维度的解释方差比率</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca.explained_variance_ratio_</span><br></pre></td></tr></table></figure>
+<pre><code>array([ 0.15035598,  0.13838039])
+</code></pre><p>总体加起来才0.3不到，丢失了总体70%多的信息，很显然这样子是不行的</p>
+<p>我们可以尝试在n_components中传入X_train的特征数，往下看你就明白了：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca=PCA(n_components=X_train.shape[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca<span class="comment">#此时的值肯定是６４</span></span><br></pre></td></tr></table></figure>
+<pre><code>PCA(copy=True, iterated_power=&apos;auto&apos;, n_components=64, random_state=None,
+  svd_solver=&apos;auto&apos;, tol=0.0, whiten=False)
+</code></pre><p>接下来再fit一下新的pca模型并查看解释方差比率</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca.fit(X_train)</span><br></pre></td></tr></table></figure>
+<pre><code>PCA(copy=True, iterated_power=&apos;auto&apos;, n_components=64, random_state=None,
+  svd_solver=&apos;auto&apos;, tol=0.0, whiten=False)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> pca.explained_variance_ratio_</span><br></pre></td></tr></table></figure>
+<pre><code>[  1.50355979e-01   1.38380388e-01   1.19425901e-01   8.24718418e-02
+   5.91243713e-02   4.96975094e-02   4.23449789e-02   3.56664467e-02
+   3.23294141e-02   3.03973702e-02   2.34758387e-02   2.23682826e-02
+   1.82648603e-02   1.77678251e-02   1.45825518e-02   1.37044626e-02
+   1.30959900e-02   1.25622026e-02   1.02151829e-02   9.12424514e-03
+   8.91759754e-03   7.95889667e-03   7.55729053e-03   7.36310540e-03
+   6.86397508e-03   5.97732760e-03   5.70365442e-03   5.11943388e-03
+   4.81884444e-03   4.07489205e-03   3.74656189e-03   3.57400245e-03
+   3.31144332e-03   3.24522870e-03   3.04902907e-03   2.87135997e-03
+   2.57153779e-03   2.21866132e-03   2.15818927e-03   2.04639853e-03
+   1.85231174e-03   1.53306454e-03   1.48233877e-03   1.36725744e-03
+   1.14492332e-03   1.02513374e-03   9.51122042e-04   7.75946877e-04
+   5.59969368e-04   3.59004930e-04   2.22920251e-04   7.96771455e-05
+   4.21882118e-05   3.98867466e-05   3.23086994e-05   1.60861117e-05
+   7.16567372e-06   3.66786169e-06   8.50034737e-07   7.03829770e-07
+   4.01254157e-07   6.85795787e-34   6.85795787e-34   6.34067110e-34]
+</code></pre><p>以上便是按照从大到小顺序排列的每一个特征维度一次可以解释的方差比率</p>
+<p>我们要做的是丢掉那些解释方差比率较小的，也就是后面的那些，保留前面的，那证明判断保留多少个合适呢？下面提供一种方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.plot([i <span class="keyword">for</span> i <span class="keyword">in</span> range(X_train.shape[<span class="number">1</span>])],</span><br><span class="line">         [np.sum(pca.explained_variance_ratio_[:i+<span class="number">1</span>]) <span class="keyword">for</span> i <span class="keyword">in</span> range(X_train.shape[<span class="number">1</span>])])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_42_0.png" alt="png"></p>
+<p>横轴代表的是特征数目，纵轴代表的是所有被选中的主成分特征变量所能解释的方差比率之和</p>
+<p>通过上图，比如我们要求所选取的主成分能解释总体80%的方差，那么对应横轴大约是20，也就是说我们的n_components应该传入20</p>
+<p>这样，我们就可以通过观察上图来确定n_components了</p>
+<p>其实，在sklearn中，这个功能已经封装好了，我们不必画图观察，而是传入我们所想要的主成分变量能解释的方差比率之和这个参数就可以了</p>
+<p>调用方法很简单，直接在初始化模型的时候传入这个参数就行了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca=PCA(<span class="number">0.95</span>)<span class="comment">#要保留原始样本95%的解释方差</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca.fit(X_train)<span class="comment">#重新训练模型</span></span><br></pre></td></tr></table></figure>
+<pre><code>PCA(copy=True, iterated_power=&apos;auto&apos;, n_components=0.95, random_state=None,
+  svd_solver=&apos;auto&apos;, tol=0.0, whiten=False)
+</code></pre><p>我们可以看一下自动确定的最佳的保留的特征数，也就是主成分的个数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> pca.n_components_</span><br></pre></td></tr></table></figure>
+<pre><code>28
+</code></pre><p>28,说明保留了28个主成分，这28个特征变量加起来就能解释总体95%的方差</p>
+<p>那既然已经构建好了降维模型，那就拿来操练一下吧</p>
+<p>先降维处理数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pca.fit(X_train)</span><br><span class="line">X_train_reduction=pca.transform(X_train)</span><br><span class="line">X_test_reduction=pca.transform(X_test)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_train_reduction.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(1347, 28)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_test_reduction.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(450, 28)
+</code></pre><p>再次重新训练KNN模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">%%time</span><br><span class="line">knn_reduced=KNeighborsClassifier()</span><br><span class="line">knn_reduced.fit(X_train_reduction,y_train)</span><br></pre></td></tr></table></figure>
+<pre><code>CPU times: user 4 ms, sys: 0 ns, total: 4 ms
+Wall time: 5.25 ms
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knn_reduced.score(X_test_reduction,y_test)</span><br></pre></td></tr></table></figure>
+<pre><code>0.97999999999999998
+</code></pre><p>从中可以看出，精确度将近0.98，而运行时间也比刚开始的节省了不少｜</p>
+<p>说完了PCA的使用，最后来看看如何对降维结果进行可视化，当然，这里我们只能对二维或者三维数据进行</p>
+<p>我们把特征降到３维（不考虑解释方差比率，这里只是为了讲解可视化的方法）</p>
+<p>以下用的是整个样本，没有划分数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line">pca=PCA(n_components=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pca.fit(X)</span><br></pre></td></tr></table></figure>
+<pre><code>PCA(copy=True, iterated_power=&apos;auto&apos;, n_components=3, random_state=None,
+  svd_solver=&apos;auto&apos;, tol=0.0, whiten=False)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_vis=pca.transform(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X_vis.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(1797, 3)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入三维数据可视化工具</span></span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#数据可视化</span></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = Axes3D(fig)</span><br><span class="line">plt.scatter(X_vis[:, <span class="number">0</span>], X_vis[:, <span class="number">1</span>], X_vis[:, <span class="number">2</span>],marker=<span class="string">'*'</span>,c=y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>/home/fantasy/anaconda2/lib/python2.7/site-packages/matplotlib/collections.py:865: RuntimeWarning: invalid value encountered in sqrt
+  scale = np.sqrt(self._sizes) * dpi / 72.0 * self._factor
+</code></pre><p><img src="output_70_1.png" alt="png"></p>
+<p>我们再继续降到２维</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line">pca = PCA(n_components=<span class="number">2</span>)</span><br><span class="line">pca.fit(X)</span><br><span class="line"><span class="keyword">print</span> pca.explained_variance_ratio_</span><br><span class="line"><span class="keyword">print</span> pca.explained_variance_</span><br><span class="line">X_new = pca.transform(X)</span><br><span class="line">plt.scatter(X_new[:, <span class="number">0</span>], X_new[:, <span class="number">1</span>],marker=<span class="string">'o'</span>,c=y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>[ 0.14890594  0.13618771]
+[ 178.90731578  163.62664073]
+</code></pre><p><img src="output_72_1.png" alt="png"></p>
+<p>是不是螺旋爆炸式的混乱？</p>
+<p>由于PCA没有利用类别信息，我们可以看到降维后，样本特征和类别的信息关联几乎完全丢失。</p>
+<p>于是LDA(线性判别式分析)应运而生！</p>
+<p>与PCA一样，LDA是一种线性降维算法。不同于PCA只会选择数据变化最大的方向，由于LDA是有监督的（分类标签），所以LDA会主要以类别为思考因素，使得投影后的样本尽可能可分。它通过在k维空间选择一个投影超平面，使得不同类别在该超平面上的投影之间的距离尽可能近，同时不同类别的投影之间的距离尽可能远。从而试图明确地模拟数据类之间的差异。</p>
+<p>一般来说，如果我们的数据是有类别标签的，那么优先选择LDA去尝试降维；当然也可以使用PCA做很小幅度的降维去消去噪声，然后再使用LDA降维。如果没有类别标签，那么肯定PCA是最先考虑的一个选择了。</p>
+<p>而我们使用的数据集是有分类标签的（０，１，２，．．．，９），所以接下来我们将尝试LDA降维，最后再来可视化一下降维结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.discriminant_analysis <span class="keyword">import</span> LinearDiscriminantAnalysis</span><br><span class="line">lda = LinearDiscriminantAnalysis(n_components=<span class="number">3</span>)</span><br><span class="line">lda.fit(X,y)</span><br><span class="line">X_new = lda.transform(X)</span><br><span class="line">plt.scatter(X_new[:, <span class="number">0</span>], X_new[:, <span class="number">1</span>],marker=<span class="string">'o'</span>,c=y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<pre><code>/home/fantasy/anaconda2/lib/python2.7/site-packages/sklearn/discriminant_analysis.py:387: UserWarning: Variables are collinear.
+  warnings.warn(&quot;Variables are collinear.&quot;)
+</code></pre><p><img src="output_79_1.png" alt="png"></p>
+<p>LDA降维后可以把数据归为簇，利用了样本类别标签信息</p>
+<p><strong>总结来说，如果样本没有标签，则使用PCA,若有标签，则最好使用LDA</strong></p>
+<hr>
+<p>主成分分析(PCA)和LDA都是直接选择对评价结果贡献度较高的几个维度，或者直接去掉对评价结果贡献度较低的几个维度；</p>
+<p>而下面要讲的FA(<strong>因子分析</strong>)，则是以已知的所有维度为基础，创造数量更少的全新的一组维度来进行评价。先对原始的一组维度进行相关性分析，合并相关性高的，保留相关性低的。或者说，找出一组能够『代表』原维度组的新维度，同时能保留新维度组没有涵盖的特色部分。</p>
+<p>通俗地说，就是造变量，用造的变量去替换原有的变量，并且造的变量的个数小于原有变量的个数</p>
+<p>因子分析（Factor Analysis）是指研究从变量群中提取共性因子的统计技术，这里的共性因子指的是不同变量之间内在的隐藏因子。例如，一个学生的英语、数据、语文成绩都很好，那么潜在的共性因子可能是智力水平高。因此，因子分析的过程其实是寻找共性因子和个性因子并得到最优解释的过程。（摘自网络）</p>
+<p>来看一下在sklearn中的调用方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> FactorAnalysis</span><br><span class="line">fa = FactorAnalysis(n_components=<span class="number">2</span>)<span class="comment">#降到二维</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fa.fit(X)</span><br></pre></td></tr></table></figure>
+<pre><code>FactorAnalysis(copy=True, iterated_power=3, max_iter=1000, n_components=2,
+        noise_variance_init=None, random_state=0, svd_method=&apos;randomized&apos;,
+        tol=0.01)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_two_dim=fa.transform(X)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_two_dim.shape<span class="comment">#已经降到二维了</span></span><br></pre></td></tr></table></figure>
+<pre><code>(1797, 2)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data_two_dim<span class="comment">#并且是新的两个因子（这两个因子是全部64个变量的线性组合）</span></span><br></pre></td></tr></table></figure>
+<pre><code>array([[-0.06629194,  0.30635624],
+       [-0.99445736,  0.14948677],
+       [-1.07480679, -0.40291119],
+       ..., 
+       [-0.7385388 ,  0.0977223 ],
+       [-0.40362928, -0.25358677],
+       [ 0.67042921, -0.89378447]])
+</code></pre><p>降维结束，现在你可以重新训练之前的KNN模型，试一下效果了</p>
+<p>最后的最后，我们来可视化一下降维后的数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">f = plt.figure(figsize=(<span class="number">5</span>, <span class="number">5</span>))</span><br><span class="line">ax = f.add_subplot(<span class="number">111</span>)</span><br><span class="line"><span class="comment">#这里的c=y代表颜色按照y的不同来区分，由于我们的y是０－９,故10中颜色</span></span><br><span class="line">ax.scatter(data_two_dim[:,<span class="number">0</span>],data_two_dim[:,<span class="number">1</span>],marker=<span class="string">'o'</span>,c=y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="output_95_0.png" alt="png"></p>
+<p>Over!</p>
+<p>参考：<br><br><a href="https://blog.csdn.net/u013719780/article/details/51767314" target="_blank" rel="noopener">https://blog.csdn.net/u013719780/article/details/51767314</a><br><br><a href="https://www.cnblogs.com/pinard/p/6249328.html" target="_blank" rel="noopener">https://www.cnblogs.com/pinard/p/6249328.html</a><br><br><a href="https://blog.csdn.net/sm9sun/article/details/78791985" target="_blank" rel="noopener">https://blog.csdn.net/sm9sun/article/details/78791985</a><br><br>bobo老师机器学习视频教程</p>
+
+          
         
       
     </div>
@@ -1061,7 +2542,7 @@ Kmean聚类
     
     
     
-    <div class="post-body han-init-context" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody">
 
       
       
@@ -1069,15 +2550,9 @@ Kmean聚类
       
         
           
-          黎曼函数的连续性黎曼函数，即$$R(x)=\begin{cases}0&amp;x为无理数\\frac1{q}&amp;x=\frac{p}{q},p,q为正整数\end{cases}$$黎曼函数周期为１，所以只研究区间$[0,1]$的性质即可性质：黎曼函数在区间$[0,1]$内的极限处处为零换句话
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/30/liman/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="黎曼函数的连续性"><a href="#黎曼函数的连续性" class="headerlink" title="黎曼函数的连续性"></a>黎曼函数的连续性</h2><p>黎曼函数，即<br><br>$$R(x)=\begin{cases}<br>0&amp;x为无理数\<br>\frac1{q}&amp;x=\frac{p}{q},p,q为正整数<br>\end{cases}$$<br>黎曼函数周期为１，所以只研究区间$[0,1]$的性质即可<br><br>性质：<strong>黎曼函数在区间$[0,1]$内的极限处处为零</strong><br><br>换句话说，<strong>黎曼函数在$[0,1]$上的无理点处处连续，在有理点间断</strong>.<br><br>下面我们来证明之~<br><br>证：对于有理数来说，可以写成$\frac{p}{q}$的既约真分数形式<br><br>$x=0$可以写成$x=\frac01$，即$R(0)=1$.　<br><br>所以，在$[0,1]$上，分母为1的有理点(既约)只有两个：$\frac01$和$\frac11$　<br><br>分母为2的有理点只有一个：$\frac12$　<br><br>分母为3的有理点只有两个：$\frac13$和$\frac23$　<br><br>分母为4的有理点只有两个：$\frac１４$和$\frac34$ <br><br>分母为5的有理点只有四个：$\frac15$,$\frac25$,$\frac35$和$\frac45$ <br><br>…<br><br>总之，对任意自然数$k$，分母不超过$k$的有理点个数是有限的<br><br>设$x_0$是$[0,1]$内任意一点，对任意给定的$\epsilon&gt;0$，设$k=[\frac{1}{\epsilon}]$，因为分母不超过$k$的有理点个数有限，设它们为$r_1,r_2,…,r_n$.<br><br>令$\delta=min{[r_i-x_0]}$，其中$1&lt;=i&lt;=n,r_i!=x_0$ <br><br>从而$\delta&gt;0$　<br><br>当$0&lt;|x-x_0|&lt;\delta$时，若$x$是无理数，则$R(x)=0$，若$x$为有理数，则其分母一定大于$k=[\frac{1}{\epsilon}]$(因为…)，于是$R(x)&lt;=\frac{1}{[\frac{1}{\epsilon}]+1}&lt;\epsilon$,因此成立$|R(x)-0|&lt;\epsilon$.<br><br>此即说明$R(x)$在$x_0$的极限为0（$x_0=0$时是指右极限，$x_0=1$时是指左极限）.根据$R(x)$的周期性，对一切$x_0属于(-\infty,+\infty)$成立$lim_{x{\rightarrow}x_0}R(x)=0$,证毕.</p>
+
+          
         
       
     </div>
@@ -1203,7 +2678,7 @@ Kmean聚类
     
     
     
-    <div class="post-body han-init-context" itemprop="articleBody">
+    <div class="post-body" itemprop="articleBody">
 
       
       
@@ -1211,19 +2686,57 @@ Kmean聚类
       
         
           
-          差分方程的解析解例题．求$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解
+            <h3 id="差分方程的解析解"><a href="#差分方程的解析解" class="headerlink" title="差分方程的解析解"></a>差分方程的解析解</h3><p><strong>例题</strong>．求$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解<br></p>
+<hr>
+<p>当初始条件已知，即$y_0$已知时，迭代算法如下：</p>
+<ul>
+<li>向前迭代算法<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_3=a_0+a_1y_2+\epsilon_3$$<br>$$…$$<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br><br>以上列举了该差分方程的所有项，我们要做的就是通过这些递推关系来逐步迭代，当迭代完所有项之后，最终可以得到目标解析解.<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2=a_0+a_1(a_0+a_1y_0+\epsilon_1)+\epsilon_2=$$<br>$$a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2=[a_0(1+a_1)]+[a_1^2y_0]+[a_1\epsilon_1+\epsilon_2]$$<br>$$y_3=a_0+a_1y_2+\epsilon_3=a_0+a_1(a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2)+\epsilon_3=$$<br>$$[a_0+a_0a_1+a_0{a_1}^2]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]=[a_0(1+a_1+a_1^2)]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]$$<br>$$…$$<br>由数学归纳法，递推下去，则有：<br><br>$$y_t=[a_0(a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_1+a_1^{t-2}\epsilon_2+…+a_1^0\epsilon_t]=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$<br>上式便是目标解析解，因为$y_0$已知，即不含有任何未知项.<br><br>之所以称之为“向前迭代法”，是因为迭代的索引是从$y_1$开始，一步一步往前面跑去，逐步迭代得到到目标式$y_n$的.<br></li>
+</ul>
+<p>你肯定会想到，既然有向前迭代，那么一定有向后迭代了，没错，向后迭代就是从最后一项$y_t$逐渐向$y_0$进行迭代.</p>
+<ul>
+<li>向后迭代<br><br>同样是求解$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解:<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br>$$y_{t-1}=a_0+a_1y_{t-2}+\epsilon_{t-1}$$<br>$$y_{t-2}=a_0+a_1y_{t-3}+\epsilon_{t-2}$$<br>$$…$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_0=a_0+a_1y_{-1}+\epsilon_0$$<br>开始迭代：(前面写了两次迭代过程,总共迭代$t-1$次)<br><br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t=$$<br>$$a_0+a_1(a_0+a_1y_{t-2}+\epsilon_{t-1})+\epsilon_t=$$<br>$$a_0+a_1a_0+a_1^2y_{t-2}+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0(1+a_1)]+[a_1^2y_{t-2}]+[a_1\epsilon_{t-1}+\epsilon_t]$$<br>$$a_0+a_1a_0+a_1^2(a_0+a_1y_{t-3}+\epsilon_{t-2})+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0+a_1a_0+a_1^2a_0]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$[a_0(1+a_1+a_1^2)]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$…$$<br>$$=[a_0(1+a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_{1}+a_1^{t-2}\epsilon_{2}+…+a_1^0\epsilon_t]＝$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$</li>
+</ul>
+<hr>
+<p>而当初始条件未知，即$y_0$未知时，我们需要对上面得到的差分方程的解继续化：<br><br>$$y_t=a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^t(a_0+a_1y_{-1}+\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+(a_0a_1^t+a_1^{t+1}y_{-1}+a_1^t\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t}a_1^i+a_1^{t+1}y_{-1}+\sum_{i=0}^{t}a_1^i\epsilon_{t-i}=$$<br>$$…$$<br>$$=a_0\sum_{i=0}^{(t-1)+m}a_1^i+a_1^{t+m}y_{-m}+\sum_{i=0}^{(t-1)+m}a_1^i\epsilon_{t-i}$$</p>
+<p>由于初始条件未知，我们现在来讨论解是否存在，即解的敛散性:<br></p>
+<ul>
+<li>当$|a_1|&lt;1$时，第一项出现等比数列求和，由无穷递缩等比数列性质，当$m\rightarrow\infty$时，第一项收敛到$\frac{a_0}{1-a_1}$;第二项中的$a_1^{t+m}$会收敛到０，因此第二项将收敛到０;第三项是一个有界量，类似于白噪声序列.<br><br>所以此时的解为<br>$$y_t=\frac{a_0}{1-a_1}+\sum_{i=0}^{t+m-1}a_1^i\epsilon_{t-i}$$</li>
+<li>当$|a_1|&gt;1$时，发散；<br></li>
+<li>当$|a_1|＝1$时，直接代回到最开始的式子，即得<br>$$y_t=a_0t+y_0+\sum_{i=0}^{t-1}\epsilon_{t-i}=a_0t+y_0+\sum_{i=1}^{t}\epsilon_{i}$$</li>
+</ul>
+<hr>
+<p>以上便是针对例题展开的求解过程</p>
+<hr>
+<p>而对于一般的线性差分方程<br>$$y_t=a_0+a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}+x(t)．．．（１）$$<br>其齐次线性差分方程为<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}．．．（２）$$<br>我们首先要明确，<br></p>
+<ul>
+<li>对于齐次线性差分方程（２式），对任意常数$A$，如果$y_t^h$是其一个解，那么$Ay_t^h$也是其一个解.<br></li>
+<li>而对于非齐次线性差分方程（１式），我们需要求其一个特解及其对应的齐次线性差分方程的一个通解.<br></li>
+</ul>
+<hr>
+<p>我们接下来将介绍一种新的解法（不同于之前的迭代法），称之为<strong>备选（特征根法）解法</strong>，来求解非齐次线性差分方程，即（１）式.<br><br>步骤如下：<br><br><strong>(1)建立齐次线性差分方程（２）式，求齐次方程的解$y_t^{h_1},y_t^{h_2},…,y_t^{h_n}$；<br></strong><br>(2)求出非齐次线性差分方程(1)式的一个特解$y_t^p$；　<br><br>(3)非齐次线性差分方程（１）式的通解即为其自身的一个特解加上其对应的齐次线性差分方程的一个通解，即<br>$$y_t=y_t^p+A_1y_t^{h_1}+A_2y_t^{h_2}+…+A_ny_t^{h_n}$$<br><br>其中$A_1,A_2,…A_n$是任意常数；<br><br>(4)若已知初始条件$y_0,y_1,…$，则可以求出$A_1,A_2,…A_n$.(选)<br></p>
+<hr>
+<p>其中第一步是最麻烦的，所以下面我们将针对第一步，即齐次线性差分方程的求解问题展开讨论<br><br><strong>例题</strong>：解齐次线性差分方程<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}$$</p>
+<hr>
+<ul>
+<li>一阶齐次差分方程$y_t=ay_{t-1}$，<br>通解为$Aa^t$ ,可以用迭代法证明，用特征根法更为简单：<br><br>猜想其解的形式为$y_t=A\alpha^t$，代入上式，得$A\alpha^t=aA\alpha^{t-1}$，即$\alpha=a$，故通解为$y_t=aA\alpha^{t-1}=Aa^t$.</li>
+<li>二阶齐次差分方程$y_t=a_1y_{t-1}+a_2y_{t-2}$ ，<br><br>利用特征根法，猜想其解的形式为$y_t=A\alpha^t$，代入上式，得：<br>$$A\alpha^t=a_1A\alpha^{t-1}+a_2A\alpha^{t-2}$$<br>化简，得：<br>$$\alpha^2=a_1\alpha+a_2$$<br>移项，得：<br>$$\alpha^2-a_1\alpha-a_2=0$$<br>从而解得特征根为<br>$$\alpha_{1}=\frac{a_1{+}\sqrt{a_1^2+4a_2}}{2}$$<br>$$\alpha_{2}=\frac{a_1{-}\sqrt{a_1^2+4a_2}}{2}$$<br>其中$d=a_1^2+4a_2$　<br><br>$d$有三种情况：$d&gt;0,d＝０,d&lt;0$，下面就分这三种情况来讨论(<strong>下面的内容很重要!</strong>)<br></li>
+</ul>
+<blockquote>
+<p>(1)当$d=a_1^2+4a_2&gt;0$时，$\alpha_1,\alpha_2$为互不相同的实根，此时的通解为<strong>$y_t=A_1\alpha_1^t+A_2\alpha_2^t$</strong>，其中$A_1,A_2$为任意常数.<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$大于1时，发散；<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$小于1时，收敛.<br></p>
+</blockquote>
+<blockquote>
+<p>(2)当$d=a_1^2+4a_2=0$时，即$a_2=-\frac{a_1^2}{4}$时，$\alpha_1=\alpha_2$为重根，代回上面的特征根方程有$\alpha_1=\alpha_2=\frac{a_1}2$，此时$A\alpha_1^t=A{(\frac{a_1}2})^t$是方程的一个解（俩都一样，算一个），并且可以验证，$At{(\frac{a_1}2})^t$也是方程的一个解，所以此时方程的通解为$y_t=A_1{(\frac{a_1}2})^t+A_2t{(\frac{a_1}2})^t$，其中$A_1,A_2$为任意常数.<br><br>当$|\frac{a_1}2|&lt;1$时，收敛；<br><br>当$|\frac{a_1}2|&gt;1$时，发散.<br></p>
+</blockquote>
+<blockquote>
+<p>(3)当$d=a_1^2+4a_2&lt;0$时，即$a_2&lt;-{\frac{a_1^2}4}&lt;=0$，$\alpha_1,\alpha_2$为共轭复根，且<br><br> $$\alpha_1=\frac{a_1+i\sqrt{-d}}2$$<br> $$\alpha_1=\frac{a_1-i\sqrt{-d}}2$$<br> 由于$a+bi=r(cos\theta+isin\theta)$，所以得到$r=\sqrt{a^2+b^2}$，并且我们要知道$cos\theta=\frac{a}{r}$ <br><br> 回到题目，计算得$r=\sqrt{({\frac{a_1}{2})}^2+{-\frac{-d}{4}}}=\sqrt{-a_2}$，从而得$cos\theta=\frac{\frac{a_1}{2}}{\sqrt{-a_2}}=\frac{a_1}{2\sqrt{-a_2}}$. <br><br> 所以得到<br> $$\alpha_1=a+bi=r(cos\theta+isin\theta)=re^{i\theta}$$<br> $$\alpha_2=a-bi=r(cos\theta-isin\theta)=re^{-i\theta}$$<br> 所以<br> $${\alpha_1}^t={(a+bi)}^t=r^t(cos\theta+isin\theta)^t=r^te^{it\theta}$$<br> $${\alpha_2}^t={(a-bi)}^t=r^t(cos\theta-isin\theta)^t=r^te^{-it\theta}$$<br> 所以通解为<br> $$y_t=A_1r^te^{it\theta}+A_2r^te^{-it\theta}=r^t(A_1e^{it\theta}+A_2e^{-it\theta})$$<br> 其中$A_1,A_2$为任意常数.<br><br> 当$r=\sqrt{-a_2}&gt;1$时，即$a_2&lt;-1$时，发散；<br><br>  当$r=\sqrt{-a_2}&lt;1$时，即$-1&lt;a_2&lt;=0$时，收敛；<br><br>   当$r=\sqrt{-a_2}＝1$时，即$a_2=-1$时，波动增幅不变；<br></p>
+</blockquote>
+<p>以上便是二阶齐次差分方程所有可能情况下的解的求法以及解的敛散性的判别.</p>
+<p>下面呢，我们将推广到一般的$n$阶齐次差分方程：<br><br>$$y_t=a_1y_{t-1}+a_2y_{t-2}+…+a_ny_{t-n}，a_n!=0$$<br>假设解的形式为$A\alpha^t$，则特征方程为<br>$$\alpha^n-a_1\alpha^{n-1}-a_2\alpha^{n-2}-…-a_n=0$$<br>从中可以解出非零的<br>$$\alpha_1,\alpha_2,…,\alpha_n$$<br>同样分３种情况，即$\alpha_1,\alpha_2,…,\alpha_n$是互不相同的实根，$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根和$\alpha_1,\alpha_2,…,\alpha_n$有复根.<br></p>
+<blockquote>
+<p>(1)$\alpha_1,\alpha_2,…,\alpha_n$是$n$个互不相同的实根时，通解为$y_t=A_1\alpha_1^t+A_2\alpha_2^t+…+A_n\alpha_n^t$；<br>(2)$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根时，不妨设$\alpha_1=\alpha_2=…=\alpha_d$，$\alpha_{d+1},\alpha_{d+2},…,\alpha_n$互不相同，则通解为<br>$$y_t=(A_1+A_2t+A_3t^2+…+A_dt^{d-1})\alpha_1^t+A_{d+1}\alpha_{d+1}^t+A_{d+2}\alpha_{d+2}^t+…+A_{n}\alpha_{n}^t$$<br>(3)$\alpha_1,\alpha_2,…,\alpha_n$有复根时，不妨设$\alpha_1,\alpha_2$为复根，$\alpha_3,\alpha_2,…,\alpha_n$互不相同.<br><br>设$\alpha_1=a+bi,\alpha_2=a-bi$，由于$r=\sqrt{a^2+b^2}，cos\theta=\frac{a}r$，所以有<br>$$\alpha_1=re^{i\theta}$$<br>$$\alpha_2=re^{-i\theta}$$<br>所以通解为<br>$$y_t=r^t(A_1e^{it\theta}+A_2e^{-it\theta})+A_3\alpha_3^t+A_4\alpha_4^t+…+A_n\alpha_n^t$$<br>其中$A_1,A_2,…A_n$为任意常数.</p>
+</blockquote>
 
-当初始条件已知，即$y_0$已知时，迭代算法如下：
-
-向前迭代算法$$y_1=a_0+a_1y_0+\epsilon_1$$$$y_2=a_0+a_1y_1+\epsilon_2$$$$y_3=a_0+
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/30/diff/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1297,6 +2810,51 @@ Kmean聚类
           </div>
 
           
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
@@ -1339,7 +2897,7 @@ Kmean聚类
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">凡希</span>
 
@@ -1351,22 +2909,20 @@ Kmean聚类
 
 
 
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.2</div>
 
 
 
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-
-  
-</div>
-
 
 
 
@@ -1412,15 +2968,14 @@ Kmean聚类
 
 
 
+
+
+
+
+
+
   
-
-
-
   
-
-
-
-
 
 
 
@@ -1447,12 +3002,12 @@ Kmean聚类
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
   
 
   
   
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
   
 
 
@@ -1505,6 +3060,53 @@ Kmean聚类
   
 
   
+  
+
+  
+  
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
 
   
   
