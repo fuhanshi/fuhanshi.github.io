@@ -123,8 +123,8 @@
 <meta property="og:image" content="http://yoursite.com/2018/10/03/Hexo-Github免费搭建炫酷个人博客/5.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/03/Hexo-Github免费搭建炫酷个人博客/6.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/03/Hexo-Github免费搭建炫酷个人博客/7.png">
-<meta property="og:image" content="http://yoursite.com/2018/10/03/Hexo-Github免费搭建炫酷个人博客/8png">
-<meta property="og:updated_time" content="2018-10-03T07:19:17.642Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/03/Hexo-Github免费搭建炫酷个人博客/8.png">
+<meta property="og:updated_time" content="2018-10-03T07:28:09.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github免费搭建炫酷个人博客">
 <meta name="twitter:description" content="一直有一个搭建个人博客的想法，之前折腾过Python的Django框架，但没有足够的时间和精力去系统的学习Django，最后不了了之。趁着这次国庆假期，想法又涌上心头，一顿搜索后，Hexo成功地引起了我的注意。Hexo搭配Github，可以实现免费建站，具体来说，就是将博客的一些配置文件以及博客内容同步存储到你自己的Github仓库而不需要额外购买域名。这篇文章便记录了从零开始利用Hexo+Git">
@@ -362,7 +362,7 @@
                 
               
 
-              <time title="Created: 2018-10-03 12:10:04 / Modified: 15:19:17" itemprop="dateCreated datePublished" datetime="2018-10-03T12:10:04+08:00">2018-10-03</time>
+              <time title="Created: 2018-10-03 12:10:04 / Modified: 15:28:09" itemprop="dateCreated datePublished" datetime="2018-10-03T12:10:04+08:00">2018-10-03</time>
             
 
             
@@ -417,7 +417,7 @@
 <h3 id="6-将博客部署到Github上"><a href="#6-将博客部署到Github上" class="headerlink" title="6.将博客部署到Github上"></a>6.将博客部署到Github上</h3><p>首先去官网注册一个Github账号，然后登入你的账号<br><br>现在来创建一个新的Repositories,配置如图<br><br><img src="3.png" alt="">　<br><br>然后配置生成ssh key <br></p>
 <h5 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.ssh </span><br><span class="line">cd ~/.ssh</span><br><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
 <p>接着是一路回车<br><br>然后输入以下代码<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure></p>
-<p>你会看到输出了一些字符串，这就是SSH密钥，复制它们<br><br>接下来进入你的Github主页，如图<br><br><img src="4.png" alt=""> <br><br>接下来的步骤都写在图片里了，看图<br><br><img src="5.png" alt=""> <br><br><img src="6.png" alt=""><br><br>点击左侧的SSH and GPG keys，继续看图<br><br><img src="7.png" alt=""> <br><br><img src="8png" alt=""> <br><br>现在，将之前复制的内容粘贴到上图所示位置的Key框里面，点击Add SHH key，SSH key配置完毕<br></p>
+<p>你会看到输出了一些字符串，这就是SSH密钥，复制它们<br><br>接下来进入你的Github主页，如图<br><br><img src="4.png" alt=""> <br><br>接下来的步骤都写在图片里了，看图<br><br><img src="5.png" alt=""> <br><br><img src="6.png" alt=""><br><br>点击左侧的SSH and GPG keys，继续看图<br><br><img src="7.png" alt=""> <br><br><img src="8.png" alt=""> <br><br>现在，将之前复制的内容粘贴到上图所示位置的Key框里面，点击Add SHH key，SSH key配置完毕<br></p>
 <h4 id="配置Git"><a href="#配置Git" class="headerlink" title="配置Git"></a>配置Git</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config –global user.ame “xxx” </span><br><span class="line">git config –global user.mail “xxx@xxx.com”</span><br></pre></td></tr></table></figure>
 <p>其中，第一个xxx填写你的Github用户名，也就是之前创建Repositories的时候在用的那个；<br><br>第二个需要把双引号里面的内容替换为你注册Github时所使用的邮箱<br><br>这样子就配置完成了<code>Git</code>，可以输入下面的代码做一个测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure></p>
 <h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><p>进入之前你创建的文件夹,打开<code>config.yml</code>文件，拉到最下面，修改deploy的配置为如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  # 类型</span><br><span class="line">  type: git</span><br><span class="line">  # 仓库</span><br><span class="line">  repo: git@github.com:username/username.github.io.git</span><br><span class="line">  # 分支</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
