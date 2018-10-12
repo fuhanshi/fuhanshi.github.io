@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-06T05:57:57.311Z</updated>
+  <updated>2018-10-12T04:17:21.207Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多元统计第三次上机试验报告</title>
+    <link href="http://yoursite.com/2018/10/12/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%B8%8A%E6%9C%BA%E8%AF%95%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
+    <id>http://yoursite.com/2018/10/12/多元统计第三次上机试验报告/</id>
+    <published>2018-10-12T04:13:24.000Z</published>
+    <updated>2018-10-12T04:17:21.207Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data=iris[,1:4]</span><br><span class="line">dist.e=dist(data)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model1=hclust(dist.e)</span><br><span class="line">plot(model1)</span><br><span class="line">result0=cutree(model1,k=3)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model2=kmeans(data,centers=3)</span><br><span class="line">model2</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">library(MASS)</span><br><span class="line">xxx=iris[,1:4]</span><br><span class="line">yyy=iris[,5]</span><br><span class="line">model2=lda(yyy~.,data=xxx,prior=c(1,1,1)/3)</span><br><span class="line">model2</span><br></pre></td></tr></table></figure><h1 id="附加题"><a href="#附加题" class="headerlink" title="附加题"></a>附加题</h1><p><strong>Prepare:首先将两个附件中数据提取到csv文件中，分别命名为file1.csv，file2.csv</strong></p><h2 id="1-利用附件1中数据对各省进行聚类分析，说明应分成几类，各类包括哪些省份"><a href="#1-利用附件1中数据对各省进行聚类分析，说明应分成几类，各类包括哪些省份" class="headerlink" title="1.利用附件1中数据对各省进行聚类分析，说明应分成几类，各类包括哪些省份."></a>1.利用附件1中数据对各省进行聚类分析，说明应分成几类，各类包括哪些省份.</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#read file1</span><br><span class="line">file1=read.csv(&apos;/home/fantasy/Desktop/task3/file1.csv&apos;)</span><br><span class="line">x=file1[,2:9]</span><br><span class="line">x</span><br></pre></td></tr></table></figure><blockquote><p>方法１：系统聚类（层次聚类）</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#calculate distance</span><br><span class="line">d=dist(x)</span><br><span class="line">#cluster</span><br><span class="line">hc=hclust(d)</span><br><span class="line">#plot</span><br><span class="line">plot(hc,hang=-1)</span><br></pre></td></tr></table></figure><p>若指定聚类数k和分类高度h,令k=3，h=200:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(&quot;result:&quot;)</span><br><span class="line">cutree(hc,k=3,h=200)</span><br></pre></td></tr></table></figure></p><blockquote><p>方法２：k-均值聚类</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kmeans(x,center=3,iter.max=100,nstart=2333)</span><br></pre></td></tr></table></figure><h2 id="2-利用附件2中数据对广东和西藏进行判别，说明其属于哪个类别"><a href="#2-利用附件2中数据对广东和西藏进行判别，说明其属于哪个类别" class="headerlink" title="2.利用附件2中数据对广东和西藏进行判别，说明其属于哪个类别."></a>2.利用附件2中数据对广东和西藏进行判别，说明其属于哪个类别.</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file2=read.csv(&apos;/home/fantasy/Desktop/task3/file2.csv&apos;)</span><br><span class="line">xx=file2[1:29,2:9]</span><br><span class="line">yy=file2[1:29,10]</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D=dist(xx)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">library(MASS)</span><br><span class="line">l=lda(yy~.,data=file2[1:29,2:9])</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(l)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#make prediction</span><br><span class="line">predict(l,file2[30:31,2:9])</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;
+      
+    
+    </summary>
+    
+      <category term="R" scheme="http://yoursite.com/categories/R/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>原来你是这样的薛之谦</title>
