@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="数据在计算机内部的表示常用的进位制R进制数只采用R个基本数字符号，R称为数制的基数，数制中每一固定位置对应的单位值称为权，进位原则是逢R进1.比如二进制，那么基数就是２，数字符号就是0,1再比如八进制，则基数为８，数字符号为0,1,…,7(共８位).注意在16进制中，基数为16很自然，但是数字符号应该是0,1,2,…,15，然而以为数只能到9，所以16进制的10用A来表示，11用B来表示，这样子一">
+<meta name="keywords" content="Share">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言基础之数据类型与输入&#x2F;输出">
+<meta property="og:url" content="http://yoursite.com/2018/10/15/C语言基础之数据类型与输入-输出/index.html">
+<meta property="og:site_name" content="凡希的博客">
+<meta property="og:description" content="数据在计算机内部的表示常用的进位制R进制数只采用R个基本数字符号，R称为数制的基数，数制中每一固定位置对应的单位值称为权，进位原则是逢R进1.比如二进制，那么基数就是２，数字符号就是0,1再比如八进制，则基数为８，数字符号为0,1,…,7(共８位).注意在16进制中，基数为16很自然，但是数字符号应该是0,1,2,…,15，然而以为数只能到9，所以16进制的10用A来表示，11用B来表示，这样子一">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-10-16T03:04:45.708Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言基础之数据类型与输入&#x2F;输出">
+<meta name="twitter:description" content="数据在计算机内部的表示常用的进位制R进制数只采用R个基本数字符号，R称为数制的基数，数制中每一固定位置对应的单位值称为权，进位原则是逢R进1.比如二进制，那么基数就是２，数字符号就是0,1再比如八进制，则基数为８，数字符号为0,1,…,7(共８位).注意在16进制中，基数为16很自然，但是数字符号应该是0,1,2,…,15，然而以为数只能到9，所以16进制的10用A来表示，11用B来表示，这样子一">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="凡希的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/15/C语言基础之数据类型与输入-输出/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>C语言基础之数据类型与输入/输出 | 凡希的博客</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凡希的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">因为喜欢，所以热爱</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-成果">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />成果</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/15/C语言基础之数据类型与输入-输出/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="因为喜欢，所以热爱，软件&书籍&技术干货分享站">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凡希的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C语言基础之数据类型与输入/输出
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-10-15 22:58:33" itemprop="dateCreated datePublished" datetime="2018-10-15T22:58:33+08:00">2018-10-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-16 11:04:45" itemprop="dateModified" datetime="2018-10-16T11:04:45+08:00">2018-10-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="数据在计算机内部的表示"><a href="#数据在计算机内部的表示" class="headerlink" title="数据在计算机内部的表示"></a>数据在计算机内部的表示</h1><h2 id="常用的进位制"><a href="#常用的进位制" class="headerlink" title="常用的进位制"></a>常用的进位制</h2><p>R进制数只采用R个基本数字符号，R称为数制的<code>基数</code>，数制中每一固定位置对应的单位值称为<code>权</code>，进位原则是<code>逢R进1</code>.<br><br>比如二进制，那么基数就是２，数字符号就是0,1<br><br>再比如八进制，则基数为８，数字符号为0,1,…,7(共８位).<br><br><strong>注意</strong>在16进制中，基数为16很自然，但是数字符号应该是0,1,2,…,15，然而以为数只能到9，所以16进制的10用A来表示，11用B来表示，这样子一直下去，到15用F表示.<br></p>
+<h2 id="数值与字符在计算机中的表示"><a href="#数值与字符在计算机中的表示" class="headerlink" title="数值与字符在计算机中的表示"></a>数值与字符在计算机中的表示</h2><h3 id="计算机中数值型数据的编码"><a href="#计算机中数值型数据的编码" class="headerlink" title="计算机中数值型数据的编码"></a>计算机中数值型数据的编码</h3><ul>
+<li>机器数与真值</li>
+</ul>
+<p>通常一个数的最高位为<code>符号位</code>，用<code>0表示正，1表示负</code>，称为<code>数符</code>　<br><br>若机器的字长为8位，则$D_7$为符号位，$D_6$到$D_0$为数值位，比如$(11100001)<em>2=(-97)</em>{10}$ <br><br><strong>机器数</strong>：<code>机器内存放的正负符号数码化的数</code> <br><br>比如真值$(-1100001)_2$的机器数是11100001 <br><br>另外为了运算方便，机器数中的负数有3种表示方法：<code>原码</code>，<code>补码</code>，<code>反码</code>　<br></p>
+<ul>
+<li>定点数和浮点数</li>
+</ul>
+<p>定点数分为<code>定点整数</code>和<code>定点小数</code>，利用浮点数可以扩大实数的表示范围，即<code>科学计数法</code>. <br></p>
+<h3 id="计算机中字符型数据的编码"><a href="#计算机中字符型数据的编码" class="headerlink" title="计算机中字符型数据的编码"></a>计算机中字符型数据的编码</h3><ul>
+<li><p>ASCII码</p>
+</li>
+<li><p>汉字编码</p>
+</li>
+</ul>
+<h1 id="字符集和保留字"><a href="#字符集和保留字" class="headerlink" title="字符集和保留字"></a>字符集和保留字</h1><h2 id="基本符号集"><a href="#基本符号集" class="headerlink" title="基本符号集"></a>基本符号集</h2><ul>
+<li><p>数字10个 <br><br>0,1,2,…,9 <br></p>
+</li>
+<li><p>大小写字母各26个　<br></p>
+</li>
+<li><p>下划线</p>
+</li>
+<li>特殊符号</li>
+</ul>
+<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><ul>
+<li>用户标识符</li>
+</ul>
+<p>即用户自定义的变量名字，要求由<code>字母，数字，下划线</code>组成，且<code>不能以数字开头</code>，<code>区分大小写</code>　<br></p>
+<ul>
+<li>保留字</li>
+</ul>
+<p>自带的，比如<code>char,int</code>等，总计32个　<br></p>
+<ul>
+<li>预定义标识符</li>
+</ul>
+<p><code>#define</code>和<code>#include</code> 之类的，挺有用的　<br></p>
+<h1 id="C语言的数据类型"><a href="#C语言的数据类型" class="headerlink" title="C语言的数据类型"></a>C语言的数据类型</h1><ul>
+<li>基本类型</li>
+</ul>
+<p>整型(int，short，long)+实型(float，double)+字符型(char)<br></p>
+<ul>
+<li>构造类型</li>
+</ul>
+<p>数组类型＋结构体类型(struct)+共用体类型(union)+枚举类型(enum) <br></p>
+<ul>
+<li>指针类型</li>
+</ul>
+<p>指针类型(*) <br></p>
+<ul>
+<li>空类型</li>
+</ul>
+<p>空类型(void)</p>
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><h2 id="数值常量"><a href="#数值常量" class="headerlink" title="数值常量"></a>数值常量</h2><ul>
+<li>整型常量　<br></li>
+</ul>
+<p>八进制整型常量必须以0开头，数码取0~7，通常是无符号数<br><br>十六进制整型常量的前缀为0X或0x，数码取值0~9，A~F或a~f <br><br>十进制整型常量无前缀，数码为0~9 <br></p>
+<ul>
+<li>实型常量</li>
+</ul>
+<p>也就是我们所说的浮点数　<br><br>小数形式＋指数形式(科学计数法)</p>
+<h2 id="字符常量和字符串常量"><a href="#字符常量和字符串常量" class="headerlink" title="字符常量和字符串常量"></a>字符常量和字符串常量</h2><ul>
+<li>字符常量</li>
+</ul>
+<p>用<code>单引号</code>括住，可作为整数常量来处理(指ASCII值)，<code>a=&#39;a&#39;+1=97+1=98</code>　<br><br>还有一些不可显示的字符，如换行，回车等，以反斜杠开头　<br><br>注意转移字符的使用，比如<code>&#39;\&quot;&#39;</code>表示双引号，<code>&#39;\\&#39;</code>表示反斜杠</p>
+<ul>
+<li>字符串常量</li>
+</ul>
+<p>用<code>双引号</code>括住，比如”I love China!”<br><br>注意转义字符的使用：比如<code>he said he is a &quot;super man&quot;</code>可以表示为<code>&quot;he said he is a \&quot;super man \&quot;&quot;</code>，程序如下：<br><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"he said he is a \"super man\""</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">he said he is a <span class="string">"super man"</span></span><br></pre></td></tr></table></figure></p>
+<p>不同于字符常量的是，字符串常量以<code>&#39;\0&#39;</code>结束，但不显示<code>&#39;\0&#39;</code>，从而C语言中字符串的长度不受限制<br></p>
+<h2 id="符号常量"><a href="#符号常量" class="headerlink" title="符号常量"></a>符号常量</h2><p><code>#define PI 3.1415926</code>诸如此类，必须<code>大写</code></p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量3要素：<code>变量名＋变量的存储单元＋变量(存储单元存放)的值</code><br></p>
+<h2 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h2><p>定义变量3要素：<strong>存储类型(auto,static)+数据类型＋变量名</strong>　<br></p>
+<p>通常我们省略的存储类型，默认是<code>auto</code>，即都会把变量存放在<code>动态存储区</code>（栈区），这种变量在程序运行过程中实时分配和释放.<br><br>而<code>static</code>定义的变量的存储方式是<code>静态存储</code>的，<code>静态局部变量是放在静态存储区的</code>，在整个程序运行期间都不释放，跟全局变量一样长期占用内存。但是静态局部变量和全局变量还是不一样的，比如说，静态局部变量只能在所定义的函数内引用，静态局部变量在函数调用结束后是仍然存在的，但不能被其他函数引用。<strong>静态局部变量是在编译时赋初值的，即只赋初值一次，在程序运行时它已经有了初值，以后每次调用函数时不再对其重新复制，而只是保留上次函数调用结束时的值。</strong>在定义静态局部变量时，如不赋初值，则编译时自动赋初值为0。有时在程序设计中定义一个全局变量，只限于被所在源文件引用，而不想让其他文件引用，则可在定义全局变量前面加static，即静态全局变量。(此段引用自<a href="https://blog.csdn.net/he__yuan/article/details/79477882" target="_blank" rel="noopener">https://blog.csdn.net/he__yuan/article/details/79477882</a>)　<br></p>
+<ul>
+<li>整型变量</li>
+</ul>
+<p>基本型<code>int</code>,占4字节<br><br>短整型<code>short int</code> 或者<code>short</code>，占２字节　<br><br>长整型<code>long int</code> 或者<code>long</code>，占4字节，与基本型一样　<br><br>无符号型<code>unsigned</code></p>
+<p>对于无符号型，由于没有符号位，所以不能表示负数　<br></p>
+<ul>
+<li>实型变量</li>
+</ul>
+<p><code>单精度类型</code>(float，占4字节)和<code>双精度类型</code>(double，占8字节) <br></p>
+<p>-　字符变量</p>
+<p><code>char</code>，占1字节，每个字符只能防放一个字符，由于C语言中没有字符串变量，如果需要把字符串放在变量中，就需要一个字符型数组来实现<br><br>比如下面这各个，我将<code>字符串常量</code>“china”赋给a这个<code>变量</code>，由于上述原因，a只能接受一个字符，故产生异常:<br><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">char</span> a=<span class="string">"china"</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,a);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">p0.c: In function ‘main’:</span><br><span class="line">p0.c:<span class="number">4</span>:<span class="number">8</span>: warning: initialization makes integer from pointer without a cast [-Wint-conversion]</span><br><span class="line"> <span class="keyword">char</span> a=<span class="string">"china"</span>;</span><br><span class="line">        ^~~~~~~</span><br></pre></td></tr></table></figure></p>
+<p>而将”china”这个字符串改为字符’a’,再次运行：　<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> a = <span class="string">'a'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>就能正常输出’a’的ASCII码的值了，即97.<br></p>
+<h2 id="变量的存储"><a href="#变量的存储" class="headerlink" title="变量的存储"></a>变量的存储</h2><p><strong>存储某变量的内存空间的首地址称为变量的地址</strong>，变量地址用<code>&amp;变量名</code>来表示,<code>&amp;</code>表示取地址，即取存储空间首地址<br><br><strong>注意</strong>：虽然地址的值在形式上和整型数一样，也可以用十进制或者十六进制表示，但意义不一样.整型数有算数，关系，逻辑等运算，而<code>地址只有有限的算数运算和关系运算</code>.<br><br>还有，<code>地址的值一定是一个整型量</code>.</p>
+<h2 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h2><p>直接举个栗子：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a,b;</span><br><span class="line">a=<span class="number">1</span>;</span><br><span class="line">b=<span class="number">2</span></span><br></pre></td></tr></table></figure></p>
+<p>等价于<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">2</span>;</span><br></pre></td></tr></table></figure></p>
+<h1 id="数据的输入和输出"><a href="#数据的输入和输出" class="headerlink" title="数据的输入和输出"></a>数据的输入和输出</h1><p>C语言的所有输入和输出操作都是调用<code>标准I/O库函数</code>　<br></p>
+<h2 id="格式输入-输出函数"><a href="#格式输入-输出函数" class="headerlink" title="格式输入/输出函数"></a>格式输入/输出函数</h2><ul>
+<li>格式输入函数</li>
+</ul>
+<p><code>printf(格式控制字符串,输出项表)</code></p>
+<ul>
+<li>格式输入函数</li>
+</ul>
+<p><code>scanf(格式控制字符串,输入项地址表)</code></p>
+<h2 id="字符输入-输出函数"><a href="#字符输入-输出函数" class="headerlink" title="字符输入/输出函数"></a>字符输入/输出函数</h2><ul>
+<li>字符输出函数</li>
+</ul>
+<p><code>putchar(ch)</code>，<code>ch</code>可以使整型变量或者字符型变量.<br><br>这将输出字符，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    char a = &apos;a&apos;;</span><br><span class="line">    int b=97;</span><br><span class="line">    putchar(&apos;\n&apos;);</span><br><span class="line">    putchar(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这将输出两个a，各占一行，即<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">a</span><br></pre></td></tr></table></figure></p>
+<p>提示：97是’a’的ASCII码.　<br></p>
+<ul>
+<li>字符输入函数</li>
+</ul>
+<p><code>getchar()</code>，无参数<br></p>
+<p>举个例子就清楚了：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> a ;</span><br><span class="line">   a=getchar();</span><br><span class="line">   <span class="built_in">putchar</span>(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输入a，程序将输出a<br></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>喜欢所以热爱，坚持干货分享，欢迎订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>呐，请我吃辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/14/求解线性方程组的直接方法/" rel="next" title="求解线性方程组的直接方法">
+                <i class="fa fa-chevron-left"></i> 求解线性方程组的直接方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">因为喜欢，所以热爱，软件&书籍&技术干货分享站</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据在计算机内部的表示"><span class="nav-number">1.</span> <span class="nav-text">数据在计算机内部的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的进位制"><span class="nav-number">1.1.</span> <span class="nav-text">常用的进位制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值与字符在计算机中的表示"><span class="nav-number">1.2.</span> <span class="nav-text">数值与字符在计算机中的表示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机中数值型数据的编码"><span class="nav-number">1.2.1.</span> <span class="nav-text">计算机中数值型数据的编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机中字符型数据的编码"><span class="nav-number">1.2.2.</span> <span class="nav-text">计算机中字符型数据的编码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符集和保留字"><span class="nav-number">2.</span> <span class="nav-text">字符集和保留字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本符号集"><span class="nav-number">2.1.</span> <span class="nav-text">基本符号集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标识符"><span class="nav-number">2.2.</span> <span class="nav-text">标识符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C语言的数据类型"><span class="nav-number">3.</span> <span class="nav-text">C语言的数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常量"><span class="nav-number">4.</span> <span class="nav-text">常量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数值常量"><span class="nav-number">4.1.</span> <span class="nav-text">数值常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符常量和字符串常量"><span class="nav-number">4.2.</span> <span class="nav-text">字符常量和字符串常量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号常量"><span class="nav-number">4.3.</span> <span class="nav-text">符号常量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量"><span class="nav-number">5.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的定义"><span class="nav-number">5.1.</span> <span class="nav-text">变量的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的存储"><span class="nav-number">5.2.</span> <span class="nav-text">变量的存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的初始化"><span class="nav-number">5.3.</span> <span class="nav-text">变量的初始化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据的输入和输出"><span class="nav-number">6.</span> <span class="nav-text">数据的输入和输出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#格式输入-输出函数"><span class="nav-number">6.1.</span> <span class="nav-text">格式输入/输出函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符输入-输出函数"><span class="nav-number">6.2.</span> <span class="nav-text">字符输入/输出函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom">微信公众号：我将在南极找寻你</div>
+
+
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">凡希统计：总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">有<span id="busuanzi_value_site_uv"></span>个小伙伴来过</span>
+    <span class="post-meta-divider">
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
