@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="凡希的博客">
 <meta property="og:description" content="数据在计算机内部的表示常用的进位制R进制数只采用R个基本数字符号，R称为数制的基数，数制中每一固定位置对应的单位值称为权，进位原则是逢R进1.比如二进制，那么基数就是２，数字符号就是0,1再比如八进制，则基数为８，数字符号为0,1,…,7(共８位).注意在16进制中，基数为16很自然，但是数字符号应该是0,1,2,…,15，然而以为数只能到9，所以16进制的10用A来表示，11用B来表示，这样子一">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-16T03:04:45.708Z">
+<meta property="og:updated_time" content="2018-10-16T03:21:00.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言基础之数据类型与输入&#x2F;输出">
 <meta name="twitter:description" content="数据在计算机内部的表示常用的进位制R进制数只采用R个基本数字符号，R称为数制的基数，数制中每一固定位置对应的单位值称为权，进位原则是逢R进1.比如二进制，那么基数就是２，数字符号就是0,1再比如八进制，则基数为８，数字符号为0,1,…,7(共８位).注意在16进制中，基数为16很自然，但是数字符号应该是0,1,2,…,15，然而以为数只能到9，所以16进制的10用A来表示，11用B来表示，这样子一">
@@ -370,11 +370,29 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-10-16 11:04:45" itemprop="dateModified" datetime="2018-10-16T11:04:45+08:00">2018-10-16</time>
+                <time title="Modified: 2018-10-16 11:21:00" itemprop="dateModified" datetime="2018-10-16T11:21:00+08:00">2018-10-16</time>
               
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -506,7 +524,7 @@
 <h2 id="字符输入-输出函数"><a href="#字符输入-输出函数" class="headerlink" title="字符输入/输出函数"></a>字符输入/输出函数</h2><ul>
 <li>字符输出函数</li>
 </ul>
-<p><code>putchar(ch)</code>，<code>ch</code>可以使整型变量或者字符型变量.<br><br>这将输出字符，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">    char a = &apos;a&apos;;</span><br><span class="line">    int b=97;</span><br><span class="line">    putchar(&apos;\n&apos;);</span><br><span class="line">    putchar(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>putchar(ch)</code>，<code>ch</code>可以使整型变量或者字符型变量.<br><br>这将输出字符，比如：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> a = <span class="string">'a'</span>;</span><br><span class="line">    <span class="keyword">int</span> b=<span class="number">97</span>;</span><br><span class="line">    <span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">    <span class="built_in">putchar</span>(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这将输出两个a，各占一行，即<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">a</span><br></pre></td></tr></table></figure></p>
 <p>提示：97是’a’的ASCII码.　<br></p>
 <ul>
@@ -686,7 +704,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -944,6 +964,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
