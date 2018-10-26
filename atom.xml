@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-26T05:28:05.786Z</updated>
+  <updated>2018-10-26T05:53:33.373Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,13 +17,41 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>求极限的一般方法</title>
+    <link href="http://yoursite.com/2018/10/26/%E6%B1%82%E6%9E%81%E9%99%90%E7%9A%84%E4%B8%80%E8%88%AC%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2018/10/26/求极限的一般方法/</id>
+    <published>2018-10-26T05:48:37.000Z</published>
+    <updated>2018-10-26T05:53:33.373Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、利用初等函数的连续性求极限；</p><p>2、利用极限的运算法则求极限；</p><p>3、利用左右极限求极限；</p><p>4、利用两个重要极限求极限；</p><p>5、利用无穷小与有界量的积为无穷小的性质求极限；</p><p>6、利用等价无穷小代换求极限；</p><p>7、利用单调有界性准则求极限；</p><p>8、利用夹逼准则求极限；</p><p>9、利用中值定理求极限；</p><p>10、利用洛必达法则求极限；</p><p>11、用定积分求极限；</p><p>12、利用泰勒公式求极限；</p><p>13、利用数项收敛的必要性求极限。</p><p><img src="timg.gif" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1、利用初等函数的连续性求极限；&lt;/p&gt;
+&lt;p&gt;2、利用极限的运算法则求极限；&lt;/p&gt;
+&lt;p&gt;3、利用左右极限求极限；&lt;/p&gt;
+&lt;p&gt;4、利用两个重要极限求极限；&lt;/p&gt;
+&lt;p&gt;5、利用无穷小与有界量的积为无穷小的性质求极限；&lt;/p&gt;
+&lt;p&gt;6、利用等价无穷小代换求极限；&lt;
+      
+    
+    </summary>
+    
+      <category term="Mathematic Analysis" scheme="http://yoursite.com/categories/Mathematic-Analysis/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>关于０/０型极限未定式的一些疑惑</title>
     <link href="http://yoursite.com/2018/10/25/%E5%85%B3%E4%BA%8E%EF%BC%90-%EF%BC%90%E5%9E%8B%E6%9E%81%E9%99%90%E6%9C%AA%E5%AE%9A%E5%BC%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E7%96%91%E6%83%91/"/>
     <id>http://yoursite.com/2018/10/25/关于０-０型极限未定式的一些疑惑/</id>
     <published>2018-10-25T13:26:17.000Z</published>
-    <updated>2018-10-26T05:28:05.786Z</updated>
+    <updated>2018-10-26T05:49:54.408Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>在进入正题之前，先来看一道题目. <br></p></blockquote><p><strong>[引例]</strong>　设$f(0)=0$，且$\lim_{h\rightarrow0}\frac{f(1-cos h)}{h^2}$存在，则$f’(0)$存在吗?<br><br><strong>解</strong>：<br><br>$\lim_{h\rightarrow0}\frac{f(1-cos h)}{h^2}=\lim_{h\rightarrow0}\frac{f(0+(1-cos h))-f(0)}{h^2}=\frac12\ lim_{h\rightarrow0}\frac{f(0+(1-cos h))-f(0)}{\frac{h^2}{2}}=lim_{h\rightarrow0}\frac{f(0+(1-cos h))-f(0)}{(1-cos h)-0}$<br>令$1-cos h=t$,<br><br>则当$h\rightarrow0$时，$cos h\rightarrow1^-$(因为$|cos h|&lt;=1$，所以只能从1的左侧趋近于１)，从而$1-cos h\rightarrow0^+$，即$t\rightarrow0^+$ <br><br>所以$\lim_{h\rightarrow0}\frac{f(1-cos h)}{h^2}=lim_{h\rightarrow0}\frac{f(0+(1-cos h))-f(0)}{(1-cos h)-0}=lim_{t\rightarrow0^+}\frac{f(0+t)-f(0)}{t-0}$存在（这是题干已知条件） <br><br>由极限的定义可知，$f(x)$在$x=0$处的右极限存在，即$f^{‘+}(0)$存在<br><br>但是，$f(x)$在$x=0$处的左极限是否存在<br>呢？根据当前已知的条件，我们无从得知，从而就不能确定$f(x)$在$x=0$处的导数是否存在（这里是根据导数的定义：只有当左右导数同时存在且相等时，才能确定该函数在该点的导数是存在的）.<br></p><blockquote><p>看完上面的引例，来进入正题！<br></p></blockquote><p><strong>[题目]</strong>计算极限$\lim_{x\rightarrow0}\frac{1-cosx\sqrt{cosx}}{x^2}$ <br><br><strong>解</strong>　<br><br>$\lim_{x\rightarrow0}\frac{1-cosx\sqrt(cosx)}{x^2}=\lim_{x\rightarrow0}\frac{(1-cosx)+(cosx-cosx\sqrt{cosx})}{x^2}=\lim_{x\rightarrow0}\frac{1-cosx}{x^2}+\lim_{x\rightarrow0}\frac{cosx(1-\sqrt{consx})}{x^2}$ <br><br>第一部分直接利用等价无穷小，得$\frac12$.<br><br>第二部分利用极限的四则运算法则，有<br><br>$\lim_{x\rightarrow0}\frac{cosx(1-\sqrt{cosx})}{x^2}=\lim_{x\rightarrow0}{cosx}.\lim_{x\rightarrow0}\frac{1-\sqrt{cosx}}{x^2}\=1.\lim_{x\rightarrow0}{\frac{1-cosx}{x^2(1+\sqrt{cosx})}=\lim_{x\rightarrow0}(\frac1{1+\sqrt{cosx})}\lim_{x\rightarrow0}\frac{1-cosx}{x^2}}\=\frac12{\lim_{x\rightarrow0}\frac{1-cosx}{x^2}}=\frac14$ <br><br>所以最终结果为$\frac12+\frac14=\frac34$ <br></p><p>现在，我们采用另外一种方法求解上题<br><br>$\lim_{x\rightarrow0}\frac{1-cosx\sqrt{cosx}}{x^2}=\frac12\lim_{x\rightarrow0}\frac{1-cosx\sqrt{cosx}}{1-cosx}$ <br><br>到这里一切正常<br><br>继续<br><br>令$cosx=t$，由于$x\rightarrow0$时，$cosx\rightarrow1^-$（因为｜cosx｜&lt;=1,所以只能从１的左侧趋近于１），即$t\rightarrow1^-$，从而上式可化为<br><br>$$\frac12\lim_{t\rightarrow1^-}\frac{1-t\sqrt{t}}{1-t}=\frac12\lim_{t\rightarrow1^-}\frac{1-t^{\frac32}}{1-t}$$ <br><br>最后利用洛必达法则计算得到结果为$\frac34$　<br></p><blockquote><p><strong>我的疑问</strong>：这里只计算出来了左极限存在为一个数，右极限不确定，类比刚开始的引例，那么以上过程是错误的吗？<br><br>这里的$\frac{1-t^{\frac32}}{1-t}$是初等函数，书上说初等函数在其定义区间（定义域内的任意一小区间，包含于定义域）上连续，而此函数的定义域为$cosx&gt;=0且cosx!=1$，也就是$t&gt;=0且t!=1$ 。<br><br>现在$t\rightarrow1^-$,而$1$是断点，不在定义区间上。（<strong>解惑：极限是在去心邻域定义的，这个不影响</strong>）<br></p></blockquote><blockquote><p>解惑：以上过程没毛病，当$t\rightarrow1^-$时，$x$可以从两侧趋近于０，$x$的双侧极限值都等于$t$的单侧极限值，可以把$x$的两侧极限都求解一下来验证这一点.：<br><br>利用第一种解法中的一步，即$\frac12{\lim_{x\rightarrow0}\frac{1-cosx}{x^2}}$，不论$x\rightarrow0^+$还是$x\rightarrow0^-$，由于它是偶函数，所以结果都是一样的。</p></blockquote><p>所以，快滚去看课本！</p><p><img src="1.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>在进入正题之前，先来看一道题目. <br></p></blockquote><p><strong>[引例]</strong>　设$f(0)=0$，且$\lim_{h\rightarrow0}\frac{f(1-cos h)}{h^2}$存在，则$f’(0)$存在吗?<br><br><strong>解</strong>：<br><br>$\lim_{h\rightarrow0}\frac{f(1-cos h)}{h^2}=\lim_{h\rightarrow0}\frac{f(0+(1-cos h))-f(0)}{h^2}=\frac12\ lim_{h\rightarrow0}\frac{f(0+(1-cos h))-f(0)}{\frac{h^2}{2}}=lim_{h\rightarrow0}\frac{f(0+(1-cos h))-f(0)}{(1-cos h)-0}$<br>令$1-cos h=t$,<br><br>则当$h\rightarrow0$时，$cos h\rightarrow1^-$(因为$|cos h|&lt;=1$，所以只能从1的左侧趋近于１)，从而$1-cos h\rightarrow0^+$，即$t\rightarrow0^+$ <br><br>所以$\lim_{h\rightarrow0}\frac{f(1-cos h)}{h^2}=lim_{h\rightarrow0}\frac{f(0+(1-cos h))-f(0)}{(1-cos h)-0}=lim_{t\rightarrow0^+}\frac{f(0+t)-f(0)}{t-0}$存在（这是题干已知条件） <br><br>由极限的定义可知，$f(x)$在$x=0$处的右极限存在，即$f^{‘+}(0)$存在<br><br>但是，$f(x)$在$x=0$处的左极限是否存在<br>呢？根据当前已知的条件，我们无从得知，从而就不能确定$f(x)$在$x=0$处的导数是否存在（这里是根据导数的定义：只有当左右导数同时存在且相等时，才能确定该函数在该点的导数是存在的）.<br></p><blockquote><p>看完上面的引例，来进入正题！<br></p></blockquote><p><strong>[题目]</strong>计算极限$\lim_{x\rightarrow0}\frac{1-cosx\sqrt{cosx}}{x^2}$ <br><br><strong>解</strong>　<br><br>$\lim_{x\rightarrow0}\frac{1-cosx\sqrt(cosx)}{x^2}=\lim_{x\rightarrow0}\frac{(1-cosx)+(cosx-cosx\sqrt{cosx})}{x^2}=\lim_{x\rightarrow0}\frac{1-cosx}{x^2}+\lim_{x\rightarrow0}\frac{cosx(1-\sqrt{consx})}{x^2}$ <br><br>第一部分直接利用等价无穷小，得$\frac12$.<br><br>第二部分利用极限的四则运算法则，有<br><br>$\lim_{x\rightarrow0}\frac{cosx(1-\sqrt{cosx})}{x^2}=\lim_{x\rightarrow0}{cosx}.\lim_{x\rightarrow0}\frac{1-\sqrt{cosx}}{x^2}\=1.\lim_{x\rightarrow0}{\frac{1-cosx}{x^2(1+\sqrt{cosx})}=\lim_{x\rightarrow0}(\frac1{1+\sqrt{cosx})}\lim_{x\rightarrow0}\frac{1-cosx}{x^2}}\=\frac12{\lim_{x\rightarrow0}\frac{1-cosx}{x^2}}=\frac14$ <br><br>所以最终结果为$\frac12+\frac14=\frac34$ <br></p><p>现在，我们采用另外一种方法求解上题<br><br>$\lim_{x\rightarrow0}\frac{1-cosx\sqrt{cosx}}{x^2}=\frac12\lim_{x\rightarrow0}\frac{1-cosx\sqrt{cosx}}{1-cosx}$ <br><br>到这里一切正常<br><br>继续<br><br>令$cosx=t$，由于$x\rightarrow0$时，$cosx\rightarrow1^-$（因为｜cosx｜&lt;=1,所以只能从１的左侧趋近于１），即$t\rightarrow1^-$，从而上式可化为<br><br>$$\frac12\lim_{t\rightarrow1^-}\frac{1-t\sqrt{t}}{1-t}=\frac12\lim_{t\rightarrow1^-}\frac{1-t^{\frac32}}{1-t}$$ <br><br>最后利用洛必达法则计算得到结果为$\frac34$　<br></p><blockquote><p><strong>我的疑问</strong>：这里只计算出来了左极限存在为一个数，右极限不确定，类比刚开始的引例，那么以上过程是错误的吗？<br><br>这里的$\frac{1-t^{\frac32}}{1-t}$是初等函数，书上说初等函数在其定义区间（定义域内的任意一小区间，包含于定义域）上连续，而此函数的定义域为$cosx&gt;=0且cosx!=1$，也就是$t&gt;=0且t!=1$ 。<br><br>现在$t\rightarrow1^-$,而$1$是断点，不在定义区间上。（<strong>解惑：极限是在去心邻域定义的，这个不影响</strong>）<br></p></blockquote><blockquote><p>解惑：以上过程没毛病，当$t\rightarrow1^-$时，$x$可以从两侧趋近于０，$x$的双侧极限值都等于$t$的单侧极限值，可以把$x$的两侧极限都求解一下来验证这一点.：<br><br>利用第一种解法中的一步，即$\frac12{\lim_{x\rightarrow0}\frac{1-cosx}{x^2}}$，不论$x\rightarrow0^+$还是$x\rightarrow0^-$，由于它是偶函数，所以结果都是一样的。</p></blockquote><p>一般的，我们需要讨论左右侧极限的题目类型如下：<br></p><blockquote><p>1.分段函数，无论连续不连续，都一定得分左右证明 <br><br>2.连续性问题，证明连续性<br><br>3.定积分时，若是广义积分、暇积分，不得不考虑单侧极限。是积分积出来之后才考虑单侧极限。<br></p></blockquote><p>所以，快滚去看课本！</p><p><img src="1.png" alt=""></p>]]></content>
     
     <summary type="html">
     
