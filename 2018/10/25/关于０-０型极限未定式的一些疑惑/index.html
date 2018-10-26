@@ -116,10 +116,12 @@
 <meta property="og:site_name" content="凡希的博客">
 <meta property="og:description" content="在进入正题之前，先来看一道题目.   [引例]　设$f(0)=0$，且$\lim_{h\rightarrow0}\frac{f(1-cos h)}{h^2}$存在，则$f’(0)$存在吗?解：$\lim_{h\rightarrow0}\frac{f(1-cos h)}{h^2}=\lim_{h\rightarrow0}\frac{f(0+(1-cos h))-f(0)}{h^2}=\frac12">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-25T14:31:42.947Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/25/关于０-０型极限未定式的一些疑惑/1.png">
+<meta property="og:updated_time" content="2018-10-26T05:28:05.786Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于０&#x2F;０型极限未定式的一些疑惑">
 <meta name="twitter:description" content="在进入正题之前，先来看一道题目.   [引例]　设$f(0)=0$，且$\lim_{h\rightarrow0}\frac{f(1-cos h)}{h^2}$存在，则$f’(0)$存在吗?解：$\lim_{h\rightarrow0}\frac{f(1-cos h)}{h^2}=\lim_{h\rightarrow0}\frac{f(0+(1-cos h))-f(0)}{h^2}=\frac12">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/25/关于０-０型极限未定式的一些疑惑/1.png">
 
 
 
@@ -353,12 +355,24 @@
                 
               
 
-              <time title="Created: 2018-10-25 21:26:17 / Modified: 22:31:42" itemprop="dateCreated datePublished" datetime="2018-10-25T21:26:17+08:00">2018-10-25</time>
+              <time title="Created: 2018-10-25 21:26:17" itemprop="dateCreated datePublished" datetime="2018-10-25T21:26:17+08:00">2018-10-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-26 13:28:05" itemprop="dateModified" datetime="2018-10-26T13:28:05+08:00">2018-10-26</time>
               
             
           </span>
@@ -419,8 +433,13 @@
 <p><strong>[题目]</strong>计算极限$\lim_{x\rightarrow0}\frac{1-cosx\sqrt{cosx}}{x^2}$ <br><br><strong>解</strong>　<br><br>$\lim_{x\rightarrow0}\frac{1-cosx\sqrt(cosx)}{x^2}=\lim_{x\rightarrow0}\frac{(1-cosx)+(cosx-cosx\sqrt{cosx})}{x^2}=\lim_{x\rightarrow0}\frac{1-cosx}{x^2}+\lim_{x\rightarrow0}\frac{cosx(1-\sqrt{consx})}{x^2}$ <br><br>第一部分直接利用等价无穷小，得$\frac12$.<br><br>第二部分利用极限的四则运算法则，有<br><br>$\lim_{x\rightarrow0}\frac{cosx(1-\sqrt{cosx})}{x^2}=\lim_{x\rightarrow0}{cosx}.\lim_{x\rightarrow0}\frac{1-\sqrt{cosx}}{x^2}\=1.\lim_{x\rightarrow0}{\frac{1-cosx}{x^2(1+\sqrt{cosx})}=\lim_{x\rightarrow0}(\frac1{1+\sqrt{cosx})}\lim_{x\rightarrow0}\frac{1-cosx}{x^2}}\=\frac12{\lim_{x\rightarrow0}\frac{1-cosx}{x^2}}=\frac14$ <br><br>所以最终结果为$\frac12+\frac14=\frac34$ <br></p>
 <p>现在，我们采用另外一种方法求解上题<br><br>$\lim_{x\rightarrow0}\frac{1-cosx\sqrt{cosx}}{x^2}=\frac12\lim_{x\rightarrow0}\frac{1-cosx\sqrt{cosx}}{1-cosx}$ <br><br>到这里一切正常<br><br>继续<br><br>令$cosx=t$，由于$x\rightarrow0$时，$cosx\rightarrow1^-$（因为｜cosx｜&lt;=1,所以只能从１的左侧趋近于１），即$t\rightarrow1^-$，从而上式可化为<br><br>$$\frac12\lim_{t\rightarrow1^-}\frac{1-t\sqrt{t}}{1-t}=\frac12\lim_{t\rightarrow1^-}\frac{1-t^{\frac32}}{1-t}$$ <br><br>最后利用洛必达法则计算得到结果为$\frac34$　<br></p>
 <blockquote>
-<p><strong>我的疑问</strong>：这里只计算出来了左极限存在为一个数，右极限不确定，类比刚开始的引例，那么以上过程是错误的吗？<br><br>这里的$\frac{1-t^{\frac32}}{1-t}$是初等函数，书上说初等函数在其定义区间（定义域内的任意一小区间，包含于定义域）上连续，而此函数的定义域为$cosx&gt;=0且cosx!=1$，也就是$t&gt;=0且t!=1$ 。<br><br>现在$t\rightarrow1^-$,而$1$是断点，不在定义区间上。<br><br>求指点下，谢谢！</p>
+<p><strong>我的疑问</strong>：这里只计算出来了左极限存在为一个数，右极限不确定，类比刚开始的引例，那么以上过程是错误的吗？<br><br>这里的$\frac{1-t^{\frac32}}{1-t}$是初等函数，书上说初等函数在其定义区间（定义域内的任意一小区间，包含于定义域）上连续，而此函数的定义域为$cosx&gt;=0且cosx!=1$，也就是$t&gt;=0且t!=1$ 。<br><br>现在$t\rightarrow1^-$,而$1$是断点，不在定义区间上。（<strong>解惑：极限是在去心邻域定义的，这个不影响</strong>）<br></p>
 </blockquote>
+<blockquote>
+<p>解惑：以上过程没毛病，当$t\rightarrow1^-$时，$x$可以从两侧趋近于０，$x$的双侧极限值都等于$t$的单侧极限值，可以把$x$的两侧极限都求解一下来验证这一点.：<br><br>利用第一种解法中的一步，即$\frac12{\lim_{x\rightarrow0}\frac{1-cosx}{x^2}}$，不论$x\rightarrow0^+$还是$x\rightarrow0^-$，由于它是偶函数，所以结果都是一样的。</p>
+</blockquote>
+<p>所以，快滚去看课本！</p>
+<p><img src="1.png" alt=""></p>
 
       
     </div>
