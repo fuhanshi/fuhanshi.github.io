@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-26T05:53:33.373Z</updated>
+  <updated>2018-10-27T06:55:47.160Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利息的基本概念</title>
+    <link href="http://yoursite.com/2018/10/26/%E5%88%A9%E6%81%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    <id>http://yoursite.com/2018/10/26/利息的基本概念/</id>
+    <published>2018-10-26T06:34:37.000Z</published>
+    <updated>2018-10-27T06:55:47.160Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="知识梳理"><a href="#知识梳理" class="headerlink" title="知识梳理"></a>知识梳理</h2><h3 id="一些基本概念："><a href="#一些基本概念：" class="headerlink" title="一些基本概念："></a>一些基本概念：<br></h3><p><strong>本金</strong>：每项业务开始时投资的金额.<br><br><strong>积累值（终值）</strong>：业务在一定时间后回收到的总金额称为该时刻的积累值，与<code>本金</code>与<code>投资日算起的时间长度</code>有关.<br><br><strong>积累函数</strong>$a(t)$又叫<code>t期积累因子</code>，与之相对的是<code>t期折现因子</code>$v(t)$ ，并且有$a(t)=v^-(t)$ .<br><br><strong>现值</strong>只与该时点以后的款项有关，<strong>积累值</strong>只与该时点以前的款项有关.<br><br><strong>第$n$期利息</strong>：$I_n=A(n)-A(n-1)$，$n&gt;=1,n$是整数.　<br></p><h3 id="实际利率"><a href="#实际利率" class="headerlink" title="实际利率"></a>实际利率</h3><p>第$n$期的实际利率$i_n=\frac{I_n}{A_{n-1}.}$.<br></p><blockquote><p>单利：$a(t)=1+it$ ，$i_n=\frac{a(n)-a(n-1)}{a(n-1)}=\frac{(1+in)-(1+i(n-1))}{1-i(n-1)}=\frac{i}{1+i(n-1)}$   <br><br>复利：$a(t)=(1+i)^t$，$i_n=\frac{a(n)-a(n-1)}{a(n-1)}=\frac{(1+i)^n-(1+i))^{n-1}}{(1+i)^{n-1}.}=i$ <br></p></blockquote><p>为使得获利最大：<br><br>当$t&gt;=1$时，$(1+i)^t&gt;=1+it$，选复利.<br><br>当$t&lt;=1$时，$(1+i)^t&lt;=1+it$，选单利.<br></p><h3 id="实际贴现率"><a href="#实际贴现率" class="headerlink" title="实际贴现率"></a>实际贴现率</h3><p>定义：一个度量期内取得的利息金额与期末的投资可回收金额的比值，用$d$表示.<br><br>第$n$期的实际贴现率$d_n=\frac{I_n}{A_n}$. <br><br>公式：$v=a^-(1)=1-d$ <br></p><blockquote><p>复利场合的贴现率：$a(n)=(1+i)^n$，$d_n=\frac{a(n)-a(n-1)}{a(n)}=\frac{i}{1+i}$，又叫做<code>复贴现</code> <br><br>单利场合的贴现率：$a(n)=1+ni$，$d_n=\frac{d}{1-(n-1)d}$  <br></p></blockquote><p><strong>名义利率</strong>：设每期付$m$次利息的名义利率为$i^{(m)}$，则实际利率（每$\frac1m$期）为$\frac{i^{(m)}.}{m}$，通过$(1+i)=(1+\frac{i^{(m)}.}{m})^m$可以求得实际利率$i$. <br><br><strong>名义贴现率</strong>：通过$1-d=(1-\frac{d^{(m)}}{m})^m$可求得每期实际贴现率$d$. <br><br><strong>公式</strong>：<br>$$(1+\frac{i^{(m)}.}{m})^m=1+i=(1-\frac{d^{(p)}}{p})^{-p}=\frac1{1-d}$$　</p><h3 id="利息力"><a href="#利息力" class="headerlink" title="利息力"></a>利息力</h3><p>利息力用来度量在每一时点上的利息<br><br>公式：$a(t)=e^{\int_0^t \delta_t dt}$ <br></p><hr><p>现在，用一个公式对以上内容做一个总结，如下：<br>$$(1+\frac{i^{(m)}.}{m})^m=1+i=v^{-1}=(1-d)^{-1}=(1-\frac{d^{(p)}.}{p})^{(-p)}=e^{\delta}$$<br>注意这里的利息力(贴现力)是常数.<br><br><img src="1.jpeg" alt=""> <br></p><hr><h2 id="课本习题"><a href="#课本习题" class="headerlink" title="课本习题"></a>课本习题</h2><p>5．已知某笔投资在三年后的积累值为为1000元，第一年的利率为$i_1=$10%，第二年的利率为$i_2=$8%，第三年的利率为$i_3=$6%，求该笔投资的原始金额.<br><br>解：$A(0)(1+i_1)(1+i_2)(1+i_3)=1000–&gt;A(0)$ <br></p><p>13．假设某人在1984年7月1日投资1000元于某基金，该基金在$t$时刻的利息力为$\delta_t=\frac{3+2t}{50}$，其中$t$为距1984年1月1日的年数，求该笔投资在1985年1月1日的积累值.<br><br>解：$1000e^{\int_\frac12^1\delta_tdt}$ <br></p><p>14．某基金$A$以每月计息一次的年名义利率12%积累，基金$B$以利息强度$\delta_t=\frac{t}6$积累，在时刻0，两笔基金存入的款项相同，请确定两基金额相等的下一时刻.<br><br>解：$1.(1+\frac{0.12}{12})^{12n}=1.e^{\int_0^n\frac{t}{6}dt}–&gt;n$ <br></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;知识梳理&quot;&gt;&lt;a href=&quot;#知识梳理&quot; class=&quot;headerlink&quot; title=&quot;知识梳理&quot;&gt;&lt;/a&gt;知识梳理&lt;/h2&gt;&lt;h3 id=&quot;一些基本概念：&quot;&gt;&lt;a href=&quot;#一些基本概念：&quot; class=&quot;headerlink&quot; title=&quot;一些基
+      
+    
+    </summary>
+    
+      <category term="金融数学" scheme="http://yoursite.com/categories/%E9%87%91%E8%9E%8D%E6%95%B0%E5%AD%A6/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>求极限的一般方法</title>
@@ -475,27 +498,6 @@
     </summary>
     
       <category term="Mathematic Analysis" scheme="http://yoursite.com/categories/Mathematic-Analysis/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>差分方程的解析解</title>
-    <link href="http://yoursite.com/2018/09/30/diff/"/>
-    <id>http://yoursite.com/2018/09/30/diff/</id>
-    <published>2018-09-30T08:12:08.626Z</published>
-    <updated>2018-09-30T08:12:08.626Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="差分方程的解析解"><a href="#差分方程的解析解" class="headerlink" title="差分方程的解析解"></a>差分方程的解析解</h3><p><strong>例题</strong>．求$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解<br></p><hr><p>当初始条件已知，即$y_0$已知时，迭代算法如下：</p><ul><li>向前迭代算法<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_3=a_0+a_1y_2+\epsilon_3$$<br>$$…$$<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br><br>以上列举了该差分方程的所有项，我们要做的就是通过这些递推关系来逐步迭代，当迭代完所有项之后，最终可以得到目标解析解.<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2=a_0+a_1(a_0+a_1y_0+\epsilon_1)+\epsilon_2=$$<br>$$a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2=[a_0(1+a_1)]+[a_1^2y_0]+[a_1\epsilon_1+\epsilon_2]$$<br>$$y_3=a_0+a_1y_2+\epsilon_3=a_0+a_1(a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2)+\epsilon_3=$$<br>$$[a_0+a_0a_1+a_0{a_1}^2]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]=[a_0(1+a_1+a_1^2)]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]$$<br>$$…$$<br>由数学归纳法，递推下去，则有：<br><br>$$y_t=[a_0(a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_1+a_1^{t-2}\epsilon_2+…+a_1^0\epsilon_t]=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$<br>上式便是目标解析解，因为$y_0$已知，即不含有任何未知项.<br><br>之所以称之为“向前迭代法”，是因为迭代的索引是从$y_1$开始，一步一步往前面跑去，逐步迭代得到到目标式$y_n$的.<br></li></ul><p>你肯定会想到，既然有向前迭代，那么一定有向后迭代了，没错，向后迭代就是从最后一项$y_t$逐渐向$y_0$进行迭代.</p><ul><li>向后迭代<br><br>同样是求解$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解:<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br>$$y_{t-1}=a_0+a_1y_{t-2}+\epsilon_{t-1}$$<br>$$y_{t-2}=a_0+a_1y_{t-3}+\epsilon_{t-2}$$<br>$$…$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_0=a_0+a_1y_{-1}+\epsilon_0$$<br>开始迭代：(前面写了两次迭代过程,总共迭代$t-1$次)<br><br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t=$$<br>$$a_0+a_1(a_0+a_1y_{t-2}+\epsilon_{t-1})+\epsilon_t=$$<br>$$a_0+a_1a_0+a_1^2y_{t-2}+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0(1+a_1)]+[a_1^2y_{t-2}]+[a_1\epsilon_{t-1}+\epsilon_t]$$<br>$$a_0+a_1a_0+a_1^2(a_0+a_1y_{t-3}+\epsilon_{t-2})+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0+a_1a_0+a_1^2a_0]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$[a_0(1+a_1+a_1^2)]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$…$$<br>$$=[a_0(1+a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_{1}+a_1^{t-2}\epsilon_{2}+…+a_1^0\epsilon_t]＝$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$</li></ul><hr><p>而当初始条件未知，即$y_0$未知时，我们需要对上面得到的差分方程的解继续化：<br><br>$$y_t=a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^t(a_0+a_1y_{-1}+\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+(a_0a_1^t+a_1^{t+1}y_{-1}+a_1^t\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t}a_1^i+a_1^{t+1}y_{-1}+\sum_{i=0}^{t}a_1^i\epsilon_{t-i}=$$<br>$$…$$<br>$$=a_0\sum_{i=0}^{(t-1)+m}a_1^i+a_1^{t+m}y_{-m}+\sum_{i=0}^{(t-1)+m}a_1^i\epsilon_{t-i}$$</p><p>由于初始条件未知，我们现在来讨论解是否存在，即解的敛散性:<br></p><ul><li>当$|a_1|&lt;1$时，第一项出现等比数列求和，由无穷递缩等比数列性质，当$m\rightarrow\infty$时，第一项收敛到$\frac{a_0}{1-a_1}$;第二项中的$a_1^{t+m}$会收敛到０，因此第二项将收敛到０;第三项是一个有界量，类似于白噪声序列.<br><br>所以此时的解为<br>$$y_t=\frac{a_0}{1-a_1}+\sum_{i=0}^{t+m-1}a_1^i\epsilon_{t-i}$$</li><li>当$|a_1|&gt;1$时，发散；<br></li><li>当$|a_1|＝1$时，直接代回到最开始的式子，即得<br>$$y_t=a_0t+y_0+\sum_{i=0}^{t-1}\epsilon_{t-i}=a_0t+y_0+\sum_{i=1}^{t}\epsilon_{i}$$</li></ul><hr><p>以上便是针对例题展开的求解过程</p><hr><p>而对于一般的线性差分方程<br>$$y_t=a_0+a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}+x(t)．．．（１）$$<br>其齐次线性差分方程为<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}．．．（２）$$<br>我们首先要明确，<br></p><ul><li>对于齐次线性差分方程（２式），对任意常数$A$，如果$y_t^h$是其一个解，那么$Ay_t^h$也是其一个解.<br></li><li>而对于非齐次线性差分方程（１式），我们需要求其一个特解及其对应的齐次线性差分方程的一个通解.<br></li></ul><hr><p>我们接下来将介绍一种新的解法（不同于之前的迭代法），称之为<strong>备选（特征根法）解法</strong>，来求解非齐次线性差分方程，即（１）式.<br><br>步骤如下：<br><br><strong>(1)建立齐次线性差分方程（２）式，求齐次方程的解$y_t^{h_1},y_t^{h_2},…,y_t^{h_n}$；<br></strong><br>(2)求出非齐次线性差分方程(1)式的一个特解$y_t^p$；　<br><br>(3)非齐次线性差分方程（１）式的通解即为其自身的一个特解加上其对应的齐次线性差分方程的一个通解，即<br>$$y_t=y_t^p+A_1y_t^{h_1}+A_2y_t^{h_2}+…+A_ny_t^{h_n}$$<br><br>其中$A_1,A_2,…A_n$是任意常数；<br><br>(4)若已知初始条件$y_0,y_1,…$，则可以求出$A_1,A_2,…A_n$.(选)<br></p><hr><p>其中第一步是最麻烦的，所以下面我们将针对第一步，即齐次线性差分方程的求解问题展开讨论<br><br><strong>例题</strong>：解齐次线性差分方程<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}$$</p><hr><ul><li>一阶齐次差分方程$y_t=ay_{t-1}$，<br>通解为$Aa^t$ ,可以用迭代法证明，用特征根法更为简单：<br><br>猜想其解的形式为$y_t=A\alpha^t$，代入上式，得$A\alpha^t=aA\alpha^{t-1}$，即$\alpha=a$，故通解为$y_t=aA\alpha^{t-1}=Aa^t$.</li><li>二阶齐次差分方程$y_t=a_1y_{t-1}+a_2y_{t-2}$ ，<br><br>利用特征根法，猜想其解的形式为$y_t=A\alpha^t$，代入上式，得：<br>$$A\alpha^t=a_1A\alpha^{t-1}+a_2A\alpha^{t-2}$$<br>化简，得：<br>$$\alpha^2=a_1\alpha+a_2$$<br>移项，得：<br>$$\alpha^2-a_1\alpha-a_2=0$$<br>从而解得特征根为<br>$$\alpha_{1}=\frac{a_1{+}\sqrt{a_1^2+4a_2}}{2}$$<br>$$\alpha_{2}=\frac{a_1{-}\sqrt{a_1^2+4a_2}}{2}$$<br>其中$d=a_1^2+4a_2$　<br><br>$d$有三种情况：$d&gt;0,d＝０,d&lt;0$，下面就分这三种情况来讨论(<strong>下面的内容很重要!</strong>)<br></li></ul><blockquote><p>(1)当$d=a_1^2+4a_2&gt;0$时，$\alpha_1,\alpha_2$为互不相同的实根，此时的通解为<strong>$y_t=A_1\alpha_1^t+A_2\alpha_2^t$</strong>，其中$A_1,A_2$为任意常数.<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$大于1时，发散；<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$小于1时，收敛.<br></p></blockquote><blockquote><p>(2)当$d=a_1^2+4a_2=0$时，即$a_2=-\frac{a_1^2}{4}$时，$\alpha_1=\alpha_2$为重根，代回上面的特征根方程有$\alpha_1=\alpha_2=\frac{a_1}2$，此时$A\alpha_1^t=A{(\frac{a_1}2})^t$是方程的一个解（俩都一样，算一个），并且可以验证，$At{(\frac{a_1}2})^t$也是方程的一个解，所以此时方程的通解为$y_t=A_1{(\frac{a_1}2})^t+A_2t{(\frac{a_1}2})^t$，其中$A_1,A_2$为任意常数.<br><br>当$|\frac{a_1}2|&lt;1$时，收敛；<br><br>当$|\frac{a_1}2|&gt;1$时，发散.<br></p></blockquote><blockquote><p>(3)当$d=a_1^2+4a_2&lt;0$时，即$a_2&lt;-{\frac{a_1^2}4}&lt;=0$，$\alpha_1,\alpha_2$为共轭复根，且<br><br> $$\alpha_1=\frac{a_1+i\sqrt{-d}}2$$<br> $$\alpha_1=\frac{a_1-i\sqrt{-d}}2$$<br> 由于$a+bi=r(cos\theta+isin\theta)$，所以得到$r=\sqrt{a^2+b^2}$，并且我们要知道$cos\theta=\frac{a}{r}$ <br><br> 回到题目，计算得$r=\sqrt{({\frac{a_1}{2})}^2+{-\frac{-d}{4}}}=\sqrt{-a_2}$，从而得$cos\theta=\frac{\frac{a_1}{2}}{\sqrt{-a_2}}=\frac{a_1}{2\sqrt{-a_2}}$. <br><br> 所以得到<br> $$\alpha_1=a+bi=r(cos\theta+isin\theta)=re^{i\theta}$$<br> $$\alpha_2=a-bi=r(cos\theta-isin\theta)=re^{-i\theta}$$<br> 所以<br> $${\alpha_1}^t={(a+bi)}^t=r^t(cos\theta+isin\theta)^t=r^te^{it\theta}$$<br> $${\alpha_2}^t={(a-bi)}^t=r^t(cos\theta-isin\theta)^t=r^te^{-it\theta}$$<br> 所以通解为<br> $$y_t=A_1r^te^{it\theta}+A_2r^te^{-it\theta}=r^t(A_1e^{it\theta}+A_2e^{-it\theta})$$<br> 其中$A_1,A_2$为任意常数.<br><br> 当$r=\sqrt{-a_2}&gt;1$时，即$a_2&lt;-1$时，发散；<br><br>  当$r=\sqrt{-a_2}&lt;1$时，即$-1&lt;a_2&lt;=0$时，收敛；<br><br>   当$r=\sqrt{-a_2}＝1$时，即$a_2=-1$时，波动增幅不变；<br></p></blockquote><p>以上便是二阶齐次差分方程所有可能情况下的解的求法以及解的敛散性的判别.</p><p>下面呢，我们将推广到一般的$n$阶齐次差分方程：<br><br>$$y_t=a_1y_{t-1}+a_2y_{t-2}+…+a_ny_{t-n}，a_n!=0$$<br>假设解的形式为$A\alpha^t$，则特征方程为<br>$$\alpha^n-a_1\alpha^{n-1}-a_2\alpha^{n-2}-…-a_n=0$$<br>从中可以解出非零的<br>$$\alpha_1,\alpha_2,…,\alpha_n$$<br>同样分３种情况，即$\alpha_1,\alpha_2,…,\alpha_n$是互不相同的实根，$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根和$\alpha_1,\alpha_2,…,\alpha_n$有复根.<br></p><blockquote><p>(1)$\alpha_1,\alpha_2,…,\alpha_n$是$n$个互不相同的实根时，通解为$y_t=A_1\alpha_1^t+A_2\alpha_2^t+…+A_n\alpha_n^t$；<br>(2)$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根时，不妨设$\alpha_1=\alpha_2=…=\alpha_d$，$\alpha_{d+1},\alpha_{d+2},…,\alpha_n$互不相同，则通解为<br>$$y_t=(A_1+A_2t+A_3t^2+…+A_dt^{d-1})\alpha_1^t+A_{d+1}\alpha_{d+1}^t+A_{d+2}\alpha_{d+2}^t+…+A_{n}\alpha_{n}^t$$<br>(3)$\alpha_1,\alpha_2,…,\alpha_n$有复根时，不妨设$\alpha_1,\alpha_2$为复根，$\alpha_3,\alpha_2,…,\alpha_n$互不相同.<br><br>设$\alpha_1=a+bi,\alpha_2=a-bi$，由于$r=\sqrt{a^2+b^2}，cos\theta=\frac{a}r$，所以有<br>$$\alpha_1=re^{i\theta}$$<br>$$\alpha_2=re^{-i\theta}$$<br>所以通解为<br>$$y_t=r^t(A_1e^{it\theta}+A_2e^{-it\theta})+A_3\alpha_3^t+A_4\alpha_4^t+…+A_n\alpha_n^t$$<br>其中$A_1,A_2,…A_n$为任意常数.</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;差分方程的解析解&quot;&gt;&lt;a href=&quot;#差分方程的解析解&quot; class=&quot;headerlink&quot; title=&quot;差分方程的解析解&quot;&gt;&lt;/a&gt;差分方程的解析解&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;例题&lt;/strong&gt;．求$y_t=a_0+a_1y_{t-1}+\epsi
-      
-    
-    </summary>
     
     
   </entry>
