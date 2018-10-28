@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-27T06:55:47.160Z</updated>
+  <updated>2018-10-28T15:36:14.568Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多元统计分析期中考点梳理</title>
+    <link href="http://yoursite.com/2018/10/28/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%9C%9F%E4%B8%AD%E8%80%83%E7%82%B9%E6%A2%B3%E7%90%86/"/>
+    <id>http://yoursite.com/2018/10/28/多元统计分析期中考点梳理/</id>
+    <published>2018-10-28T13:37:11.000Z</published>
+    <updated>2018-10-28T15:36:14.568Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Part-1．"><a href="#Part-1．" class="headerlink" title="Part 1．"></a>Part 1．</h2><p><strong>１．$What’s$ <code>统计距离</code>？$What’s$ <code>统计距离</code>与<code>欧氏距离</code>各自的<code>优缺点</code>(两者之间的<code>区别</code>与<code>联系</code>)?</strong></p><p><strong>2．$k-means$的思想、方法以及过程？</strong></p><p><strong>3．$Fisher$判别法的思想、方法以及过程推导？</strong></p><p><strong>4．<code>聚类分析</code>与<code>判别分析</code>的区别与联系？</strong></p><p><strong>5．PCA的思想与方法？</strong></p><p><strong>6．FA的思想与方法？</strong></p><p><strong>7．PCA与FA的区别与联系？</strong></p><hr><h2 id="Part-2．"><a href="#Part-2．" class="headerlink" title="Part 2．"></a>Part 2．</h2><p><strong>1．利用<code>随机向量</code>的<code>均值</code>与<code>方差</code>的性质求解<code>协方差矩阵</code></strong></p><p><strong>2．通过<code>判别分析/距离判别/计算马氏距离</code>，做判别</strong></p><p><strong>3．$PCA$求解主成分</strong></p><p><strong>4．已知$FA$的结果，求解<code>共同度</code>，<code>方差贡献率</code></strong></p><hr><h2 id="Part-1-．"><a href="#Part-1-．" class="headerlink" title="$Part 1$．"></a>$Part 1$．</h2><p><strong>１．$What’s$ <code>统计距离</code>？$What’s$ <code>统计距离</code>与<code>欧氏距离</code>各自的<code>优缺点</code>(两者之间的<code>区别</code>与<code>联系</code>)?</strong> <br></p><blockquote><p>$1^。$<code>统计距离</code>是一种可以<strong>体现各个变量在变差大小上的不同</strong>以及<strong>有时存在的相关性</strong>的距离，并且它<strong>与各变量所用的单位无关.</strong><br><br>(1)<code>优点：</code>可以<strong>体现各个变量在变差大小上的不同</strong>以及<strong>有时存在的相关性</strong>的距离，并且它<strong>与各变量所用的单位无关.</strong><br><br>(2)<code>缺点：</code>夸大了变化微小的变量的作用。受协方差矩阵不稳定的影响，并不总是能顺利计算出。<br></p><p>$2^。$<code>欧氏距离</code>欧也称欧几里得度量、欧几里得度量，是一个通常采用的距离定义，它是在$m$维空间中两个点之间的真实距离。在二维和三维空间中的欧氏距离的就是两点之间的距离。<br><br>(1)优点：欧式距离在计算方法和理解上较为简单<br><br>(2)缺点：在一些统计问题上有一些缺点，比如，在欧式距离中，每个坐标的贡献是同等的，但用测量值做为坐标值计算距离时，会带有不等的随机波动，这种情况下需要对坐标进行加权。</p></blockquote><p><strong>2．$k-means$的思想、方法以及过程？</strong><br></p><blockquote><p><code>基本思想:</code>把每个样品聚集到其最近形心(均值)类中.<br><br><code>方法:</code>对于给定的样本集，按照样本之间的距离大小，将样本集划分为K个簇。让簇内的点尽量紧密的连在一起，而让簇间的距离尽量的大。<br><br><code>过程：</code>把样品粗略分成$K$个初始类$–&gt;$进行修改，逐步分派到其最近均值的类中$–&gt;$重复上一步，直到各类无元素进出<br></p></blockquote><p><strong>3．$Fisher$判别法的思想、方法以及过程推导？</strong><br></p><blockquote><p><code>思想：</code>投影，将$k$组$p$维数据投影到某一个方向，使得组与组之间的投影尽可能地分开，然后再选择合适的判别规则，将新的样品进行分类判别。<br><br><code>方法：</code><br><br><code>过程：</code><br></p></blockquote><p><strong>4．<code>聚类分析</code>与<code>判别分析</code>的区别与联系？</strong><br></p><ul><li><p>区别：<br><br>1、基本思想不同</p><blockquote><p><code>聚类分析</code>是根据研究对象特征对研究对象进行分类的一种多元分析技术,在未知各样本类别的情况下，把性质相近的个体归为一类, 使得同一类中的个体都具有高度的同质性, 不同类之间的个体具有高度的异质性；<br><br><code>判别分析</code>是对已知分类的数据建立由数值指标构成的分类规则即判别函数, 然后把这样的规则应用到未知分类的样本去分类<br></p></blockquote><p>2、研究目的不同</p><blockquote><p>虽然都是研究分类的，但在进行<code>聚类分析</code>前，<code>对总体到底有几种类型不知道</code>（研究分几类较为合适需从计算中加以调整）。<code>判别分</code>析则是<code>在总体类型划分已知</code>，对当前新样本判断它们属于哪个总体。</p></blockquote><p>3.所具有的方法不同<br></p><blockquote><p><code>聚类分析</code>分两种：$Q$型聚类（对样本的聚类），$R$型聚类（对变量的聚类）。聚类分析需要注意的是，一般小样本数据可以用系统聚类法，大样本数据一般用快速聚类法（$K$均值聚类法），当研究因素既有分类变量又有计量变量，可以用两步聚类。<br><br><code>判别分析</code>有$Fisher$判别，$Bayes$判别和逐步判别。一般用$Fisher$判别即可，要考虑概率及误判损失最小的用$Bayes$判别，但变量较多时，一般先进行逐步判别筛选出有统计意义的变量，再结合实际情况选择用哪种判别方法.</p></blockquote></li></ul><p><strong>5．$PCA$的思想与方法？</strong><br></p><blockquote><p><code>思想：</code>PCA通过线性变换将原始数据变换为一组各维度线性无关的表示，可用于提取数据的主要特征分量<br><br><code>目的：</code>为了节省计算机在进行计算时所占用的资源，在减少需要分析的指标的同时，尽量减少原指标包含信息的损失，并用随机变量的方差来代表保留信息的比重，以达到对所收集数据进行全面分析的目的。<br><br><code>方法：</code>协方差矩阵法，相关矩阵法<br><br><code>参考：</code><a href="https://blog.csdn.net/daaikuaichuan/article/details/53444639" target="_blank" rel="noopener">https://blog.csdn.net/daaikuaichuan/article/details/53444639</a></p></blockquote><p><strong>6．$FA$的思想与方法？</strong><br></p><blockquote><p><code>思想：</code>根据相关性大小把原始变量分组，使得同组内的变量之间相关性较高，而不同组的变量间的相关性则较低<br><br><code>方法：</code>求解因子载荷的方法：主成分法，主轴因子法，极大似然法，最小二乘法，a因子提取法。</p></blockquote><p><strong>7．P$CA$与$FA$的区别与联系？</strong><br></p><ul><li>1．区别<blockquote><p>(1)都是一种多维随机变量降维的方法<br><br>(2)$FA$求解初始因子时有一种方法是$PCA$ <br></p></blockquote></li><li>2．联系<blockquote><p>(1)$PCA$是以方差度量保留的主成分的，使方差尽量大，$FA$中因子与原变量间有很高的相关性，且有很轻的解释能力<br><br>(2)形式不同.$PCA$是$Y=UX$，而$FA$为$X=AF+e$ <br><br>(3)$FA$除主成分法外还有其他方法，比如极大似然法 <br><br>(4)$FA$最后要进行因子旋转 <br></p></blockquote></li></ul><hr><h2 id="Part-2．-1"><a href="#Part-2．-1" class="headerlink" title="Part 2．"></a>Part 2．</h2><p><strong>1．利用<code>随机向量</code>的<code>均值</code>与<code>方差</code>的性质求解<code>协方差矩阵</code></strong><br></p><p><strong>2．通过<code>判别分析/距离判别/计算马氏距离</code>，做判别</strong><br></p><p><strong>3．$PCA$求解主成分</strong><br></p><p><strong>4．已知$FA$的结果，求解<code>共同度</code>，<code>方差贡献率</code></strong><br></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Part-1．&quot;&gt;&lt;a href=&quot;#Part-1．&quot; class=&quot;headerlink&quot; title=&quot;Part 1．&quot;&gt;&lt;/a&gt;Part 1．&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;１．$What’s$ &lt;code&gt;统计距离&lt;/code&gt;？$What’s$ &lt;cod
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>利息的基本概念</title>
@@ -256,9 +277,9 @@
     <link href="http://yoursite.com/2018/10/01/%E5%B9%B4%E9%87%91/"/>
     <id>http://yoursite.com/2018/10/01/年金/</id>
     <published>2018-10-01T13:20:01.000Z</published>
-    <updated>2018-10-27T14:52:58.208Z</updated>
+    <updated>2018-10-27T15:30:52.318Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="标准型年金"><a href="#标准型年金" class="headerlink" title="标准型年金"></a>标准型年金</h3><p>在此之前，先来谈一下关于折现到零时刻和积累到某（n）时刻的意思.<br><br>以期末付年金为例：<br><br>所谓零时刻，就是第一期的开始时刻，即1期初<br><br>所谓积累到某时刻，就是说某（n）时刻末尾，也就是第(n+1)期初.<br><br>以期末付标准型年金为例，如下图所示：<br><br><img src="1.jpg" alt=""> <br><br>另外，期初付年金核算公式推导如下<br><br><img src="2.jpg" alt=""></p><h3 id="一般型年金"><a href="#一般型年金" class="headerlink" title="一般型年金"></a>一般型年金</h3><h4 id="变利率年金"><a href="#变利率年金" class="headerlink" title="变利率年金"></a>变利率年金</h4><blockquote><p>１. 各付款期间段的利率不同，就是说在每个期间段都按照该期间段的利率来核算，所以年金现值为$a_{n┒}=(1+i_1)^{-1}+(1+i_1)^{-1}(1+i_2)^{-1}+…+(1+i_1)^{-1}(1+i_2)^{-1}…(1+i_n)^{-1}=\sum_{t=1}^n\prod_{s=1}^{t}(1+i_s)^{-1}$ <br>年金积累值为$s_n┒=1+(1+i_n)+(1+i_n)(1+i_{n-1})+…+(1+i_n)…(1+i_2)=\sum_{t=1}^{n}\prod_{s=0}^{t-1}(1+i_{n-s+1})$,令$i_{n+1}=0$ .<br><br>２. 各次付款所依据的利率不同，就是说利率是按照每次付款来计算的，当把某一次付款折现到０时刻或者积累到某时刻时，利率都是按照该次付款的利率，而不是随着付款的期间而变动，这样子，年金现值为$a_{n┒}=(1+i_1)^{-1}+(1+i_2)^{-2}+…+(1+i_n)^{-n}=\sum_{t=1}^{n}(1+i_t)^{-t}$，积累值为$s_{n┒}=(1+i_1)^{n-1}+(1+i_2)^{n-2}+…+(1+i_n)+1=\sum_{t=1}^{n}(1+i_t)^{n-t}$</p></blockquote><p><img src="3.jpg" alt=""> <br><br><img src="4.jpg" alt=""> <br></p><h4 id="付款频率与计息频率不同的年金"><a href="#付款频率与计息频率不同的年金" class="headerlink" title="付款频率与计息频率不同的年金"></a>付款频率与计息频率不同的年金</h4><p><img src="05.jpg" alt=""> <br><br><img src="06.jpg" alt=""> <br><br><img src="07.jpg" alt=""> <br></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="标准型年金"><a href="#标准型年金" class="headerlink" title="标准型年金"></a>标准型年金</h3><p>在此之前，先来谈一下关于折现到零时刻和积累到某（n）时刻的意思.<br><br>以期末付年金为例：<br><br>所谓零时刻，就是第一期的开始时刻，即1期初<br><br>所谓积累到某时刻，就是说某（n）时刻末尾，也就是第(n+1)期初.<br><br>以期末付标准型年金为例，如下图所示：<br><br><img src="1.jpg" alt=""> <br><br>另外，期初付年金核算公式推导如下<br><br><img src="2.jpg" alt=""></p><h3 id="一般型年金"><a href="#一般型年金" class="headerlink" title="一般型年金"></a>一般型年金</h3><h4 id="变利率年金"><a href="#变利率年金" class="headerlink" title="变利率年金"></a>变利率年金</h4><blockquote><p>１. 各付款期间段的利率不同，就是说在每个期间段都按照该期间段的利率来核算，所以年金现值为$a_{n┒}=(1+i_1)^{-1}+(1+i_1)^{-1}(1+i_2)^{-1}+…+(1+i_1)^{-1}(1+i_2)^{-1}…(1+i_n)^{-1}=\sum_{t=1}^n\prod_{s=1}^{t}(1+i_s)^{-1}$ <br>年金积累值为$s_n┒=1+(1+i_n)+(1+i_n)(1+i_{n-1})+…+(1+i_n)…(1+i_2)=\sum_{t=1}^{n}\prod_{s=0}^{t-1}(1+i_{n-s+1})$,令$i_{n+1}=0$ .<br><br>２. 各次付款所依据的利率不同，就是说利率是按照每次付款来计算的，当把某一次付款折现到０时刻或者积累到某时刻时，利率都是按照该次付款的利率，而不是随着付款的期间而变动，这样子，年金现值为$a_{n┒}=(1+i_1)^{-1}+(1+i_2)^{-2}+…+(1+i_n)^{-n}=\sum_{t=1}^{n}(1+i_t)^{-t}$，积累值为$s_{n┒}=(1+i_1)^{n-1}+(1+i_2)^{n-2}+…+(1+i_n)+1=\sum_{t=1}^{n}(1+i_t)^{n-t}$</p></blockquote><p><img src="3.jpg" alt=""> <br><br><img src="4.jpg" alt=""> <br></p><h4 id="付款频率与计息频率不同的年金"><a href="#付款频率与计息频率不同的年金" class="headerlink" title="付款频率与计息频率不同的年金"></a>付款频率与计息频率不同的年金</h4><p><img src="05.jpg" alt=""> <br><br><img src="06.jpg" alt=""> <br><br><img src="07.jpg" alt=""> <br></p><h4 id="连续年金"><a href="#连续年金" class="headerlink" title="连续年金"></a>连续年金</h4><p>连续年金，即付款频率无限大的年金，是付款频率大于计息频率的特例,就是在一个计息期内无限次付款<br><br><img src="08.jpg" alt=""> <br></p>]]></content>
     
     <summary type="html">
     
@@ -476,29 +497,6 @@
     
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>黎曼函数的连续性</title>
-    <link href="http://yoursite.com/2018/09/30/liman/"/>
-    <id>http://yoursite.com/2018/09/30/liman/</id>
-    <published>2018-09-30T09:56:06.819Z</published>
-    <updated>2018-09-30T09:56:06.819Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="黎曼函数的连续性"><a href="#黎曼函数的连续性" class="headerlink" title="黎曼函数的连续性"></a>黎曼函数的连续性</h2><p>黎曼函数，即<br><br>$$R(x)=\begin{cases}<br>0&amp;x为无理数\<br>\frac1{q}&amp;x=\frac{p}{q},p,q为正整数<br>\end{cases}$$<br>黎曼函数周期为１，所以只研究区间$[0,1]$的性质即可<br><br>性质：<strong>黎曼函数在区间$[0,1]$内的极限处处为零</strong><br><br>换句话说，<strong>黎曼函数在$[0,1]$上的无理点处处连续，在有理点间断</strong>.<br><br>下面我们来证明之~<br><br>证：对于有理数来说，可以写成$\frac{p}{q}$的既约真分数形式<br><br>$x=0$可以写成$x=\frac01$，即$R(0)=1$.　<br><br>所以，在$[0,1]$上，分母为1的有理点(既约)只有两个：$\frac01$和$\frac11$　<br><br>分母为2的有理点只有一个：$\frac12$　<br><br>分母为3的有理点只有两个：$\frac13$和$\frac23$　<br><br>分母为4的有理点只有两个：$\frac１４$和$\frac34$ <br><br>分母为5的有理点只有四个：$\frac15$,$\frac25$,$\frac35$和$\frac45$ <br><br>…<br><br>总之，对任意自然数$k$，分母不超过$k$的有理点个数是有限的<br><br>设$x_0$是$[0,1]$内任意一点，对任意给定的$\epsilon&gt;0$，设$k=[\frac{1}{\epsilon}]$，因为分母不超过$k$的有理点个数有限，设它们为$r_1,r_2,…,r_n$.<br><br>令$\delta=min{[r_i-x_0]}$，其中$1&lt;=i&lt;=n,r_i!=x_0$ <br><br>从而$\delta&gt;0$　<br><br>当$0&lt;|x-x_0|&lt;\delta$时，若$x$是无理数，则$R(x)=0$，若$x$为有理数，则其分母一定大于$k=[\frac{1}{\epsilon}]$(因为…)，于是$R(x)&lt;=\frac{1}{[\frac{1}{\epsilon}]+1}&lt;\epsilon$,因此成立$|R(x)-0|&lt;\epsilon$.<br><br>此即说明$R(x)$在$x_0$的极限为0（$x_0=0$时是指右极限，$x_0=1$时是指左极限）.根据$R(x)$的周期性，对一切$x_0属于(-\infty,+\infty)$成立$lim_{x{\rightarrow}x_0}R(x)=0$,证毕.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;黎曼函数的连续性&quot;&gt;&lt;a href=&quot;#黎曼函数的连续性&quot; class=&quot;headerlink&quot; title=&quot;黎曼函数的连续性&quot;&gt;&lt;/a&gt;黎曼函数的连续性&lt;/h2&gt;&lt;p&gt;黎曼函数，即&lt;br&gt;&lt;br&gt;$$R(x)=\begin{cases}&lt;br&gt;0&amp;amp;x为
-      
-    
-    </summary>
-    
-      <category term="Mathematic Analysis" scheme="http://yoursite.com/categories/Mathematic-Analysis/"/>
-    
     
   </entry>
   
