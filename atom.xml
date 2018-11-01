@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-01T08:26:58.434Z</updated>
+  <updated>2018-11-01T09:22:04.455Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/10/30/%E6%94%B6%E7%9B%8A%E7%8E%87/"/>
     <id>http://yoursite.com/2018/10/30/收益率/</id>
     <published>2018-10-30T08:11:45.000Z</published>
-    <updated>2018-11-01T08:26:58.434Z</updated>
+    <updated>2018-11-01T09:22:04.455Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="现金流分析"><a href="#现金流分析" class="headerlink" title="现金流分析"></a>现金流分析</h3><ul><li><strong>净现金流出</strong>：$C_t=O_t-I_t$　<br></li><li>通过现金流折现对现金流进行分析的方法称为<strong>现金流折现分析</strong>　<br></li><li>对于一般的现金流$R_t=-C_t(t=0,1,2,…,n)$，在利率为$i$时有现值$V(0)=\sum_{t=0}^{n}v^tR_t$，它可正可负.<br></li></ul><h3 id="收益率"><a href="#收益率" class="headerlink" title="收益率"></a>收益率</h3><ul><li><strong>收益率</strong>就是使<code>投资支出现值</code>与<code>投资回收现值`</code>相等`的的利率.<br></li><li>计算方法：令$V(0)=\sum_{t=0}^{n}v^tR_t$中的$V(0)$等于$0$，求解得到的$i$值就是收益率.<br></li><li>收益率可正可负<br></li></ul><h3 id="再投资收益率"><a href="#再投资收益率" class="headerlink" title="再投资收益率"></a>再投资收益率</h3><p>情形一<br><br>0时刻投资一单位货币，投资期限为$n$，本金年利率为$i$.每年产生的利息按照利率$j$再投资，即利率的年利率为$j$，则投资回收值在时刻$n$的积累值为<br>$$1+i[(1+j)^{n-1}+(1+j)^{n-2}+…+(1+j)^{0}]=1+is_{n┒j}$$</p><p>情形二<br><br>在标准期末付年金中，歌词付款产生的利息的再投资收益率均为$j$，即从时刻２开始，每期都有由付款本金产生的利息，由于付款的本金之和随时间推移逐年增加，因而每期所产生的利息也就逐年增加，因此，时刻$n$的积累本息和为<br>$$n+i(Is)<em>{n-1┒j}=n+i\frac{s</em>{n┒j}-n}{j}$$</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="现金流分析"><a href="#现金流分析" class="headerlink" title="现金流分析"></a>现金流分析</h3><ul><li><strong>净现金流出</strong>：$C_t=O_t-I_t$　<br></li><li>通过现金流折现对现金流进行分析的方法称为<strong>现金流折现分析</strong>　<br></li><li>对于一般的现金流$R_t=-C_t(t=0,1,2,…,n)$，在利率为$i$时有现值$V(0)=\sum_{t=0}^{n}v^tR_t$，它可正可负.<br></li></ul><h3 id="收益率"><a href="#收益率" class="headerlink" title="收益率"></a>收益率</h3><ul><li><strong>收益率</strong>就是使<code>投资支出现值</code>与<code>投资回收现值`</code>相等`的的利率.<br></li><li>计算方法：令$V(0)=\sum_{t=0}^{n}v^tR_t$中的$V(0)$等于$0$，求解得到的$i$值就是收益率.<br></li><li>收益率可正可负<br></li></ul><h3 id="再投资收益率"><a href="#再投资收益率" class="headerlink" title="再投资收益率"></a>再投资收益率</h3><p>情形一<br><br>0时刻投资一单位货币，投资期限为$n$，本金年利率为$i$.每年产生的利息按照利率$j$再投资，即利率的年利率为$j$，则投资回收值在时刻$n$的积累值为<br>$$1+i[(1+j)^{n-1}+(1+j)^{n-2}+…+(1+j)^{0}]=1+is_{n┒j}$$</p><p>情形二<br><br>在标准期末付年金中，各次付款产生的利息的再投资收益率均为$j$，即从时刻２开始，每期都有由付款本金产生的利息，由于付款的本金之和随时间推移逐年增加，因而每期所产生的利息也就逐年增加，因此，时刻$n$的积累本息和为<br>$$n+i(Is)<em>{n-1┒j}=n+i\frac{s</em>{n┒j}-n}{j}$$</p><p>而期初付年金相应的计算公式为<br>$$n+i(Is){n┒j}$$</p><h3 id="投资额基金收益率"><a href="#投资额基金收益率" class="headerlink" title="投资额基金收益率"></a>投资额基金收益率</h3><ul><li><p>一些符号的含义</p><blockquote><p>$A$：期初基金的资本量<br><br>$B$：期末基金的本息和<br><br>$I$：投资期内基金所获得的收入<br><br>$C_t$：时刻$t$投入资金或从基金中赎回的资金量，$0&lt;=t&lt;=1$<br><br>$C$：此期间注入或赎回的资金之和，即$C=\sum_tC_t$ <br></p></blockquote></li><li><p>于是，在一个期间内，我们有<br>$$B=A+C+I$$</p><p>若假设投资期内所获得的基金收入是在期末进行支付的，则有<br>$$I=iA+\sum_tC_{t } i_{1-t,t}$$<br>注意最后一个符号　<br></p><p>于是计算收益率的公式如下：</p><p>$$i=\frac{I}{A+\sum_tC_t(1-t)}$$</p><p>若假设歌各次资金的投入与赎回在$0-1$上是均匀分布的，那么有<br>$$i=\frac{I}{A+B-I}$$</p><h3 id="时间加权收益率"><a href="#时间加权收益率" class="headerlink" title="时间加权收益率"></a>时间加权收益率</h3><p>$$1+i=(1+i_1)+(1+i_2)+…+(1+i_m)$$</p><h3 id="投资组合法和投资年法"><a href="#投资组合法和投资年法" class="headerlink" title="投资组合法和投资年法"></a>投资组合法和投资年法</h3></li></ul>]]></content>
     
     <summary type="html">
     
@@ -35,6 +35,8 @@
       
     
     </summary>
+    
+      <category term="金融数学" scheme="http://yoursite.com/categories/%E9%87%91%E8%9E%8D%E6%95%B0%E5%AD%A6/"/>
     
     
   </entry>

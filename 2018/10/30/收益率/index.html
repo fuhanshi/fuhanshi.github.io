@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="凡希的博客">
 <meta property="og:description" content="现金流分析 净现金流出：$C_t=O_t-I_t$　 通过现金流折现对现金流进行分析的方法称为现金流折现分析　 对于一般的现金流$R_t=-C_t(t=0,1,2,…,n)$，在利率为$i$时有现值$V(0)=\sum_{t=0}^{n}v^tR_t$，它可正可负.  收益率 收益率就是使投资支出现值与投资回收现值`相等`的的利率. 计算方法：令$V(0)=\sum_{t=0}^{n}v^tR_t">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-01T08:26:58.434Z">
+<meta property="og:updated_time" content="2018-11-01T09:22:04.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="收益率">
 <meta name="twitter:description" content="现金流分析 净现金流出：$C_t=O_t-I_t$　 通过现金流折现对现金流进行分析的方法称为现金流折现分析　 对于一般的现金流$R_t=-C_t(t=0,1,2,…,n)$，在利率为$i$时有现值$V(0)=\sum_{t=0}^{n}v^tR_t$，它可正可负.  收益率 收益率就是使投资支出现值与投资回收现值`相等`的的利率. 计算方法：令$V(0)=\sum_{t=0}^{n}v^tR_t">
@@ -370,11 +370,29 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-01 16:26:58" itemprop="dateModified" datetime="2018-11-01T16:26:58+08:00">2018-11-01</time>
+                <time title="Modified: 2018-11-01 17:22:04" itemprop="dateModified" datetime="2018-11-01T17:22:04+08:00">2018-11-01</time>
               
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/金融数学/" itemprop="url" rel="index"><span itemprop="name">金融数学</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -422,7 +440,22 @@
 <li>收益率可正可负<br></li>
 </ul>
 <h3 id="再投资收益率"><a href="#再投资收益率" class="headerlink" title="再投资收益率"></a>再投资收益率</h3><p>情形一<br><br>0时刻投资一单位货币，投资期限为$n$，本金年利率为$i$.每年产生的利息按照利率$j$再投资，即利率的年利率为$j$，则投资回收值在时刻$n$的积累值为<br>$$1+i[(1+j)^{n-1}+(1+j)^{n-2}+…+(1+j)^{0}]=1+is_{n┒j}$$</p>
-<p>情形二<br><br>在标准期末付年金中，歌词付款产生的利息的再投资收益率均为$j$，即从时刻２开始，每期都有由付款本金产生的利息，由于付款的本金之和随时间推移逐年增加，因而每期所产生的利息也就逐年增加，因此，时刻$n$的积累本息和为<br>$$n+i(Is)<em>{n-1┒j}=n+i\frac{s</em>{n┒j}-n}{j}$$</p>
+<p>情形二<br><br>在标准期末付年金中，各次付款产生的利息的再投资收益率均为$j$，即从时刻２开始，每期都有由付款本金产生的利息，由于付款的本金之和随时间推移逐年增加，因而每期所产生的利息也就逐年增加，因此，时刻$n$的积累本息和为<br>$$n+i(Is)<em>{n-1┒j}=n+i\frac{s</em>{n┒j}-n}{j}$$</p>
+<p>而期初付年金相应的计算公式为<br>$$n+i(Is){n┒j}$$</p>
+<h3 id="投资额基金收益率"><a href="#投资额基金收益率" class="headerlink" title="投资额基金收益率"></a>投资额基金收益率</h3><ul>
+<li><p>一些符号的含义</p>
+<blockquote>
+<p>$A$：期初基金的资本量<br><br>$B$：期末基金的本息和<br><br>$I$：投资期内基金所获得的收入<br><br>$C_t$：时刻$t$投入资金或从基金中赎回的资金量，$0&lt;=t&lt;=1$<br><br>$C$：此期间注入或赎回的资金之和，即$C=\sum_tC_t$ <br></p>
+</blockquote>
+</li>
+<li><p>于是，在一个期间内，我们有<br>$$B=A+C+I$$</p>
+<p>若假设投资期内所获得的基金收入是在期末进行支付的，则有<br>$$I=iA+\sum_tC_{t } i_{1-t,t}$$<br>注意最后一个符号　<br></p>
+<p>于是计算收益率的公式如下：</p>
+<p>$$i=\frac{I}{A+\sum_tC_t(1-t)}$$</p>
+<p>若假设歌各次资金的投入与赎回在$0-1$上是均匀分布的，那么有<br>$$i=\frac{I}{A+B-I}$$</p>
+<h3 id="时间加权收益率"><a href="#时间加权收益率" class="headerlink" title="时间加权收益率"></a>时间加权收益率</h3><p>$$1+i=(1+i_1)+(1+i_2)+…+(1+i_m)$$</p>
+<h3 id="投资组合法和投资年法"><a href="#投资组合法和投资年法" class="headerlink" title="投资组合法和投资年法"></a>投资组合法和投资年法</h3></li>
+</ul>
 
       
     </div>
@@ -658,7 +691,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#现金流分析"><span class="nav-number">1.</span> <span class="nav-text">现金流分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收益率"><span class="nav-number">2.</span> <span class="nav-text">收益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再投资收益率"><span class="nav-number">3.</span> <span class="nav-text">再投资收益率</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#现金流分析"><span class="nav-number">1.</span> <span class="nav-text">现金流分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收益率"><span class="nav-number">2.</span> <span class="nav-text">收益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再投资收益率"><span class="nav-number">3.</span> <span class="nav-text">再投资收益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#投资额基金收益率"><span class="nav-number">4.</span> <span class="nav-text">投资额基金收益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时间加权收益率"><span class="nav-number">5.</span> <span class="nav-text">时间加权收益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#投资组合法和投资年法"><span class="nav-number">6.</span> <span class="nav-text">投资组合法和投资年法</span></a></li></ol></div>
             
 
           </div>
@@ -878,6 +911,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
