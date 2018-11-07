@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-07T04:18:36.178Z</updated>
+  <updated>2018-11-07T04:24:24.344Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/11/07/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E7%AC%AC%E5%9B%9B%E6%AC%A1%E4%B8%8A%E6%9C%BA%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
     <id>http://yoursite.com/2018/11/07/多元统计分析第四次上机实验报告/</id>
     <published>2018-11-07T04:11:13.000Z</published>
-    <updated>2018-11-07T04:18:36.178Z</updated>
+    <updated>2018-11-07T04:24:24.344Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h3><p>实验目的：<br>综合利用R语言进行数据分析　<br><br>实验项目名称：<br><br>1.应用R语言对附件1中的数据进行分析，并给出分析结果。<br><br>要求：<br><br>1、重新调整数据的结构，按照正确的方式读取数据。（如新建行业变量）<br>例：<br><br>d    深能源Ａ    16.85    12.35     42.32     0.37     1.78     7.18     45.73     54.54<br>d    深南电Ａ    22    15.30     46.51     0.76     1.77     15.67     48.11     19.41<br>其中d代表电力行业 <br></p><p>2.对各行业进行基础性统计分析，需要对比各行业对应指标的异同，用图表的方式呈现。<br><br>3.计算各指标的相关系数，说明哪些指标具有高相关性。<br><br>4.对所有行业数据进行聚类分析，确定分类结果并做简单分析，如利用聚类结果与行业对比，说明聚类结果是否和行业因素相关。<br><br>5.做出简单的统计分析报告，报告中需要包括但不限于以上要求的内容。<br></p><p>附加题：<br><br>1.构建一个判别模型，以确定新的公司的类别.（类别可为行业，也可用要求4中的聚类结果，自选你认为合理的）<br></p><h3 id="统计分析报告"><a href="#统计分析报告" class="headerlink" title="统计分析报告"></a>统计分析报告<br></h3><p>1.首先将数据导入Excel并对首列进行拆分，分别以d，f，x代表电力、煤气及水的生产和供应业，房地行业和信息技术业，然后将其另存为data.csv文件。接着读取该文件，代码如下：<br>data=read.csv(“C:\Users\Administrator\Desktop\第四次上机\data.csv”)<br><br>读入效果如下图所示：<br><br><img src="1.png" alt=""></p><p>2.利用summary命令进行信息汇总，即 summary(data)，结果如下：<br><br><img src="2.png" alt=""></p><p>3.利用cor命令计算各个指标之间的相关系数，即cor(data[,3:10])，结果如下<br><br><img src="3.png" alt=""></p><p>由此观之，净资产收益率与总资产报酬率之间的相关系数为0.89，说明两者之间的相关程度较大。同时，流动资产周转率和总资产周转率之间也呈现出较强的相关关系。<br></p><p>4.首先利用dist函数计算各个样本之间的距离，即dist(data)，然后对数据进行kmeans聚类，代码如下：kmeans(distance,centers=3,iter.max=1000,nstart=111)，聚类结果如下：<br><br><img src="4.png" alt=""><br>从中可以看出，聚类结果和行业因素是由一定关系的。<br></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h3><p>实验目的：<br>综合利用R语言进行数据分析　<br><br>实验项目名称：<br><br>1.应用R语言对附件1中的数据进行分析，并给出分析结果。<br><br>要求：<br><br>1、重新调整数据的结构，按照正确的方式读取数据。（如新建行业变量）<br>例：<br><br><img src="0.png" alt=""> <br></p><p>2.对各行业进行基础性统计分析，需要对比各行业对应指标的异同，用图表的方式呈现。<br><br>3.计算各指标的相关系数，说明哪些指标具有高相关性。<br><br>4.对所有行业数据进行聚类分析，确定分类结果并做简单分析，如利用聚类结果与行业对比，说明聚类结果是否和行业因素相关。<br><br>5.做出简单的统计分析报告，报告中需要包括但不限于以上要求的内容。<br></p><p>附加题：<br><br>1.构建一个判别模型，以确定新的公司的类别.（类别可为行业，也可用要求4中的聚类结果，自选你认为合理的）<br></p><h3 id="统计分析报告"><a href="#统计分析报告" class="headerlink" title="统计分析报告"></a>统计分析报告<br></h3><p>1.首先将数据导入Excel并对首列进行拆分，分别以d，f，x代表电力、煤气及水的生产和供应业，房地行业和信息技术业，然后将其另存为data.csv文件。接着读取该文件，代码如下：<br>data=read.csv(“C:\Users\Administrator\Desktop\第四次上机\data.csv”)<br><br>读入效果如下图所示：<br><br><img src="1.png" alt=""></p><p>2.利用summary命令进行信息汇总，即 summary(data)，结果如下：<br><br><img src="2.png" alt=""></p><p>3.利用cor命令计算各个指标之间的相关系数，即cor(data[,3:10])，结果如下<br><br><img src="3.png" alt=""></p><p>由此观之，净资产收益率与总资产报酬率之间的相关系数为0.89，说明两者之间的相关程度较大。同时，流动资产周转率和总资产周转率之间也呈现出较强的相关关系。<br></p><p>4.首先利用dist函数计算各个样本之间的距离，即dist(data)，然后对数据进行kmeans聚类，代码如下：kmeans(distance,centers=3,iter.max=1000,nstart=111)，聚类结果如下：<br><br><img src="4.png" alt=""><br>从中可以看出，聚类结果和行业因素是由一定关系的。<br></p>]]></content>
     
     <summary type="html">
     
