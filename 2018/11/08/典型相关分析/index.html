@@ -117,7 +117,7 @@
 <meta property="og:description" content="思想典型相关分析是研究两组变量整体之间相关关系的多元分析方法，它借助主成分分析降维的思想，分别对两组变量提取主成分，且使从两组变量提取的主成分之间的相关程度达到最大，而从同一组内部提取的各主成分之间互不相关，用从两组分别提取的主成分的相关性来描述两组变量整体的线性相关关系。 概述1)仍用相关系数来描述相关性2)从$X$中提取部分信息$U$，从$Y$中提取部分信息$V$ 3)$Ｕ,Ｖ$均为$X,Y$">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/2018/11/08/典型相关分析/timg.jpeg">
-<meta property="og:updated_time" content="2018-11-08T09:37:29.053Z">
+<meta property="og:updated_time" content="2018-11-08T09:45:49.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(CCA）典型相关分析">
 <meta name="twitter:description" content="思想典型相关分析是研究两组变量整体之间相关关系的多元分析方法，它借助主成分分析降维的思想，分别对两组变量提取主成分，且使从两组变量提取的主成分之间的相关程度达到最大，而从同一组内部提取的各主成分之间互不相关，用从两组分别提取的主成分的相关性来描述两组变量整体的线性相关关系。 概述1)仍用相关系数来描述相关性2)从$X$中提取部分信息$U$，从$Y$中提取部分信息$V$ 3)$Ｕ,Ｖ$均为$X,Y$">
@@ -355,7 +355,7 @@
                 
               
 
-              <time title="Created: 2018-11-08 13:18:17 / Modified: 17:37:29" itemprop="dateCreated datePublished" datetime="2018-11-08T13:18:17+08:00">2018-11-08</time>
+              <time title="Created: 2018-11-08 13:18:17 / Modified: 17:45:49" itemprop="dateCreated datePublished" datetime="2018-11-08T13:18:17+08:00">2018-11-08</time>
             
 
             
@@ -446,14 +446,14 @@
 <p>可以看出，${\lambda}^2$是$H={\Sigma_{22}.}^{-1}\Sigma_{21}(\Sigma_{11}^{-1}(\Sigma_{12}))$的特征值，$b$是${\lambda}^2$的特征向量，结合之前分析的结果，要使得目标函数达到最大，就是使得$\lambda$达到最大，那么此时当${\lambda}^2$达到最大时，$b$就是$H$的最大特征值(${.{\lambda}^2}_{max}$)对应的特征向量.<br><br>同理可以得到，$a$是$H’$的最大特征值对应的特征向量，过程如下：<br></p>
 <p>由(2’)得，$\frac{1}{\lambda}\Sigma_{21}a=\Sigma_{22}b$，进而得$b=\Sigma_{22}^{-1}(\frac{1}{\lambda}\Sigma_{21}a)$，代入(1’)得，$\Sigma_{12} \Sigma_{22}^{-1}(\frac{1}{\lambda}\Sigma_{21}a)-\lambda\Sigma_{11}a=0$，即$\Sigma_{12} \Sigma_{22}^{-1}(\Sigma_{21}a)-{\lambda}^2\Sigma_{11}a=0$，即有${\Sigma_{11}}^{-1}\Sigma_{12} \Sigma_{22}^{-1}(\Sigma_{21}a)={\lambda}^2a$ ，记$H’={\Sigma_{11}}^{-1}\Sigma_{12} \Sigma_{22}^{-1}(\Sigma_{21})$，即有$H’a={\lambda}^2a$  <br></p>
 <p>此时的${\lambda}^2$是$H’$的特征值，$a$是${\lambda}^2$对应的特征向量<br></p>
-<p>要求最大的$\lambda$,所以$a$为${\lambda}<em>{max}$对应的特征向量.<br><br>现在来观察一下$H＝{\Sigma</em>{22}.}^{-1}\Sigma_{21}(\Sigma_{11}^{-1}(\Sigma_{12}))$和$H’＝{\Sigma_{11}.}^{-1}\Sigma_{12} \Sigma_{22}^{-1}(\Sigma_{21})$ <br><br>不妨记${\Sigma_{22}}^{-1}\Sigma_{21}=A$，${\Sigma_{11}.}^{-1}\Sigma_{12}=B$ <br><br>则在求解$b$时，即求$AB$最大特征值(${\lambda}^2$)对应的特征向量　<br><br>在求解$a$时，即求$BA$的最大特征值(${\lambda}^2$)对应的特征向量 <br></p>
+<p>要求最大的$\lambda$，所以$a$为最大特征值对应的特征向量.<br><br>现在来观察一下$H＝{\Sigma_{22}.}^{-1}\Sigma_{21}(\Sigma_{11}^{-1}(\Sigma_{12}))$和$H’＝{\Sigma_{11}.}^{-1}\Sigma_{12} \Sigma_{22}^{-1}(\Sigma_{21})$ <br><br>不妨记${\Sigma_{22}}^{-1}\Sigma_{21}=A$，<br><br>${\Sigma_{11}.}^{-1}\Sigma_{12}=B$ <br><br>则在求解$b$时，即求$AB$最大特征值(${\lambda}^2$)对应的特征向量　<br><br>在求解$a$时，即求$BA$的最大特征值(${\lambda}^2$)对应的特征向量 <br></p>
 </blockquote>
 </li>
 </ul>
 <h2 id="求解下一对"><a href="#求解下一对" class="headerlink" title="求解下一对"></a>求解下一对</h2><p>由上一步，我们求得了$U=a’X$和$V=b’Y$，称$U和V$为第一对典型相关因子，那么接下来，我们可以一次求解第二对，第三对，．．．<br><br>但有一点需要注意的是，第二对的变量应该与第一对的变量不相关<br><br>比如在求解第二对的时候，即${\rho}_{U_2,V_2}=cov(a’_2X,b’_2Y)$且$var(U_2)=1,var(V_2)=1$ <br><br>需要满足<br><br>$cov(U_1,U_2)=cov(V_1,V_2)cov(U_1,V_2)=cov(U_2,V_1)=0$ <br></p>
 <p>其实，这里有个结论，就是：$a_2,b_2$就是之前求解第一对时的$AB,BA$的第二大特征值对应的特征向量，依次下去即可求解全部对<br></p>
 <p>酱紫，我们通过求解第一次的那个矩阵的特征值以及特征向量就能求解全部对了，也就是能求出全部的典型相关因子了.　<br></p>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>之前在自己啃$SVM$的时候所用到的求解方法与此类似，特此记录</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>之前在自己啃$SVM$的时候所用到的求解方法与此类似，特此记录<br></p>
 <p><img src="timg.jpeg" alt=""> <br></p>
 
       
