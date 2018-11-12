@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-11T04:06:17.574Z</updated>
+  <updated>2018-11-12T04:50:53.225Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>二分法</title>
+    <link href="http://yoursite.com/2018/11/12/%E4%BA%8C%E5%88%86%E6%B3%95/"/>
+    <id>http://yoursite.com/2018/11/12/二分法/</id>
+    <published>2018-11-12T03:48:38.000Z</published>
+    <updated>2018-11-12T04:50:53.225Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>二分法</strong>是数学领域的一种求零点的算法<br><br>对于定义区间为$[a,b]$上的连续函数$f(x)$，若有$f(a)$与$f(b)$异号，根据介值定理，$f(x)=0$的解必在$[a,b]$上，酱紫，就可以通过二分运算逐步缩小$[a,b]$（也就是取其子区间）来逼近函数的零点了<br></p><p><strong>图解</strong>如下：<br><br><img src="1.jpg" alt=""> <br></p><p><strong>二分法的计算步骤</strong>如下：　<br><br>取中点$\frac{a+b}2$ <br><br>若$f(a)与f(x)$异号，则令$b=x$,否则令$a=x$ <br><br>当子区间小于给定的要求长度时，停止二分运算<br></p><p>以上是在数学问题上的求解，在计算机科学方面，又衍生出了二分查找算法，其思想一样，只是处理的是问题是离散形式的<br></p><p><strong>使用条件</strong>：<br></p><ul><li><p>待查找的序列区间单调有序（单调递增或单调递减都可以）</p></li><li><p>待查找序列和题目的要求建立的函数关系单调有序</p></li></ul><p><strong>方法</strong>：假设待查找序列和题目的要求之间的关系是单调递增的，先取区间的中心，判断该处函数值和题目标准值的大小关系，如果函数值偏小，那么应该在中心右侧的区间继续查找；如果函数值偏大 ，那么应该在中心左侧区间继续查找，直到找到对应的值或者区间缩小到左右端点之间不再包含其他数据结束。</p><p><strong>实例代码</strong>：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int search(int arr[],int n,int key);</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">int arr[]=&#123;3,6,7,10,11,16,20,33,56,89&#125;;</span><br><span class="line">search(arr,10,56);</span><br><span class="line">&#125;</span><br><span class="line">int search(int arr[],int n,int key)</span><br><span class="line">&#123;</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = n-1;</span><br><span class="line">    int mid,count=0;</span><br><span class="line">    while(low&lt;=high)</span><br><span class="line">    &#123;</span><br><span class="line">    count++;</span><br><span class="line">    mid=(low+high)/2;</span><br><span class="line">    if(arr[mid]==key)</span><br><span class="line">        return mid;</span><br><span class="line">    else if (arr[mid]&lt;key)</span><br><span class="line">        low=mid;//low=mid+1;</span><br><span class="line">    else</span><br><span class="line">        high=mid;//high=mid+1;</span><br><span class="line">    &#125;</span><br><span class="line">return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><strong>查找结果</strong> <br><br><img src="2.png" alt=""> <br></p><p>参考：<a href="https://www.cnblogs.com/detrol/p/7533577.html" target="_blank" rel="noopener">https://www.cnblogs.com/detrol/p/7533577.html</a><br><a href="https://www.cnblogs.com/wanglog/p/6650695.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanglog/p/6650695.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;二分法&lt;/strong&gt;是数学领域的一种求零点的算法&lt;br&gt;&lt;br&gt;对于定义区间为$[a,b]$上的连续函数$f(x)$，若有$f(a)$与$f(b)$异号，根据介值定理，$f(x)=0$的解必在$[a,b]$上，酱紫，就可以通过二分运算逐步缩小$[a,b]
+      
+    
+    </summary>
+    
+      <category term="数据结构自学史" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%87%AA%E5%AD%A6%E5%8F%B2/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>2011上机题</title>
@@ -454,30 +477,6 @@
       
       
         &lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;setup, include&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;
-      
-    
-    </summary>
-    
-      <category term="R" scheme="http://yoursite.com/categories/R/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>多元统计与R语言第一次上机作业</title>
-    <link href="http://yoursite.com/2018/10/01/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E4%B8%8ER%E8%AF%AD%E8%A8%80%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%B8%8A%E6%9C%BA%E4%BD%9C%E4%B8%9A/"/>
-    <id>http://yoursite.com/2018/10/01/多元统计与R语言第一次上机作业/</id>
-    <published>2018-10-01T08:51:43.000Z</published>
-    <updated>2018-10-01T09:13:04.064Z</updated>
-    
-    <content type="html"><![CDATA[<p>2.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c(1,2,3)</span><br><span class="line">s&lt;-c</span><br><span class="line">print(s)</span><br></pre></td></tr></table></figure><p>3.1<br><figure class="highlight plain"><figcaption><span>&#125;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((-27)*12)/21</span><br></pre></td></tr></table></figure></p><p>3.2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqrt(10)</span><br></pre></td></tr></table></figure></p><p>3.3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log(10)</span><br></pre></td></tr></table></figure></p><p>3.4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log10(2+3*pi)</span><br></pre></td></tr></table></figure></p><p>3.5<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp(2.7689)</span><br></pre></td></tr></table></figure></p><p>3.6<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(25-5)^3</span><br></pre></td></tr></table></figure></p><p>3.7<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cos(pi)</span><br></pre></td></tr></table></figure></p><p>3.8.1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prod(2:3)</span><br></pre></td></tr></table></figure></p><p>3.8.2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10*9*8*7*6*5*4</span><br></pre></td></tr></table></figure></p><p>3.8.3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(10*9*8*7*6*5*4)/(40*39*38*37*36)</span><br></pre></td></tr></table></figure></p><p>3.9.1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choose(5,2)</span><br></pre></td></tr></table></figure></p><p>3.9.2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">choose(7,3)</span><br></pre></td></tr></table></figure></p><p>4.rep<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=c(1,2)</span><br><span class="line">rep(a,2)</span><br></pre></td></tr></table></figure></p><p>4.seq<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seq(from=1,to=10,by=2)</span><br></pre></td></tr></table></figure></p><p>4.matrix<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data=c(1,2,3,4,5,6,7,8)</span><br><span class="line">matrix(data,nrow=4,ncol=2,byrow=T)</span><br></pre></td></tr></table></figure></p><p>5.1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnorm(1)</span><br></pre></td></tr></table></figure></p><p>5.2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qnorm(0.95)</span><br></pre></td></tr></table></figure></p><p>5.3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpois(100,5)</span><br></pre></td></tr></table></figure></p><p>5.4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rnorm(100,60,10)</span><br></pre></td></tr></table></figure></p><p>6.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=c(rnorm(100,0,1))</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">print(sum(x))</span><br><span class="line">print(mean(x))</span><br><span class="line">print(var(x))</span><br><span class="line">print(sd(x))</span><br><span class="line">print(min(x))</span><br><span class="line">print(max(x))</span><br><span class="line">print(median(x))</span><br><span class="line">print(summary(x))</span><br></pre></td></tr></table></figure><p>7.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=seq(1,10,1)</span><br><span class="line">plot(x,exp(x))</span><br></pre></td></tr></table></figure></p><p>7.2<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x=runif(100,1,10)</span><br><span class="line">print(x)</span><br><span class="line">hist(x)</span><br></pre></td></tr></table></figure></p><p>8.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">library(MASS)</span><br></pre></td></tr></table></figure></p><p>9.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ID=c(&apos;01&apos;,&apos;02&apos;,&apos;03&apos;)</span><br><span class="line">class=c(1,2,3)</span><br><span class="line">body_long=c(188,189,190)</span><br><span class="line">weight=c(66,67,65)</span><br><span class="line">df=data.frame(ID,class,body_long,weight)</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure></p><p>10.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(df[,2])</span><br><span class="line">print(df[2,2])</span><br></pre></td></tr></table></figure></p><p>11.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data0=read.csv(&apos;path+1.csv&apos;)</span><br><span class="line">data1=read.table(&apos;path+1.txt&apos;,header=F)</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;2.&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;
       
     
     </summary>
