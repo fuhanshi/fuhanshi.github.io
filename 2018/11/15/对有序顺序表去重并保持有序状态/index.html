@@ -108,22 +108,18 @@
 
 
 
-  <meta name="description" content="问题１．已知指针ha和hb分别指向两个单链表的头结点，并且已知两个链表的长度分别为m和n。试写一算法将这两个链表连接在一起（即令其中一个表的首元结点连在另一个表的最后一个结点之后），假设指针hc指向连接后的链表的头结点，并要求算法以尽可能短的时间完成连接运算。请分析你的算法和时间复杂度。 算法思想： 对于两个含头结点的单链表，将其中一个的首元结点链接在另一个单链表的最后一个结点之后，不要求时间复杂">
+  <meta name="description" content="对有序数组进行去重  1234567891011121314151617181920212223242526272829303132#include &amp;lt;stdio.h&amp;gt;#define maxsize 7int delsame(int arr[]);int length=maxsize;void main()&amp;#123;int s[maxsize]=&amp;#123;1,2,2,3,4,4,">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线性表中遇到的算法思想整理">
-<meta property="og:url" content="http://yoursite.com/2018/11/02/线性表中遇到的算法思想整理/index.html">
+<meta property="og:title" content="对有序顺序表去重并保持有序状态">
+<meta property="og:url" content="http://yoursite.com/2018/11/15/对有序顺序表去重并保持有序状态/index.html">
 <meta property="og:site_name" content="凡希的博客">
-<meta property="og:description" content="问题１．已知指针ha和hb分别指向两个单链表的头结点，并且已知两个链表的长度分别为m和n。试写一算法将这两个链表连接在一起（即令其中一个表的首元结点连在另一个表的最后一个结点之后），假设指针hc指向连接后的链表的头结点，并要求算法以尽可能短的时间完成连接运算。请分析你的算法和时间复杂度。 算法思想： 对于两个含头结点的单链表，将其中一个的首元结点链接在另一个单链表的最后一个结点之后，不要求时间复杂">
+<meta property="og:description" content="对有序数组进行去重  1234567891011121314151617181920212223242526272829303132#include &amp;lt;stdio.h&amp;gt;#define maxsize 7int delsame(int arr[]);int length=maxsize;void main()&amp;#123;int s[maxsize]=&amp;#123;1,2,2,3,4,4,">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2018/11/02/线性表中遇到的算法思想整理/link_a&b.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/02/线性表中遇到的算法思想整理/insert_x.png">
-<meta property="og:image" content="http://yoursite.com/2018/11/02/线性表中遇到的算法思想整理/del_i_k.gif">
-<meta property="og:updated_time" content="2018-11-02T11:34:45.049Z">
+<meta property="og:updated_time" content="2018-11-15T07:12:15.051Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="线性表中遇到的算法思想整理">
-<meta name="twitter:description" content="问题１．已知指针ha和hb分别指向两个单链表的头结点，并且已知两个链表的长度分别为m和n。试写一算法将这两个链表连接在一起（即令其中一个表的首元结点连在另一个表的最后一个结点之后），假设指针hc指向连接后的链表的头结点，并要求算法以尽可能短的时间完成连接运算。请分析你的算法和时间复杂度。 算法思想： 对于两个含头结点的单链表，将其中一个的首元结点链接在另一个单链表的最后一个结点之后，不要求时间复杂">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/02/线性表中遇到的算法思想整理/link_a&b.png">
+<meta name="twitter:title" content="对有序顺序表去重并保持有序状态">
+<meta name="twitter:description" content="对有序数组进行去重  1234567891011121314151617181920212223242526272829303132#include &amp;lt;stdio.h&amp;gt;#define maxsize 7int delsame(int arr[]);int length=maxsize;void main()&amp;#123;int s[maxsize]=&amp;#123;1,2,2,3,4,4,">
 
 
 
@@ -132,7 +128,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/02/线性表中遇到的算法思想整理/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/15/对有序顺序表去重并保持有序状态/"/>
 
 
 
@@ -142,7 +138,7 @@
   };
 </script>
 
-  <title>线性表中遇到的算法思想整理 | 凡希的博客</title>
+  <title>对有序顺序表去重并保持有序状态 | 凡希的博客</title>
   
 
 
@@ -315,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/线性表中遇到的算法思想整理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/对有序顺序表去重并保持有序状态/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="凡希">
@@ -332,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">线性表中遇到的算法思想整理
+          <h1 class="post-title" itemprop="name headline">对有序顺序表去重并保持有序状态
               
             
           </h1>
@@ -357,7 +353,7 @@
                 
               
 
-              <time title="Created: 2018-11-02 17:34:43 / Modified: 19:34:45" itemprop="dateCreated datePublished" datetime="2018-11-02T17:34:43+08:00">2018-11-02</time>
+              <time title="Created: 2018-11-15 15:07:35 / Modified: 15:12:15" itemprop="dateCreated datePublished" datetime="2018-11-15T15:07:35+08:00">2018-11-15</time>
             
 
             
@@ -421,13 +417,10 @@
       
 
       
-        <p><strong>问题１</strong>．<br>已知指针ha和hb分别指向两个单链表的头结点，并且已知两个链表的长度分别为m和n。试写一算法将这两个链表连接在一起（即令其中一个表的首元结点连在另一个表的最后一个结点之后），假设指针hc指向连接后的链表的头结点，并要求算法以尽可能短的时间完成连接运算。请分析你的算法和时间复杂度。</p>
-<p><strong>算法思想：</strong> <br><br>对于两个含头结点的单链表，将其中一个的首元结点链接在另一个单链表的最后一个结点之后，不要求时间复杂度最优的情况下可以随意交换连接的顺序，但若要求尽可能快，需要注意在连接时，不动的那个需要从头结点遍历到尾节点，之后直接把尾结点的next域指向另一个单链表的首元结点即可，也就是说，算法所需要的时间复杂度主要是在遍历的时候造成的，所以被遍历的那个单链表的长度应该越短越好，所以我们应该把长的单链表的尾指针指向短的单链表的首元结点，也就是把短的连接到长的后面，最后的改变指针指向操作是一瞪眼的事儿.<br><br><img src="link_a&amp;b.png" alt=""> <br></p>
-<p><strong>问题２．</strong><br>设顺序表va中的数据元素递增有序。试写一算法，将x插入到顺序表的适当位置上，以保持该表的有序性．<br></p>
-<p><strong>算法思想：</strong><br><br>由于顺序表是可以随机存取的（任意位置存取），所以考虑从最后一个元素开始，依次比较x与该位置元素的大小，若x大于该点元素，则把ｘ直接插在该元素后面就可以了，否则，依次把ｘ向前遍历，直到到达一个满足ｘ大于遍历点元素的位置，将ｘ插在该点之后就可以了。<br><br><img src="insert_x.png" alt=""></p>
-<p><strong>问题３．</strong>从顺序表中删除从第i个元素起的ｋ个元素<br></p>
-<p><strong>算法思想</strong>　<br><br>即删除从第i个元素到第i＋k－１个元素共k个元素，所以把从第i+k个元素起<br>的元素前移到第i个元素起的后续位置上，注意位序比下标多1.<br><br><img src="del_i_k.gif" alt=""></p>
-
+        <ul>
+<li>对有序数组进行去重</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#define maxsize 7</span><br><span class="line">int delsame(int arr[]);</span><br><span class="line">int length=maxsize;</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">int s[maxsize]=&#123;1,2,2,3,4,4,7&#125;;</span><br><span class="line">delsame(s);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int delsame(int arr[])</span><br><span class="line">&#123;</span><br><span class="line">    int i=0;</span><br><span class="line">    int j;</span><br><span class="line">    for(j=0;j&lt;maxsize;j++)</span><br><span class="line">    &#123;   if(length==0)</span><br><span class="line">            return 0;</span><br><span class="line">        if(arr[i]!=arr[j])</span><br><span class="line">            &#123;</span><br><span class="line">                ++i;</span><br><span class="line">                arr[i]=arr[j];</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    length=i+1;</span><br><span class="line"></span><br><span class="line">    //打印最终的结果</span><br><span class="line">    for(int m=0;m&lt;length;m++)</span><br><span class="line">        &#123;</span><br><span class="line">            printf(&quot;%d&quot;,arr[m]);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -491,8 +484,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/30/收益率/" rel="next" title="收益率">
-                <i class="fa fa-chevron-left"></i> 收益率
+              <a href="/2018/11/12/二分法/" rel="next" title="二分法">
+                <i class="fa fa-chevron-left"></i> 二分法
               </a>
             
           </div>
@@ -500,10 +493,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/07/多元统计分析第四次上机实验报告/" rel="prev" title="多元统计分析第四次上机实验报告">
-                多元统计分析第四次上机实验报告 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
