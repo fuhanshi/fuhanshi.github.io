@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-15T07:12:15.051Z</updated>
+  <updated>2018-11-21T07:45:39.038Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多元统计上机第六次实验之列联分析与对应分析</title>
+    <link href="http://yoursite.com/2018/11/21/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E4%B8%8A%E6%9C%BA%E7%AC%AC%E5%85%AD%E6%AC%A1%E5%AE%9E%E9%AA%8C%E5%88%97%E8%81%94%E5%88%86%E6%9E%90%E4%B8%8E%E5%AF%B9%E5%BA%94%E5%88%86%E6%9E%90/"/>
+    <id>http://yoursite.com/2018/11/21/多元统计上机第六次实验列联分析与对应分析/</id>
+    <published>2018-11-21T07:39:15.000Z</published>
+    <updated>2018-11-21T07:45:39.038Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>第一题</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file1=read.csv(<span class="string">'C://Users//Administrator//Desktop//data//1.csv'</span>,head=<span class="literal">T</span>);</span><br></pre></td></tr></table></figure></p><p><strong>第二题</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data1=file1[,<span class="number">2</span>:<span class="number">3</span>];</span><br><span class="line">chisq.test(data1);</span><br></pre></td></tr></table></figure></p><blockquote><p>分析结果：p-value = 7.628e-06,所以拒绝原假设（不相关），说明收入高低对满意程度相关</p></blockquote><p><strong>第三题</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file2=read.csv(<span class="string">'C://Users//Administrator//Desktop//data//2.csv'</span>);</span><br><span class="line">data2=file2[,<span class="number">2</span>:<span class="number">5</span>];</span><br><span class="line">freq_num= table (data2);<span class="comment">#统计频数</span></span><br><span class="line">prop.table(freq_num);<span class="comment">#将频数表变成频率表</span></span><br></pre></td></tr></table></figure></p><p><strong>第四题</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#首先统计双变量频数形成列联表</span></span><br><span class="line">b= table (data2$ Treatment ,data2$Sex);<span class="comment">#统计双变量频数形成列联表</span></span><br><span class="line">c=table (data2$Sex ,data2$Improved);<span class="comment">#统计双变量频数形成列联表</span></span><br><span class="line"><span class="comment">#接下来将频数表变成频率表</span></span><br><span class="line">prop.table(b);</span><br><span class="line">prop.table(c);</span><br><span class="line"><span class="comment">#最后利用列联分析说明Sex与Treatment和Improved是否相关</span></span><br><span class="line">chisq.test(b);<span class="comment">#p-value = 0.5356，说明Treatment与Sex不相关</span></span><br><span class="line">chisq.test(c);<span class="comment">#p-value = 0.08889，说明Improved与Sex也不相关</span></span><br></pre></td></tr></table></figure></p><p><strong>第五题</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(MASS);</span><br><span class="line">file3=read.csv(<span class="string">'C://Users//Administrator//Desktop//data//3.csv'</span>);</span><br><span class="line">data3=file3[,<span class="number">2</span>:<span class="number">6</span>];</span><br><span class="line">d=corresp(data3,<span class="number">2</span>)<span class="comment">#2指选用两个因子，结果中有行列因子的得分</span></span><br><span class="line">biplot(d);<span class="comment">#绘图</span></span><br><span class="line">abline(v=<span class="number">0</span>,h=<span class="number">0</span>)<span class="comment">#加入参考线</span></span><br></pre></td></tr></table></figure></p><p><img src="1.png" alt=""> <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#分析：对应分析图被参考线划分为4个区域，其中，</span><br><span class="line">#(1)在不同象限表示距离较远，这里的距离是任意两者之间相关性的度量；</span><br><span class="line">#(2)位置是相对于中心的距离，距该离越小说明相对所属类别相对常见；</span><br><span class="line">#(3)角度越小，代表两者相关性越强。</span><br><span class="line">#因此我们可以得出以下结论：</span><br><span class="line"># 1.学士，高中和大专的学历相对常见，也对，一般上了高中之后要么进入university（学士学位），或者进入college(大专)</span><br><span class="line"># 2.高中和大专的相关性较之于其它比较来说相关性最强</span><br><span class="line"># 3.硕士和高中以下出现频率较低，说明高中以下学历和硕士学历两者一个处于学历链的偏上端，一个处于偏下端，这也和我们的认知相符。</span><br></pre></td></tr></table></figure></p><p><strong>第六题</strong><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">file4=read.csv(<span class="string">'C://Users//Administrator//Desktop//data//4.csv'</span>);</span><br><span class="line">data4=file4[,<span class="number">1</span>:<span class="number">6</span>];</span><br><span class="line">e=corresp(data4,<span class="number">2</span>)<span class="comment">#2指选用两个因子，结果中有行列因子的得分</span></span><br><span class="line">biplot(e);<span class="comment">#绘图</span></span><br><span class="line">abline(v=<span class="number">0</span>,h=<span class="number">0</span>)<span class="comment">#加入参考线</span></span><br></pre></td></tr></table></figure></p><p><img src="2.png" alt=""> <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#分析：</span><br><span class="line">#(1)使用小米和荣耀的人群相对常见，而使用苹果和VIVO的人群相对较少；</span><br><span class="line">#(2)使用小米和荣耀的人群之间相关性较强，说明一般使用小米的人也可能会对荣耀情有独钟，反之亦然；</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;第一题&lt;/strong&gt;&lt;br&gt;&lt;figure class=&quot;highlight r&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td clas
+      
+    
+    </summary>
+    
+      <category term="R" scheme="http://yoursite.com/categories/R/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>对有序顺序表去重并保持有序状态</title>
@@ -121,7 +144,7 @@
     <link href="http://yoursite.com/2018/11/07/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E7%AC%AC%E4%BA%94%E6%AC%A1%E4%B8%8A%E6%9C%BA%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"/>
     <id>http://yoursite.com/2018/11/07/多元统计第五次上机实验报告/</id>
     <published>2018-11-07T07:20:55.000Z</published>
-    <updated>2018-11-07T07:26:46.143Z</updated>
+    <updated>2018-11-21T07:40:23.113Z</updated>
     
     <content type="html"><![CDATA[<h3 id="一、美国法官评分的主成分分析"><a href="#一、美国法官评分的主成分分析" class="headerlink" title="一、美国法官评分的主成分分析"></a>一、美国法官评分的主成分分析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#prepare data for PCA</span><br><span class="line">data=USJudgeRatings[,1:11]</span><br><span class="line">#step1:calculate corr/cov</span><br><span class="line">sigma=cor(data)</span><br><span class="line">#step2:calculate eigenvalue and eigenvector</span><br><span class="line">vv=eigen(sigma)</span><br><span class="line">#vv$values&amp;vv$vectors</span><br><span class="line">eigenvalue=vv$values</span><br><span class="line">eigenvector=vv$vectors</span><br><span class="line">#step3:select principal component</span><br><span class="line">#step4:calculate the principal component score</span><br><span class="line">score=scale(as.matrix(data))%*%vv$vector</span><br></pre></td></tr></table></figure><p><strong>we can also do this in R by using the function named princomp</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pca=princomp(data,cor=T,scores=T)</span><br><span class="line">pca#show the result</span><br><span class="line">#plot Garaval map</span><br><span class="line">screeplot(pca,type=&apos;lines&apos;)</span><br></pre></td></tr></table></figure></p><p><strong>From the analysis,we can select the first two compnent as our principal compnent.</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">summary=summary(pca, loadings = T)</span><br><span class="line">pca_data &lt;- predict(pca)</span><br><span class="line">#select the first two compnents as our new_data</span><br><span class="line">new_data=pca_data[,1:2]</span><br></pre></td></tr></table></figure><p><strong>refer:</strong><a href="https://blog.csdn.net/wangyajie_11/article/details/53785528" target="_blank" rel="noopener">https://blog.csdn.net/wangyajie_11/article/details/53785528</a><br><strong>Now let’s use the result that  we selected just now to do cluster analysis and discriminant analysis </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#cluster analysis</span><br><span class="line">kmeans(new_data,center=3,iter.max=100,nstart=2333)</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#discriminant analysis</span><br><span class="line">D=dist(data)</span><br><span class="line">library(MASS)</span><br><span class="line">yy=data[,&apos;PHYS&apos;]</span><br><span class="line">l=lda(yy~.,data=data.frame(new_data))</span><br><span class="line">#visualize</span><br><span class="line">plot(l)</span><br></pre></td></tr></table></figure><h3 id="二、应用以下R自带数据集进行因子分析。"><a href="#二、应用以下R自带数据集进行因子分析。" class="headerlink" title="二、应用以下R自带数据集进行因子分析。"></a>二、应用以下R自带数据集进行因子分析。</h3><p>use_data: state.x77<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">library(&apos;psych&apos;)</span><br><span class="line">fa(state.x77, nfactors = 2, score=c(&quot;regression&quot;),rotate = &quot;varimax&quot;, fm = &quot;ml&quot;)</span><br></pre></td></tr></table></figure></p><p><strong>refer</strong>: <a href="https://www.jianshu.com/p/33ad4e2b29b3" target="_blank" rel="noopener">https://www.jianshu.com/p/33ad4e2b29b3</a></p><h3 id="三、R语言的作图"><a href="#三、R语言的作图" class="headerlink" title="三、R语言的作图"></a>三、R语言的作图</h3><h4 id="1-常用统计图"><a href="#1-常用统计图" class="headerlink" title="1.常用统计图"></a>1.常用统计图</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mean=apply(USJudgeRatings,2,mean)</span><br><span class="line">barplot(mean)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pie(mean)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boxplot(USJudgeRatings)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stars(USJudgeRatings)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#unable to download the library</span><br><span class="line">#library(&apos;faces&apos;)</span><br><span class="line">#faces(USJudgeRatings)</span><br></pre></td></tr></table></figure><h4 id="2-基础绘图命令"><a href="#2-基础绘图命令" class="headerlink" title="2.基础绘图命令"></a>2.基础绘图命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(x &lt;- rnorm(10), y=rnorm(10),type = &quot;l&quot;, main = &quot;main title&quot;,xlab=&apos;x axis&apos;,ylab=&apos;y axis&apos;,sub=&apos;sub title&apos;)</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -133,6 +156,8 @@
       
     
     </summary>
+    
+      <category term="R" scheme="http://yoursite.com/categories/R/"/>
     
     
   </entry>
@@ -462,29 +487,6 @@
       
     
     </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>年金</title>
-    <link href="http://yoursite.com/2018/10/01/%E5%B9%B4%E9%87%91/"/>
-    <id>http://yoursite.com/2018/10/01/年金/</id>
-    <published>2018-10-01T13:20:01.000Z</published>
-    <updated>2018-10-29T14:53:11.249Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="标准型年金"><a href="#标准型年金" class="headerlink" title="标准型年金"></a>标准型年金</h3><p>在此之前，先来谈一下关于折现到零时刻和积累到某（n）时刻的意思.<br><br>以期末付年金为例：<br><br>所谓零时刻，就是第一期的开始时刻，即1期初<br><br>所谓积累到某时刻，就是说某（n）时刻末尾，也就是第(n+1)期初.<br><br>以期末付标准型年金为例，如下图所示：<br><br><img src="1.jpg" alt=""> <br><br>另外，期初付年金核算公式推导如下<br><br><img src="2.jpg" alt=""></p><h3 id="一般型年金"><a href="#一般型年金" class="headerlink" title="一般型年金"></a>一般型年金</h3><h4 id="变利率年金"><a href="#变利率年金" class="headerlink" title="变利率年金"></a>变利率年金</h4><blockquote><p>１. 各付款期间段的利率不同，就是说在每个期间段都按照该期间段的利率来核算，所以年金现值为$a_{n┒}=(1+i_1)^{-1}+(1+i_1)^{-1}(1+i_2)^{-1}+…+(1+i_1)^{-1}(1+i_2)^{-1}…(1+i_n)^{-1}=\sum_{t=1}^n\prod_{s=1}^{t}(1+i_s)^{-1}$ <br>年金积累值为$s_n┒=1+(1+i_n)+(1+i_n)(1+i_{n-1})+…+(1+i_n)…(1+i_2)=\sum_{t=1}^{n}\prod_{s=0}^{t-1}(1+i_{n-s+1})$,令$i_{n+1}=0$ .<br><br>２. 各次付款所依据的利率不同，就是说利率是按照每次付款来计算的，当把某一次付款折现到０时刻或者积累到某时刻时，利率都是按照该次付款的利率，而不是随着付款的期间而变动，这样子，年金现值为$a_{n┒}=(1+i_1)^{-1}+(1+i_2)^{-2}+…+(1+i_n)^{-n}=\sum_{t=1}^{n}(1+i_t)^{-t}$，积累值为$s_{n┒}=(1+i_1)^{n-1}+(1+i_2)^{n-2}+…+(1+i_n)+1=\sum_{t=1}^{n}(1+i_t)^{n-t}$</p></blockquote><p><img src="3.jpg" alt=""> <br><br><img src="4.jpg" alt=""> <br></p><h4 id="付款频率与计息频率不同的年金"><a href="#付款频率与计息频率不同的年金" class="headerlink" title="付款频率与计息频率不同的年金"></a>付款频率与计息频率不同的年金</h4><p><img src="05.jpg" alt=""> <br><br><img src="06.jpg" alt=""> <br><br><img src="07.jpg" alt=""> <br></p><h4 id="连续年金"><a href="#连续年金" class="headerlink" title="连续年金"></a>连续年金</h4><p>连续年金，即付款频率无限大的年金，是付款频率大于计息频率的特例,就是在一个计息期内无限次付款<br><br><img src="08.jpg" alt=""> <br></p><h4 id="基本变化年金"><a href="#基本变化年金" class="headerlink" title="基本变化年金"></a>基本变化年金</h4><p><img src="9.jpg" alt=""> <br></p><h4 id="更一般变化年金"><a href="#更一般变化年金" class="headerlink" title="更一般变化年金"></a>更一般变化年金</h4><p><img src="10.jpg" alt=""><br><br><img src="11.jpg" alt=""><br><br><img src="12.jpg" alt=""><br></p><h4 id="连续变化年金"><a href="#连续变化年金" class="headerlink" title="连续变化年金"></a>连续变化年金</h4><p><img src="13.jpg" alt=""> <br></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;标准型年金&quot;&gt;&lt;a href=&quot;#标准型年金&quot; class=&quot;headerlink&quot; title=&quot;标准型年金&quot;&gt;&lt;/a&gt;标准型年金&lt;/h3&gt;&lt;p&gt;在此之前，先来谈一下关于折现到零时刻和积累到某（n）时刻的意思.&lt;br&gt;&lt;br&gt;以期末付年金为例：&lt;br&gt;&lt;br&gt;所
-      
-    
-    </summary>
-    
-      <category term="金融数学" scheme="http://yoursite.com/categories/%E9%87%91%E8%9E%8D%E6%95%B0%E5%AD%A6/"/>
     
     
   </entry>
