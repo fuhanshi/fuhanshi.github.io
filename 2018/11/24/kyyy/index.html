@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文目标:从考研英语往年真题中提取单词，统计单词出现次数，按照频数排序并写入表格文件 第一步导入必要的库其中re用于文本处理，jieba用于分词，pandas用于写入表格文件 123import reimport jiebaimport pandas as pd 第二步打开文件1file=open(&apos;/home/fantasy/Desktop/kyyy.txt&apos;).read() 第三步文本处理 1">
+<meta name="keywords" content="文本分析＆挖掘,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Python自制考研英语单词手册">
+<meta property="og:url" content="http://yoursite.com/2018/11/24/kyyy/index.html">
+<meta property="og:site_name" content="凡希的博客">
+<meta property="og:description" content="本文目标:从考研英语往年真题中提取单词，统计单词出现次数，按照频数排序并写入表格文件 第一步导入必要的库其中re用于文本处理，jieba用于分词，pandas用于写入表格文件 123import reimport jiebaimport pandas as pd 第二步打开文件1file=open(&apos;/home/fantasy/Desktop/kyyy.txt&apos;).read() 第三步文本处理 1">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-11-24T13:50:43.379Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Python自制考研英语单词手册">
+<meta name="twitter:description" content="本文目标:从考研英语往年真题中提取单词，统计单词出现次数，按照频数排序并写入表格文件 第一步导入必要的库其中re用于文本处理，jieba用于分词，pandas用于写入表格文件 123import reimport jiebaimport pandas as pd 第二步打开文件1file=open(&apos;/home/fantasy/Desktop/kyyy.txt&apos;).read() 第三步文本处理 1">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="凡希的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/24/kyyy/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>用Python自制考研英语单词手册 | 凡希的博客</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">凡希的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">因为喜欢，所以热爱</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-时间轴">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />时间轴</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/24/kyyy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="因为喜欢，所以热爱">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凡希的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">用Python自制考研英语单词手册
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-24 21:40:04 / Modified: 21:50:43" itemprop="dateCreated datePublished" datetime="2018-11-24T21:40:04+08:00">2018-11-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Python自然语言处理/" itemprop="url" rel="index"><span itemprop="name">Python自然语言处理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="本文目标"><a href="#本文目标" class="headerlink" title="本文目标:"></a>本文目标:</h4><p><strong>从考研英语往年真题中提取单词，统计单词出现次数，按照频数排序并写入表格文件</strong><br></p>
+<h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h4><p><strong>导入必要的库</strong><br><br>其中<code>re</code>用于文本处理，<code>jieba</code>用于分词，<code>pandas</code>用于写入表格文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+<h4 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h4><p>打开文件<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file=open(<span class="string">'/home/fantasy/Desktop/kyyy.txt'</span>).read()</span><br></pre></td></tr></table></figure></p>
+<h4 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h4><p>文本处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> file:</span><br><span class="line">    line=line.strip(<span class="string">'\n'</span>)</span><br><span class="line">    <span class="comment">#去除文本中的中文符号和英文符号</span></span><br><span class="line">    line=re.sub(<span class="string">"[\s+\.\!\/_,$%^*(+\"\']+|[+——__！，。.,\？?、~@#￥%……&amp;*（）]+"</span>, <span class="string">""</span>,line)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 大佬请自动忽略这段辣眼睛的代码qaq~^---^~~~</span></span><br><span class="line">file = re.sub(<span class="string">'________'</span>, <span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">'__'</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">'\n'</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">''</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">','</span>,<span class="string">''</span>,file)</span><br><span class="line"><span class="comment">#file=re.sub('.','',file)</span></span><br><span class="line">file=re.sub(<span class="string">r'[^\x00-\x7f]'</span>, <span class="string">''</span>, file)<span class="comment">#去掉中文字符串</span></span><br><span class="line">file=re.sub(<span class="string">'[A]'</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">'[B]'</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">'[C]'</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">'[D]'</span>,<span class="string">''</span>,file)</span><br><span class="line"><span class="comment">#file=re.sub('[]','',file)</span></span><br><span class="line"></span><br><span class="line">file=re.sub(<span class="string">'\t'</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">'()'</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">'---!!!'</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">'\[]'</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">'、'</span>,<span class="string">''</span>,file)</span><br><span class="line">file=re.sub(<span class="string">"''"</span>,<span class="string">''</span>,file)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f=jieba.cut(file,<span class="string">' '</span> )</span><br><span class="line">f=<span class="string">','</span>.join(f)</span><br></pre></td></tr></table></figure>
+<h4 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h4><p>利用字典数据结构统计词频并存入</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">counter = &#123;&#125;</span><br><span class="line"><span class="comment"># 如果字典里有该词则加1，否则添加入字典</span></span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> f.split(<span class="string">','</span>):</span><br><span class="line">    <span class="keyword">if</span> s <span class="keyword">not</span> <span class="keyword">in</span> counter:</span><br><span class="line">        counter[s] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        counter[s] += <span class="number">1</span></span><br><span class="line"><span class="comment">#词频从高到低排序</span></span><br><span class="line">sorted_counter=sorted(counter.items(),key = <span class="keyword">lambda</span> x:x[<span class="number">1</span>],reverse = <span class="keyword">True</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#忽略的常用词汇</span></span><br><span class="line">ignore=[<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>,<span class="string">'four'</span>,<span class="string">'five'</span>,<span class="string">'six'</span>,<span class="string">'seven'</span>,<span class="string">'eight'</span>,<span class="string">'nine'</span>,<span class="string">'the'</span>,<span class="string">'of'</span>,<span class="string">'can'</span>,<span class="string">'may'</span>,<span class="string">'should'</span>,<span class="string">'in'</span>,<span class="string">'a'</span>,<span class="string">'an'</span>,<span class="string">'to'</span>,<span class="string">'and'</span>,<span class="string">'am'</span>,<span class="string">'is'</span>,<span class="string">'are'</span>,<span class="string">'be'</span>,<span class="string">'on'</span>,<span class="string">'that'</span>,</span><br><span class="line">   <span class="string">'this'</span>,<span class="string">'be'</span>,<span class="string">'he'</span>,<span class="string">'she'</span>,<span class="string">'you'</span>,<span class="string">'me'</span>,<span class="string">'him'</span>,<span class="string">'her'</span>,<span class="string">'mom'</span>,<span class="string">'son'</span>,<span class="string">'sister'</span>,<span class="string">'brother'</span>,<span class="string">'with'</span>,<span class="string">'it'</span>,<span class="string">'go'</span>,<span class="string">'run'</span>,<span class="string">'bed'</span>,</span><br><span class="line">   <span class="string">'home'</span>,<span class="string">'house'</span>,<span class="string">'great'</span>,<span class="string">'yes'</span>,<span class="string">'no'</span>,<span class="string">'nope'</span>,<span class="string">'yep'</span>,<span class="string">'but'</span>,<span class="string">'by'</span>,<span class="string">'do'</span>,<span class="string">'doing'</span>,<span class="string">'done'</span>,<span class="string">'over'</span>,<span class="string">'as'</span>,<span class="string">'who'</span>,<span class="string">'would'</span>,<span class="string">'the'</span>,<span class="string">'not'</span>,<span class="string">'or'</span>,<span class="string">'will'</span>,<span class="string">'have'</span>,<span class="string">'from'</span>,<span class="string">'their'</span>,<span class="string">'than'</span>,</span><br><span class="line">   <span class="string">'its'</span>,<span class="string">'all'</span>,<span class="string">'up'</span>,<span class="string">'down'</span>,<span class="string">'how'</span>,<span class="string">'for'</span>,<span class="string">'the'</span>,<span class="string">'like'</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h4><p>设定提取规则</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#提取设定规则的单词及其频数</span></span><br><span class="line">word=[]</span><br><span class="line">values=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> sorted_counter:</span><br><span class="line">    <span class="keyword">if</span> i[<span class="number">0</span>] <span class="keyword">not</span> <span class="keyword">in</span> ignore <span class="keyword">and</span> len(i[<span class="number">0</span>])&gt;<span class="number">3</span>:</span><br><span class="line">        c=i[<span class="number">0</span>].lower()</span><br><span class="line">        word.append(c)</span><br><span class="line">        values.append(i[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">len(word)==len(values)</span><br></pre></td></tr></table></figure>
+<pre><code>True
+</code></pre><h4 id="第六步"><a href="#第六步" class="headerlink" title="第六步"></a>第六步</h4><p>将词频大于1的单词写入文件并保存之</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个空的数据框</span></span><br><span class="line">result=pd.DataFrame(columns=(<span class="string">'word'</span>,<span class="string">'freq'</span>))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#写入文件</span></span><br><span class="line">result[<span class="string">'word'</span>]=word</span><br><span class="line">result[<span class="string">'freq'</span>]=values</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#只提取出现次数大于１的单词</span></span><br><span class="line">final_words_file=result.loc[result[<span class="string">'freq'</span>]&gt;<span class="number">1</span>,:]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#保存文件</span></span><br><span class="line">final_words_file.to_csv(<span class="string">'/home/fantasy/Desktop/kyyy.csv'</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>～～～～～～～～～～华丽的分割线～～～～～～～～～～～</p>
+<h4 id="第七步"><a href="#第七步" class="headerlink" title="第七步"></a>第七步</h4><p>翻译单词<br><br><strong>以下翻译过程暂时未完成，有时间再研究下</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#翻译</span></span><br><span class="line"><span class="keyword">import</span> http.client</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">appid = <span class="string">'20181008000216770'</span></span><br><span class="line">secretKey = <span class="string">'2fWF_wlQ5sifMJVKWqFF'</span></span><br><span class="line">httpClient = <span class="keyword">None</span></span><br><span class="line">myurl = <span class="string">'/api/trans/vip/translate'</span></span><br><span class="line">fromLang=<span class="string">'en'</span></span><br><span class="line">toLang = <span class="string">'zh'</span></span><br><span class="line">salt = random.randint(<span class="number">32768</span>, <span class="number">65536</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(word)):</span><br><span class="line">    q=word[i]</span><br><span class="line">    print(q)</span><br><span class="line">    sign = appid+q+str(salt)+secretKey</span><br><span class="line">    m1 = hashlib.md5()</span><br><span class="line">    m1.update(sign.encode(encoding=<span class="string">'utf-8'</span>))</span><br><span class="line">    sign = m1.hexdigest()</span><br><span class="line">    myurl = myurl+<span class="string">'?appid='</span>+appid+<span class="string">'&amp;q='</span>+parse.quote(q)+<span class="string">'&amp;from='</span>+fromLang+<span class="string">'&amp;to='</span>+toLang+<span class="string">'&amp;salt='</span>+str(salt)+<span class="string">'&amp;sign='</span>+sign </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        httpClient = http.client.HTTPConnection(<span class="string">'api.fanyi.baidu.com'</span>)</span><br><span class="line">        httpClient.request(<span class="string">'GET'</span>, myurl)</span><br><span class="line">        response = httpClient.getresponse()</span><br><span class="line">        stri = response.read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line">        stri = eval(str)</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> str[<span class="string">'trans_result'</span>]:</span><br><span class="line">            file.write(line[<span class="string">'dst'</span>]+<span class="string">'\n'</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br><span class="line">    <span class="keyword">finally</span>:</span><br><span class="line">        <span class="keyword">if</span> httpClient:</span><br><span class="line">            httpClient.close()</span><br></pre></td></tr></table></figure>
+<pre><code>they
+eval() arg 1 must be a string, bytes or code object
+more
+eval() arg 1 must be a string, bytes or code object
+points
+eval() arg 1 must be a string, bytes or code object
+there
+eval() arg 1 must be a string, bytes or code object
+were
+eval() arg 1 must be a string, bytes or code object
+......
+</code></pre><h4 id="后记："><a href="#后记：" class="headerlink" title="后记："></a>后记：</h4><p>这次用到的文本文件是截止到2010年之前的考研英语真题，其原始格式是word，内容被copy至新建的txt文件中，并且部分单词拼写有误或者“被空格中断”，所以在最后get的表格文件中有大约2%的单词拼写不准确（但还可以分辨出来），如果想要使得最后获取的表格文件更加准确，可以应用更合格(单词错误率低＋更多文本数据，比如加入2011至今的题目（这次因为没有找到合适的近八年真题文件，所以没有统计这一部分））的文本文件来进行上述处理。</p>
+<p>这就好比机器学习中用于模型训练和测试的数据集一样，数据的真实性和准确性越高，则模型的拟合效果越好，其预测或分类能力也就越强。</p>
+<p>当然，你也可以搜集高考单词，四六级单词等等进行同样的处理。发现没有，举一个栗子可以返好多栗子嘞</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>喜欢所以热爱，坚持干货分享，欢迎订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>呐，请我吃辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/文本分析＆挖掘-Python/" rel="tag"># 文本分析＆挖掘,Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/21/多元统计上机第六次实验列联分析与对应分析/" rel="next" title="多元统计上机第六次实验之列联分析与对应分析">
+                <i class="fa fa-chevron-left"></i> 多元统计上机第六次实验之列联分析与对应分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">因为喜欢，所以热爱</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#本文目标"><span class="nav-number">1.</span> <span class="nav-text">本文目标:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步"><span class="nav-number">2.</span> <span class="nav-text">第一步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步"><span class="nav-number">3.</span> <span class="nav-text">第二步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步"><span class="nav-number">4.</span> <span class="nav-text">第三步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四步"><span class="nav-number">5.</span> <span class="nav-text">第四步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第五步"><span class="nav-number">6.</span> <span class="nav-text">第五步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第六步"><span class="nav-number">7.</span> <span class="nav-text">第六步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第七步"><span class="nav-number">8.</span> <span class="nav-text">第七步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后记："><span class="nav-number">9.</span> <span class="nav-text">后记：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom">微信公众号：我将在南极找寻你</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
