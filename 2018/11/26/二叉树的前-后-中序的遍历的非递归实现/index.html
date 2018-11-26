@@ -108,20 +108,22 @@
 
 
 
-  <meta name="description" content="知识梳理一些基本概念：本金：每项业务开始时投资的金额.积累值（终值）：业务在一定时间后回收到的总金额称为该时刻的积累值，与本金与投资日算起的时间长度有关.积累函数$a(t)$又叫t期积累因子，与之相对的是t期折现因子$v(t)$ ，并且有$a(t)=v^-(t)$ .现值只与该时点以后的款项有关，积累值只与该时点以前的款项有关.第$n$期利息：$I_n=A(n)-A(n-1)$，$n&amp;gt;=1,">
+  <meta name="description" content="前序遍历     中序遍历     后序遍历">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利息的基本概念">
-<meta property="og:url" content="http://yoursite.com/2018/10/26/利息的基本概念/index.html">
+<meta property="og:title" content="二叉树的前&#x2F;后&#x2F;中序的遍历的非递归实现">
+<meta property="og:url" content="http://yoursite.com/2018/11/26/二叉树的前-后-中序的遍历的非递归实现/index.html">
 <meta property="og:site_name" content="凡希的博客">
-<meta property="og:description" content="知识梳理一些基本概念：本金：每项业务开始时投资的金额.积累值（终值）：业务在一定时间后回收到的总金额称为该时刻的积累值，与本金与投资日算起的时间长度有关.积累函数$a(t)$又叫t期积累因子，与之相对的是t期折现因子$v(t)$ ，并且有$a(t)=v^-(t)$ .现值只与该时点以后的款项有关，积累值只与该时点以前的款项有关.第$n$期利息：$I_n=A(n)-A(n-1)$，$n&amp;gt;=1,">
+<meta property="og:description" content="前序遍历     中序遍历     后序遍历">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2018/10/26/利息的基本概念/1.jpeg">
-<meta property="og:updated_time" content="2018-10-27T06:55:47.160Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/二叉树的前-后-中序的遍历的非递归实现/qian.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/二叉树的前-后-中序的遍历的非递归实现/zhong.png">
+<meta property="og:image" content="http://yoursite.com/2018/11/26/二叉树的前-后-中序的遍历的非递归实现/hou.png">
+<meta property="og:updated_time" content="2018-11-26T13:02:57.450Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利息的基本概念">
-<meta name="twitter:description" content="知识梳理一些基本概念：本金：每项业务开始时投资的金额.积累值（终值）：业务在一定时间后回收到的总金额称为该时刻的积累值，与本金与投资日算起的时间长度有关.积累函数$a(t)$又叫t期积累因子，与之相对的是t期折现因子$v(t)$ ，并且有$a(t)=v^-(t)$ .现值只与该时点以后的款项有关，积累值只与该时点以前的款项有关.第$n$期利息：$I_n=A(n)-A(n-1)$，$n&amp;gt;=1,">
-<meta name="twitter:image" content="http://yoursite.com/2018/10/26/利息的基本概念/1.jpeg">
+<meta name="twitter:title" content="二叉树的前&#x2F;后&#x2F;中序的遍历的非递归实现">
+<meta name="twitter:description" content="前序遍历     中序遍历     后序遍历">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/26/二叉树的前-后-中序的遍历的非递归实现/qian.png">
 
 
 
@@ -130,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/26/利息的基本概念/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/26/二叉树的前-后-中序的遍历的非递归实现/"/>
 
 
 
@@ -140,7 +142,7 @@
   };
 </script>
 
-  <title>利息的基本概念 | 凡希的博客</title>
+  <title>二叉树的前/后/中序的遍历的非递归实现 | 凡希的博客</title>
   
 
 
@@ -313,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/26/利息的基本概念/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/二叉树的前-后-中序的遍历的非递归实现/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="凡希">
@@ -330,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">利息的基本概念
+          <h1 class="post-title" itemprop="name headline">二叉树的前/后/中序的遍历的非递归实现
               
             
           </h1>
@@ -355,24 +357,12 @@
                 
               
 
-              <time title="Created: 2018-10-26 14:34:37" itemprop="dateCreated datePublished" datetime="2018-10-26T14:34:37+08:00">2018-10-26</time>
+              <time title="Created: 2018-11-26 20:58:16 / Modified: 21:02:57" itemprop="dateCreated datePublished" datetime="2018-11-26T20:58:16+08:00">2018-11-26</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-27 14:55:47" itemprop="dateModified" datetime="2018-10-27T14:55:47+08:00">2018-10-27</time>
               
             
           </span>
@@ -389,7 +379,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/金融数学/" itemprop="url" rel="index"><span itemprop="name">金融数学</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构自学史/" itemprop="url" rel="index"><span itemprop="name">数据结构自学史</span></a></span>
 
                 
                 
@@ -431,24 +421,18 @@
       
 
       
-        <h2 id="知识梳理"><a href="#知识梳理" class="headerlink" title="知识梳理"></a>知识梳理</h2><h3 id="一些基本概念："><a href="#一些基本概念：" class="headerlink" title="一些基本概念："></a>一些基本概念：<br></h3><p><strong>本金</strong>：每项业务开始时投资的金额.<br><br><strong>积累值（终值）</strong>：业务在一定时间后回收到的总金额称为该时刻的积累值，与<code>本金</code>与<code>投资日算起的时间长度</code>有关.<br><br><strong>积累函数</strong>$a(t)$又叫<code>t期积累因子</code>，与之相对的是<code>t期折现因子</code>$v(t)$ ，并且有$a(t)=v^-(t)$ .<br><br><strong>现值</strong>只与该时点以后的款项有关，<strong>积累值</strong>只与该时点以前的款项有关.<br><br><strong>第$n$期利息</strong>：$I_n=A(n)-A(n-1)$，$n&gt;=1,n$是整数.　<br></p>
-<h3 id="实际利率"><a href="#实际利率" class="headerlink" title="实际利率"></a>实际利率</h3><p>第$n$期的实际利率$i_n=\frac{I_n}{A_{n-1}.}$.<br></p>
-<blockquote>
-<p>单利：$a(t)=1+it$ ，$i_n=\frac{a(n)-a(n-1)}{a(n-1)}=\frac{(1+in)-(1+i(n-1))}{1-i(n-1)}=\frac{i}{1+i(n-1)}$   <br><br>复利：$a(t)=(1+i)^t$，$i_n=\frac{a(n)-a(n-1)}{a(n-1)}=\frac{(1+i)^n-(1+i))^{n-1}}{(1+i)^{n-1}.}=i$ <br></p>
-</blockquote>
-<p>为使得获利最大：<br><br>当$t&gt;=1$时，$(1+i)^t&gt;=1+it$，选复利.<br><br>当$t&lt;=1$时，$(1+i)^t&lt;=1+it$，选单利.<br></p>
-<h3 id="实际贴现率"><a href="#实际贴现率" class="headerlink" title="实际贴现率"></a>实际贴现率</h3><p>定义：一个度量期内取得的利息金额与期末的投资可回收金额的比值，用$d$表示.<br><br>第$n$期的实际贴现率$d_n=\frac{I_n}{A_n}$. <br><br>公式：$v=a^-(1)=1-d$ <br></p>
-<blockquote>
-<p>复利场合的贴现率：$a(n)=(1+i)^n$，$d_n=\frac{a(n)-a(n-1)}{a(n)}=\frac{i}{1+i}$，又叫做<code>复贴现</code> <br><br>单利场合的贴现率：$a(n)=1+ni$，$d_n=\frac{d}{1-(n-1)d}$  <br></p>
-</blockquote>
-<p><strong>名义利率</strong>：设每期付$m$次利息的名义利率为$i^{(m)}$，则实际利率（每$\frac1m$期）为$\frac{i^{(m)}.}{m}$，通过$(1+i)=(1+\frac{i^{(m)}.}{m})^m$可以求得实际利率$i$. <br><br><strong>名义贴现率</strong>：通过$1-d=(1-\frac{d^{(m)}}{m})^m$可求得每期实际贴现率$d$. <br><br><strong>公式</strong>：<br>$$(1+\frac{i^{(m)}.}{m})^m=1+i=(1-\frac{d^{(p)}}{p})^{-p}=\frac1{1-d}$$　</p>
-<h3 id="利息力"><a href="#利息力" class="headerlink" title="利息力"></a>利息力</h3><p>利息力用来度量在每一时点上的利息<br><br>公式：$a(t)=e^{\int_0^t \delta_t dt}$ <br></p>
-<hr>
-<p>现在，用一个公式对以上内容做一个总结，如下：<br>$$(1+\frac{i^{(m)}.}{m})^m=1+i=v^{-1}=(1-d)^{-1}=(1-\frac{d^{(p)}.}{p})^{(-p)}=e^{\delta}$$<br>注意这里的利息力(贴现力)是常数.<br><br><img src="1.jpeg" alt=""> <br></p>
-<hr>
-<h2 id="课本习题"><a href="#课本习题" class="headerlink" title="课本习题"></a>课本习题</h2><p>5．已知某笔投资在三年后的积累值为为1000元，第一年的利率为$i_1=$10%，第二年的利率为$i_2=$8%，第三年的利率为$i_3=$6%，求该笔投资的原始金额.<br><br>解：$A(0)(1+i_1)(1+i_2)(1+i_3)=1000–&gt;A(0)$ <br></p>
-<p>13．假设某人在1984年7月1日投资1000元于某基金，该基金在$t$时刻的利息力为$\delta_t=\frac{3+2t}{50}$，其中$t$为距1984年1月1日的年数，求该笔投资在1985年1月1日的积累值.<br><br>解：$1000e^{\int_\frac12^1\delta_tdt}$ <br></p>
-<p>14．某基金$A$以每月计息一次的年名义利率12%积累，基金$B$以利息强度$\delta_t=\frac{t}6$积累，在时刻0，两笔基金存入的款项相同，请确定两基金额相等的下一时刻.<br><br>解：$1.(1+\frac{0.12}{12})^{12n}=1.e^{\int_0^n\frac{t}{6}dt}–&gt;n$ <br></p>
+        <ul>
+<li>前序遍历</li>
+</ul>
+<p><img src="qian.png" alt=""> <br></p>
+<ul>
+<li>中序遍历</li>
+</ul>
+<p><img src="zhong.png" alt=""> <br></p>
+<ul>
+<li>后序遍历</li>
+</ul>
+<p><img src="hou.png" alt=""> <br></p>
 
       
     </div>
@@ -513,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/26/求极限的一般方法/" rel="next" title="求极限的一般方法">
-                <i class="fa fa-chevron-left"></i> 求极限的一般方法
+              <a href="/2018/11/24/kyyy/" rel="next" title="用Python自制考研英语单词手册">
+                <i class="fa fa-chevron-left"></i> 用Python自制考研英语单词手册
               </a>
             
           </div>
@@ -522,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/28/多元统计分析期中考点梳理/" rel="prev" title="多元统计分析期中考点梳理">
-                多元统计分析期中考点梳理 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -570,17 +550,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -684,22 +655,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#知识梳理"><span class="nav-number">1.</span> <span class="nav-text">知识梳理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些基本概念："><span class="nav-number">1.1.</span> <span class="nav-text">一些基本概念：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实际利率"><span class="nav-number">1.2.</span> <span class="nav-text">实际利率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实际贴现率"><span class="nav-number">1.3.</span> <span class="nav-text">实际贴现率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利息力"><span class="nav-number">1.4.</span> <span class="nav-text">利息力</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#课本习题"><span class="nav-number">2.</span> <span class="nav-text">课本习题</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -914,30 +869,6 @@
   
   
 
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
   
 
 
