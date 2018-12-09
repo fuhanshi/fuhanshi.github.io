@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-30T11:47:05.526Z</updated>
+  <updated>2018-12-09T07:00:03.686Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2018/12/09/timeseriesanalysis/"/>
+    <id>http://yoursite.com/2018/12/09/timeseriesanalysis/</id>
+    <published>2018-12-09T07:01:39.819Z</published>
+    <updated>2018-12-09T07:00:03.686Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Time-Series-Analysis"><a href="#Time-Series-Analysis" class="headerlink" title="Time Series Analysis"></a>Time Series Analysis</h1><p>若序列平稳，则往下进行，否则进行差分处理使序列变平稳 <br></p><h2 id="时间序列的预处理"><a href="#时间序列的预处理" class="headerlink" title="时间序列的预处理"></a>时间序列的预处理</h2><h4 id="特征统计量"><a href="#特征统计量" class="headerlink" title="特征统计量"></a>特征统计量</h4><p><a href="http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm" target="_blank" rel="noopener">http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm</a></p><h4 id="宽平稳时间序列-只要求二阶平稳即可"><a href="#宽平稳时间序列-只要求二阶平稳即可" class="headerlink" title="宽平稳时间序列(只要求二阶平稳即可)"></a>宽平稳时间序列(只要求二阶平稳即可)</h4><p>若${X(t)}$满足如下三个条件，则称${X(t)}$为<code>宽平稳时间序列</code>（弱平稳/二阶平稳）<br></p><blockquote><p>(1)任取$t\in T$,有$E{X_t}^2&lt;\infty$ <br><br>(2)任取$t\in T$,有$EX_t=\mu$,$\mu$为常数<br><br>(3)任取$t,s,k \in T$,且$k+s-t \in T$,有$\gamma(t,s)=\gamma(k,k+s-t)$ <br></p></blockquote><h4 id="平稳时间序列的统计性质"><a href="#平稳时间序列的统计性质" class="headerlink" title="平稳时间序列的统计性质"></a>平稳时间序列的统计性质</h4><blockquote><p>(1)$EX_t=\mu$,任意$t \in T$ <br><br>(2)$\gamma(t,s)=\gamma(k,k+s-t)$ <br><br>$\gamma(s-t)=\gamma(t,s)$,任意$t,s \in T $ <br><br>(3)$DX_t=\gamma(t,t)=\gamma(0)$ <br></p></blockquote><p>延迟$k$阶自协方差函数$\gamma(k)=\gamma(t,t+k)$ <br><br>延迟$k$阶自相关系数$\rho_k=\frac{\gamma(t,t+k)}{\sqrt{DX_tDX_{t+k}.}.}=\frac{\gamma(k)}{\gamma(0)}$，3个性质为“规范性”,“对称性”以及“非负定性”<br></p><blockquote><p>一个平稳时间序列唯一确定其自相关系数，反之不成立 <br></p></blockquote><h4 id="平稳性检验"><a href="#平稳性检验" class="headerlink" title="平稳性检验"></a>平稳性检验</h4><p>单位根检验、时序图检验、自相关图检验 <br></p><h4 id="纯随机性检验"><a href="#纯随机性检验" class="headerlink" title="纯随机性检验"></a>纯随机性检验</h4><blockquote><p>纯随机序列的定义：<br><br>(1)任取$t \in T$,有$EX_t=\mu$ <br><br>(2)任取$t,s \in T$,有<br><br>$\gamma(t,s)=\sigma^2 ,t=s$ <br><br>$\gamma(t,s)=0,t!=s$</p></blockquote><p>白噪声序列(white noise series)是平稳时间序列，但同时也是纯随机序列，所以没有研究价值<br></p><h2 id="平稳时间序列分析-key"><a href="#平稳时间序列分析-key" class="headerlink" title="平稳时间序列分析(key!)"></a>平稳时间序列分析(key!)</h2><p>$p$阶差分与$k$步差分 <br><br>延迟算子表示差分运算 <br><br>看课本P41 <br><br>线性差分方程的解法<a href="https://fuhanshi.github.io/2018/09/30/diff/" target="_blank" rel="noopener">https://fuhanshi.github.io/2018/09/30/diff/</a></p><h4 id="AR模型"><a href="#AR模型" class="headerlink" title="AR模型"></a>AR模型</h4><p>$AR(p):x_t=\psi_0+\psi_1x_{t-1}+\psi_2x_{t-2}+…+\psi_px_{t-p}+\epsilon_t$ <br></p><p><strong>平稳性判别</strong>： <br><br>（1）特征根判别 <br></p><blockquote><p>$AR(p)$模型平稳的充要条件是其$p$个特征根都在单位圆内 <br></p></blockquote><p>（2）平稳域判别 <br></p><blockquote><p>$AR(1)$模型平稳的充要条件是$|\psi_1|&lt;1$ <br><br>$AR(2)$模型平稳的充要条件是${\psi_1,\psi_2| |\psi_2|&lt;1,且\psi_2+\psi_1&lt;1,\psi_2-\psi_1&lt;1}$ <br></p></blockquote><p><strong>统计性质</strong>： <br><br>(1)均值 <br><br>(i)普通$AR(p)模型$：$\mu=\frac{\psi_0}{1-\psi_1-\psi_2-…-\psi_p}$ <br><br>(ii)中心化的$AR(p)模型$：$\mu=0$ <br></p><p>(2)方差： <br><br>$AR(1):Var(X_t)=\frac{\sigma_{\epsilon}^2}{1-\psi_1^2}$ <br><br>$AR(2):\frac{1-\psi_2}{(1+\psi_2)(1-\psi_1-\psi_2)(1+\psi_1-\psi_2)}\sigma_{\epsilon}^2$</p><p>(3)自协方差函数：<br><br>$AR(1):\gamma_k=\psi_1^k \frac{\sigma_{\epsilon}^2}{1-\psi_1^2},任意k&gt;=1$ <br><br>$AR(2):$ <br><br>$\gamma_0=\frac{1-\psi_2}{(1+\psi_2)(1-\psi_1-\psi_2)(1+\psi_1-\psi_2)}\sigma_{\epsilon}^2$ <br><br>$\gamma_1=\frac{\psi_1\gamma_0}{1-\psi_2}$ <br><br>$\gamma_k=\psi_1\gamma_{k-1}+\psi_2\gamma_{k-2},k&gt;=2$ <br></p><p>(4)自相关系数: <br><br>$AR(1):\rho_k=\psi_1^k,k&gt;=0$ <br><br>$AR(2):$ <br><br>$\begin{eqnarray}<br>\rho_k=<br>\begin{cases}<br>1 &amp;k=0\<br>\frac{\psi_1}{1-\psi_2} &amp;k=1\<br>\psi_1\rho_{k-1}+\psi_2\rho_{k-2} &amp;k&gt;=2<br>\end{cases}<br>\end{eqnarray}<br>$ <br></p><p>$AR(p)$模型的自相关系数的两个性质：(1)拖尾性;(2)呈指数衰减 <br></p><p>(2)偏自相关系数: <br><br>$AR(1):$ <br><br>$\begin{eqnarray}<br>\psi_{kk}=<br>\begin{cases}<br>\psi_1 &amp;k=1\<br>0 &amp;k&gt;=1<br>\end{cases}<br>\end{eqnarray}<br>$ <br></p><p>$AR(2):$ <br><br>$\begin{eqnarray}<br>\psi_{kk}=<br>\begin{cases}<br>\frac{\psi_1}{1-\psi_2} &amp;k=1\<br>\psi_2 &amp;k=2\<br>0 &amp;k&gt;=3<br>\end{cases}<br>\end{eqnarray}<br>$ <br></p><h4 id="MA模型"><a href="#MA模型" class="headerlink" title="MA模型"></a>MA模型</h4><p>$MA(q):x_t=\mu+\epsilon_t-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2}-…-\theta_q\epsilon_{t-q}$ ($\mu=0$时为中心化模型)<br><br><strong>统计性质：</strong> <br><br>(1)均值： <br><br>普通的：$EX_t=\mu$ <br><br>中心化$MA(q)$模型的均值为0 <br></p><p>(2)方差： <br><br>$Var(X_t)=(1+\theta_1^2+\theta_2^2+…+\theta_q^2)\sigma_{\epsilon}^2$ <br></p><p>(3)自协方差函数： <br><br>$\begin{eqnarray}<br>\gamma_k=<br>\begin{cases}<br>(1+\theta_1^2+\theta_2^2+…+\theta_q^2)\sigma_{\epsilon}^2 &amp;k=0\<br>\frac{(-\theta_k+\sum_{i=1}^{q-k}\theta_i\theta_{k+i})}{1+\theta_1^2+…+\theta_q^2}\sigma_{\epsilon}^2 &amp;1&lt;=k&lt;=q\<br>0 &amp;k&gt;q<br>\end{cases}<br>\end{eqnarray}<br>$ <br></p><p>(4)自相关系数： <br><br>$MA(1):$ <br><br>$\begin{eqnarray}<br>\rho_k=<br>\begin{cases}<br>1 &amp;k=0\<br>\frac{-\theta_1}{1+\theta_1^2} &amp;k=1\<br>0 &amp;k&gt;=2<br>\end{cases}<br>\end{eqnarray}<br>$ <br></p><p>$MA(2):$ <br><br>$\begin{eqnarray}<br>\rho_k=<br>\begin{cases}<br>1 &amp;k=0\<br>\frac{-\theta_1+\theta_1\theta_2}{1+\theta_1^2+\theta_2^2} &amp;k=1\<br>\frac{-\theta_2}{1+\theta_1^2+\theta_2^2} &amp;k=2\<br>0 &amp;k&gt;=3<br>\end{cases}<br>\end{eqnarray}<br>$</p><p><strong>MA模型的可逆性判别：</strong> <br><br>$MA(1):{\theta_1|-1&lt;\theta_1&lt;1}$ <br><br>$MA(2):{\theta_1,\theta_2| |\theta_2|&lt;1,且\theta_2+\theta_1&lt;1,\theta_2-\theta_1&lt;1}$ <br></p><p><strong>偏自相关系数：</strong> <br><br>$MA(1):$ <br><br>$\psi_{11}=\rho_1=\frac{-\theta_1}{1+\theta_1^2}$ <br><br>$\psi_{22}=\frac{-\theta_1^2}{1+\theta_1^2+\theta_2^4}$ <br><br>$\psi_{33}=\frac{-\theta_1^3}{1+\theta_1^2+\theta_1^4+\theta_1^6}$ <br></p><p>通式为$\psi_{kk}=\frac{-\theta_1^k}{\sum_{j=0}^{k}}\theta_1^{2j},k&gt;=1$ <br></p><h4 id="ARMA模型"><a href="#ARMA模型" class="headerlink" title="ARMA模型"></a>ARMA模型</h4><p>$ARMA(p,q):x_t=\psi_0+\psi_1x_{t-1}+\psi_2x_{t-2}+…+\psi_px_{t-p}+\epsilon_t-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2}-…-\theta_q\epsilon_{t-q}$ <br></p><p>平稳性：$AR(p)$部分可逆即可逆 <br><br>可逆性：$MA(q)$部分可逆即可逆 <br><br><strong>统计性质：P64,65</strong> <br></p><h4 id="模型识别规则"><a href="#模型识别规则" class="headerlink" title="模型识别规则"></a>模型识别规则</h4><p>AR(p)：自相关系数$\rho_k$拖尾，偏自相关系数$\psi_{kk}$是p阶截尾 <br><br>MA(q)：自相关系数$\rho_k$是q阶截尾，偏自相关系数$\psi_{kk}$拖尾 <br><br>ARMA(p,q)：自相关系数$\rho_k$拖尾，偏自相关系数$\psi_{kk}$也拖尾 <br></p><h4 id="平稳序列建模"><a href="#平稳序列建模" class="headerlink" title="平稳序列建模"></a>平稳序列建模</h4><h4 id="序列预测"><a href="#序列预测" class="headerlink" title="序列预测"></a>序列预测</h4><h2 id="非平稳序列的随机性分析"><a href="#非平稳序列的随机性分析" class="headerlink" title="非平稳序列的随机性分析"></a>非平稳序列的随机性分析</h2><h2 id="非平稳序列的确定性分析"><a href="#非平稳序列的确定性分析" class="headerlink" title="非平稳序列的确定性分析"></a>非平稳序列的确定性分析</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Time-Series-Analysis&quot;&gt;&lt;a href=&quot;#Time-Series-Analysis&quot; class=&quot;headerlink&quot; title=&quot;Time Series Analysis&quot;&gt;&lt;/a&gt;Time Series Analysis&lt;/h1&gt;&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>timeseries</title>
+    <link href="http://yoursite.com/2018/12/09/end/"/>
+    <id>http://yoursite.com/2018/12/09/end/</id>
+    <published>2018-12-09T07:01:26.000Z</published>
+    <updated>2018-12-09T07:07:48.514Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#第一题</span><br><span class="line">file1=read.csv(&apos;C://Users//Administrator//Desktop//data//1.csv&apos;,head=T);</span><br><span class="line"></span><br><span class="line">#第二题</span><br><span class="line">data1=file1[,2:3];</span><br><span class="line">chisq.test(data1);</span><br><span class="line">#分析结果：p-value = 7.628e-06,所以拒绝原假设（不相关），说明收入高低对满意程度相关</span><br><span class="line"></span><br><span class="line">#第三题</span><br><span class="line">file2=read.csv(&apos;C://Users//Administrator//Desktop//data//2.csv&apos;);</span><br><span class="line">data2=file2[,2:5];</span><br><span class="line">freq_num= table (data2);#统计频数</span><br><span class="line">prop.table(freq_num);#将频数表变成频率表</span><br><span class="line"></span><br><span class="line">#第四题</span><br><span class="line">#首先统计双变量频数形成列联表</span><br><span class="line">b= table (data2$ Treatment ,data2$Sex);#统计双变量频数形成列联表</span><br><span class="line">c=table (data2$Sex ,data2$Improved);#统计双变量频数形成列联表</span><br><span class="line">#接下来将频数表变成频率表</span><br><span class="line">prop.table(b);</span><br><span class="line">prop.table(c);</span><br><span class="line">#最后利用列联分析说明Sex与Treatment和Improved是否相关</span><br><span class="line">chisq.test(b);#p-value = 0.5356，说明Treatment与Sex不相关</span><br><span class="line">chisq.test(c);#p-value = 0.08889，说明Improved与Sex也不相关</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#第五题</span><br><span class="line">library(MASS);</span><br><span class="line">file3=read.csv(&apos;C://Users//Administrator//Desktop//data//3.csv&apos;);</span><br><span class="line">data3=file3[,2:6];</span><br><span class="line">d=corresp(data3,2)#2指选用两个因子，结果中有行列因子的得分</span><br><span class="line">biplot(d);#绘图</span><br><span class="line">abline(v=0,h=0)#加入参考线</span><br></pre></td></tr></table></figure><p><img src="1.png" alt=""> <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#分析：对应分析图被参考线划分为4个区域，其中，</span><br><span class="line">#(1)在不同象限表示距离较远，这里的距离是任意两者之间相关性的度量；</span><br><span class="line">#(2)位置是相对于中心的距离，距该离越小说明相对所属类别相对常见；</span><br><span class="line">#(3)角度越小，代表两者相关性越强。</span><br><span class="line">#因此我们可以得出以下结论：</span><br><span class="line"># 1.学士，高中和大专的学历相对常见，也对，一般上了高中之后要么进入university（学士学位），或者进入college(大专)</span><br><span class="line"># 2.高中和大专的相关性较之于其它比较来说相关性最强</span><br><span class="line"># 3.硕士和高中以下出现频率较低，说明高中以下学历和硕士学历两者一个处于学历链的偏上端，一个处于偏下端，这也和我们的认知相符。</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#第六题</span><br><span class="line">file4=read.csv(&apos;C://Users//Administrator//Desktop//data//4.csv&apos;);</span><br><span class="line">data4=file4[,1:6];</span><br><span class="line">e=corresp(data4,2)#2指选用两个因子，结果中有行列因子的得分</span><br><span class="line">biplot(e);#绘图</span><br><span class="line">abline(v=0,h=0)#加入参考线</span><br></pre></td></tr></table></figure><p><img src="2.png" alt=""> <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#分析：</span><br><span class="line">#(1)使用小米和荣耀的人群相对常见，而使用苹果和VIVO的人群相对较少；</span><br><span class="line">#(2)使用小米和荣耀的人群之间相关性较强，说明一般使用小米的人也可能会对荣耀情有独钟，反之亦然；</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+      
+    
+    </summary>
+    
+      <category term="R" scheme="http://yoursite.com/categories/R/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>TimeSeries with R</title>
@@ -452,45 +496,6 @@
     
       <category term="C" scheme="http://yoursite.com/categories/C/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>求解线性方程组的直接方法</title>
-    <link href="http://yoursite.com/2018/10/14/%E6%B1%82%E8%A7%A3%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84%E7%9A%84%E7%9B%B4%E6%8E%A5%E6%96%B9%E6%B3%95/"/>
-    <id>http://yoursite.com/2018/10/14/求解线性方程组的直接方法/</id>
-    <published>2018-10-14T08:54:44.000Z</published>
-    <updated>2018-10-14T08:54:45.010Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>考研英语词汇漫漫路</title>
-    <link href="http://yoursite.com/2018/10/14/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD%E8%AF%8D%E6%B1%87/"/>
-    <id>http://yoursite.com/2018/10/14/考研英语词汇/</id>
-    <published>2018-10-14T06:02:19.000Z</published>
-    <updated>2018-10-17T14:15:49.527Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">博客将按照学习进度来更新，加油吧少年！---------To myself</span><br></pre></td></tr></table></figure><h2 id="Unit-1"><a href="#Unit-1" class="headerlink" title="Unit 1"></a>Unit 1</h2><ul><li><p>accord</p><blockquote><p>1.accord <em>v.符合，给予，何意　n.和谐；according to …是根据的意思</em><br><br>2.core<em>n.核</em><br><br>3.record<br><br>4.recoding<br><br>5.recorder<br></p></blockquote></li><li><p>take</p><blockquote><p>mistake</p></blockquote></li></ul><ul><li><p>use</p><blockquote><p>1.use<br><br>2.useful<br><br>3.misuse<br><br>4.user<br></p></blockquote></li><li><p>example</p><blockquote><p>1.sample　<em>n.样本</em><br><br>2.exemplify　<em>v.例证</em><br></p></blockquote></li><li><p>work</p><blockquote><p>1.homework<br><br>2.workforce <em>v.劳动力</em><br><br>3.framework　<em>n.框架</em><br><br>4.network　<em>n.网络</em><br><br>5.teamwork<br></p></blockquote></li><li><p>time</p><blockquote><p>1.temporary–&gt;contemporary　<em>adj.同时的，现代的</em><br><br>2.chronic <em>n.慢性病</em>–&gt;chronicle　<em>n.编年史</em>；synchronize　<em>v.同步</em><br></p></blockquote></li><li><p>through</p><blockquote><p>throughout　<em>始终，adv.各处，prep.历来</em><br></p></blockquote></li><li><p>give</p><blockquote><p>1.giver<br><br>2.gift<br><br>3.donate<br><br>4.gifted<br><br>5.given <em>prep.(表示原因)考虑到</em><br> </p></blockquote></li><li><p>suggest</p><blockquote><p>1.suggestion<br><br>2.register<br><br>3.digest　<em>v.消化</em><br><br>4.digestive　<em>adj.消化的</em><br><br>5.digestion　<em>n.消化</em><br></p></blockquote></li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axx结构表强调</span><br></pre></td></tr></table></figure><h2 id="Unit-2"><a href="#Unit-2" class="headerlink" title="Unit 2"></a>Unit 2</h2><ul><li><p>author</p><blockquote><p>1.authority <em>n. 权威（机构）</em><br><br>2.authorize <em>v.使…权威化，授权</em><br><br>3.authentic <em>adj.真实的</em>–&gt;authenticity <em>n.真伪</em><br></p></blockquote></li><li><p>social </p><blockquote><p>1.society–&gt;sociologist<br><br>2.association <em>n. 协会</em><br><br>3.associate　<em>v.关联，n.联想，adj.副的，比如副教授就是associate professor</em><br><br>4.socially <em>社交上</em><br></p></blockquote></li><li><p>just</p><blockquote><p>1.justice<em>n.正义，大法官，司法</em><br><br>2.justify<em>v.使…公平</em><br><br>3.justification<br><br>4.adjust <em>调整，适应，adjust to 是适应</em><br><br>5.adjustment <em>n. 调整</em><br><br>6.just <em>adj.公平，正义</em><br></p></blockquote></li><li><p>text</p><blockquote><p>1.context  <em>n.上下文</em><br><br>2.tissue <em>n.(身体）组织</em><br></p></blockquote></li><li><p>state <em>n.状态，国家</em></p><blockquote><p>1.statesman <em>n.政治家（为国家谋利益），而plitician是政客（为自己谋利益）</em><br><br>2.statistic <br><br>3.statistacal<br><br>4.statement–&gt;under/overstatement <em>言(不)过其实</em><br><br>5.statistics <em>n.统计学，统计数据</em></p></blockquote></li><li><p>result</p><blockquote><p>1.consult–&gt;consulting<br><br>2.consultant <em>n.咨询者</em><br></p></blockquote></li><li><p>idea</p><blockquote><p>1.ideal<br><br>2.idealize<br><br>3.idealism<br><br>4.idealist<br><br>5.ideally<br><br>6.ideological <em>adj.思想的–&gt;ideology</em><br></p></blockquote></li><li><p>point</p><blockquote><p>1.wiewpoint==view<br><br>2.appoint <em>v.委派</em><br><br>3.appointment<br></p></blockquote></li></ul><h2 id="Unit-3"><a href="#Unit-3" class="headerlink" title="Unit 3"></a>Unit 3</h2><ul><li>part</li></ul><blockquote><p>1.partial adj.部分的<br><br>2.impartial  意思是“全面的”，前缀-im代表反义，等同于in，这里有一个规定，当-im后面的单词为b/m/p时，要把in改为im,但并不是绝对的，比如unbelievable<br><br>3.partially 部分地<br><br>4.partly 部分地<br><br>5.particular 特别的<br><br>6.particularly表递进，等于especially<br><br>7.<strong>counterpart</strong> 对应物，对应者，特朗普＆习近平就是这么个对应关系<br><br>8.party 聚会，党派,方面，比如the third party 表示第三方<br><br>9.partner　伙伴，伴侣/同性恋<br><br>10.apart 隔开，距离，right here waiting ,此情可待<br><br>11.apartment 住的公寓<br><br>12.department 部门，比如NYPD<br><br>13.depart v.分开，离开；departure n.启程<br></p></blockquote><ul><li>problem</li></ul><blockquote><p>1.question,作为动词表示询问，质疑<br><br>2.require,requirement，要求<br><br>3.request,请求<br><br>4.acquire,acquisition，获得，收购<br><br>5.inquire,inquiry，询问<br></p></blockquote><ul><li>believe 认为<br></li><li>human</li></ul><blockquote><p>词根–hum表示泥土<br><br>1.humanity<br><br>2.humid adj.潮湿的<br><br>3.humidity n.湿度<br><br>4.humble adj.卑微的，谦卑的<br><br>5.humorous adj.幽默的<br></p></blockquote><ul><li>limit</li></ul><blockquote><p>1.limitation　n.限制<br><br>2.eliminate　n.根除，如eliminate poverty，消除贫困<br><br>3.preliminary adj.预选的<br></p></blockquote><ul><li>view</li></ul><blockquote><p>1.review v.复习，评论(冷静思考后的评论)，所以reviewer是指评论家<br><br>2.interview，inter指相互，比如international就是国家与国家相互的，即“国际的”，interview表示面试，还可以采访(interviewee是被面试者，interviewer是面试官，采访者)<br></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span cla
-      
-    
-    </summary>
-    
-      <category term="考研英语" scheme="http://yoursite.com/categories/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD/"/>
-    
-    
-      <category term="英语" scheme="http://yoursite.com/tags/%E8%8B%B1%E8%AF%AD/"/>
     
   </entry>
   
