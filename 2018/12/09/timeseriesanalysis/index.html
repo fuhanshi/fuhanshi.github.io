@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="Time Series Analysis若序列平稳，则往下进行，否则进行差分处理使序列变平稳  时间序列的预处理特征统计量http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm 宽平稳时间序列(只要求二阶平稳即可)若${X(t)}$满足如下三个条件，则称${X(t)}$为宽平稳时间序列（弱平">
+  <meta name="description" content="若序列平稳，则往下进行，否则进行差分处理使序列变平稳  时间序列的预处理特征统计量http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm 宽平稳时间序列(只要求二阶平稳即可)若${X(t)}$满足如下三个条件，则称${X(t)}$为宽平稳时间序列（弱平稳/二阶平稳）  (1)任取$t\in">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
-<meta property="og:title" content="凡希的博客">
+<meta property="og:title" content="时序复习">
 <meta property="og:url" content="http://yoursite.com/2018/12/09/timeseriesanalysis/index.html">
 <meta property="og:site_name" content="凡希的博客">
-<meta property="og:description" content="Time Series Analysis若序列平稳，则往下进行，否则进行差分处理使序列变平稳  时间序列的预处理特征统计量http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm 宽平稳时间序列(只要求二阶平稳即可)若${X(t)}$满足如下三个条件，则称${X(t)}$为宽平稳时间序列（弱平">
+<meta property="og:description" content="若序列平稳，则往下进行，否则进行差分处理使序列变平稳  时间序列的预处理特征统计量http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm 宽平稳时间序列(只要求二阶平稳即可)若${X(t)}$满足如下三个条件，则称${X(t)}$为宽平稳时间序列（弱平稳/二阶平稳）  (1)任取$t\in">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-09T07:00:03.686Z">
+<meta property="og:updated_time" content="2018-12-09T07:13:22.325Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="凡希的博客">
-<meta name="twitter:description" content="Time Series Analysis若序列平稳，则往下进行，否则进行差分处理使序列变平稳  时间序列的预处理特征统计量http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm 宽平稳时间序列(只要求二阶平稳即可)若${X(t)}$满足如下三个条件，则称${X(t)}$为宽平稳时间序列（弱平">
+<meta name="twitter:title" content="时序复习">
+<meta name="twitter:description" content="若序列平稳，则往下进行，否则进行差分处理使序列变平稳  时间序列的预处理特征统计量http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm 宽平稳时间序列(只要求二阶平稳即可)若${X(t)}$满足如下三个条件，则称${X(t)}$为宽平稳时间序列（弱平稳/二阶平稳）  (1)任取$t\in">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title> | 凡希的博客</title>
+  <title>时序复习 | 凡希的博客</title>
   
 
 
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">时序复习
               
             
           </h1>
@@ -353,16 +353,30 @@
                 
               
 
-              <time title="Created: 2018-12-09 15:01:39 / Modified: 15:00:03" itemprop="dateCreated datePublished" datetime="2018-12-09T15:01:39+08:00">2018-12-09</time>
+              <time title="Created: 2018-12-09 15:13:22" itemprop="dateCreated datePublished" datetime="2018-12-09T15:13:22+08:00">2018-12-09</time>
             
 
-            
-              
-
-              
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -399,7 +413,7 @@
       
 
       
-        <h1 id="Time-Series-Analysis"><a href="#Time-Series-Analysis" class="headerlink" title="Time Series Analysis"></a>Time Series Analysis</h1><p>若序列平稳，则往下进行，否则进行差分处理使序列变平稳 <br></p>
+        <p>若序列平稳，则往下进行，否则进行差分处理使序列变平稳 <br></p>
 <h2 id="时间序列的预处理"><a href="#时间序列的预处理" class="headerlink" title="时间序列的预处理"></a>时间序列的预处理</h2><h4 id="特征统计量"><a href="#特征统计量" class="headerlink" title="特征统计量"></a>特征统计量</h4><p><a href="http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm" target="_blank" rel="noopener">http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm</a></p>
 <h4 id="宽平稳时间序列-只要求二阶平稳即可"><a href="#宽平稳时间序列-只要求二阶平稳即可" class="headerlink" title="宽平稳时间序列(只要求二阶平稳即可)"></a>宽平稳时间序列(只要求二阶平稳即可)</h4><p>若${X(t)}$满足如下三个条件，则称${X(t)}$为<code>宽平稳时间序列</code>（弱平稳/二阶平稳）<br></p>
 <blockquote>
@@ -509,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/09/end/" rel="next" title="timeseries">
-                <i class="fa fa-chevron-left"></i> timeseries
+              <a href="/2018/12/09/end/" rel="next" title="对应分析">
+                <i class="fa fa-chevron-left"></i> 对应分析
               </a>
             
           </div>
@@ -686,7 +700,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Time-Series-Analysis"><span class="nav-number">1.</span> <span class="nav-text">Time Series Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间序列的预处理"><span class="nav-number">1.1.</span> <span class="nav-text">时间序列的预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特征统计量"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">特征统计量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宽平稳时间序列-只要求二阶平稳即可"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">宽平稳时间序列(只要求二阶平稳即可)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平稳时间序列的统计性质"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">平稳时间序列的统计性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平稳性检验"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">平稳性检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#纯随机性检验"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">纯随机性检验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平稳时间序列分析-key"><span class="nav-number">1.2.</span> <span class="nav-text">平稳时间序列分析(key!)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AR模型"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">AR模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MA模型"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">MA模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARMA模型"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">ARMA模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型识别规则"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">模型识别规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平稳序列建模"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">平稳序列建模</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#序列预测"><span class="nav-number">1.2.0.6.</span> <span class="nav-text">序列预测</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非平稳序列的随机性分析"><span class="nav-number">1.3.</span> <span class="nav-text">非平稳序列的随机性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非平稳序列的确定性分析"><span class="nav-number">1.4.</span> <span class="nav-text">非平稳序列的确定性分析</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间序列的预处理"><span class="nav-number">1.</span> <span class="nav-text">时间序列的预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特征统计量"><span class="nav-number">1.0.1.</span> <span class="nav-text">特征统计量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宽平稳时间序列-只要求二阶平稳即可"><span class="nav-number">1.0.2.</span> <span class="nav-text">宽平稳时间序列(只要求二阶平稳即可)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平稳时间序列的统计性质"><span class="nav-number">1.0.3.</span> <span class="nav-text">平稳时间序列的统计性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平稳性检验"><span class="nav-number">1.0.4.</span> <span class="nav-text">平稳性检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#纯随机性检验"><span class="nav-number">1.0.5.</span> <span class="nav-text">纯随机性检验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平稳时间序列分析-key"><span class="nav-number">2.</span> <span class="nav-text">平稳时间序列分析(key!)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AR模型"><span class="nav-number">2.0.1.</span> <span class="nav-text">AR模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MA模型"><span class="nav-number">2.0.2.</span> <span class="nav-text">MA模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARMA模型"><span class="nav-number">2.0.3.</span> <span class="nav-text">ARMA模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型识别规则"><span class="nav-number">2.0.4.</span> <span class="nav-text">模型识别规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平稳序列建模"><span class="nav-number">2.0.5.</span> <span class="nav-text">平稳序列建模</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#序列预测"><span class="nav-number">2.0.6.</span> <span class="nav-text">序列预测</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非平稳序列的随机性分析"><span class="nav-number">3.</span> <span class="nav-text">非平稳序列的随机性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非平稳序列的确定性分析"><span class="nav-number">4.</span> <span class="nav-text">非平稳序列的确定性分析</span></a></li></ol></div>
             
 
           </div>
