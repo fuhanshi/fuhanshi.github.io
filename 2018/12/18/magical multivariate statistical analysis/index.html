@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="title: 神奇的多元统计copyright: truedate: 2018-12-18 00:18:17mathjax: true categories: R１．马氏距离与欧氏距离各自的优缺点(两者之间的区别与联系)? 1.马氏距离：   (1)公式：$d_m^2(X,Y)=(X-Y)’{\Sigma}^{-1}(X-Y)$ (2)缺点：计算不便，须事先知道$\Sigma$，并计算$\Sig">
+  <meta name="description" content="１．马氏距离与欧氏距离各自的优缺点(两者之间的区别与联系)? 1.马氏距离：   (1)公式：$d_m^2(X,Y)=(X-Y)’{\Sigma}^{-1}(X-Y)$ (2)缺点：计算不便，须事先知道$\Sigma$，并计算$\Sigma^{-1}$，计算过程会产生误差，只有数据量较大时误差才较小(3)优点：既不受量纲影响，也不受相关性影响  2.欧氏距离：　  (1)公式：$d_{X,Y}^2">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
-<meta property="og:title" content="凡希的博客">
+<meta property="og:title" content="神奇的多元统计">
 <meta property="og:url" content="http://yoursite.com/2018/12/18/magical multivariate statistical analysis/index.html">
 <meta property="og:site_name" content="凡希的博客">
-<meta property="og:description" content="title: 神奇的多元统计copyright: truedate: 2018-12-18 00:18:17mathjax: true categories: R１．马氏距离与欧氏距离各自的优缺点(两者之间的区别与联系)? 1.马氏距离：   (1)公式：$d_m^2(X,Y)=(X-Y)’{\Sigma}^{-1}(X-Y)$ (2)缺点：计算不便，须事先知道$\Sigma$，并计算$\Sig">
+<meta property="og:description" content="１．马氏距离与欧氏距离各自的优缺点(两者之间的区别与联系)? 1.马氏距离：   (1)公式：$d_m^2(X,Y)=(X-Y)’{\Sigma}^{-1}(X-Y)$ (2)缺点：计算不便，须事先知道$\Sigma$，并计算$\Sigma^{-1}$，计算过程会产生误差，只有数据量较大时误差才较小(3)优点：既不受量纲影响，也不受相关性影响  2.欧氏距离：　  (1)公式：$d_{X,Y}^2">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-18T03:32:49.000Z">
+<meta property="og:updated_time" content="2018-12-18T03:37:37.473Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="凡希的博客">
-<meta name="twitter:description" content="title: 神奇的多元统计copyright: truedate: 2018-12-18 00:18:17mathjax: true categories: R１．马氏距离与欧氏距离各自的优缺点(两者之间的区别与联系)? 1.马氏距离：   (1)公式：$d_m^2(X,Y)=(X-Y)’{\Sigma}^{-1}(X-Y)$ (2)缺点：计算不便，须事先知道$\Sigma$，并计算$\Sig">
+<meta name="twitter:title" content="神奇的多元统计">
+<meta name="twitter:description" content="１．马氏距离与欧氏距离各自的优缺点(两者之间的区别与联系)? 1.马氏距离：   (1)公式：$d_m^2(X,Y)=(X-Y)’{\Sigma}^{-1}(X-Y)$ (2)缺点：计算不便，须事先知道$\Sigma$，并计算$\Sigma^{-1}$，计算过程会产生误差，只有数据量较大时误差才较小(3)优点：既不受量纲影响，也不受相关性影响  2.欧氏距离：　  (1)公式：$d_{X,Y}^2">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title> | 凡希的博客</title>
+  <title>神奇的多元统计 | 凡希的博客</title>
   
 
 
@@ -328,7 +328,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">神奇的多元统计
               
             
           </h1>
@@ -353,7 +353,7 @@
                 
               
 
-              <time title="Created: 2018-12-18 11:33:28 / Modified: 11:32:49" itemprop="dateCreated datePublished" datetime="2018-12-18T11:33:28+08:00">2018-12-18</time>
+              <time title="Created: 2018-12-18 00:18:17 / Modified: 11:37:37" itemprop="dateCreated datePublished" datetime="2018-12-18T00:18:17+08:00">2018-12-18</time>
             
 
             
@@ -363,6 +363,24 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -399,9 +417,7 @@
       
 
       
-        <hr>
-<p>title: 神奇的多元统计<br>copyright: true<br>date: 2018-12-18 00:18:17<br>mathjax: true</p>
-<h2 id="categories-R"><a href="#categories-R" class="headerlink" title="categories: R"></a>categories: R</h2><p><strong>１．<code>马氏距离</code>与<code>欧氏距离</code>各自的<code>优缺点</code>(两者之间的<code>区别</code>与<code>联系</code>)?</strong> <br><br>1.马氏距离： <br></p>
+        <p><strong>１．<code>马氏距离</code>与<code>欧氏距离</code>各自的<code>优缺点</code>(两者之间的<code>区别</code>与<code>联系</code>)?</strong> <br><br>1.马氏距离： <br></p>
 <blockquote>
 <p>(1)公式：$d_m^2(X,Y)=(X-Y)’{\Sigma}^{-1}(X-Y)$ <br><br>(2)缺点：计算不便，须事先知道$\Sigma$，并计算$\Sigma^{-1}$，计算过程会产生误差，只有数据量较大时误差才较小<br><br>(3)优点：既不受量纲影响，也不受相关性影响<br></p>
 </blockquote>
@@ -589,17 +605,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -703,22 +710,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#categories-R"><span class="nav-number">1.</span> <span class="nav-text">categories: R</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -933,6 +924,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
