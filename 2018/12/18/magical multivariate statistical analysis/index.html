@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="凡希的博客">
 <meta property="og:description" content="１．马氏距离与欧氏距离各自的优缺点(两者之间的区别与联系)? 1.马氏距离：   (1)公式：$d_m^2(X,Y)=(X-Y)’{\Sigma}^{-1}(X-Y)$ (2)缺点：计算不便，须事先知道$\Sigma$，并计算$\Sigma^{-1}$，计算过程会产生误差，只有数据量较大时误差才较小(3)优点：既不受量纲影响，也不受相关性影响  2.欧氏距离：　  (1)公式：$d_{X,Y}^2">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-20T05:58:45.100Z">
+<meta property="og:updated_time" content="2018-12-20T06:23:16.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神奇的多元统计">
 <meta name="twitter:description" content="１．马氏距离与欧氏距离各自的优缺点(两者之间的区别与联系)? 1.马氏距离：   (1)公式：$d_m^2(X,Y)=(X-Y)’{\Sigma}^{-1}(X-Y)$ (2)缺点：计算不便，须事先知道$\Sigma$，并计算$\Sigma^{-1}$，计算过程会产生误差，只有数据量较大时误差才较小(3)优点：既不受量纲影响，也不受相关性影响  2.欧氏距离：　  (1)公式：$d_{X,Y}^2">
@@ -370,7 +370,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-20 13:58:45" itemprop="dateModified" datetime="2018-12-20T13:58:45+08:00">2018-12-20</time>
+                <time title="Modified: 2018-12-20 14:23:16" itemprop="dateModified" datetime="2018-12-20T14:23:16+08:00">2018-12-20</time>
               
             
           </span>
@@ -468,7 +468,7 @@
 </blockquote>
 <p>  2、研究目的不同</p>
 <blockquote>
-<p>虽然都是研究分类的，但在进行<code>聚类分析</code>前，<code>对总体到底有几种类型不知道</code>（研究分几类较为合适需从计算中加以调整）。<code>判别分</code>析则是<code>在总体类型划分已知</code>，对当前新样本判断它们属于哪个总体。</p>
+<p>虽然都是研究分类的，但在进行<code>聚类分析</code>前，<code>对总体到底有几种类型不知道</code>（研究分几类较为合适需从计算中加以调整）。<code>判别分析</code>则是<code>在总体类型划分已知</code>的前提下，来判断当前新样本属于哪个总体的。</p>
 </blockquote>
 <p>  3.所具有的方法不同<br></p>
 <blockquote>
@@ -476,7 +476,7 @@
 </blockquote>
 <p>4.对数据要求不同<br></p>
 <blockquote>
-<p><code>聚类分析</code>的方法基本上与分布理论和限制性检验无关，一般不从样本腿短总体<br><br><code>判别分析</code>的一个基本假设是每一个类别都应取自一个多元正态总体的样本，而且所有正态总体的协方差矩阵或相关矩阵都嘉定是相同的，否则可能要采用非线性判别函数<br></p>
+<p><code>聚类分析</code>的方法基本上与分布理论和限制性检验无关，一般不从样本推断总体<br><br><code>判别分析</code>的一个基本假设是每一个类别都应取自一个多元正态总体的样本，而且所有正态总体的协方差矩阵或相关矩阵都假定是相同的，否则可能要采用非线性判别函数<br></p>
 </blockquote>
 <p><strong>6.$PCA$的思想与方法？</strong><br></p>
 <blockquote>
@@ -504,7 +504,7 @@
 </blockquote>
 <p><strong>9.对应分析的基本思想和步骤</strong> <br><br>1.基本思想：　<br></p>
 <blockquote>
-<p>首先分别在每组变量中找出第一对典型变量，使其具有最大相关性，然后在每组变量中找出第二对典型变量，使其分别与本组内的第一对典型变量不相关，第二对本身具有次大的相关性。如此下去，直到进行到R步，两组变量的相关系被提取完为止，可以得到R组典型相关变量。<br></p>
+<p>首先分别在每组变量中找出第一对典型相关变量，使其具有最大相关性，然后找出第二对典型变量，使其分别与第一对典型相关变量不相关，第二对本身具有次大的相关性。如此下去，直到进行到R步，两组变量的相关关系被提取完为止，可以得到R组典型相关变量。<br></p>
 </blockquote>
 <p>2.方法步骤：<br></p>
 <blockquote>
