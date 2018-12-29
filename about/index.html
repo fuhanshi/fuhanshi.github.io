@@ -1,752 +1,298 @@
-<!DOCTYPE html>
+<!--
+	作者：Sariay
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
 
 
+	<!DOCTYPE html>
+	<html>
+		
 
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/log.png?v=6.4.2">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/log.png?v=6.4.2">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/log.png?v=6.4.2">
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '6.4.2',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="南方落雪&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;北方落雨&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;长堤十里&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
-<meta name="keywords" content="Share">
-<meta property="og:type" content="website">
-<meta property="og:title" content="一个大学狗的日常">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
-<meta property="og:site_name" content="一个大学狗的日常">
-<meta property="og:description" content="南方落雪&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;北方落雨&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;长堤十里&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://bdn.135editor.com/files/users/397/3976340/201810/myQYDh6H_5K6Y.jpg">
-<meta property="og:image" content="https://bdn.135editor.com/files/users/397/3976340/201810/WemG2NEO_2mIB.jpg">
-<meta property="og:image" content="https://bdn.135editor.com/files/users/397/3976340/201810/p4hKsd8d_UIpk.jpg">
-<meta property="og:image" content="https://bdn.135editor.com/files/users/397/3976340/201810/TOInkuRY_D5u9.jpg">
-<meta property="og:image" content="https://bdn.135editor.com/files/users/397/3976340/201810/pAIsEK7Y_x4NK.jpg">
-<meta property="og:image" content="https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvWVV5WjdBT0wzb25lNDFJNmdxRDJGdGxKWDJibktRdW53eGQ3OHBMMERmaWNDdnliOXphUzMzR1U4aWJ0Q1JHODRteHVCNjBEOWpiTlZWM0h1VWZ3SGx2QS8w">
-<meta property="og:image" content="https://bdn.135editor.com/files/users/397/3976340/201810/KaAV58HY_wt3w.jpg">
-<meta property="og:image" content="https://bdn.135editor.com/files/users/397/3976340/201810/53zhJVfz_SXHz.jpg">
-<meta property="og:updated_time" content="2018-10-31T14:09:20.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一个大学狗的日常">
-<meta name="twitter:description" content="南方落雪&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;北方落雨&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;长堤十里&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
-<meta name="twitter:image" content="https://bdn.135editor.com/files/users/397/3976340/201810/myQYDh6H_5K6Y.jpg">
-
-
-
-  <link rel="alternate" href="/atom.xml" title="一个大学狗的日常" type="application/atom+xml" />
-
-
-
-
-  <link rel="canonical" href="http://yoursite.com/about/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title> | 一个大学狗的日常</title>
-  
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">一个大学狗的日常</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-      
-        <p class="site-subtitle">活着就要折腾，一秒不折腾就会天崩地裂</p>
-      
-    
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-主页">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-关于 menu-item-active">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-标签">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-分类">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-时间轴">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />时间轴</a>
-  </li>
-
-      
-      
-    </ul>
-  
-
-  
-
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-            
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline"></h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-        
-        
-          <section data-role="outer" label="Powered by 135editor.com" style="font-size:16px;font-family:微软雅黑;"><section class="article135" style="background-repeat: repeat; background-position: left top; padding: 10px; background-size: auto; background-image: url(&quot;http://image2.135editor.com/mmbiz_gif/cZV2hRpuAPjTw2iacM6RJGggO7nTficztvMrrFT6d8NaeExPXJllNbrdTnibB8Jnuwcfcp0599X9g5aGmPDlADN3w/0?wx_fmt=gif&quot;); box-sizing: border-box;"><section class="_135editor" data-tools="135编辑器" data-id="90835" style="border: 0px none; box-sizing: border-box;"><section style="padding: 10px; box-sizing: border-box;"><section style="padding: 15px; box-shadow: rgb(204, 204, 204) 0px 0px 5px; box-sizing: border-box;"><section style="padding: 0px; box-sizing: border-box;"><section style="width: 100%; margin-top: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; box-sizing: border-box;" data-width="100%"><img style="display: block;" src="https://bdn.135editor.com/files/users/397/3976340/201810/myQYDh6H_5K6Y.jpg" data-width="100%" title="undefined" alt=""></section><section style="padding: 0.8em 0.5em 0px; box-sizing: border-box;"><section style="font-size: 16px;text-align: justify;letter-spacing: 1.5px;line-height: 1.5em;color: #3f3e3f;" class="135brush" data-brushtype="text"><p>南方落雪</p><p>&nbsp;&nbsp;&nbsp;&nbsp;北方落雨</p></section><section style="font-size: 14px;text-align: justify;letter-spacing: 1.5px;line-height: 1.5em;color:#8c8c8c;" class="135brush" data-autoskip="1"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长堤十里</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鸿爪雪泥</p></section></section></section></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="92941" style="border: 0px none; box-sizing: border-box;"><section><section style="width: 100%; padding: 10px 0px; text-align: center; box-sizing: border-box;" data-width="100%"><p style="font-size: 14px; text-align:justify; letter-spacing: 1.5px; line-height: 1.75em; color: #3f3e3f; padding: 0px; box-sizing: border-box;">循着历史的足迹，去听一场雨</p><p style="font-size: 14px; text-align:justify; letter-spacing: 1.5px; line-height: 1.75em; color: #3f3e3f; padding: 0px; box-sizing: border-box;"><br></p><p style="font-size: 14px; text-align:justify; letter-spacing: 1.5px; line-height: 1.75em; color: #3f3e3f; padding: 0px; box-sizing: border-box;"><img src="https://bdn.135editor.com/files/users/397/3976340/201810/WemG2NEO_2mIB.jpg" alt="6.jpg"></p></section><section style="width: 100%; padding: 10px 0px; box-sizing: border-box;" data-width="100%"><section style="padding-top: 1em; text-align: center; margin: 0px auto; justify-content: center; display: -webkit-flex; box-sizing: border-box;"><section data-bgless="spin" data-bglessp="280" data-bgopacity="1%" style="width:0.8em;height:7px;background:rgba(68,139,264,0.99);"><br></section><section data-bgless="spin" data-bglessp="280" data-bgopacity="40%" style="width:0.8em;height:7px;background:rgba(68,139,264,0.6);margin:0px 10px 0px 10px;"></section><section data-bgless="spin" data-bglessp="280" data-bgopacity="70%" style="width:0.8em;height:7px;background:rgba(68,139,264,0.3);"></section></section></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="92636" style="border: 0px none; box-sizing: border-box;"><section style="border: 0px none; box-sizing: border-box;"><section style="text-align: right;margin-bottom:10px;"><p style="margin-left: 10px;display: inline-block;background-color: #ffb891;"><span class="135brush" data-brushtype="text" style="display: block; color:#fff; font-size:14px;letter-spacing: 1.5px;line-height:18px;padding:3px 15px 5px 15px;">雨落</span></p></section><section style="border: 0px; box-sizing: border-box; width: 100%; clear: both;padding: 0px;" data-width="100%"><section style="box-sizing: border-box; width: 50%; float: left; padding: 0px 2px 0px 0px;" data-width="50%"><img src="https://bdn.135editor.com/files/users/397/3976340/201810/p4hKsd8d_UIpk.jpg" style="box-sizing: border-box; margin: 0px; height: auto !important;" data-width="100%" title="undefined" alt=""></section><section style="box-sizing: border-box; width: 50%; float: right; padding: 0px 0px 0px 2px;" data-width="50%"><img src="https://bdn.135editor.com/files/users/397/3976340/201810/TOInkuRY_D5u9.jpg" style="box-sizing: border-box; margin: 0px; height: auto !important;" title="undefined" vspace="0" width="100%" height="auto" data-width="100%" alt=""></section></section><section style="clear: both;"></section><section style="text-align: right;color:#3f3e3f;"><section style="color:#3f3e3f;  font-size:14px;display: block;line-height:25px;" class="135brush"><p>少年听雨，凭栏而立</p></section></section><section style="display: flex;justify-content: flex-end;"><section style="width: 8em; border: 2px solid rgb(255, 230, 216); box-sizing: border-box;"></section></section><section style="display: flex;justify-content: flex-end;margin-top:3px;"><section style="width: 8em; border: 2px solid rgb(255, 230, 216); box-sizing: border-box;"></section></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="90835" style="border: 0px none; box-sizing: border-box;"><section style="padding: 10px; box-sizing: border-box;"><section style="padding: 15px; box-shadow: rgb(204, 204, 204) 0px 0px 5px; box-sizing: border-box;"><section><section style="width: 100%; margin-top: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; box-sizing: border-box;" data-width="100%"><img style="display: block;" src="https://bdn.135editor.com/files/users/397/3976340/201810/pAIsEK7Y_x4NK.jpg" data-width="100%" title="undefined" alt=""></section><section style="padding-top: 0.8em; padding-right: 0.5em; padding-left: 0.5em; box-sizing: border-box;"><section style="text-align: justify; letter-spacing: 1.5px; line-height: 1.5em;" class="135brush" data-brushtype="text"><p style=""><span style="color:#3f3e3f">而今听雨，烟雨迷蒙</span></p></section></section></section></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="92941" style="border: 0px none; box-sizing: border-box;"><section><section style="width: 100%; padding: 10px 0px; text-align: center; box-sizing: border-box;" data-width="100%"><section class="_135editor" data-tools="135编辑器" data-id="87860" style="border: 0px none; box-sizing: border-box;"><section style="width:100%;" data-width="100%"><section style="width:80%; margin:10px auto; line-height:1.75em; color:#a1a1a1; font-size:14px;" class="135brush" data-width="80%"><p>雨淅</p><p>雨纷</p><p>青雨</p><p>夜雨</p><p><br></p></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="92941" style="border: 0px none; box-sizing: border-box;"><section><section style="width: 100%; padding: 10px 0px; box-sizing: border-box;" data-width="100%"><section style="width: 100%; background: url(&quot;https://bdn.135editor.com/files/users/397/3976340/201810/KCUqamEL_2KQ5.jpg&quot;) center center / cover no-repeat;" class="135bg" data-width="100%"><section data-bdless="spin" data-bdlessp="280" data-bdopacity="60%" style="border:7px solid rgba(255,255,255,0.4);box-sizing: border-box;"><img style="display:block;background:100%;opacity: 0;" src="https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvWVV5WjdBT0wzb25lNDFJNmdxRDJGdGxKWDJibktRdW53eGQ3OHBMMERmaWNDdnliOXphUzMzR1U4aWJ0Q1JHODRteHVCNjBEOWpiTlZWM0h1VWZ3SGx2QS8w"></section></section></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="85622" style="border: 0px none; box-sizing: border-box;"><section style="text-align: right;"><p style="margin-left: 10px;display: inline-block;background-color: #fefefe;"><span class="135brush" data-brushtype="text" style="color:#7f7f7f; font-family:微软雅黑; font-size:16px; margin-left:10px"></span></p></section><section style="background-color: #212122;height: 2px;width:100%;margin-top: -12px;margin-bottom: 30px;" data-width="100%"></section><section style="border: 0px; box-sizing: border-box; width: 100%; clear: both;padding: 0px;" data-width="100%"><section style="box-sizing: border-box; width: 50%; float: left; padding: 0px 0.5em 0px 0px;" data-width="50%"><img src="https://bdn.135editor.com/files/users/397/3976340/201810/KaAV58HY_wt3w.jpg" style="box-sizing: border-box; margin: 0px; height: auto !important;" width="100%" height="auto" border="0" opacity="" mapurl="" title="undefined" alt="" data-width="100%"></section><section style="box-sizing: border-box; width: 50%; float: right; padding: 0px 0px 0px 0.5em;" data-width="50%"><img alt="" border="0" data-width="100%" mapurl="" opacity="" src="https://bdn.135editor.com/files/users/397/3976340/201810/53zhJVfz_SXHz.jpg" style="box-sizing: border-box; margin: 0px; height: auto !important;" title="undefined" vspace="0" width="100%" height="auto"></section></section><section class="135brush" data-style="text-align: left;color:rgb(127, 127, 127); font-family:微软雅黑;font-size:14px;" style="width:100%;" data-width="100%"><p style="text-align: left;"><span style="color:#7f7f7f; font-family:微软雅黑; font-size:26px">FIND YOURSELF</span></p><p style="text-align: left;"><span style="color:#7f7f7f"><span style="font-size: 14px;"></span></span></p><p style="text-align: left;"><span style=";color:#7f7f7f;font-size:14px"></span></p><p style="text-align: left;"><span style=";color:#7f7f7f;font-size:14px"><span style="color: #7f7f7f; font-size: 14px;"></span></span></p><p style="text-align: left;"><span style=";color:#7f7f7f;font-size:14px">一场如期而至的大雨</span></p><p style="text-align: left;"><span style=";color:#7f7f7f;font-size:14px">此刻</span></p><p style="text-align: left;"><span style=";color:#7f7f7f;font-size:14px">正淅淅沥沥…</span></p></section></section><p style="font-size: 14px; letter-spacing: 1.5px; line-height: 1.75em; color: #3f3e3f; padding: 0px; box-sizing: border-box;"><br></p></section></section></section><section data-role="paragraph" class="_135editor" style="border: 0px none; box-sizing: border-box;"><p><br></p></section></section></section>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-
-
-    
-    
-    
-  </div>
-
-
-          </div>
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">凡希</p>
-              <p class="site-description motion-element" itemprop="description">大学狗的日常</p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives">
-                
-                    <span class="site-state-item-count">39</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">11</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">凡希</span>
-
-  
-
-  
-</div>
-
-
-
-
-
-
-
-
-
-
-  <div class="footer-custom">微信公众号：我将在南极找寻你</div>
-
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv" title="总访客量">
-      <i class="fa fa-user"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-
-  
-    <span class="site-pv" title="总访问量">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
-</div>
-
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
+	<title>一个大学狗的日常</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="凡希">
+    <meta name="keywords" content="Share" />
+    <meta name="description" content="活着就要折腾，一秒不折腾就会天崩地裂" />
+   	<!-- css -->
+	<link rel="stylesheet" href="/css/style.css">
+
+	<!-- favicon -->
+	<link href="/img/favicon.ico" rel="Shortcut Icon" type="image/ico">
 	
-    
+	<!-- font-awesome -->
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+	<body>	
+		<!--Preloader-->
+<div id="preloader">
+	<div id="status">
+		<img alt="PRELOADER" src="/img/logo.png">
+	</div>
+</div>
+<!--Preloader end-->
 
-    
-  </div>
+<!-- header -->
 
-  
+	<header id="header-bg-2">
+
+	
+		<div id="cd-logo"><a href="/"><img src="/img/logo.png" alt="Logo"></a></div>
+	
+	
+	<!-- motto or description -->
+		
+ 		<p class="motto">大学狗的日常</p>
+	
+	
+	<!-- current page name or title -->
+	
+		
+		
+			
+			<p class="page-name"></p>
+			
+		
+	
+	
+	<!-- others: such as change-bg, time... -->
+	<p class="page-name-other">
+		12/29/2018 
+		<style type="text/css">
+	header:after {
+		content: '';
+		position: relative;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: #222222;
+		opacity: .5;
+		z-index: -1;
+	}
+	
+	.change-header-bg{
+		font-style: normal;
+	}
+	.change-header-bg i{
+		text-align: center;
+		cursor: pointer;
+		pointer-events: bounding-box;
+	}
+	@media(max-width:512px) {
+		.change-header-bg {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	
+</style>
 
 <script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+	function changeHeaderBg(){
+		var random_bg = Math.floor(Math.random() * 109 + 1);
+		var bg = 'url(https://XXX-youname-XXX.github.io/Random-img/' + random_bg + '.jpg)';
+		$("#header-bg-2").css("background-image", bg);
+	}
 </script>
 
+<span class="change-header-bg">
+	——&nbsp;<i  class="fa fa-camera-retro" onclick="changeHeaderBg()"></i>	
+</span>
+	</p>		
+</header>
+
+<!-- nav -->
+<div id="cd-nav">
+	<a href="#0" title="menu" class="cd-nav-trigger"><span></span></a>
+
+	<nav id="cd-main-nav">
+		<ul>
+			
+      		<li class="fa fa-/">
+           		<a href="/" title="主页">主页</a>	
+      		</li>
+    		
+      		<li class="fa fa-/archives">
+           		<a href="/archives" title="归档">归档</a>	
+      		</li>
+    		
+      		<li class="fa fa-/categories">
+           		<a href="/categories" title="分类">分类</a>	
+      		</li>
+    		
+      		<li class="fa fa-/tags">
+           		<a href="/tags" title="标签">标签</a>	
+      		</li>
+    		
+      		<li class="fa fa-/about">
+           		<a href="/about" title="关于">关于</a>	
+      		</li>
+    		
+      		<li class="fa fa-/gallery">
+           		<a href="/gallery" title="相册">相册</a>	
+      		</li>
+    		
+    		
+        	
+		</ul>
+	</nav>
+</div>
+
+		<!--main-->
+		<main> 
+		<div class="page-container">
+		<!--content start-->
+<div class="am-g am-g-fixed blog-fixed blog-content">
+    <div class="am-u-md-8 am-u-sm-12">
+        <article class="am-article blog-article-p">
+
+            <div class="page-header">
+	<div class="blog-text-center">
+		
+			
+			
+
+		  	 		
+	</div>    	 		
+</div>  	 		
+
+                
+
+                <section data-role="outer" label="Powered by 135editor.com" style="font-size:16px;font-family:微软雅黑;"><section class="article135" style="background-repeat: repeat; background-position: left top; padding: 10px; background-size: auto; background-image: url(&quot;http://image2.135editor.com/mmbiz_gif/cZV2hRpuAPjTw2iacM6RJGggO7nTficztvMrrFT6d8NaeExPXJllNbrdTnibB8Jnuwcfcp0599X9g5aGmPDlADN3w/0?wx_fmt=gif&quot;); box-sizing: border-box;"><section class="_135editor" data-tools="135编辑器" data-id="90835" style="border: 0px none; box-sizing: border-box;"><section style="padding: 10px; box-sizing: border-box;"><section style="padding: 15px; box-shadow: rgb(204, 204, 204) 0px 0px 5px; box-sizing: border-box;"><section style="padding: 0px; box-sizing: border-box;"><section style="width: 100%; margin-top: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; box-sizing: border-box;" data-width="100%"><img style="display: block;" src="https://bdn.135editor.com/files/users/397/3976340/201810/myQYDh6H_5K6Y.jpg" data-width="100%" title="undefined" alt=""></section><section style="padding: 0.8em 0.5em 0px; box-sizing: border-box;"><section style="font-size: 16px;text-align: justify;letter-spacing: 1.5px;line-height: 1.5em;color: #3f3e3f;" class="135brush" data-brushtype="text"><p>南方落雪</p><p>&nbsp;&nbsp;&nbsp;&nbsp;北方落雨</p></section><section style="font-size: 14px;text-align: justify;letter-spacing: 1.5px;line-height: 1.5em;color:#8c8c8c;" class="135brush" data-autoskip="1"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;长堤十里</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鸿爪雪泥</p></section></section></section></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="92941" style="border: 0px none; box-sizing: border-box;"><section><section style="width: 100%; padding: 10px 0px; text-align: center; box-sizing: border-box;" data-width="100%"><p style="font-size: 14px; text-align:justify; letter-spacing: 1.5px; line-height: 1.75em; color: #3f3e3f; padding: 0px; box-sizing: border-box;">循着历史的足迹，去听一场雨</p><p style="font-size: 14px; text-align:justify; letter-spacing: 1.5px; line-height: 1.75em; color: #3f3e3f; padding: 0px; box-sizing: border-box;"><br></p><p style="font-size: 14px; text-align:justify; letter-spacing: 1.5px; line-height: 1.75em; color: #3f3e3f; padding: 0px; box-sizing: border-box;"><img src="https://bdn.135editor.com/files/users/397/3976340/201810/WemG2NEO_2mIB.jpg" alt="6.jpg"></p></section><section style="width: 100%; padding: 10px 0px; box-sizing: border-box;" data-width="100%"><section style="padding-top: 1em; text-align: center; margin: 0px auto; justify-content: center; display: -webkit-flex; box-sizing: border-box;"><section data-bgless="spin" data-bglessp="280" data-bgopacity="1%" style="width:0.8em;height:7px;background:rgba(68,139,264,0.99);"><br></section><section data-bgless="spin" data-bglessp="280" data-bgopacity="40%" style="width:0.8em;height:7px;background:rgba(68,139,264,0.6);margin:0px 10px 0px 10px;"></section><section data-bgless="spin" data-bglessp="280" data-bgopacity="70%" style="width:0.8em;height:7px;background:rgba(68,139,264,0.3);"></section></section></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="92636" style="border: 0px none; box-sizing: border-box;"><section style="border: 0px none; box-sizing: border-box;"><section style="text-align: right;margin-bottom:10px;"><p style="margin-left: 10px;display: inline-block;background-color: #ffb891;"><span class="135brush" data-brushtype="text" style="display: block; color:#fff; font-size:14px;letter-spacing: 1.5px;line-height:18px;padding:3px 15px 5px 15px;">雨落</span></p></section><section style="border: 0px; box-sizing: border-box; width: 100%; clear: both;padding: 0px;" data-width="100%"><section style="box-sizing: border-box; width: 50%; float: left; padding: 0px 2px 0px 0px;" data-width="50%"><img src="https://bdn.135editor.com/files/users/397/3976340/201810/p4hKsd8d_UIpk.jpg" style="box-sizing: border-box; margin: 0px; height: auto !important;" data-width="100%" title="undefined" alt=""></section><section style="box-sizing: border-box; width: 50%; float: right; padding: 0px 0px 0px 2px;" data-width="50%"><img src="https://bdn.135editor.com/files/users/397/3976340/201810/TOInkuRY_D5u9.jpg" style="box-sizing: border-box; margin: 0px; height: auto !important;" title="undefined" vspace="0" width="100%" height="auto" data-width="100%" alt=""></section></section><section style="clear: both;"></section><section style="text-align: right;color:#3f3e3f;"><section style="color:#3f3e3f;  font-size:14px;display: block;line-height:25px;" class="135brush"><p>少年听雨，凭栏而立</p></section></section><section style="display: flex;justify-content: flex-end;"><section style="width: 8em; border: 2px solid rgb(255, 230, 216); box-sizing: border-box;"></section></section><section style="display: flex;justify-content: flex-end;margin-top:3px;"><section style="width: 8em; border: 2px solid rgb(255, 230, 216); box-sizing: border-box;"></section></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="90835" style="border: 0px none; box-sizing: border-box;"><section style="padding: 10px; box-sizing: border-box;"><section style="padding: 15px; box-shadow: rgb(204, 204, 204) 0px 0px 5px; box-sizing: border-box;"><section><section style="width: 100%; margin-top: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px; box-sizing: border-box;" data-width="100%"><img style="display: block;" src="https://bdn.135editor.com/files/users/397/3976340/201810/pAIsEK7Y_x4NK.jpg" data-width="100%" title="undefined" alt=""></section><section style="padding-top: 0.8em; padding-right: 0.5em; padding-left: 0.5em; box-sizing: border-box;"><section style="text-align: justify; letter-spacing: 1.5px; line-height: 1.5em;" class="135brush" data-brushtype="text"><p style=""><span style="color:#3f3e3f">而今听雨，烟雨迷蒙</span></p></section></section></section></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="92941" style="border: 0px none; box-sizing: border-box;"><section><section style="width: 100%; padding: 10px 0px; text-align: center; box-sizing: border-box;" data-width="100%"><section class="_135editor" data-tools="135编辑器" data-id="87860" style="border: 0px none; box-sizing: border-box;"><section style="width:100%;" data-width="100%"><section style="width:80%; margin:10px auto; line-height:1.75em; color:#a1a1a1; font-size:14px;" class="135brush" data-width="80%"><p>雨淅</p><p>雨纷</p><p>青雨</p><p>夜雨</p><p><br></p></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="92941" style="border: 0px none; box-sizing: border-box;"><section><section style="width: 100%; padding: 10px 0px; box-sizing: border-box;" data-width="100%"><section style="width: 100%; background: url(&quot;https://bdn.135editor.com/files/users/397/3976340/201810/KCUqamEL_2KQ5.jpg&quot;) center center / cover no-repeat;" class="135bg" data-width="100%"><section data-bdless="spin" data-bdlessp="280" data-bdopacity="60%" style="border:7px solid rgba(255,255,255,0.4);box-sizing: border-box;"><img style="display:block;background:100%;opacity: 0;" src="https://image2.135editor.com/cache/remote/aHR0cHM6Ly9tbWJpei5xbG9nby5jbi9tbWJpel9wbmcvWVV5WjdBT0wzb25lNDFJNmdxRDJGdGxKWDJibktRdW53eGQ3OHBMMERmaWNDdnliOXphUzMzR1U4aWJ0Q1JHODRteHVCNjBEOWpiTlZWM0h1VWZ3SGx2QS8w"></section></section></section></section></section><section class="_135editor" data-tools="135编辑器" data-id="85622" style="border: 0px none; box-sizing: border-box;"><section style="text-align: right;"><p style="margin-left: 10px;display: inline-block;background-color: #fefefe;"><span class="135brush" data-brushtype="text" style="color:#7f7f7f; font-family:微软雅黑; font-size:16px; margin-left:10px"></span></p></section><section style="background-color: #212122;height: 2px;width:100%;margin-top: -12px;margin-bottom: 30px;" data-width="100%"></section><section style="border: 0px; box-sizing: border-box; width: 100%; clear: both;padding: 0px;" data-width="100%"><section style="box-sizing: border-box; width: 50%; float: left; padding: 0px 0.5em 0px 0px;" data-width="50%"><img src="https://bdn.135editor.com/files/users/397/3976340/201810/KaAV58HY_wt3w.jpg" style="box-sizing: border-box; margin: 0px; height: auto !important;" width="100%" height="auto" border="0" opacity="" mapurl="" title="undefined" alt="" data-width="100%"></section><section style="box-sizing: border-box; width: 50%; float: right; padding: 0px 0px 0px 0.5em;" data-width="50%"><img alt="" border="0" data-width="100%" mapurl="" opacity="" src="https://bdn.135editor.com/files/users/397/3976340/201810/53zhJVfz_SXHz.jpg" style="box-sizing: border-box; margin: 0px; height: auto !important;" title="undefined" vspace="0" width="100%" height="auto"></section></section><section class="135brush" data-style="text-align: left;color:rgb(127, 127, 127); font-family:微软雅黑;font-size:14px;" style="width:100%;" data-width="100%"><p style="text-align: left;"><span style="color:#7f7f7f; font-family:微软雅黑; font-size:26px">FIND YOURSELF</span></p><p style="text-align: left;"><span style="color:#7f7f7f"><span style="font-size: 14px;"></span></span></p><p style="text-align: left;"><span style=";color:#7f7f7f;font-size:14px"></span></p><p style="text-align: left;"><span style=";color:#7f7f7f;font-size:14px"><span style="color: #7f7f7f; font-size: 14px;"></span></span></p><p style="text-align: left;"><span style=";color:#7f7f7f;font-size:14px">一场如期而至的大雨</span></p><p style="text-align: left;"><span style=";color:#7f7f7f;font-size:14px">此刻</span></p><p style="text-align: left;"><span style=";color:#7f7f7f;font-size:14px">正淅淅沥沥…</span></p></section></section><p style="font-size: 14px; letter-spacing: 1.5px; line-height: 1.75em; color: #3f3e3f; padding: 0px; box-sizing: border-box;"><br></p></section></section></section><section data-role="paragraph" class="_135editor" style="border: 0px none; box-sizing: border-box;"><p><br></p></section></section></section>
+
+            
+        </article>
+    </div>
+</div>
+
+
+		</div>
+		</main>
+		
+		<!--footer-->
+		<footer>
+	<div class="blog-text-center">
+		<div class="theme-annie-social">
+				
+				
+					<a href="http://github.com/" title="Github" target="_blank"><i class="fa fa-github"></i>&nbsp;</a>
+					
+				
+					<a href="http://github.com/" title="Weibo" target="_blank"><i class="fa fa-weibo"></i>&nbsp;</a>
+				
+				
+					<a href="http://github.com/" title="Email" target="_blank"><i class="fa fa-envelope-o"></i>&nbsp;</a>
+					
+				
+					<a href="http://github.com/" title="QQ" target="_blank"><i class="fa fa-qq"></i>&nbsp;</a>
+					
+				
+					<a href="http://github.com/" title="Twitter" target="_blank"><i class="fa fa-twitter"></i>&nbsp;</a>
+						
+				
+		</div>
+	</div>
+
+	<div  class="blog-text-center">
+		<div class="theme-annie-copyright">
+			
+				&copy; 2017 - 2018, content by 凡希. All Rights Reserved.			       	
+			
+		</div>
+	</div>
+
+	<div class="blog-text-center">
+		<div class="theme-annie-copyright">
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> Theme <a href="https://github.com/Sariay/hexo-theme-Annie" title="Annie" target="_blank" rel="noopener">Annie</a> by Sariay.		
+		</div>
+	</div>
+</footer>
+		<!-- <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script> -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
 <script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
-    }
-    else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-    }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
+	window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js"><\/script>')
 </script>
 
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-<!-- 页面点击小红心 -->
-<script type="text/javascript" src="/js/src/clicklove.js"></script
-</body>
-</html>
+<style>
+	.motto {
+		color: #000000;
+		font-size: 20px;
+		margin: 100px 25% 0;
+		width: 50%;
+		line-height: 1.4;
+		font-family:"KaiTi", "STXingkai", "Source Sans Pro", "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
+		text-align: center;
+	}
+	@media(max-width: 890px) {
+		.motto {	
+			margin: 100px 10% 0;
+			width: 80%;
+		}
+	}
+	@media(max-width: 890px) {
+		.motto {
+			margin: 100px 5% 0;
+			width: 90%;
+		}
+	}
+</style>
 
 
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript">
+	//generate a random img that pre_name 'from 0 to 110'
+	var random_bg = Math.floor(Math.random() * 109 + 1);
+
+	//var bg = 'url(/img/random/' + random_bg + '.jpg)';		
+	var bg = 'url(https://XXX-youname-XXX.github.io/Random-img/' + random_bg + '.jpg)';
+
+	$("#header-bg-2").css("background-image", bg);
+</script>
+		
+		<!--back to top-->
+        <style type="text/css">
+	#totop {
+		background: white;
+		border-radius: 50%;
+		position: fixed;
+		right: 5.4%;
+		bottom: 80px;
+		cursor: pointer;
+	}
+	
+	#totop a {
+		color: #474747;
+		background-color: transparent;
+		padding: 10px;
+		text-decoration: none;
+	}
+	
+	@media(max-width:512px) {
+		#totop {
+			display: none;
+			visibility: hidden;
+		}
+	}
+</style>
+
+
+	<div id="totop">
+  		<a href="javascript:;" class="fa fa-arrow-up"></a>
+	</div>
+
+	</body>
+	</html>
 
