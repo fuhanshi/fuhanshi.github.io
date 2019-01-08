@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-08T04:11:15.919Z</updated>
+  <updated>2019-01-08T04:20:32.463Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="http://yoursite.com/2019/01/08/calmethods/"/>
     <id>http://yoursite.com/2019/01/08/calmethods/</id>
     <published>2019-01-08T04:07:46.000Z</published>
-    <updated>2019-01-08T04:11:15.919Z</updated>
+    <updated>2019-01-08T04:20:32.463Z</updated>
     
-    <content type="html"><![CDATA[<p>![1.jpg] <br><br>![2.jpg] <br><br>![3.jpg] <br><br>![4.jpg] <br><br>![5.jpg] <br><br>![6.jpg] <br><br>![7.jpg] <br><br>![8.jpg] <br><br>![9.jpg] <br><br>![10.jpg] <br><br>![11.jpg] <br><br>![12.jpg] <br></p>]]></content>
+    <content type="html"><![CDATA[<p>!([1.jpg]) <br><br>!([2.jpg]) <br><br>!([3.jpg]) <br><br>!([4.jpg]) <br><br>!([5.jpg]) <br><br>!([6.jpg]) <br><br>!([7.jpg]) <br><br>!([8.jpg]) <br><br>!([9.jpg]) <br><br>!([10.jpg]) <br><br>!([11.jpg]) <br><br>!([12.jpg]) <br></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;![1.jpg] &lt;br&gt;&lt;br&gt;![2.jpg] &lt;br&gt;&lt;br&gt;![3.jpg] &lt;br&gt;&lt;br&gt;![4.jpg] &lt;br&gt;&lt;br&gt;![5.jpg] &lt;br&gt;&lt;br&gt;![6.jpg] &lt;br&gt;&lt;br&gt;![7.jpg] &lt;br&gt;&lt;br&gt;![8.jpg] &lt;br&gt;&lt;br&gt;!
+        &lt;p&gt;!([1.jpg]) &lt;br&gt;&lt;br&gt;!([2.jpg]) &lt;br&gt;&lt;br&gt;!([3.jpg]) &lt;br&gt;&lt;br&gt;!([4.jpg]) &lt;br&gt;&lt;br&gt;!([5.jpg]) &lt;br&gt;&lt;br&gt;!([6.jpg]) &lt;br&gt;&lt;br&gt;!([7.jpg]) &lt;br&gt;&lt;br&gt;!([8
       
     
     </summary>
