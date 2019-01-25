@@ -115,25 +115,25 @@
 
 
 
-  <meta name="description" content="一、导入处理完毕的数据123import pandas as pdimport numpy as npimport matplotlib.pyplot as plt 1data=pd.read_csv(&apos;/home/fanxi/桌面/mydata.csv&apos;) 1data.head()     .dataframe tbody tr th:only-of-type {        vertical">
+  <meta name="description" content="一、导入处理完毕的数据123import pandas as pdimport numpy as npimport matplotlib.pyplot as plt 1data=pd.read_csv(&apos;/home/fanxi/桌面/mydata.csv&apos;) 二、选择要进行分析的数据观察上表，发现data中有数据缺失，为了方便起见，这里选取前13个无数据缺失的行业股价进行演示 首先计算13个行业的">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
 <meta property="og:title" content="股价数据分析报告">
 <meta property="og:url" content="http://yoursite.com/2019/01/11/stock/index.html">
 <meta property="og:site_name" content="一个大学狗的日常">
-<meta property="og:description" content="一、导入处理完毕的数据123import pandas as pdimport numpy as npimport matplotlib.pyplot as plt 1data=pd.read_csv(&apos;/home/fanxi/桌面/mydata.csv&apos;) 1data.head()     .dataframe tbody tr th:only-of-type {        vertical">
+<meta property="og:description" content="一、导入处理完毕的数据123import pandas as pdimport numpy as npimport matplotlib.pyplot as plt 1data=pd.read_csv(&apos;/home/fanxi/桌面/mydata.csv&apos;) 二、选择要进行分析的数据观察上表，发现data中有数据缺失，为了方便起见，这里选取前13个无数据缺失的行业股价进行演示 首先计算13个行业的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_11_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_27_0.png">
-<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_30_1.png">
-<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_35_0.png">
-<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_40_0.png">
-<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_40_1.png">
-<meta property="og:updated_time" content="2019-01-25T12:26:46.119Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_10_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_26_0.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_29_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_34_0.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_39_0.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/11/stock/output_39_1.png">
+<meta property="og:updated_time" content="2019-01-25T12:36:10.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="股价数据分析报告">
-<meta name="twitter:description" content="一、导入处理完毕的数据123import pandas as pdimport numpy as npimport matplotlib.pyplot as plt 1data=pd.read_csv(&apos;/home/fanxi/桌面/mydata.csv&apos;) 1data.head()     .dataframe tbody tr th:only-of-type {        vertical">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/11/stock/output_11_1.png">
+<meta name="twitter:description" content="一、导入处理完毕的数据123import pandas as pdimport numpy as npimport matplotlib.pyplot as plt 1data=pd.read_csv(&apos;/home/fanxi/桌面/mydata.csv&apos;) 二、选择要进行分析的数据观察上表，发现data中有数据缺失，为了方便起见，这里选取前13个无数据缺失的行业股价进行演示 首先计算13个行业的">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/11/stock/output_10_1.png">
 
 
 
@@ -384,7 +384,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-25 20:26:46" itemprop="dateModified" datetime="2019-01-25T20:26:46+08:00">2019-01-25</time>
+                <time title="修改时间：2019-01-25 20:36:10" itemprop="dateModified" datetime="2019-01-25T20:36:10+08:00">2019-01-25</time>
               
             
           </span>
@@ -427,11 +427,6 @@
       
         <h3 id="一、导入处理完毕的数据"><a href="#一、导入处理完毕的数据" class="headerlink" title="一、导入处理完毕的数据"></a>一、导入处理完毕的数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data=pd.read_csv(<span class="string">'/home/fanxi/桌面/mydata.csv'</span>)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.head()</span><br></pre></td></tr></table></figure>
-<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>code1</th><br>      <th>交易时间</th><br>      <th>op1</th><br>      <th>cp1</th><br>      <th>code2</th><br>      <th>op2</th><br>      <th>cp2</th><br>      <th>code3</th><br>      <th>op3</th><br>      <th>cp3</th><br>      <th>…</th><br>      <th>cp13</th><br>      <th>code14</th><br>      <th>op14</th><br>      <th>cp14</th><br>      <th>code15</th><br>      <th>op15</th><br>      <th>cp15</th><br>      <th>code16</th><br>      <th>op16</th><br>      <th>cp16</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>33</td><br>      <td>2010-01-04</td><br>      <td>2713.646</td><br>      <td>2682.361</td><br>      <td>40</td><br>      <td>2466.720</td><br>      <td>2449.466</td><br>      <td>34</td><br>      <td>2451.738</td><br>      <td>2426.070</td><br>      <td>…</td><br>      <td>3462.933</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td>33</td><br>      <td>2010-01-05</td><br>      <td>2696.381</td><br>      <td>2717.703</td><br>      <td>40</td><br>      <td>2454.346</td><br>      <td>2519.827</td><br>      <td>34</td><br>      <td>2428.609</td><br>      <td>2443.498</td><br>      <td>…</td><br>      <td>3557.329</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>33</td><br>      <td>2010-01-06</td><br>      <td>2711.618</td><br>      <td>2726.328</td><br>      <td>40</td><br>      <td>2509.441</td><br>      <td>2486.248</td><br>      <td>34</td><br>      <td>2443.152</td><br>      <td>2441.108</td><br>      <td>…</td><br>      <td>3556.618</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>33</td><br>      <td>2010-01-07</td><br>      <td>2742.441</td><br>      <td>2669.174</td><br>      <td>40</td><br>      <td>2481.467</td><br>      <td>2418.760</td><br>      <td>34</td><br>      <td>2438.390</td><br>      <td>2407.755</td><br>      <td>…</td><br>      <td>3499.733</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>33</td><br>      <td>2010-01-08</td><br>      <td>2645.567</td><br>      <td>2650.290</td><br>      <td>40</td><br>      <td>2408.463</td><br>      <td>2458.201</td><br>      <td>34</td><br>      <td>2402.440</td><br>      <td>2419.262</td><br>      <td>…</td><br>      <td>3466.122</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>      <td>NaN</td><br>    </tr><br>  </tbody><br></table><br><p>5 rows × 49 columns</p><br></div>
-
-
-
 <h3 id="二、选择要进行分析的数据"><a href="#二、选择要进行分析的数据" class="headerlink" title="二、选择要进行分析的数据"></a>二、选择要进行分析的数据</h3><p><strong>观察上表，发现data中有数据缺失，为了方便起见，这里选取前13个无数据缺失的行业股价进行演示</strong></p>
 <p><strong>首先计算13个行业的开/收盘价的收益率</strong></p>
 <p><strong>计算日收益率的方法：（后一天的价格-前一天的价格）/前一天的价格</strong></p>
@@ -473,7 +468,7 @@
         -0.0045667 ,  0.01450346,  0.03357363,  0.0526438 ,  0.07171397,
          0.09078414]),
  &lt;a list of 10 Patch objects&gt;)
-</code></pre><p><img src="output_11_1.png" alt="png"></p>
+</code></pre><p><img src="output_10_1.png" alt="png"></p>
 <p>上图中蓝色和黄色直图形分别是开盘价和收盘价的日收益率直方图，可见13个行业总体的开/收盘价<strong>近似服从正态分布</strong></p>
 <h3 id="四、将13个行业的收益率（以开盘价收益率为例）分为13组，便于后续对单个行业的收益率进行分析"><a href="#四、将13个行业的收益率（以开盘价收益率为例）分为13组，便于后续对单个行业的收益率进行分析" class="headerlink" title="四、将13个行业的收益率（以开盘价收益率为例）分为13组，便于后续对单个行业的收益率进行分析"></a>四、将13个行业的收益率（以开盘价收益率为例）分为13组，便于后续对单个行业的收益率进行分析</h3><p>由于一共选取了13个行业的数据，且每一个行业都总共有2187个样本，根据计算日收益率的公式可知，每一个行业在经过计算后会得到2187-1=2186个数值 <br><br>来验证下，以op（开盘价）为例：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">len(op)</span><br></pre></td></tr></table></figure>
@@ -493,7 +488,7 @@
 
 
 <h3 id="六、绘制直方图检验正态性"><a href="#六、绘制直方图检验正态性" class="headerlink" title="六、绘制直方图检验正态性"></a>六、绘制直方图检验正态性</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.style.use(<span class="string">'ggplot'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">13</span>):</span><br><span class="line">    fig=plt.subplot(<span class="number">2</span>,<span class="number">7</span>,i+<span class="number">1</span>)</span><br><span class="line">    fig.hist(op_df.iloc[:,i])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="output_27_0.png" alt="png"></p>
+<p><img src="output_26_0.png" alt="png"></p>
 <p>把所有的图画在一张图片上，显示不太清楚</p>
 <p>可以取出来其中一个，比如第一个行业（即code1对应行业）的直方图</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">x0=np.array(op_df.iloc[:,<span class="number">0</span>])</span><br><span class="line">plt.hist(x0)</span><br></pre></td></tr></table></figure>
@@ -503,12 +498,12 @@
         -0.00095871,  0.02370107,  0.04836085,  0.07302063,  0.09768041,
          0.1223402 ]),
  &lt;a list of 10 Patch objects&gt;)
-</code></pre><p><img src="output_30_1.png" alt="png"></p>
+</code></pre><p><img src="output_29_1.png" alt="png"></p>
 <p>收益率近似服从正态分布</p>
 <h3 id="七、预测未来几期的收益率，以code1为例"><a href="#七、预测未来几期的收益率，以code1为例" class="headerlink" title="七、预测未来几期的收益率，以code1为例"></a>七、预测未来几期的收益率，以code1为例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">to_pre_data=op_df.iloc[:,[<span class="number">-1</span>,<span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#制作数据透视表</span></span><br><span class="line">table=pd.pivot_table(to_pre_data,index=[<span class="string">'date'</span>],values=<span class="string">'code1'</span>)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘制时间序列图</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.dates <span class="keyword">as</span> mdate</span><br><span class="line"><span class="comment">#fig=plt.figure()</span></span><br><span class="line"><span class="comment">#ax=fig.add_subplot(111)</span></span><br><span class="line"><span class="comment">#ax.xaxis.set_major_formatter(mdate.DateFormatter('%Y-%m-%d'))</span></span><br><span class="line">plt.plot(table.index,table[<span class="string">'code1'</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="output_35_0.png" alt="png"></p>
+<p><img src="output_34_0.png" alt="png"></p>
 <p>从时序图中可以看出，该序列是比较平稳的</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#计算该序列的均值和标准差</span></span><br><span class="line">print(<span class="string">'均值：'</span>,np.mean(to_pre_data),<span class="string">'\n'</span>,<span class="string">'标准差：'</span>,np.std(to_pre_data))</span><br></pre></td></tr></table></figure>
 <pre><code>均值： code1   -0.000066
@@ -518,8 +513,8 @@ dtype: float64
 </code></pre><p>由于收益率本身的绝对值就比较小，所以在认为该序列不是白噪声序列的前提下，继续下一步</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> statsmodels.graphics.tsaplots <span class="keyword">import</span> plot_acf,plot_pacf</span><br><span class="line"><span class="keyword">from</span> statsmodels.tsa.arima_model <span class="keyword">import</span> ARIMA</span><br><span class="line"><span class="keyword">from</span> statsmodels.api <span class="keyword">import</span> tsa</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plot_acf(to_pre_data.iloc[:,<span class="number">1</span>])</span><br><span class="line"><span class="comment">#plot_pacf(to_pre_data.iloc[:,1])</span></span><br><span class="line"><span class="comment">#绘制pacf图电脑会卡住，就不画了</span></span><br></pre></td></tr></table></figure>
-<p><img src="output_40_0.png" alt="png"></p>
-<p><img src="output_40_1.png" alt="png"></p>
+<p><img src="output_39_0.png" alt="png"></p>
+<p><img src="output_39_1.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">to_pre_data.index=to_pre_data[<span class="string">'date'</span>]<span class="comment">#重置index</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model=ARIMA(to_pre_data.iloc[:,<span class="number">1</span>],order=(<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>))<span class="comment">#构建模型</span></span><br></pre></td></tr></table></figure>
 <pre><code>/home/fanxi/anaconda3/lib/python3.7/site-packages/statsmodels/tsa/base/tsa_model.py:225: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
