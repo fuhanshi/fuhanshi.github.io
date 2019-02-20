@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-20T07:41:28.164Z</updated>
+  <updated>2019-02-20T07:46:16.532Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>由前序和中序遍历序列确定一棵二叉树</title>
+    <title>由序列确定一棵二叉树</title>
     <link href="http://yoursite.com/2019/02/20/%E7%94%B1%E5%BA%8F%E5%88%97%E7%A1%AE%E5%AE%9A%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     <id>http://yoursite.com/2019/02/20/由序列确定一棵二叉树/</id>
     <published>2019-02-20T06:51:02.000Z</published>
-    <updated>2019-02-20T07:41:28.164Z</updated>
+    <updated>2019-02-20T07:46:16.532Z</updated>
     
     <content type="html"><![CDATA[<ul><li>由前序和中序遍历序列确定一棵二叉树 </li></ul><p><img src="1.png" alt=""> <br><br><img src="3.png" alt=""> <br><br><img src="4.png" alt=""><br><br><img src="2.png" alt=""> <br></p><ul><li>由后序和中序遍历序列确定一棵二叉树 </li></ul><p><img src="5.png" alt=""><br></p><ul><li>由层次遍历序列和中序遍历序列确定一棵二叉树 </li></ul><p><img src="6.png" alt=""><br><br><img src="7.png" alt=""><br><br><img src="8.png" alt=""><br><br><img src="9.png" alt=""><br></p><ul><li>由前序和后序遍历序列确定一棵二叉树</li></ul><p>无法实现！<br><img src="10.png" alt=""> <br></p>]]></content>
     
