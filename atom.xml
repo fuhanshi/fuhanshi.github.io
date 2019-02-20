@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-01-29T05:20:42.240Z</updated>
+  <updated>2019-02-20T06:54:20.443Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>由前序和中序遍历序列确定一棵二叉树</title>
+    <link href="http://yoursite.com/2019/02/20/%E7%94%B1%E5%89%8D%E5%BA%8F%E5%92%8C%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E7%A1%AE%E5%AE%9A%E4%B8%80%E6%A3%B5%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <id>http://yoursite.com/2019/02/20/由前序和中序遍历序列确定一棵二叉树/</id>
+    <published>2019-02-20T06:51:02.000Z</published>
+    <updated>2019-02-20T06:54:20.443Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="1.png" alt=""> <br></p><p><img src="2.png" alt=""> <br></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;1.png&quot; alt=&quot;&quot;&gt; &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;2.png&quot; alt=&quot;&quot;&gt; &lt;br&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="数据结构自学史" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%87%AA%E5%AD%A6%E5%8F%B2/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>股价数据分析报告</title>
@@ -130,6 +155,27 @@ mkdir: 无法创建
   </entry>
   
   <entry>
+    <title>差分方程的解析解</title>
+    <link href="http://yoursite.com/2018/12/29/diff/"/>
+    <id>http://yoursite.com/2018/12/29/diff/</id>
+    <published>2018-12-29T13:45:57.336Z</published>
+    <updated>2018-09-30T08:12:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="差分方程的解析解"><a href="#差分方程的解析解" class="headerlink" title="差分方程的解析解"></a>差分方程的解析解</h3><p><strong>例题</strong>．求$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解<br></p><hr><p>当初始条件已知，即$y_0$已知时，迭代算法如下：</p><ul><li>向前迭代算法<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_3=a_0+a_1y_2+\epsilon_3$$<br>$$…$$<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br><br>以上列举了该差分方程的所有项，我们要做的就是通过这些递推关系来逐步迭代，当迭代完所有项之后，最终可以得到目标解析解.<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2=a_0+a_1(a_0+a_1y_0+\epsilon_1)+\epsilon_2=$$<br>$$a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2=[a_0(1+a_1)]+[a_1^2y_0]+[a_1\epsilon_1+\epsilon_2]$$<br>$$y_3=a_0+a_1y_2+\epsilon_3=a_0+a_1(a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2)+\epsilon_3=$$<br>$$[a_0+a_0a_1+a_0{a_1}^2]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]=[a_0(1+a_1+a_1^2)]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]$$<br>$$…$$<br>由数学归纳法，递推下去，则有：<br><br>$$y_t=[a_0(a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_1+a_1^{t-2}\epsilon_2+…+a_1^0\epsilon_t]=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$<br>上式便是目标解析解，因为$y_0$已知，即不含有任何未知项.<br><br>之所以称之为“向前迭代法”，是因为迭代的索引是从$y_1$开始，一步一步往前面跑去，逐步迭代得到到目标式$y_n$的.<br></li></ul><p>你肯定会想到，既然有向前迭代，那么一定有向后迭代了，没错，向后迭代就是从最后一项$y_t$逐渐向$y_0$进行迭代.</p><ul><li>向后迭代<br><br>同样是求解$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解:<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br>$$y_{t-1}=a_0+a_1y_{t-2}+\epsilon_{t-1}$$<br>$$y_{t-2}=a_0+a_1y_{t-3}+\epsilon_{t-2}$$<br>$$…$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_0=a_0+a_1y_{-1}+\epsilon_0$$<br>开始迭代：(前面写了两次迭代过程,总共迭代$t-1$次)<br><br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t=$$<br>$$a_0+a_1(a_0+a_1y_{t-2}+\epsilon_{t-1})+\epsilon_t=$$<br>$$a_0+a_1a_0+a_1^2y_{t-2}+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0(1+a_1)]+[a_1^2y_{t-2}]+[a_1\epsilon_{t-1}+\epsilon_t]$$<br>$$a_0+a_1a_0+a_1^2(a_0+a_1y_{t-3}+\epsilon_{t-2})+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0+a_1a_0+a_1^2a_0]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$[a_0(1+a_1+a_1^2)]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$…$$<br>$$=[a_0(1+a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_{1}+a_1^{t-2}\epsilon_{2}+…+a_1^0\epsilon_t]＝$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$</li></ul><hr><p>而当初始条件未知，即$y_0$未知时，我们需要对上面得到的差分方程的解继续化：<br><br>$$y_t=a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^t(a_0+a_1y_{-1}+\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+(a_0a_1^t+a_1^{t+1}y_{-1}+a_1^t\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t}a_1^i+a_1^{t+1}y_{-1}+\sum_{i=0}^{t}a_1^i\epsilon_{t-i}=$$<br>$$…$$<br>$$=a_0\sum_{i=0}^{(t-1)+m}a_1^i+a_1^{t+m}y_{-m}+\sum_{i=0}^{(t-1)+m}a_1^i\epsilon_{t-i}$$</p><p>由于初始条件未知，我们现在来讨论解是否存在，即解的敛散性:<br></p><ul><li>当$|a_1|&lt;1$时，第一项出现等比数列求和，由无穷递缩等比数列性质，当$m\rightarrow\infty$时，第一项收敛到$\frac{a_0}{1-a_1}$;第二项中的$a_1^{t+m}$会收敛到０，因此第二项将收敛到０;第三项是一个有界量，类似于白噪声序列.<br><br>所以此时的解为<br>$$y_t=\frac{a_0}{1-a_1}+\sum_{i=0}^{t+m-1}a_1^i\epsilon_{t-i}$$</li><li>当$|a_1|&gt;1$时，发散；<br></li><li>当$|a_1|＝1$时，直接代回到最开始的式子，即得<br>$$y_t=a_0t+y_0+\sum_{i=0}^{t-1}\epsilon_{t-i}=a_0t+y_0+\sum_{i=1}^{t}\epsilon_{i}$$</li></ul><hr><p>以上便是针对例题展开的求解过程</p><hr><p>而对于一般的线性差分方程<br>$$y_t=a_0+a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}+x(t)．．．（１）$$<br>其齐次线性差分方程为<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}．．．（２）$$<br>我们首先要明确，<br></p><ul><li>对于齐次线性差分方程（２式），对任意常数$A$，如果$y_t^h$是其一个解，那么$Ay_t^h$也是其一个解.<br></li><li>而对于非齐次线性差分方程（１式），我们需要求其一个特解及其对应的齐次线性差分方程的一个通解.<br></li></ul><hr><p>我们接下来将介绍一种新的解法（不同于之前的迭代法），称之为<strong>备选（特征根法）解法</strong>，来求解非齐次线性差分方程，即（１）式.<br><br>步骤如下：<br><br><strong>(1)建立齐次线性差分方程（２）式，求齐次方程的解$y_t^{h_1},y_t^{h_2},…,y_t^{h_n}$；<br></strong><br>(2)求出非齐次线性差分方程(1)式的一个特解$y_t^p$；　<br><br>(3)非齐次线性差分方程（１）式的通解即为其自身的一个特解加上其对应的齐次线性差分方程的一个通解，即<br>$$y_t=y_t^p+A_1y_t^{h_1}+A_2y_t^{h_2}+…+A_ny_t^{h_n}$$<br><br>其中$A_1,A_2,…A_n$是任意常数；<br><br>(4)若已知初始条件$y_0,y_1,…$，则可以求出$A_1,A_2,…A_n$.(选)<br></p><hr><p>其中第一步是最麻烦的，所以下面我们将针对第一步，即齐次线性差分方程的求解问题展开讨论<br><br><strong>例题</strong>：解齐次线性差分方程<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}$$</p><hr><ul><li>一阶齐次差分方程$y_t=ay_{t-1}$，<br>通解为$Aa^t$ ,可以用迭代法证明，用特征根法更为简单：<br><br>猜想其解的形式为$y_t=A\alpha^t$，代入上式，得$A\alpha^t=aA\alpha^{t-1}$，即$\alpha=a$，故通解为$y_t=aA\alpha^{t-1}=Aa^t$.</li><li>二阶齐次差分方程$y_t=a_1y_{t-1}+a_2y_{t-2}$ ，<br><br>利用特征根法，猜想其解的形式为$y_t=A\alpha^t$，代入上式，得：<br>$$A\alpha^t=a_1A\alpha^{t-1}+a_2A\alpha^{t-2}$$<br>化简，得：<br>$$\alpha^2=a_1\alpha+a_2$$<br>移项，得：<br>$$\alpha^2-a_1\alpha-a_2=0$$<br>从而解得特征根为<br>$$\alpha_{1}=\frac{a_1{+}\sqrt{a_1^2+4a_2}}{2}$$<br>$$\alpha_{2}=\frac{a_1{-}\sqrt{a_1^2+4a_2}}{2}$$<br>其中$d=a_1^2+4a_2$　<br><br>$d$有三种情况：$d&gt;0,d＝０,d&lt;0$，下面就分这三种情况来讨论(<strong>下面的内容很重要!</strong>)<br></li></ul><blockquote><p>(1)当$d=a_1^2+4a_2&gt;0$时，$\alpha_1,\alpha_2$为互不相同的实根，此时的通解为<strong>$y_t=A_1\alpha_1^t+A_2\alpha_2^t$</strong>，其中$A_1,A_2$为任意常数.<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$大于1时，发散；<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$小于1时，收敛.<br></p></blockquote><blockquote><p>(2)当$d=a_1^2+4a_2=0$时，即$a_2=-\frac{a_1^2}{4}$时，$\alpha_1=\alpha_2$为重根，代回上面的特征根方程有$\alpha_1=\alpha_2=\frac{a_1}2$，此时$A\alpha_1^t=A{(\frac{a_1}2})^t$是方程的一个解（俩都一样，算一个），并且可以验证，$At{(\frac{a_1}2})^t$也是方程的一个解，所以此时方程的通解为$y_t=A_1{(\frac{a_1}2})^t+A_2t{(\frac{a_1}2})^t$，其中$A_1,A_2$为任意常数.<br><br>当$|\frac{a_1}2|&lt;1$时，收敛；<br><br>当$|\frac{a_1}2|&gt;1$时，发散.<br></p></blockquote><blockquote><p>(3)当$d=a_1^2+4a_2&lt;0$时，即$a_2&lt;-{\frac{a_1^2}4}&lt;=0$，$\alpha_1,\alpha_2$为共轭复根，且<br><br> $$\alpha_1=\frac{a_1+i\sqrt{-d}}2$$<br> $$\alpha_1=\frac{a_1-i\sqrt{-d}}2$$<br> 由于$a+bi=r(cos\theta+isin\theta)$，所以得到$r=\sqrt{a^2+b^2}$，并且我们要知道$cos\theta=\frac{a}{r}$ <br><br> 回到题目，计算得$r=\sqrt{({\frac{a_1}{2})}^2+{-\frac{-d}{4}}}=\sqrt{-a_2}$，从而得$cos\theta=\frac{\frac{a_1}{2}}{\sqrt{-a_2}}=\frac{a_1}{2\sqrt{-a_2}}$. <br><br> 所以得到<br> $$\alpha_1=a+bi=r(cos\theta+isin\theta)=re^{i\theta}$$<br> $$\alpha_2=a-bi=r(cos\theta-isin\theta)=re^{-i\theta}$$<br> 所以<br> $${\alpha_1}^t={(a+bi)}^t=r^t(cos\theta+isin\theta)^t=r^te^{it\theta}$$<br> $${\alpha_2}^t={(a-bi)}^t=r^t(cos\theta-isin\theta)^t=r^te^{-it\theta}$$<br> 所以通解为<br> $$y_t=A_1r^te^{it\theta}+A_2r^te^{-it\theta}=r^t(A_1e^{it\theta}+A_2e^{-it\theta})$$<br> 其中$A_1,A_2$为任意常数.<br><br> 当$r=\sqrt{-a_2}&gt;1$时，即$a_2&lt;-1$时，发散；<br><br>  当$r=\sqrt{-a_2}&lt;1$时，即$-1&lt;a_2&lt;=0$时，收敛；<br><br>   当$r=\sqrt{-a_2}＝1$时，即$a_2=-1$时，波动增幅不变；<br></p></blockquote><p>以上便是二阶齐次差分方程所有可能情况下的解的求法以及解的敛散性的判别.</p><p>下面呢，我们将推广到一般的$n$阶齐次差分方程：<br><br>$$y_t=a_1y_{t-1}+a_2y_{t-2}+…+a_ny_{t-n}，a_n!=0$$<br>假设解的形式为$A\alpha^t$，则特征方程为<br>$$\alpha^n-a_1\alpha^{n-1}-a_2\alpha^{n-2}-…-a_n=0$$<br>从中可以解出非零的<br>$$\alpha_1,\alpha_2,…,\alpha_n$$<br>同样分３种情况，即$\alpha_1,\alpha_2,…,\alpha_n$是互不相同的实根，$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根和$\alpha_1,\alpha_2,…,\alpha_n$有复根.<br></p><blockquote><p>(1)$\alpha_1,\alpha_2,…,\alpha_n$是$n$个互不相同的实根时，通解为$y_t=A_1\alpha_1^t+A_2\alpha_2^t+…+A_n\alpha_n^t$；<br>(2)$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根时，不妨设$\alpha_1=\alpha_2=…=\alpha_d$，$\alpha_{d+1},\alpha_{d+2},…,\alpha_n$互不相同，则通解为<br>$$y_t=(A_1+A_2t+A_3t^2+…+A_dt^{d-1})\alpha_1^t+A_{d+1}\alpha_{d+1}^t+A_{d+2}\alpha_{d+2}^t+…+A_{n}\alpha_{n}^t$$<br>(3)$\alpha_1,\alpha_2,…,\alpha_n$有复根时，不妨设$\alpha_1,\alpha_2$为复根，$\alpha_3,\alpha_2,…,\alpha_n$互不相同.<br><br>设$\alpha_1=a+bi,\alpha_2=a-bi$，由于$r=\sqrt{a^2+b^2}，cos\theta=\frac{a}r$，所以有<br>$$\alpha_1=re^{i\theta}$$<br>$$\alpha_2=re^{-i\theta}$$<br>所以通解为<br>$$y_t=r^t(A_1e^{it\theta}+A_2e^{-it\theta})+A_3\alpha_3^t+A_4\alpha_4^t+…+A_n\alpha_n^t$$<br>其中$A_1,A_2,…A_n$为任意常数.</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;差分方程的解析解&quot;&gt;&lt;a href=&quot;#差分方程的解析解&quot; class=&quot;headerlink&quot; title=&quot;差分方程的解析解&quot;&gt;&lt;/a&gt;差分方程的解析解&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;例题&lt;/strong&gt;．求$y_t=a_0+a_1y_{t-1}+\epsi
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Python降维处理</title>
     <link href="http://yoursite.com/2018/12/29/%E9%99%8D%E7%BB%B4/"/>
     <id>http://yoursite.com/2018/12/29/降维/</id>
@@ -153,27 +199,6 @@ mkdir: 无法创建
     
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>差分方程的解析解</title>
-    <link href="http://yoursite.com/2018/12/29/diff/"/>
-    <id>http://yoursite.com/2018/12/29/diff/</id>
-    <published>2018-12-29T13:45:57.336Z</published>
-    <updated>2018-09-30T08:12:08.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="差分方程的解析解"><a href="#差分方程的解析解" class="headerlink" title="差分方程的解析解"></a>差分方程的解析解</h3><p><strong>例题</strong>．求$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解<br></p><hr><p>当初始条件已知，即$y_0$已知时，迭代算法如下：</p><ul><li>向前迭代算法<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_3=a_0+a_1y_2+\epsilon_3$$<br>$$…$$<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br><br>以上列举了该差分方程的所有项，我们要做的就是通过这些递推关系来逐步迭代，当迭代完所有项之后，最终可以得到目标解析解.<br><br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_2=a_0+a_1y_1+\epsilon_2=a_0+a_1(a_0+a_1y_0+\epsilon_1)+\epsilon_2=$$<br>$$a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2=[a_0(1+a_1)]+[a_1^2y_0]+[a_1\epsilon_1+\epsilon_2]$$<br>$$y_3=a_0+a_1y_2+\epsilon_3=a_0+a_1(a_0+a_0a_1+{a_1}^2y_0+a_1\epsilon_1+\epsilon_2)+\epsilon_3=$$<br>$$[a_0+a_0a_1+a_0{a_1}^2]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]=[a_0(1+a_1+a_1^2)]+[a_1^3y_0]+[a_1^2\epsilon_1+a_1\epsilon_2+\epsilon_3]$$<br>$$…$$<br>由数学归纳法，递推下去，则有：<br><br>$$y_t=[a_0(a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_1+a_1^{t-2}\epsilon_2+…+a_1^0\epsilon_t]=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$<br>上式便是目标解析解，因为$y_0$已知，即不含有任何未知项.<br><br>之所以称之为“向前迭代法”，是因为迭代的索引是从$y_1$开始，一步一步往前面跑去，逐步迭代得到到目标式$y_n$的.<br></li></ul><p>你肯定会想到，既然有向前迭代，那么一定有向后迭代了，没错，向后迭代就是从最后一项$y_t$逐渐向$y_0$进行迭代.</p><ul><li>向后迭代<br><br>同样是求解$y_t=a_0+a_1y_{t-1}+\epsilon_t$的解析解:<br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t$$<br>$$y_{t-1}=a_0+a_1y_{t-2}+\epsilon_{t-1}$$<br>$$y_{t-2}=a_0+a_1y_{t-3}+\epsilon_{t-2}$$<br>$$…$$<br>$$y_2=a_0+a_1y_1+\epsilon_2$$<br>$$y_1=a_0+a_1y_0+\epsilon_1$$<br>$$y_0=a_0+a_1y_{-1}+\epsilon_0$$<br>开始迭代：(前面写了两次迭代过程,总共迭代$t-1$次)<br><br>$$y_t=a_0+a_1y_{t-1}+\epsilon_t=$$<br>$$a_0+a_1(a_0+a_1y_{t-2}+\epsilon_{t-1})+\epsilon_t=$$<br>$$a_0+a_1a_0+a_1^2y_{t-2}+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0(1+a_1)]+[a_1^2y_{t-2}]+[a_1\epsilon_{t-1}+\epsilon_t]$$<br>$$a_0+a_1a_0+a_1^2(a_0+a_1y_{t-3}+\epsilon_{t-2})+a_1\epsilon_{t-1}+\epsilon_t=$$<br>$$[a_0+a_1a_0+a_1^2a_0]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$[a_0(1+a_1+a_1^2)]+[a_1^3y_{t-3}]+[a_1^2\epsilon_{t-2}+a_1\epsilon_{t-1}+\epsilon_t]=$$<br>$$…$$<br>$$=[a_0(1+a_1+a_1^2+…+a_1^{t-1})]+[a_1^ty_0]+[a_1^{t-1}\epsilon_{1}+a_1^{t-2}\epsilon_{2}+…+a_1^0\epsilon_t]＝$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}$$</li></ul><hr><p>而当初始条件未知，即$y_0$未知时，我们需要对上面得到的差分方程的解继续化：<br><br>$$y_t=a_0\sum_{i=0}^{t-1}a_1^i+a_1^ty_0+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+a_1^t(a_0+a_1y_{-1}+\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t-1}a_1^i+(a_0a_1^t+a_1^{t+1}y_{-1}+a_1^t\epsilon_0)+\sum_{i=0}^{t-1}a_1^i\epsilon_{t-i}=$$<br>$$a_0\sum_{i=0}^{t}a_1^i+a_1^{t+1}y_{-1}+\sum_{i=0}^{t}a_1^i\epsilon_{t-i}=$$<br>$$…$$<br>$$=a_0\sum_{i=0}^{(t-1)+m}a_1^i+a_1^{t+m}y_{-m}+\sum_{i=0}^{(t-1)+m}a_1^i\epsilon_{t-i}$$</p><p>由于初始条件未知，我们现在来讨论解是否存在，即解的敛散性:<br></p><ul><li>当$|a_1|&lt;1$时，第一项出现等比数列求和，由无穷递缩等比数列性质，当$m\rightarrow\infty$时，第一项收敛到$\frac{a_0}{1-a_1}$;第二项中的$a_1^{t+m}$会收敛到０，因此第二项将收敛到０;第三项是一个有界量，类似于白噪声序列.<br><br>所以此时的解为<br>$$y_t=\frac{a_0}{1-a_1}+\sum_{i=0}^{t+m-1}a_1^i\epsilon_{t-i}$$</li><li>当$|a_1|&gt;1$时，发散；<br></li><li>当$|a_1|＝1$时，直接代回到最开始的式子，即得<br>$$y_t=a_0t+y_0+\sum_{i=0}^{t-1}\epsilon_{t-i}=a_0t+y_0+\sum_{i=1}^{t}\epsilon_{i}$$</li></ul><hr><p>以上便是针对例题展开的求解过程</p><hr><p>而对于一般的线性差分方程<br>$$y_t=a_0+a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}+x(t)．．．（１）$$<br>其齐次线性差分方程为<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}．．．（２）$$<br>我们首先要明确，<br></p><ul><li>对于齐次线性差分方程（２式），对任意常数$A$，如果$y_t^h$是其一个解，那么$Ay_t^h$也是其一个解.<br></li><li>而对于非齐次线性差分方程（１式），我们需要求其一个特解及其对应的齐次线性差分方程的一个通解.<br></li></ul><hr><p>我们接下来将介绍一种新的解法（不同于之前的迭代法），称之为<strong>备选（特征根法）解法</strong>，来求解非齐次线性差分方程，即（１）式.<br><br>步骤如下：<br><br><strong>(1)建立齐次线性差分方程（２）式，求齐次方程的解$y_t^{h_1},y_t^{h_2},…,y_t^{h_n}$；<br></strong><br>(2)求出非齐次线性差分方程(1)式的一个特解$y_t^p$；　<br><br>(3)非齐次线性差分方程（１）式的通解即为其自身的一个特解加上其对应的齐次线性差分方程的一个通解，即<br>$$y_t=y_t^p+A_1y_t^{h_1}+A_2y_t^{h_2}+…+A_ny_t^{h_n}$$<br><br>其中$A_1,A_2,…A_n$是任意常数；<br><br>(4)若已知初始条件$y_0,y_1,…$，则可以求出$A_1,A_2,…A_n$.(选)<br></p><hr><p>其中第一步是最麻烦的，所以下面我们将针对第一步，即齐次线性差分方程的求解问题展开讨论<br><br><strong>例题</strong>：解齐次线性差分方程<br>$$y_t=a_1y_{t-1}+a_2y_{t-2}…+a_ny_{t-n}$$</p><hr><ul><li>一阶齐次差分方程$y_t=ay_{t-1}$，<br>通解为$Aa^t$ ,可以用迭代法证明，用特征根法更为简单：<br><br>猜想其解的形式为$y_t=A\alpha^t$，代入上式，得$A\alpha^t=aA\alpha^{t-1}$，即$\alpha=a$，故通解为$y_t=aA\alpha^{t-1}=Aa^t$.</li><li>二阶齐次差分方程$y_t=a_1y_{t-1}+a_2y_{t-2}$ ，<br><br>利用特征根法，猜想其解的形式为$y_t=A\alpha^t$，代入上式，得：<br>$$A\alpha^t=a_1A\alpha^{t-1}+a_2A\alpha^{t-2}$$<br>化简，得：<br>$$\alpha^2=a_1\alpha+a_2$$<br>移项，得：<br>$$\alpha^2-a_1\alpha-a_2=0$$<br>从而解得特征根为<br>$$\alpha_{1}=\frac{a_1{+}\sqrt{a_1^2+4a_2}}{2}$$<br>$$\alpha_{2}=\frac{a_1{-}\sqrt{a_1^2+4a_2}}{2}$$<br>其中$d=a_1^2+4a_2$　<br><br>$d$有三种情况：$d&gt;0,d＝０,d&lt;0$，下面就分这三种情况来讨论(<strong>下面的内容很重要!</strong>)<br></li></ul><blockquote><p>(1)当$d=a_1^2+4a_2&gt;0$时，$\alpha_1,\alpha_2$为互不相同的实根，此时的通解为<strong>$y_t=A_1\alpha_1^t+A_2\alpha_2^t$</strong>，其中$A_1,A_2$为任意常数.<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$大于1时，发散；<br><br>当$|\alpha_1|$或者$｜\alpha_2｜$小于1时，收敛.<br></p></blockquote><blockquote><p>(2)当$d=a_1^2+4a_2=0$时，即$a_2=-\frac{a_1^2}{4}$时，$\alpha_1=\alpha_2$为重根，代回上面的特征根方程有$\alpha_1=\alpha_2=\frac{a_1}2$，此时$A\alpha_1^t=A{(\frac{a_1}2})^t$是方程的一个解（俩都一样，算一个），并且可以验证，$At{(\frac{a_1}2})^t$也是方程的一个解，所以此时方程的通解为$y_t=A_1{(\frac{a_1}2})^t+A_2t{(\frac{a_1}2})^t$，其中$A_1,A_2$为任意常数.<br><br>当$|\frac{a_1}2|&lt;1$时，收敛；<br><br>当$|\frac{a_1}2|&gt;1$时，发散.<br></p></blockquote><blockquote><p>(3)当$d=a_1^2+4a_2&lt;0$时，即$a_2&lt;-{\frac{a_1^2}4}&lt;=0$，$\alpha_1,\alpha_2$为共轭复根，且<br><br> $$\alpha_1=\frac{a_1+i\sqrt{-d}}2$$<br> $$\alpha_1=\frac{a_1-i\sqrt{-d}}2$$<br> 由于$a+bi=r(cos\theta+isin\theta)$，所以得到$r=\sqrt{a^2+b^2}$，并且我们要知道$cos\theta=\frac{a}{r}$ <br><br> 回到题目，计算得$r=\sqrt{({\frac{a_1}{2})}^2+{-\frac{-d}{4}}}=\sqrt{-a_2}$，从而得$cos\theta=\frac{\frac{a_1}{2}}{\sqrt{-a_2}}=\frac{a_1}{2\sqrt{-a_2}}$. <br><br> 所以得到<br> $$\alpha_1=a+bi=r(cos\theta+isin\theta)=re^{i\theta}$$<br> $$\alpha_2=a-bi=r(cos\theta-isin\theta)=re^{-i\theta}$$<br> 所以<br> $${\alpha_1}^t={(a+bi)}^t=r^t(cos\theta+isin\theta)^t=r^te^{it\theta}$$<br> $${\alpha_2}^t={(a-bi)}^t=r^t(cos\theta-isin\theta)^t=r^te^{-it\theta}$$<br> 所以通解为<br> $$y_t=A_1r^te^{it\theta}+A_2r^te^{-it\theta}=r^t(A_1e^{it\theta}+A_2e^{-it\theta})$$<br> 其中$A_1,A_2$为任意常数.<br><br> 当$r=\sqrt{-a_2}&gt;1$时，即$a_2&lt;-1$时，发散；<br><br>  当$r=\sqrt{-a_2}&lt;1$时，即$-1&lt;a_2&lt;=0$时，收敛；<br><br>   当$r=\sqrt{-a_2}＝1$时，即$a_2=-1$时，波动增幅不变；<br></p></blockquote><p>以上便是二阶齐次差分方程所有可能情况下的解的求法以及解的敛散性的判别.</p><p>下面呢，我们将推广到一般的$n$阶齐次差分方程：<br><br>$$y_t=a_1y_{t-1}+a_2y_{t-2}+…+a_ny_{t-n}，a_n!=0$$<br>假设解的形式为$A\alpha^t$，则特征方程为<br>$$\alpha^n-a_1\alpha^{n-1}-a_2\alpha^{n-2}-…-a_n=0$$<br>从中可以解出非零的<br>$$\alpha_1,\alpha_2,…,\alpha_n$$<br>同样分３种情况，即$\alpha_1,\alpha_2,…,\alpha_n$是互不相同的实根，$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根和$\alpha_1,\alpha_2,…,\alpha_n$有复根.<br></p><blockquote><p>(1)$\alpha_1,\alpha_2,…,\alpha_n$是$n$个互不相同的实根时，通解为$y_t=A_1\alpha_1^t+A_2\alpha_2^t+…+A_n\alpha_n^t$；<br>(2)$\alpha_1,\alpha_2,…,\alpha_n$中有相同的实根时，不妨设$\alpha_1=\alpha_2=…=\alpha_d$，$\alpha_{d+1},\alpha_{d+2},…,\alpha_n$互不相同，则通解为<br>$$y_t=(A_1+A_2t+A_3t^2+…+A_dt^{d-1})\alpha_1^t+A_{d+1}\alpha_{d+1}^t+A_{d+2}\alpha_{d+2}^t+…+A_{n}\alpha_{n}^t$$<br>(3)$\alpha_1,\alpha_2,…,\alpha_n$有复根时，不妨设$\alpha_1,\alpha_2$为复根，$\alpha_3,\alpha_2,…,\alpha_n$互不相同.<br><br>设$\alpha_1=a+bi,\alpha_2=a-bi$，由于$r=\sqrt{a^2+b^2}，cos\theta=\frac{a}r$，所以有<br>$$\alpha_1=re^{i\theta}$$<br>$$\alpha_2=re^{-i\theta}$$<br>所以通解为<br>$$y_t=r^t(A_1e^{it\theta}+A_2e^{-it\theta})+A_3\alpha_3^t+A_4\alpha_4^t+…+A_n\alpha_n^t$$<br>其中$A_1,A_2,…A_n$为任意常数.</p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;差分方程的解析解&quot;&gt;&lt;a href=&quot;#差分方程的解析解&quot; class=&quot;headerlink&quot; title=&quot;差分方程的解析解&quot;&gt;&lt;/a&gt;差分方程的解析解&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;例题&lt;/strong&gt;．求$y_t=a_0+a_1y_{t-1}+\epsi
-      
-    
-    </summary>
-    
     
   </entry>
   
@@ -468,29 +493,6 @@ mkdir: 无法创建
 &lt;li&gt;对有序数组进行去重&lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=
-      
-    
-    </summary>
-    
-      <category term="数据结构自学史" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%87%AA%E5%AD%A6%E5%8F%B2/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>二分法</title>
-    <link href="http://yoursite.com/2018/11/12/%E4%BA%8C%E5%88%86%E6%B3%95/"/>
-    <id>http://yoursite.com/2018/11/12/二分法/</id>
-    <published>2018-11-12T03:48:38.000Z</published>
-    <updated>2018-11-12T04:50:53.000Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>二分法</strong>是数学领域的一种求零点的算法<br><br>对于定义区间为$[a,b]$上的连续函数$f(x)$，若有$f(a)$与$f(b)$异号，根据介值定理，$f(x)=0$的解必在$[a,b]$上，酱紫，就可以通过二分运算逐步缩小$[a,b]$（也就是取其子区间）来逼近函数的零点了<br></p><p><strong>图解</strong>如下：<br><br><img src="1.jpg" alt=""> <br></p><p><strong>二分法的计算步骤</strong>如下：　<br><br>取中点$\frac{a+b}2$ <br><br>若$f(a)与f(x)$异号，则令$b=x$,否则令$a=x$ <br><br>当子区间小于给定的要求长度时，停止二分运算<br></p><p>以上是在数学问题上的求解，在计算机科学方面，又衍生出了二分查找算法，其思想一样，只是处理的是问题是离散形式的<br></p><p><strong>使用条件</strong>：<br></p><ul><li><p>待查找的序列区间单调有序（单调递增或单调递减都可以）</p></li><li><p>待查找序列和题目的要求建立的函数关系单调有序</p></li></ul><p><strong>方法</strong>：假设待查找序列和题目的要求之间的关系是单调递增的，先取区间的中心，判断该处函数值和题目标准值的大小关系，如果函数值偏小，那么应该在中心右侧的区间继续查找；如果函数值偏大 ，那么应该在中心左侧区间继续查找，直到找到对应的值或者区间缩小到左右端点之间不再包含其他数据结束。</p><p><strong>实例代码</strong>：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int search(int arr[],int n,int key);</span><br><span class="line">void main()</span><br><span class="line">&#123;</span><br><span class="line">int arr[]=&#123;3,6,7,10,11,16,20,33,56,89&#125;;</span><br><span class="line">search(arr,10,56);</span><br><span class="line">&#125;</span><br><span class="line">int search(int arr[],int n,int key)</span><br><span class="line">&#123;</span><br><span class="line">    int low = 0;</span><br><span class="line">    int high = n-1;</span><br><span class="line">    int mid,count=0;</span><br><span class="line">    while(low&lt;=high)</span><br><span class="line">    &#123;</span><br><span class="line">    count++;</span><br><span class="line">    mid=(low+high)/2;</span><br><span class="line">    if(arr[mid]==key)</span><br><span class="line">        return mid;</span><br><span class="line">    else if (arr[mid]&lt;key)</span><br><span class="line">        low=mid;//low=mid+1;</span><br><span class="line">    else</span><br><span class="line">        high=mid;//high=mid+1;</span><br><span class="line">    &#125;</span><br><span class="line">return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><strong>查找结果</strong> <br><br><img src="2.png" alt=""> <br></p><p>参考：<a href="https://www.cnblogs.com/detrol/p/7533577.html" target="_blank" rel="noopener">https://www.cnblogs.com/detrol/p/7533577.html</a><br><a href="https://www.cnblogs.com/wanglog/p/6650695.html" target="_blank" rel="noopener">https://www.cnblogs.com/wanglog/p/6650695.html</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;二分法&lt;/strong&gt;是数学领域的一种求零点的算法&lt;br&gt;&lt;br&gt;对于定义区间为$[a,b]$上的连续函数$f(x)$，若有$f(a)$与$f(b)$异号，根据介值定理，$f(x)=0$的解必在$[a,b]$上，酱紫，就可以通过二分运算逐步缩小$[a,b]
       
     
     </summary>
