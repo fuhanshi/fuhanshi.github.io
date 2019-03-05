@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-01T06:02:30.650Z</updated>
+  <updated>2019-03-05T04:50:36.481Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>普通最小二乘法的推导</title>
+    <link href="http://yoursite.com/2019/03/05/%E6%99%AE%E9%80%9A%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E7%9A%84%E6%8E%A8%E5%AF%BC/"/>
+    <id>http://yoursite.com/2019/03/05/普通最小二乘法的推导/</id>
+    <published>2019-03-05T04:47:04.000Z</published>
+    <updated>2019-03-05T04:50:36.481Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="1.jpg" alt=""> <br></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;1.jpg&quot; alt=&quot;&quot;&gt; &lt;br&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="回归分析" scheme="http://yoursite.com/categories/%E5%9B%9E%E5%BD%92%E5%88%86%E6%9E%90/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>ch2-线性表-链表及其初始化_有头结点和无头结点的初始化过程的区别</title>
@@ -461,29 +485,6 @@ mkdir: 无法创建
       
       
         &lt;p&gt;&lt;strong&gt;１．&lt;code&gt;马氏距离&lt;/code&gt;与&lt;code&gt;欧氏距离&lt;/code&gt;各自的&lt;code&gt;优缺点&lt;/code&gt;(两者之间的&lt;code&gt;区别&lt;/code&gt;与&lt;code&gt;联系&lt;/code&gt;)?&lt;/strong&gt; &lt;br&gt;&lt;br&gt;1.马氏距离： &lt;br&gt;&lt;/p&gt;
-      
-    
-    </summary>
-    
-      <category term="R" scheme="http://yoursite.com/categories/R/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>对应分析</title>
-    <link href="http://yoursite.com/2018/12/09/end/"/>
-    <id>http://yoursite.com/2018/12/09/end/</id>
-    <published>2018-12-09T07:01:26.000Z</published>
-    <updated>2018-12-09T07:11:29.000Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#第一题</span><br><span class="line">file1=read.csv(&apos;C://Users//Administrator//Desktop//data//1.csv&apos;,head=T);</span><br><span class="line"></span><br><span class="line">#第二题</span><br><span class="line">data1=file1[,2:3];</span><br><span class="line">chisq.test(data1);</span><br><span class="line">#分析结果：p-value = 7.628e-06,所以拒绝原假设（不相关），说明收入高低对满意程度相关</span><br><span class="line"></span><br><span class="line">#第三题</span><br><span class="line">file2=read.csv(&apos;C://Users//Administrator//Desktop//data//2.csv&apos;);</span><br><span class="line">data2=file2[,2:5];</span><br><span class="line">freq_num= table (data2);#统计频数</span><br><span class="line">prop.table(freq_num);#将频数表变成频率表</span><br><span class="line"></span><br><span class="line">#第四题</span><br><span class="line">#首先统计双变量频数形成列联表</span><br><span class="line">b= table (data2$ Treatment ,data2$Sex);#统计双变量频数形成列联表</span><br><span class="line">c=table (data2$Sex ,data2$Improved);#统计双变量频数形成列联表</span><br><span class="line">#接下来将频数表变成频率表</span><br><span class="line">prop.table(b);</span><br><span class="line">prop.table(c);</span><br><span class="line">#最后利用列联分析说明Sex与Treatment和Improved是否相关</span><br><span class="line">chisq.test(b);#p-value = 0.5356，说明Treatment与Sex不相关</span><br><span class="line">chisq.test(c);#p-value = 0.08889，说明Improved与Sex也不相关</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#第五题</span><br><span class="line">library(MASS);</span><br><span class="line">file3=read.csv(&apos;C://Users//Administrator//Desktop//data//3.csv&apos;);</span><br><span class="line">data3=file3[,2:6];</span><br><span class="line">d=corresp(data3,2)#2指选用两个因子，结果中有行列因子的得分</span><br><span class="line">biplot(d);#绘图</span><br><span class="line">abline(v=0,h=0)#加入参考线</span><br></pre></td></tr></table></figure><p><img src="1.png" alt=""> <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#分析：对应分析图被参考线划分为4个区域，其中，</span><br><span class="line">#(1)在不同象限表示距离较远，这里的距离是任意两者之间相关性的度量；</span><br><span class="line">#(2)位置是相对于中心的距离，距该离越小说明相对所属类别相对常见；</span><br><span class="line">#(3)角度越小，代表两者相关性越强。</span><br><span class="line">#因此我们可以得出以下结论：</span><br><span class="line"># 1.学士，高中和大专的学历相对常见，也对，一般上了高中之后要么进入university（学士学位），或者进入college(大专)</span><br><span class="line"># 2.高中和大专的相关性较之于其它比较来说相关性最强</span><br><span class="line"># 3.硕士和高中以下出现频率较低，说明高中以下学历和硕士学历两者一个处于学历链的偏上端，一个处于偏下端，这也和我们的认知相符。</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#第六题</span><br><span class="line">file4=read.csv(&apos;C://Users//Administrator//Desktop//data//4.csv&apos;);</span><br><span class="line">data4=file4[,1:6];</span><br><span class="line">e=corresp(data4,2)#2指选用两个因子，结果中有行列因子的得分</span><br><span class="line">biplot(e);#绘图</span><br><span class="line">abline(v=0,h=0)#加入参考线</span><br></pre></td></tr></table></figure><p><img src="2.png" alt=""> <br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#分析：</span><br><span class="line">#(1)使用小米和荣耀的人群相对常见，而使用苹果和VIVO的人群相对较少；</span><br><span class="line">#(2)使用小米和荣耀的人群之间相关性较强，说明一般使用小米的人也可能会对荣耀情有独钟，反之亦然；</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
       
     
     </summary>
