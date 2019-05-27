@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="题目描述假设二叉树采用二叉链表存储结构，编写算法计算二叉树中既有左孩子又有右孩子的节点数  分析这种题目通过遍历整个二叉树的全部结点，并对所经过的每一个结点进行如下操作：  判断该结点的左孩子和右孩子是否同时存在，若存在，则说明该结点符合题目要求的条件，计数加1，否则不计数　  算法实现（这里给出两种形式的代码）代码112345678910int k=0;//计数器初始化为0int twochil">
+<meta name="keywords" content="数据结构自学史">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在二叉树遍历的递归代码基础上衍生出的一类题目">
+<meta property="og:url" content="http://yoursite.com/2019/05/27/在二叉树遍历的递归代码基础上衍生出的一类题目/index.html">
+<meta property="og:site_name" content="一个大学狗的日常">
+<meta property="og:description" content="题目描述假设二叉树采用二叉链表存储结构，编写算法计算二叉树中既有左孩子又有右孩子的节点数  分析这种题目通过遍历整个二叉树的全部结点，并对所经过的每一个结点进行如下操作：  判断该结点的左孩子和右孩子是否同时存在，若存在，则说明该结点符合题目要求的条件，计数加1，否则不计数　  算法实现（这里给出两种形式的代码）代码112345678910int k=0;//计数器初始化为0int twochil">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/05/27/在二叉树遍历的递归代码基础上衍生出的一类题目/1.gif">
+<meta property="og:updated_time" content="2019-05-27T14:09:13.454Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在二叉树遍历的递归代码基础上衍生出的一类题目">
+<meta name="twitter:description" content="题目描述假设二叉树采用二叉链表存储结构，编写算法计算二叉树中既有左孩子又有右孩子的节点数  分析这种题目通过遍历整个二叉树的全部结点，并对所经过的每一个结点进行如下操作：  判断该结点的左孩子和右孩子是否同时存在，若存在，则说明该结点符合题目要求的条件，计数加1，否则不计数　  算法实现（这里给出两种形式的代码）代码112345678910int k=0;//计数器初始化为0int twochil">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/27/在二叉树遍历的递归代码基础上衍生出的一类题目/1.gif">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一个大学狗的日常" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/27/在二叉树遍历的递归代码基础上衍生出的一类题目/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>在二叉树遍历的递归代码基础上衍生出的一类题目 | 一个大学狗的日常</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个大学狗的日常</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">放弃不难，但坚持一定很酷</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-时间轴">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />时间轴</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/在二叉树遍历的递归代码基础上衍生出的一类题目/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="大学狗的日常">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个大学狗的日常">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">在二叉树遍历的递归代码基础上衍生出的一类题目
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-27 22:04:34 / 修改时间：22:09:13" itemprop="dateCreated datePublished" datetime="2019-05-27T22:04:34+08:00">2019-05-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>假设二叉树采用二叉链表存储结构，编写算法计算二叉树中既有左孩子又有右孩子的节点数 <br></p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>这种题目通过遍历整个二叉树的全部结点，并对所经过的每一个结点进行如下操作：<br></p>
+<ul>
+<li>判断该结点的左孩子和右孩子是否同时存在，若存在，则说明该结点符合题目要求的条件，计数加<code>1</code>，否则不计数　<br></li>
+</ul>
+<h1 id="算法实现（这里给出两种形式的代码）"><a href="#算法实现（这里给出两种形式的代码）" class="headerlink" title="算法实现（这里给出两种形式的代码）"></a>算法实现（这里给出两种形式的代码）</h1><h3 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> k=<span class="number">0</span>;<span class="comment">//计数器初始化为0</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">twochild</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>((Tree-&gt;lchild)&amp;&amp;(Tree-&gt;rchild))&#123;</span><br><span class="line">		k++;</span><br><span class="line">		twochild(Tree-&gt;lchild);</span><br><span class="line">		twochild(Tree-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>特别要注意的是</strong>：<br><br>计数变量<code>k</code>必须作为全局变量，否则在每一次进入下一层递归时，k又被初始化为<code>0</code>，从而出错<br><br><br></p>
+<h4 id="完整代码实例"><a href="#完整代码实例" class="headerlink" title="完整代码实例"></a>完整代码实例</h4><ul>
+<li><p>首先创建一棵二叉树，形态如下： <br><br><img src="1.gif" alt=""> <br></p>
+</li>
+<li><p>算法实现</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TElemType int</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">    TElemType data;<span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span><span class="comment">//左右孩子指针</span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *T)</span></span>&#123;</span><br><span class="line">    *T=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;data=<span class="number">1</span>;</span><br><span class="line">    (*T)-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;data=<span class="number">2</span>;</span><br><span class="line">    (*T)-&gt;rchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;rchild-&gt;data=<span class="number">3</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;data=<span class="number">4</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">twochild</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>((Tree-&gt;lchild)&amp;&amp;(Tree-&gt;rchild))&#123;</span><br><span class="line">		k++;</span><br><span class="line">		twochild(Tree-&gt;lchild);</span><br><span class="line">		twochild(Tree-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//int k=0;</span></span><br><span class="line">    BiTree Tree;</span><br><span class="line">    CreateBiTree(&amp;Tree);</span><br><span class="line">    <span class="comment">//printf("%d",Tree-&gt;lchild-&gt;lchild-&gt;data);</span></span><br><span class="line">	<span class="keyword">int</span> kk=twochild(Tree);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"满足条件的结点数为：%d"</span>,kk);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出结果<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">满足条件的结点数为：<span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">v2_twochild</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num1,num2;</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		num1=v2_twochild(Tree-&gt;lchild);</span><br><span class="line">		num2=v2_twochild(Tree-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(Tree-&gt;lchild&amp;&amp;Tree-&gt;rchild)</span><br><span class="line">		<span class="keyword">return</span> num1+num2+<span class="number">1</span>;<span class="comment">//+1是因为正在被访问的结点满足条件</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> num1+num2;<span class="comment">//否则不+1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="完整代码实例-1"><a href="#完整代码实例-1" class="headerlink" title="完整代码实例"></a>完整代码实例</h4><ul>
+<li>树的形态同上</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TElemType int</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">    TElemType data;<span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span><span class="comment">//左右孩子指针</span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *T)</span></span>&#123;</span><br><span class="line">    *T=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;data=<span class="number">1</span>;</span><br><span class="line">    (*T)-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;data=<span class="number">2</span>;</span><br><span class="line">    (*T)-&gt;rchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;rchild-&gt;data=<span class="number">3</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;data=<span class="number">4</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">int k=0;</span></span><br><span class="line"><span class="comment">int twochild(BiTree Tree)&#123;</span></span><br><span class="line"><span class="comment">	</span></span><br><span class="line"><span class="comment">	if(Tree==NULL) return 0;</span></span><br><span class="line"><span class="comment">	if((Tree-&gt;lchild)&amp;&amp;(Tree-&gt;rchild))&#123;</span></span><br><span class="line"><span class="comment">		k++;</span></span><br><span class="line"><span class="comment">		twochild(Tree-&gt;lchild);</span></span><br><span class="line"><span class="comment">		twochild(Tree-&gt;rchild);</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">	return k;</span></span><br><span class="line"><span class="comment">&#125;*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">v2_twochild</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num1,num2;</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		num1=v2_twochild(Tree-&gt;lchild);</span><br><span class="line">		num2=v2_twochild(Tree-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(Tree-&gt;lchild&amp;&amp;Tree-&gt;rchild)</span><br><span class="line">		<span class="keyword">return</span> num1+num2+<span class="number">1</span>;<span class="comment">//+1是因为正在被访问的结点满足条件</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> num1+num2;<span class="comment">//否则不+1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//int k=0;</span></span><br><span class="line">    BiTree Tree;</span><br><span class="line">    CreateBiTree(&amp;Tree);</span><br><span class="line">    <span class="comment">//printf("%d",Tree-&gt;lchild-&gt;lchild-&gt;data);</span></span><br><span class="line">	<span class="keyword">int</span> kk=v2_twochild(Tree);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"满足条件的结点数为：%d"</span>,kk);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出结果</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">满足条件的结点数为：<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>以上两种形式的代码在考题中经常出现，要特别注意第一种写法中的<code>k</code>必须作为全局变量</p>
+<h1 id="推广"><a href="#推广" class="headerlink" title="推广"></a>推广</h1><ul>
+<li>求解终端结点数，特定度数的结点数等也可以采用以上代码，稍加修改即可 <br></li>
+<li>这里给出目前我遇到的类似的题目以及对应的代码实现,以后遇到类似的继续补充</li>
+</ul>
+<h4 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h4><blockquote>
+<p>求二叉树中的非终端结点数 <br></p>
+</blockquote>
+<h5 id="代码1-1"><a href="#代码1-1" class="headerlink" title="代码1"></a>代码1</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findunleafnode</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tree!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(Tree-&gt;lchild || Tree-&gt;rchild)&#123;</span><br><span class="line">			k++;</span><br><span class="line">			findunleafnode(Tree-&gt;lchild);</span><br><span class="line">			findunleafnode(Tree-&gt;rchild);</span><br><span class="line">		&#125;<span class="comment">//if</span></span><br><span class="line">	&#125;<span class="comment">//if</span></span><br><span class="line">	<span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>完整代码</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TElemType int</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">    TElemType data;<span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span><span class="comment">//左右孩子指针</span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *T)</span></span>&#123;</span><br><span class="line">    *T=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;data=<span class="number">1</span>;</span><br><span class="line">    (*T)-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;data=<span class="number">2</span>;</span><br><span class="line">    (*T)-&gt;rchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;rchild-&gt;data=<span class="number">3</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;data=<span class="number">4</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">findunleafnode</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tree!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(Tree-&gt;lchild || Tree-&gt;rchild)&#123;</span><br><span class="line">			k++;</span><br><span class="line">			findunleafnode(Tree-&gt;lchild);</span><br><span class="line">			findunleafnode(Tree-&gt;rchild);</span><br><span class="line">		&#125;<span class="comment">//if</span></span><br><span class="line">	&#125;<span class="comment">//if</span></span><br><span class="line">	<span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//int k=0;</span></span><br><span class="line">    BiTree Tree;</span><br><span class="line">    CreateBiTree(&amp;Tree);</span><br><span class="line">    <span class="comment">//printf("%d",Tree-&gt;lchild-&gt;lchild-&gt;data);</span></span><br><span class="line">	<span class="comment">//int kk=v2_twochild(Tree);</span></span><br><span class="line">	<span class="keyword">int</span> kk=findunleafnode(Tree);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"满足条件的结点数为：%d"</span>,kk);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行结果</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">满足条件的结点数为：2</span><br></pre></td></tr></table></figure>
+<h5 id="代码2-1"><a href="#代码2-1" class="headerlink" title="代码2"></a>代码2</h5><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">v2_findunleafnode</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//空树</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(Tree-&gt;lchild==<span class="literal">NULL</span> &amp;&amp; Tree-&gt;rchild==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//叶子结点,没有这个就出错了</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (Tree-&gt;lchild || Tree-&gt;rchild)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>+v2_findunleafnode(Tree-&gt;lchild)+v2_findunleafnode(Tree-&gt;rchild);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>完整代码</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TElemType int</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">    TElemType data;<span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span><span class="comment">//左右孩子指针</span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *T)</span></span>&#123;</span><br><span class="line">    *T=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;data=<span class="number">1</span>;</span><br><span class="line">    (*T)-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;data=<span class="number">2</span>;</span><br><span class="line">    (*T)-&gt;rchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;rchild-&gt;data=<span class="number">3</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;data=<span class="number">4</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">v2_findunleafnode</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//空树</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(Tree-&gt;lchild==<span class="literal">NULL</span> &amp;&amp; Tree-&gt;rchild==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//叶子结点</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (Tree-&gt;lchild || Tree-&gt;rchild)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>+v2_findunleafnode(Tree-&gt;lchild)+v2_findunleafnode(Tree-&gt;rchild);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//int k=0;</span></span><br><span class="line">    BiTree Tree;</span><br><span class="line">    CreateBiTree(&amp;Tree);</span><br><span class="line">	<span class="keyword">int</span> kk=v2_findunleafnode(Tree);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"满足条件的结点数为：%d"</span>,kk);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行结果</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">满足条件的结点数为：2</span><br></pre></td></tr></table></figure>
+<h4 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h4><blockquote>
+<p>求二叉树中所有结点数 <br></p>
+</blockquote>
+<p>代码1</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tree!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		n++;</span><br><span class="line">		count(Tree-&gt;lchild);</span><br><span class="line">		count(Tree-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>完整代码</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TElemType int</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">    TElemType data;<span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span><span class="comment">//左右孩子指针</span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *T)</span></span>&#123;</span><br><span class="line">    *T=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;data=<span class="number">1</span>;</span><br><span class="line">    (*T)-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;data=<span class="number">2</span>;</span><br><span class="line">    (*T)-&gt;rchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;rchild-&gt;data=<span class="number">3</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;data=<span class="number">4</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tree!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		n++;</span><br><span class="line">		count(Tree-&gt;lchild);</span><br><span class="line">		count(Tree-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//int k=0;</span></span><br><span class="line">    BiTree Tree;</span><br><span class="line">    CreateBiTree(&amp;Tree);</span><br><span class="line">	<span class="keyword">int</span> nn=count(Tree);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"满足条件的结点数为：%d"</span>,nn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行结果</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">满足条件的结点数为：4</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>代码2</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num1,num2;</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		num1=count(Tree-&gt;lchild);</span><br><span class="line">		num2=count(Tree-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>+num1+num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>完整代码</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TElemType int</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span>&#123;</span></span><br><span class="line">    TElemType data;<span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">BiTNode</span> *<span class="title">lchild</span>,*<span class="title">rchild</span>;</span><span class="comment">//左右孩子指针</span></span><br><span class="line">&#125;BiTNode,*BiTree;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *T)</span></span>&#123;</span><br><span class="line">    *T=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;data=<span class="number">1</span>;</span><br><span class="line">    (*T)-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;data=<span class="number">2</span>;</span><br><span class="line">    (*T)-&gt;rchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;rchild-&gt;data=<span class="number">3</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;rchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild=(BiTNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;data=<span class="number">4</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;lchild=<span class="literal">NULL</span>;</span><br><span class="line">    (*T)-&gt;lchild-&gt;lchild-&gt;rchild=<span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num1,num2;</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		num1=count(Tree-&gt;lchild);</span><br><span class="line">		num2=count(Tree-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>+num1+num2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    BiTree Tree;</span><br><span class="line">    CreateBiTree(&amp;Tree);</span><br><span class="line">	<span class="keyword">int</span> nn=count(Tree);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"满足条件的结点数为：%d"</span>,nn);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行结果</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">满足条件的结点数为：4</span><br></pre></td></tr></table></figure>
+<h4 id="第三题"><a href="#第三题" class="headerlink" title="第三题"></a>第三题</h4><blockquote>
+<p>求解二叉链表存储结构下的叶子结点数目</p>
+</blockquote>
+<p>代码1<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tree!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="comment">//n++;</span></span><br><span class="line">		<span class="keyword">if</span>(Tree-&gt;lchild==<span class="literal">NULL</span>&amp;&amp;Tree-&gt;rchild==<span class="literal">NULL</span>) n++;</span><br><span class="line">		count(Tree-&gt;lchild);</span><br><span class="line">		count(Tree-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>代码2</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">count</span><span class="params">(BiTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> num1,num2;</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//空树</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(Tree-&gt;lchild==<span class="literal">NULL</span>&amp;&amp;Tree-&gt;rchild==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//只有一个结点（当然该结点为叶子结点），返回1</span></span><br><span class="line">    <span class="comment">//否则该树结点数目大于1，继续遍历其子树</span></span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		num1=count(Tree-&gt;lchild);</span><br><span class="line">		num2=count(Tree-&gt;rchild);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> num1+num2;<span class="comment">//不用+1，因为要求的是叶子结点数，第一次访问的结点因为有孩子，所以不是叶子结点，所以不用加1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="第四题"><a href="#第四题" class="headerlink" title="第四题"></a>第四题</h4><blockquote>
+<p>在孩子兄弟链表示的树中求叶子结点数</p>
+</blockquote>
+<ul>
+<li>分析：<blockquote>
+<p>第三题求的是在二叉链表结构存储下的叶子结点数目，这里给的是孩子兄弟存储结构(实质上也是一种二叉链表）</p>
+</blockquote>
+</li>
+<li><p>思想：</p>
+<blockquote>
+<p>若为空树，返回0；<br>若长子域（Tree-&gt;firstchild）为空，则无孩子，即该结点为叶子结点，计数+1，并接着遍历其兄弟域(Tree-&gt;nextsibling)<br>以上都不满足，则是第三种情况，即：该结点既有孩子又有兄弟,那就把孩子和兄弟子树都遍历下<br></p>
+</blockquote>
+</li>
+<li><p>在前面的代码基础上，修改树的结构为孩子兄弟结构</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">CSNode</span>&#123;</span></span><br><span class="line">    TElemType data;<span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">CSTNode</span> *<span class="title">firstchild</span>,*<span class="title">nextsibling</span>;</span><span class="comment">//长子兄弟指针</span></span><br><span class="line">&#125;CSTNode,*CSTree;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>当然，之前创建的树在这里已经不适用，需要重新创建符合要求的孩子兄弟存储结构的一棵树</p>
+<p>代码1<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">tree_leafconut</span><span class="params">(CSTree Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(Tree-&gt;firstchild==<span class="literal">NULL</span>)&#123;</span><br><span class="line">			k++;<span class="comment">//无孩子</span></span><br><span class="line">			tree_leafcount(Tree-&gt;nextsibling);<span class="comment">//那就遍历兄弟	</span></span><br><span class="line">		&#125;<span class="comment">//if</span></span><br><span class="line">		<span class="keyword">else</span>&#123;<span class="comment">//有孩子也有兄弟，都需要遍历</span></span><br><span class="line">			tree-&gt;leafcount(Tree-&gt;firstchild);</span><br><span class="line">			tree-&gt;leafcount(Tree-&gt;nextsibling);</span><br><span class="line">		&#125;<span class="comment">//else</span></span><br><span class="line">	</span><br><span class="line">	&#125;<span class="comment">//else</span></span><br><span class="line">	<span class="keyword">return</span> k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>代码2</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">tree_leafcount</span><span class="params">(CS Tree)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(Tree==<span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//空树</span></span><br><span class="line">	<span class="keyword">if</span>(Tree-&gt;firstchild==<span class="literal">NULL</span>)<span class="comment">//无孩子，那就去遍历访问兄弟结点试试（如果有的话）</span></span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>+tree_leafcount(Tree-&gt;nextsibling);</span><br><span class="line">	<span class="keyword">else</span><span class="comment">//此时该结点既有孩子，也有兄弟</span></span><br><span class="line">		<span class="keyword">return</span> tree_leafcount(Tree-&gt;firstchild)+tree_leafcount(Tree-&gt;nextsibling);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>more，等遇到再补充</p>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>喜欢所以热爱，坚持干货分享，欢迎订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>呐，请我吃辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构自学史/" rel="tag"># 数据结构自学史</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/16/ch3-栈和队列-链式队列的实现/" rel="next" title="ch3-栈和队列-链式队列的实现">
+                <i class="fa fa-chevron-left"></i> ch3-栈和队列-链式队列的实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">大学狗的日常</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法实现（这里给出两种形式的代码）"><span class="nav-number">3.</span> <span class="nav-text">算法实现（这里给出两种形式的代码）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码1"><span class="nav-number">3.0.1.</span> <span class="nav-text">代码1</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#完整代码实例"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">完整代码实例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码2"><span class="nav-number">3.0.2.</span> <span class="nav-text">代码2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#完整代码实例-1"><span class="nav-number">3.0.2.1.</span> <span class="nav-text">完整代码实例</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#推广"><span class="nav-number">5.</span> <span class="nav-text">推广</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一题"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">第一题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#代码1-1"><span class="nav-number">5.0.0.1.1.</span> <span class="nav-text">代码1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#代码2-1"><span class="nav-number">5.0.0.1.2.</span> <span class="nav-text">代码2</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二题"><span class="nav-number">5.0.0.2.</span> <span class="nav-text">第二题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三题"><span class="nav-number">5.0.0.3.</span> <span class="nav-text">第三题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四题"><span class="nav-number">5.0.0.4.</span> <span class="nav-text">第四题</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom">微信公众号：我将在南极找寻你</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script
+</body>
+</html>
+
+
+
