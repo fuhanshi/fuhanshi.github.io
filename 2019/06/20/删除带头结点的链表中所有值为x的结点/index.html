@@ -115,18 +115,18 @@
 
 
 
-  <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;//链表的的的结构体定义typedef struct lineStack&amp;#12">
+  <meta name="description" content="题目描述 假设用带头结点的单链表作为线性表的存储结构，编写算法，删除线性表中所有值为x的结点  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#include &amp;lt;stdio.h&amp;gt;#include &amp;l">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ch3-栈和队列-链栈的入队与出队操作">
-<meta property="og:url" content="http://yoursite.com/2019/05/16/ch3-栈和队列-链栈的入队与出队操作/index.html">
+<meta property="og:title" content="删除带头结点的链表中所有值为x的结点">
+<meta property="og:url" content="http://yoursite.com/2019/06/20/删除带头结点的链表中所有值为x的结点/index.html">
 <meta property="og:site_name" content="一个大学狗的日常">
-<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;//链表的的的结构体定义typedef struct lineStack&amp;#12">
+<meta property="og:description" content="题目描述 假设用带头结点的单链表作为线性表的存储结构，编写算法，删除线性表中所有值为x的结点  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#include &amp;lt;stdio.h&amp;gt;#include &amp;l">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-16T14:43:38.067Z">
+<meta property="og:updated_time" content="2019-06-20T03:59:03.624Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ch3-栈和队列-链栈的入队与出队操作">
-<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;//链表的的的结构体定义typedef struct lineStack&amp;#12">
+<meta name="twitter:title" content="删除带头结点的链表中所有值为x的结点">
+<meta name="twitter:description" content="题目描述 假设用带头结点的单链表作为线性表的存储结构，编写算法，删除线性表中所有值为x的结点  123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#include &amp;lt;stdio.h&amp;gt;#include &amp;l">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/16/ch3-栈和队列-链栈的入队与出队操作/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/06/20/删除带头结点的链表中所有值为x的结点/"/>
 
 
 
@@ -145,7 +145,7 @@
   };
 </script>
 
-  <title>ch3-栈和队列-链栈的入队与出队操作 | 一个大学狗的日常</title>
+  <title>删除带头结点的链表中所有值为x的结点 | 一个大学狗的日常</title>
   
 
 
@@ -318,7 +318,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/ch3-栈和队列-链栈的入队与出队操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/20/删除带头结点的链表中所有值为x的结点/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="凡希">
@@ -335,7 +335,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ch3-栈和队列-链栈的入队与出队操作
+          <h1 class="post-title" itemprop="name headline">删除带头结点的链表中所有值为x的结点
               
             
           </h1>
@@ -360,7 +360,7 @@
                 
               
 
-              <time title="创建时间：2019-05-16 22:26:10 / 修改时间：22:43:38" itemprop="dateCreated datePublished" datetime="2019-05-16T22:26:10+08:00">2019-05-16</time>
+              <time title="创建时间：2019-06-20 11:57:56 / 修改时间：11:59:03" itemprop="dateCreated datePublished" datetime="2019-06-20T11:57:56+08:00">2019-06-20</time>
             
 
             
@@ -382,7 +382,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构与算法的上机代码实现/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法的上机代码实现</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构自学史/" itemprop="url" rel="index"><span itemprop="name">数据结构自学史</span></a></span>
 
                 
                 
@@ -424,9 +424,14 @@
       
 
       
-        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//链表的的的结构体定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">lineStack</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">lineStack</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;lineStack;</span><br><span class="line"></span><br><span class="line"><span class="comment">//入栈函数push，stack为当前的链栈，a表示入栈元素</span></span><br><span class="line"><span class="comment">//通常我们将链表的头部作为栈顶，尾部作为栈底,所以采用头插法</span></span><br><span class="line"><span class="comment">//stack初始为头结点</span></span><br><span class="line"><span class="function">lineStack *<span class="title">push</span><span class="params">(lineStack *<span class="built_in">stack</span>,<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="comment">//创建存储新元素的结点</span></span><br><span class="line">	lineStack *line=(lineStack*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(lineStack));</span><br><span class="line">	line-&gt;data=a;</span><br><span class="line">	<span class="comment">//创建好的结点，该建立新结点与头结点stack的逻辑关系了</span></span><br><span class="line">	line-&gt;next=<span class="built_in">stack</span>;</span><br><span class="line">	<span class="comment">//更新头指针的指向</span></span><br><span class="line">	<span class="built_in">stack</span>=line;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">stack</span>;<span class="comment">//返回头结点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//栈顶元素出链栈的实现函数</span></span><br><span class="line"><span class="function">lineStack *<span class="title">pop</span><span class="params">(lineStack *<span class="built_in">stack</span>)</span></span>&#123;</span><br><span class="line">	<span class="comment">//当栈不空时方可出栈</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">stack</span>)&#123;</span><br><span class="line">		<span class="comment">//声明一个新指针指向栈顶节点</span></span><br><span class="line">		lineStack *p=<span class="built_in">stack</span>;</span><br><span class="line">		<span class="comment">//更新头指针</span></span><br><span class="line">		<span class="built_in">stack</span>=<span class="built_in">stack</span>-&gt;next;<span class="comment">//stack=p-&gt;next;</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"出栈元素：%d\n"</span>,p-&gt;data);<span class="comment">//这里必须是p-&gt;data，不能是stack-&gt;data</span></span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">stack</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"新栈顶元素：%d\n"</span>,<span class="built_in">stack</span>-&gt;data);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"栈已空\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">free</span>(p);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"栈内无元素"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">stack</span>;</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">stack</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    lineStack * <span class="built_in">stack</span>=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">stack</span>=push(<span class="built_in">stack</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">stack</span>=push(<span class="built_in">stack</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="built_in">stack</span>=push(<span class="built_in">stack</span>, <span class="number">3</span>);</span><br><span class="line">    <span class="built_in">stack</span>=push(<span class="built_in">stack</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="built_in">stack</span>=pop(<span class="built_in">stack</span>);</span><br><span class="line">    <span class="built_in">stack</span>=pop(<span class="built_in">stack</span>);</span><br><span class="line">    <span class="built_in">stack</span>=pop(<span class="built_in">stack</span>);</span><br><span class="line">    <span class="built_in">stack</span>=pop(<span class="built_in">stack</span>);</span><br><span class="line">    <span class="built_in">stack</span>=pop(<span class="built_in">stack</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">出栈元素：4</span><br><span class="line">新栈顶元素：3</span><br><span class="line">出栈元素：3</span><br><span class="line">新栈顶元素：2</span><br><span class="line">出栈元素：2</span><br><span class="line">新栈顶元素：1</span><br><span class="line">出栈元素：1</span><br><span class="line">栈已空</span><br><span class="line">栈内无元素</span><br></pre></td></tr></table></figure></p>
-
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><blockquote>
+<p>假设用带头结点的单链表作为线性表的存储结构，编写算法，删除线性表中所有值为x的结点</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="comment">//链表的结构体定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Link</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> elem;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Link</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;link;</span><br><span class="line"></span><br><span class="line"><span class="comment">//链表初始化函数</span></span><br><span class="line"><span class="function">link *<span class="title">initLink</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//先搞个头结点粗来</span></span><br><span class="line">	link *p=(link*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(link));</span><br><span class="line">	<span class="comment">//再弄个工作指针，初始指向头结点p</span></span><br><span class="line">	link *temp=p;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;<span class="number">5</span>;++i)&#123;</span><br><span class="line">		<span class="comment">//想初始化，得有原料，那就是一个一个的节点，现在还没有节点，那先搞一个粗来</span></span><br><span class="line">		link *a=(link*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(link));</span><br><span class="line">		<span class="comment">//光有空壳不够，该赋值了(对link结构体中的elem赋值)</span></span><br><span class="line">		a-&gt;elem=i;</span><br><span class="line">		<span class="comment">//有了原料节点，就用一根绳子把它们串起来（对link结构体中的next指针赋地址值）</span></span><br><span class="line">		temp-&gt;next=a;<span class="comment">//串起来啦</span></span><br><span class="line">		temp=a;<span class="comment">//工作指针temp后移，准备迎接下一个节点的到来</span></span><br><span class="line">	&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"\n"</span>);<span class="comment">//为了颜值和正义而生</span></span><br><span class="line"><span class="comment">//串完之后，原来的头结点p身后就有了一大堆节点</span></span><br><span class="line"><span class="keyword">return</span> p;<span class="comment">//return试试看</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//打印初始化好的链表元素函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(link *p)</span></span>&#123;</span><br><span class="line">	link *x=p;<span class="comment">//x初始指向头结点</span></span><br><span class="line">	<span class="keyword">while</span>(x-&gt;next)&#123;</span><br><span class="line">		x=x-&gt;next;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d"</span>,x-&gt;elem);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">link *<span class="title">del</span><span class="params">(link *p,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	link *r=p-&gt;next;<span class="comment">//r用来自遍历，初始指向第一个元素节点</span></span><br><span class="line">	link *q=p;<span class="comment">//q是r的前驱</span></span><br><span class="line">	<span class="keyword">while</span>(r!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(r-&gt;elem!=x)&#123;</span><br><span class="line">			q=r;</span><br><span class="line">			r=r-&gt;next;</span><br><span class="line">		&#125;<span class="comment">//if</span></span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			q-&gt;next=r-&gt;next;</span><br><span class="line">			r=r-&gt;next;</span><br><span class="line">		&#125;<span class="comment">//else</span></span><br><span class="line">	</span><br><span class="line">	&#125;<span class="comment">//while</span></span><br><span class="line">	<span class="keyword">return</span> q;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//初始化链表（1，2，3，4）</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"初始化链表为：\n"</span>);</span><br><span class="line">    link *p=initLink();</span><br><span class="line">    display(p);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"删除链表中元素值为4的结点之后的链表为：\n"</span>);</span><br><span class="line">	del(p,<span class="number">4</span>);</span><br><span class="line">	display(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>运行结果</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">初始化链表为：</span><br><span class="line">1234</span><br><span class="line">删除链表中元素值为4的结点之后的链表为：</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -490,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/16/ch3-栈和队列-顺序栈的入栈与出栈操作/" rel="next" title="ch3-栈和队列-顺序栈的入栈与出栈操作">
-                <i class="fa fa-chevron-left"></i> ch3-栈和队列-顺序栈的入栈与出栈操作
+              <a href="/2019/06/20/ch4-字符串-串的堆分配存储/" rel="next" title="ch4-字符串-串的堆分配存储">
+                <i class="fa fa-chevron-left"></i> ch4-字符串-串的堆分配存储
               </a>
             
           </div>
@@ -499,10 +504,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/16/ch3-栈和队列-循环队列的实现/" rel="prev" title="ch3-栈和队列-循环队列的实现">
-                ch3-栈和队列-循环队列的实现 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,8 +548,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -563,7 +573,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -660,6 +670,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
