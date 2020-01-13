@@ -115,18 +115,18 @@
 
 
 
-  <meta name="description" content="大学狗的日常">
+  <meta name="description" content="scanf()接收到空格，回车等不可打印字符时，将停止接收，所以，在用scanf(&amp;quot;%s&amp;quot;,arr)接收字符串时，只能接收到第一个空格前面的字符串内容；可以用gets()来接收含有空格等不可打印字符的字符串 补充：可以用 scanf(&amp;quot;%[^\n]&amp;quot; , str)   来输入一行包含空格的字符串，直到遇到换行符\n">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
-<meta property="og:title" content="字母大写转小写">
-<meta property="og:url" content="http://yoursite.com/2020/01/08/字母大写转小写/index.html">
+<meta property="og:title" content="C语言字符串处理的一些坑">
+<meta property="og:url" content="http://yoursite.com/2020/01/13/C语言字符串处理的一些坑/index.html">
 <meta property="og:site_name" content="一个大学狗的日常">
-<meta property="og:description" content="大学狗的日常">
+<meta property="og:description" content="scanf()接收到空格，回车等不可打印字符时，将停止接收，所以，在用scanf(&amp;quot;%s&amp;quot;,arr)接收字符串时，只能接收到第一个空格前面的字符串内容；可以用gets()来接收含有空格等不可打印字符的字符串 补充：可以用 scanf(&amp;quot;%[^\n]&amp;quot; , str)   来输入一行包含空格的字符串，直到遇到换行符\n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-08T07:49:45.782Z">
+<meta property="og:updated_time" content="2020-01-13T05:40:26.711Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="字母大写转小写">
-<meta name="twitter:description" content="大学狗的日常">
+<meta name="twitter:title" content="C语言字符串处理的一些坑">
+<meta name="twitter:description" content="scanf()接收到空格，回车等不可打印字符时，将停止接收，所以，在用scanf(&amp;quot;%s&amp;quot;,arr)接收字符串时，只能接收到第一个空格前面的字符串内容；可以用gets()来接收含有空格等不可打印字符的字符串 补充：可以用 scanf(&amp;quot;%[^\n]&amp;quot; , str)   来输入一行包含空格的字符串，直到遇到换行符\n">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/01/08/字母大写转小写/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/01/13/C语言字符串处理的一些坑/"/>
 
 
 
@@ -145,7 +145,7 @@
   };
 </script>
 
-  <title>字母大写转小写 | 一个大学狗的日常</title>
+  <title>C语言字符串处理的一些坑 | 一个大学狗的日常</title>
   
 
 
@@ -318,7 +318,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/08/字母大写转小写/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/13/C语言字符串处理的一些坑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="凡希">
@@ -335,7 +335,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">字母大写转小写
+          <h1 class="post-title" itemprop="name headline">C语言字符串处理的一些坑
               
             
           </h1>
@@ -360,12 +360,34 @@
                 
               
 
-              <time title="创建时间：2020-01-08 15:49:45" itemprop="dateCreated datePublished" datetime="2020-01-08T15:49:45+08:00">2020-01-08</time>
+              <time title="创建时间：2020-01-13 13:25:39 / 修改时间：13:40:26" itemprop="dateCreated datePublished" datetime="2020-01-13T13:25:39+08:00">2020-01-13</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -402,7 +424,9 @@
       
 
       
-        
+        <p><code>scanf()</code>接收到空格，回车等不可打印字符时，将停止接收，所以，在用<code>scanf(&quot;%s&quot;,arr)</code>接收字符串时，只能接收到第一个空格前面的字符串内容；可以用<code>gets()</code>来接收含有空格等不可打印字符的字符串<br></p>
+<p>补充：可以用 <code>scanf(&quot;%[^\n]&quot; , str)</code>   来输入一行包含空格的字符串，直到遇到换行符<code>\n</code> <br></p>
+
       
     </div>
 
@@ -466,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/28/灰色预测/" rel="next" title="灰色预测">
-                <i class="fa fa-chevron-left"></i> 灰色预测
+              <a href="/2020/01/13/C语言字符处理的一些坑/" rel="next" title="C语言字符处理的一些坑">
+                <i class="fa fa-chevron-left"></i> C语言字符处理的一些坑
               </a>
             
           </div>
@@ -475,10 +499,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/01/13/C语言字符处理的一些坑/" rel="prev" title="C语言字符处理的一些坑">
-                C语言字符处理的一些坑 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
