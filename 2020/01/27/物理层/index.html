@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="数据通信的相关术语通信的目的：传送消息数据：传送信息的实体信号：数据的电气/电磁的表现，是数据在传输过程中的存在形式  数字信号：代表消息的参数取值是离散的模拟信号：代表消息的参数取值时连续的  信源：产生和发送数据的源头信宿：接收数据的终点信道：信号传输的媒介。一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接收信道  按照传输信号，信道可分为：模拟信道(传送模">
+<meta name="keywords" content="Share">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物理层">
+<meta property="og:url" content="http://yoursite.com/2020/01/27/物理层/index.html">
+<meta property="og:site_name" content="一个大学狗的日常">
+<meta property="og:description" content="数据通信的相关术语通信的目的：传送消息数据：传送信息的实体信号：数据的电气/电磁的表现，是数据在传输过程中的存在形式  数字信号：代表消息的参数取值是离散的模拟信号：代表消息的参数取值时连续的  信源：产生和发送数据的源头信宿：接收数据的终点信道：信号传输的媒介。一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接收信道  按照传输信号，信道可分为：模拟信道(传送模">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/6.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/7.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/8.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/9.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/10.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/11.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/12.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/13.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/14.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/15.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/16.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/17.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/18.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/19.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/27/物理层/20.png">
+<meta property="og:updated_time" content="2020-01-27T12:49:59.524Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="物理层">
+<meta name="twitter:description" content="数据通信的相关术语通信的目的：传送消息数据：传送信息的实体信号：数据的电气/电磁的表现，是数据在传输过程中的存在形式  数字信号：代表消息的参数取值是离散的模拟信号：代表消息的参数取值时连续的  信源：产生和发送数据的源头信宿：接收数据的终点信道：信号传输的媒介。一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接收信道  按照传输信号，信道可分为：模拟信道(传送模">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/27/物理层/1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一个大学狗的日常" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/27/物理层/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>物理层 | 一个大学狗的日常</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个大学狗的日常</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">放弃不难，但坚持一定很酷</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-时间轴">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />时间轴</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/27/物理层/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="大学狗的日常">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个大学狗的日常">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">物理层
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-27 12:27:19 / 修改时间：20:49:59" itemprop="dateCreated datePublished" datetime="2020-01-27T12:27:19+08:00">2020-01-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="数据通信的相关术语"><a href="#数据通信的相关术语" class="headerlink" title="数据通信的相关术语"></a>数据通信的相关术语</h3><p>通信的目的：传送消息<br><br>数据：传送信息的实体<br><br>信号：数据的电气/电磁的表现，是数据在传输过程中的存在形式<br></p>
+<blockquote>
+<p>数字信号：代表消息的参数取值是离散的<br><br>模拟信号：代表消息的参数取值时连续的<br></p>
+</blockquote>
+<p>信源：产生和发送数据的源头<br><br>信宿：接收数据的终点<br><br>信道：信号传输的媒介。一般用来表示向<code>某一个方向</code>传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接收信道<br></p>
+<blockquote>
+<p>按照传输信号，信道可分为：模拟信道(传送模拟信号)和数字信道(传送数字信号)<br><br>按照传输介质，信道可分为：无线信道和有线信道<br></p>
+</blockquote>
+<h3 id="3种通信方式-按照通信双方信息的交互方式"><a href="#3种通信方式-按照通信双方信息的交互方式" class="headerlink" title="3种通信方式(按照通信双方信息的交互方式)"></a>3种通信方式(按照通信双方信息的交互方式)</h3><blockquote>
+<p>单工通信：只有一个方向的通信而没有反方向的交互，仅需要一条信道<br><br>半双工通信：通信的双方都可以发送或接收信息，但任何一方都不能同时发送和接收，需要两条信道<br><br>全双工通信：通信双方可以同时发送和接收信息，也需要两条信道<br></p>
+</blockquote>
+<h3 id="两种数据传输方式"><a href="#两种数据传输方式" class="headerlink" title="两种数据传输方式"></a>两种数据传输方式</h3><blockquote>
+<p>串行传输：速度慢，费用低，适合远距离<br><br>并行传输：速度快，费用高，适合近距离<br></p>
+</blockquote>
+<h3 id="码元"><a href="#码元" class="headerlink" title="码元"></a>码元</h3><p><code>码元</code>是指用一个<code>固定时长</code>的<code>信号波形(数字脉冲)</code>，代表不同离散数值的基本波形，是数字通信中数字信号的计量单位，这个时长内的信号称为<code>k进制码元</code>，而该时长称为<code>码元宽度</code>。当码元的离散状态有M个时(M大于2)，此时码元称为<code>M进制码元</code>。<br><br>1码元可以携带多个比特的信息量。例如，在使用二进制编码时，只有两种不同的码元，一种代表0状态，一中代表1状态。<br></p>
+<h3 id="速率，波特，带宽"><a href="#速率，波特，带宽" class="headerlink" title="速率，波特，带宽"></a>速率，波特，带宽</h3><p><code>速率</code>也叫<code>数据率</code>，是指数据的<code>传输速率</code>，表示单位时间内传输的数据量。可以用<code>码元传输速率</code>和<code>信息传输速率</code>表示。<br></p>
+<blockquote>
+<p>(1) 码元传输速率：别名码元速率，波形速率，调制速率，符号速率等，它表示单位时间内数字通信系统所传输的码元个数(也可称为脉冲个数或信号变化的次数)，单位是<code>波特(Baud)</code>。<br><br>1波特表示数字通信系统每秒传输一个码元。这里的码元可以是多进制的，也可以是二进制的，单码元速率与进制数无关<br></p>
+</blockquote>
+<blockquote>
+<p>(2)信息传输速率：别名信息速率，比特率等，表示单位时间内数字通信系统传输的二进制码元个数(即比特数)，单位是比特/秒(b/s)<br></p>
+</blockquote>
+<p>两者关系：若一个码元携带n bit的信息量，则M Baud的码元传输速率所对应的信息传输速率为M*n bit/s<br></p>
+<p>一言以蔽之：码元传输速率表示<code>1s传输多少个码元</code>,信息传输速率表示<code>1s传输多少个比特。</code>.<br></p>
+<p>计算机网络中，<code>带宽</code>用来表示网络的通信线路传送数据的能力，通常是指单位时间内从网络中的某一点到另一点所能通过的<code>“最高数据率”</code>，可理解为网络设备所支持的最高速度。单位是”比特每秒”，b/s，kb/s，Mb/s，Gb/s<br></p>
+<p>看一道题<br><br><img src="1.png" alt=""> <br></p>
+<h3 id="基带信号与宽带信号-信道上传输的信号"><a href="#基带信号与宽带信号-信道上传输的信号" class="headerlink" title="基带信号与宽带信号(信道上传输的信号)"></a>基带信号与宽带信号(信道上传输的信号)</h3><blockquote>
+<p>基带信号：将数字1和0直接用两种不同的电压表示，再传送到数字信道上去传输(基带传输)。来自信源的信号，比如计算机发出的代表各种文字或图像的数据信号都属于基带信号。基带信号就是发出的<code>直接表达了要传输的信息的信号</code>,比如说话的声音。<br></p>
+</blockquote>
+<blockquote>
+<p>宽带信号：将基带信号进行调制后形成的频分复用模拟信号，再传送到模拟信道上去传输(宽带传输)。把基带信号经过载波调制后，把信号的频率范围搬移到较高的频段以便在信道中传输(即仅在一段频率范围内能够通过信道)。<br></p>
+</blockquote>
+<p>在传输距离较近时，计算机网络采用基带传输方式(近距离衰减小，从而信号内容不易发生变化)；<br><br>在传输距离较远时，计算机网络采用宽带传输方式(远距离衰减大，即使信号变化大也能最后过滤出来基带信号)；<br></p>
+<p>栗子：   设备投屏 –&gt;基带传输； </p>
+<h3 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h3><p>编码： 数据–&gt;数字信号<br><br>调制： 数据–&gt;模拟信号<br></p>
+<blockquote>
+<p>数字数据，经数字发送器，变为数字信号，此为调制<br><br>数字数据，经调制器，变为模拟信号，此为调制<br><br>模拟数据，经PCM编码器，变为数字信号，此为编码<br><br>模拟数据，经放大器调制器，变为模拟信号，此为调制<br></p>
+</blockquote>
+<h3 id="数字数据编码为数字信号"><a href="#数字数据编码为数字信号" class="headerlink" title="数字数据编码为数字信号"></a>数字数据编码为数字信号</h3><blockquote>
+<p>非归零编码（NRZ）<br><br>曼彻斯特编码<br><br>差分曼彻斯特编码<br><br>归零编码（RZ）<br><br>反向不归零编码（NRZI）<br><br>4B/5B编码<br></p>
+</blockquote>
+<h3 id="数字数据调制为模拟信号"><a href="#数字数据调制为模拟信号" class="headerlink" title="数字数据调制为模拟信号"></a>数字数据调制为模拟信号</h3><p><img src="2.png" alt=""> <br></p>
+<h3 id="模拟数据编码为数字信号"><a href="#模拟数据编码为数字信号" class="headerlink" title="模拟数据编码为数字信号"></a>模拟数据编码为数字信号</h3><p><img src="3.png" alt=""> <br></p>
+<h3 id="模拟数据调制为模拟信号"><a href="#模拟数据调制为模拟信号" class="headerlink" title="模拟数据调制为模拟信号"></a>模拟数据调制为模拟信号</h3><p><img src="4.png" alt=""> <br></p>
+<h3 id="失真"><a href="#失真" class="headerlink" title="失真"></a>失真</h3><p>影响失真程度的因素</p>
+<blockquote>
+<p>码元传输速率（正相关），信号传输距离（正相关），噪声干扰（正相关），传输媒体质量（负相关）<br></p>
+</blockquote>
+<p>失真的一种现象<br><img src="5.png" alt=""> <br></p>
+<h3 id="奈氏准则-奈奎斯特定理"><a href="#奈氏准则-奈奎斯特定理" class="headerlink" title="奈氏准则(奈奎斯特定理)"></a>奈氏准则(奈奎斯特定理)</h3><p><img src="6.png" alt=""> <br><br><img src="7.png" alt=""> <br></p>
+<h3 id="香农定理"><a href="#香农定理" class="headerlink" title="香农定理"></a>香农定理</h3><p><img src="8.png" alt=""> <br><br><img src="9.png" alt=""> <br><br><img src="10.png" alt=""> <br></p>
+<h3 id="奈氏与香农对比"><a href="#奈氏与香农对比" class="headerlink" title="奈氏与香农对比"></a>奈氏与香农对比</h3><p><img src="11.png" alt=""> <br></p>
+<h3 id="物理层传输介质"><a href="#物理层传输介质" class="headerlink" title="物理层传输介质"></a>物理层传输介质</h3><p><img src="12.png" alt=""> <br><br><img src="13.png" alt=""> <br><br><img src="14.png" alt=""> <br><br><img src="15.png" alt=""> <br><br><img src="16.png" alt=""> <br><br><img src="17.png" alt=""> <br><br><img src="18.png" alt=""> <br></p>
+<h3 id="物理层设备"><a href="#物理层设备" class="headerlink" title="物理层设备"></a>物理层设备</h3><p><img src="19.png" alt=""> <br><br><img src="20.png" alt=""> <br></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>喜欢所以热爱，坚持干货分享，欢迎订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>呐，请我吃辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/21/素数专题/" rel="next" title="素数专题">
+                <i class="fa fa-chevron-left"></i> 素数专题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">大学狗的日常</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">78</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据通信的相关术语"><span class="nav-number">1.</span> <span class="nav-text">数据通信的相关术语</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3种通信方式-按照通信双方信息的交互方式"><span class="nav-number">2.</span> <span class="nav-text">3种通信方式(按照通信双方信息的交互方式)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两种数据传输方式"><span class="nav-number">3.</span> <span class="nav-text">两种数据传输方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#码元"><span class="nav-number">4.</span> <span class="nav-text">码元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#速率，波特，带宽"><span class="nav-number">5.</span> <span class="nav-text">速率，波特，带宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基带信号与宽带信号-信道上传输的信号"><span class="nav-number">6.</span> <span class="nav-text">基带信号与宽带信号(信道上传输的信号)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编码与调制"><span class="nav-number">7.</span> <span class="nav-text">编码与调制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字数据编码为数字信号"><span class="nav-number">8.</span> <span class="nav-text">数字数据编码为数字信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字数据调制为模拟信号"><span class="nav-number">9.</span> <span class="nav-text">数字数据调制为模拟信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟数据编码为数字信号"><span class="nav-number">10.</span> <span class="nav-text">模拟数据编码为数字信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模拟数据调制为模拟信号"><span class="nav-number">11.</span> <span class="nav-text">模拟数据调制为模拟信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#失真"><span class="nav-number">12.</span> <span class="nav-text">失真</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#奈氏准则-奈奎斯特定理"><span class="nav-number">13.</span> <span class="nav-text">奈氏准则(奈奎斯特定理)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#香农定理"><span class="nav-number">14.</span> <span class="nav-text">香农定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#奈氏与香农对比"><span class="nav-number">15.</span> <span class="nav-text">奈氏与香农对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理层传输介质"><span class="nav-number">16.</span> <span class="nav-text">物理层传输介质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理层设备"><span class="nav-number">17.</span> <span class="nav-text">物理层设备</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom">微信公众号：我将在南极找寻你</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script
+</body>
+</html>
+
+
+
