@@ -115,18 +115,18 @@
 
 
 
-  <meta name="description" content="若序列平稳，则往下进行，否则进行差分处理使序列变平稳  时间序列的预处理特征统计量http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm 宽平稳时间序列(只要求二阶平稳即可)若${X(t)}$满足如下三个条件，则称${X(t)}$为宽平稳时间序列（弱平稳/二阶平稳）  (1)任取$t\in">
+  <meta name="description" content="问题描述 据说著名犹太历史学家 Josephus有过以下的故事：在罗马人占领乔塔帕特后，39 个犹太人与Josephus及他的朋友躲到一个洞中，39个犹太人决定宁愿死也不要被敌人抓到，于是决定了一个自杀方式，41个人排成一个圆圈，由第1个人开始报数，每报数到第3人该人就必须自杀，然后再由下一个重新报数，直到所有人都自杀身亡为止。然而Josephus 和他的朋友并不想遵从。首先从一个人开始，越过k-">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
-<meta property="og:title" content="时序复习">
-<meta property="og:url" content="http://yoursite.com/2018/12/29/timeseriesanalysis/index.html">
+<meta property="og:title" content="约瑟夫环问题--丢手绢">
+<meta property="og:url" content="http://yoursite.com/2020/02/06/约瑟夫环问题-丢手绢/index.html">
 <meta property="og:site_name" content="一个大学狗的日常">
-<meta property="og:description" content="若序列平稳，则往下进行，否则进行差分处理使序列变平稳  时间序列的预处理特征统计量http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm 宽平稳时间序列(只要求二阶平稳即可)若${X(t)}$满足如下三个条件，则称${X(t)}$为宽平稳时间序列（弱平稳/二阶平稳）  (1)任取$t\in">
+<meta property="og:description" content="问题描述 据说著名犹太历史学家 Josephus有过以下的故事：在罗马人占领乔塔帕特后，39 个犹太人与Josephus及他的朋友躲到一个洞中，39个犹太人决定宁愿死也不要被敌人抓到，于是决定了一个自杀方式，41个人排成一个圆圈，由第1个人开始报数，每报数到第3人该人就必须自杀，然后再由下一个重新报数，直到所有人都自杀身亡为止。然而Josephus 和他的朋友并不想遵从。首先从一个人开始，越过k-">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-09T07:17:56.000Z">
+<meta property="og:updated_time" content="2020-02-06T06:18:13.102Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="时序复习">
-<meta name="twitter:description" content="若序列平稳，则往下进行，否则进行差分处理使序列变平稳  时间序列的预处理特征统计量http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm 宽平稳时间序列(只要求二阶平稳即可)若${X(t)}$满足如下三个条件，则称${X(t)}$为宽平稳时间序列（弱平稳/二阶平稳）  (1)任取$t\in">
+<meta name="twitter:title" content="约瑟夫环问题--丢手绢">
+<meta name="twitter:description" content="问题描述 据说著名犹太历史学家 Josephus有过以下的故事：在罗马人占领乔塔帕特后，39 个犹太人与Josephus及他的朋友躲到一个洞中，39个犹太人决定宁愿死也不要被敌人抓到，于是决定了一个自杀方式，41个人排成一个圆圈，由第1个人开始报数，每报数到第3人该人就必须自杀，然后再由下一个重新报数，直到所有人都自杀身亡为止。然而Josephus 和他的朋友并不想遵从。首先从一个人开始，越过k-">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/29/timeseriesanalysis/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/02/06/约瑟夫环问题-丢手绢/"/>
 
 
 
@@ -145,7 +145,7 @@
   };
 </script>
 
-  <title>时序复习 | 一个大学狗的日常</title>
+  <title>约瑟夫环问题--丢手绢 | 一个大学狗的日常</title>
   
 
 
@@ -318,7 +318,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/29/timeseriesanalysis/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/约瑟夫环问题-丢手绢/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="凡希">
@@ -335,7 +335,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">时序复习
+          <h1 class="post-title" itemprop="name headline">约瑟夫环问题--丢手绢
               
             
           </h1>
@@ -360,24 +360,12 @@
                 
               
 
-              <time title="创建时间：2018-12-29 21:45:57" itemprop="dateCreated datePublished" datetime="2018-12-29T21:45:57+08:00">2018-12-29</time>
+              <time title="创建时间：2020-02-06 14:13:05 / 修改时间：14:18:13" itemprop="dateCreated datePublished" datetime="2020-02-06T14:13:05+08:00">2020-02-06</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-09 15:17:56" itemprop="dateModified" datetime="2018-12-09T15:17:56+08:00">2018-12-09</time>
               
             
           </span>
@@ -394,7 +382,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C</span></a></span>
 
                 
                 
@@ -436,53 +424,13 @@
       
 
       
-        <p>若序列平稳，则往下进行，否则进行差分处理使序列变平稳 <br></p>
-<h2 id="时间序列的预处理"><a href="#时间序列的预处理" class="headerlink" title="时间序列的预处理"></a>时间序列的预处理</h2><h4 id="特征统计量"><a href="#特征统计量" class="headerlink" title="特征统计量"></a>特征统计量</h4><p><a href="http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm" target="_blank" rel="noopener">http://classroom.dufe.edu.cn/spsk/c102/wlkj/CourseContents/Chapter10/10_03_01.htm</a></p>
-<h4 id="宽平稳时间序列-只要求二阶平稳即可"><a href="#宽平稳时间序列-只要求二阶平稳即可" class="headerlink" title="宽平稳时间序列(只要求二阶平稳即可)"></a>宽平稳时间序列(只要求二阶平稳即可)</h4><p>若${X(t)}$满足如下三个条件，则称${X(t)}$为<code>宽平稳时间序列</code>（弱平稳/二阶平稳）<br></p>
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><blockquote>
+<p>据说著名犹太历史学家 Josephus有过以下的故事：在罗马人占领乔塔帕特后，39 个犹太人与Josephus及他的朋友躲到一个洞中，39个犹太人决定宁愿死也不要被敌人抓到，于是决定了一个自杀方式，41个人排成一个圆圈，由第1个人开始报数，每报数到第3人该人就必须自杀，然后再由下一个重新报数，直到所有人都自杀身亡为止。然而Josephus 和他的朋友并不想遵从。首先从一个人开始，越过k-2个人（因为第一个人已经被越过），并杀掉第k个人。接着，再越过k-1个人，并杀掉第k个人。这个过程沿着圆圈一直进行，直到最终只剩下一个人留下，这个人就可以继续活着。问题是，给定了和，一开始要站在什么地方才能避免被处决？Josephus要他的朋友先假装遵从，他将朋友与自己安排在第16个与第31个位置，于是逃过了这场死亡游戏。 <br></p>
+</blockquote>
 <blockquote>
-<p>(1)任取$t\in T$,有$E{X_t}^2&lt;\infty$ <br><br>(2)任取$t\in T$,有$EX_t=\mu$,$\mu$为常数<br><br>(3)任取$t,s,k \in T$,且$k+s-t \in T$,有$\gamma(t,s)=\gamma(k,k+s-t)$ <br></p>
+<p>17世纪的法国数学家加斯帕在《数目的游戏问题》中讲了这样一个故事：15个教徒和15 个非教徒在深海上遇险，必须将一半的人投入海中，其余的人才能幸免于难，于是想了一个办法：30个人围成一圆圈，从第一个人开始依次报数，每数到第九个人就将他扔入大海，如此循环进行直到仅余15个人为止。问怎样排法，才能使每次投入大海的都是非教徒。<br></p>
 </blockquote>
-<h4 id="平稳时间序列的统计性质"><a href="#平稳时间序列的统计性质" class="headerlink" title="平稳时间序列的统计性质"></a>平稳时间序列的统计性质</h4><blockquote>
-<p>(1)$EX_t=\mu$,任意$t \in T$ <br><br>(2)$\gamma(t,s)=\gamma(k,k+s-t)$ <br><br>$\gamma(s-t)=\gamma(t,s)$,任意$t,s \in T $ <br><br>(3)$DX_t=\gamma(t,t)=\gamma(0)$ <br></p>
-</blockquote>
-<p>延迟$k$阶自协方差函数$\gamma(k)=\gamma(t,t+k)$ <br><br>延迟$k$阶自相关系数$\rho_k=\frac{\gamma(t,t+k)}{\sqrt{DX_tDX_{t+k}.}.}=\frac{\gamma(k)}{\gamma(0)}$，3个性质为“规范性”,“对称性”以及“非负定性”<br></p>
-<blockquote>
-<p>一个平稳时间序列唯一确定其自相关系数，反之不成立 <br></p>
-</blockquote>
-<h4 id="平稳性检验"><a href="#平稳性检验" class="headerlink" title="平稳性检验"></a>平稳性检验</h4><p>单位根检验、时序图检验、自相关图检验 <br></p>
-<h4 id="纯随机性检验"><a href="#纯随机性检验" class="headerlink" title="纯随机性检验"></a>纯随机性检验</h4><blockquote>
-<p>纯随机序列的定义：<br><br>(1)任取$t \in T$,有$EX_t=\mu$ <br><br>(2)任取$t,s \in T$,有<br><br>$\gamma(t,s)=\sigma^2 ,t=s$ <br><br>$\gamma(t,s)=0,t!=s$</p>
-</blockquote>
-<p>白噪声序列(white noise series)是平稳时间序列，但同时也是纯随机序列，所以没有研究价值<br></p>
-<h2 id="平稳时间序列分析-key"><a href="#平稳时间序列分析-key" class="headerlink" title="平稳时间序列分析(key!)"></a>平稳时间序列分析(key!)</h2><p>$p$阶差分与$k$步差分 <br><br>延迟算子表示差分运算 <br><br>看课本P41 <br><br>线性差分方程的解法<a href="https://fuhanshi.github.io/2018/09/30/diff/" target="_blank" rel="noopener">https://fuhanshi.github.io/2018/09/30/diff/</a></p>
-<h4 id="AR模型"><a href="#AR模型" class="headerlink" title="AR模型"></a>AR模型</h4><p>$AR(p):x_t=\psi_0+\psi_1x_{t-1}+\psi_2x_{t-2}+…+\psi_px_{t-p}+\epsilon_t$ <br></p>
-<p><strong>平稳性判别</strong>： <br><br>（1）特征根判别 <br></p>
-<blockquote>
-<p>$AR(p)$模型平稳的充要条件是其$p$个特征根都在单位圆内 <br></p>
-</blockquote>
-<p>（2）平稳域判别 <br></p>
-<blockquote>
-<p>$AR(1)$模型平稳的充要条件是$|\psi_1|&lt;1$ <br><br>$AR(2)$模型平稳的充要条件是${\psi_1,\psi_2| |\psi_2|&lt;1,且\psi_2+\psi_1&lt;1,\psi_2-\psi_1&lt;1}$ <br></p>
-</blockquote>
-<p><strong>统计性质</strong>： <br><br>(1)均值 <br><br>(i)普通$AR(p)模型$：$\mu=\frac{\psi_0}{1-\psi_1-\psi_2-…-\psi_p}$ <br><br>(ii)中心化的$AR(p)模型$：$\mu=0$ <br></p>
-<p>(2)方差： <br><br>$AR(1):Var(X_t)=\frac{\sigma_{\epsilon}^2}{1-\psi_1^2}$ <br><br>$AR(2):\frac{1-\psi_2}{(1+\psi_2)(1-\psi_1-\psi_2)(1+\psi_1-\psi_2)}\sigma_{\epsilon}^2$</p>
-<p>(3)自协方差函数：<br><br>$AR(1):\gamma_k=\psi_1^k \frac{\sigma_{\epsilon}^2}{1-\psi_1^2},任意k&gt;=1$ <br><br>$AR(2):$ <br><br>$\gamma_0=\frac{1-\psi_2}{(1+\psi_2)(1-\psi_1-\psi_2)(1+\psi_1-\psi_2)}\sigma_{\epsilon}^2$ <br><br>$\gamma_1=\frac{\psi_1\gamma_0}{1-\psi_2}$ <br><br>$\gamma_k=\psi_1\gamma_{k-1}+\psi_2\gamma_{k-2},k&gt;=2$ <br></p>
-<p>(4)自相关系数: <br><br>$AR(1):\rho_k=\psi_1^k,k&gt;=0$ <br><br>$AR(2):$ <br><br>$\begin{eqnarray}<br>\rho_k=<br>\begin{cases}<br>1 &amp;k=0\<br>\frac{\psi_1}{1-\psi_2} &amp;k=1\<br>\psi_1\rho_{k-1}+\psi_2\rho_{k-2} &amp;k&gt;=2<br>\end{cases}<br>\end{eqnarray}<br>$ <br></p>
-<p>$AR(p)$模型的自相关系数的两个性质：(1)拖尾性;(2)呈指数衰减 <br></p>
-<p>(2)偏自相关系数: <br><br>$AR(1):$ <br><br>$\begin{eqnarray}<br>\psi_{kk}=<br>\begin{cases}<br>\psi_1 &amp;k=1\<br>0 &amp;k&gt;=1<br>\end{cases}<br>\end{eqnarray}<br>$ <br></p>
-<p>$AR(2):$ <br><br>$\begin{eqnarray}<br>\psi_{kk}=<br>\begin{cases}<br>\frac{\psi_1}{1-\psi_2} &amp;k=1\<br>\psi_2 &amp;k=2\<br>0 &amp;k&gt;=3<br>\end{cases}<br>\end{eqnarray}<br>$ <br></p>
-<h4 id="MA模型"><a href="#MA模型" class="headerlink" title="MA模型"></a>MA模型</h4><p>$MA(q):x_t=\mu+\epsilon_t-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2}-…-\theta_q\epsilon_{t-q}$ ($\mu=0$时为中心化模型)<br><br><strong>统计性质：</strong> <br><br>(1)均值： <br><br>普通的：$EX_t=\mu$ <br><br>中心化$MA(q)$模型的均值为0 <br></p>
-<p>(2)方差： <br><br>$Var(X_t)=(1+\theta_1^2+\theta_2^2+…+\theta_q^2)\sigma_{\epsilon}^2$ <br></p>
-<p>(3)自协方差函数： <br><br>$\begin{eqnarray}<br>\gamma_k=<br>\begin{cases}<br>(1+\theta_1^2+\theta_2^2+…+\theta_q^2)\sigma_{\epsilon}^2 &amp;k=0\<br>\frac{(-\theta_k+\sum_{i=1}^{q-k}\theta_i\theta_{k+i})}{1+\theta_1^2+…+\theta_q^2}\sigma_{\epsilon}^2 &amp;1&lt;=k&lt;=q\<br>0 &amp;k&gt;q<br>\end{cases}<br>\end{eqnarray}<br>$ <br></p>
-<p>(4)自相关系数： <br><br>$MA(1):$ <br><br>$\begin{eqnarray}<br>\rho_k=<br>\begin{cases}<br>1 &amp;k=0\<br>\frac{-\theta_1}{1+\theta_1^2} &amp;k=1\<br>0 &amp;k&gt;=2<br>\end{cases}<br>\end{eqnarray}<br>$ <br></p>
-<p>$MA(2):$ <br><br>$\begin{eqnarray}<br>\rho_k=<br>\begin{cases}<br>1 &amp;k=0\<br>\frac{-\theta_1+\theta_1\theta_2}{1+\theta_1^2+\theta_2^2} &amp;k=1\<br>\frac{-\theta_2}{1+\theta_1^2+\theta_2^2} &amp;k=2\<br>0 &amp;k&gt;=3<br>\end{cases}<br>\end{eqnarray}<br>$</p>
-<p><strong>MA模型的可逆性判别：</strong> <br><br>$MA(1):{\theta_1|-1&lt;\theta_1&lt;1}$ <br><br>$MA(2):{\theta_1,\theta_2| |\theta_2|&lt;1,且\theta_2+\theta_1&lt;1,\theta_2-\theta_1&lt;1}$ <br></p>
-<p><strong>偏自相关系数：</strong> <br><br>$MA(1):$ <br><br>$\psi_{11}=\rho_1=\frac{-\theta_1}{1+\theta_1^2}$ <br><br>$\psi_{22}=\frac{-\theta_1^2}{1+\theta_1^2+\theta_2^4}$ <br><br>$\psi_{33}=\frac{-\theta_1^3}{1+\theta_1^2+\theta_1^4+\theta_1^6}$ <br></p>
-<p>通式为$\psi_{kk}=\frac{-\theta_1^k}{\sum_{j=0}^{k}}\theta_1^{2j},k&gt;=1$ <br></p>
-<h4 id="ARMA模型"><a href="#ARMA模型" class="headerlink" title="ARMA模型"></a>ARMA模型</h4><p>$ARMA(p,q):x_t=\psi_0+\psi_1x_{t-1}+\psi_2x_{t-2}+…+\psi_px_{t-p}+\epsilon_t-\theta_1\epsilon_{t-1}-\theta_2\epsilon_{t-2}-…-\theta_q\epsilon_{t-q}$ <br></p>
-<p>平稳性：$AR(p)$部分可逆即可逆 <br><br>可逆性：$MA(q)$部分可逆即可逆 <br><br><strong>统计性质：P64,65</strong> <br></p>
-<h4 id="模型识别规则"><a href="#模型识别规则" class="headerlink" title="模型识别规则"></a>模型识别规则</h4><p>AR(p)：自相关系数$\rho_k$拖尾，偏自相关系数$\psi_{kk}$是p阶截尾 <br><br>MA(q)：自相关系数$\rho_k$是q阶截尾，偏自相关系数$\psi_{kk}$拖尾 <br><br>ARMA(p,q)：自相关系数$\rho_k$拖尾，偏自相关系数$\psi_{kk}$也拖尾 <br></p>
-<h4 id="平稳序列建模"><a href="#平稳序列建模" class="headerlink" title="平稳序列建模"></a>平稳序列建模</h4><h4 id="序列预测"><a href="#序列预测" class="headerlink" title="序列预测"></a>序列预测</h4><h2 id="非平稳序列的随机性分析"><a href="#非平稳序列的随机性分析" class="headerlink" title="非平稳序列的随机性分析"></a>非平稳序列的随机性分析</h2><h2 id="非平稳序列的确定性分析"><a href="#非平稳序列的确定性分析" class="headerlink" title="非平稳序列的确定性分析"></a>非平稳序列的确定性分析</h2>
+<h3 id="代码解决"><a href="#代码解决" class="headerlink" title="代码解决"></a>代码解决</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">List</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span>  data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">List</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;<span class="built_in">list</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="built_in">list</span> *L = (<span class="built_in">list</span>*)<span class="built_in">calloc</span>(<span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="built_in">list</span>));       <span class="comment">//头结点</span></span><br><span class="line">        L-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">int</span> n, k, i;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;k);<span class="comment">//n：总人数；k：报数为为k者淘汰</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">list</span> *s, *q = L;</span><br><span class="line">        <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;n; ++i)                                                     <span class="comment">//赋初值</span></span><br><span class="line">        &#123;</span><br><span class="line">                s = (<span class="built_in">list</span>*)<span class="built_in">calloc</span>(<span class="number">1</span>, <span class="keyword">sizeof</span>(<span class="built_in">list</span>));</span><br><span class="line">                s-&gt;data = i+<span class="number">1</span>;</span><br><span class="line">                s-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">                q-&gt;next = s;</span><br><span class="line">                q = s;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        q-&gt;next = L-&gt;next;                                                      <span class="comment">//让尾结点指向头结点的下一个，即第一个人的位置，单向循环链表创建完成</span></span><br><span class="line">        q = L-&gt;next;    <span class="comment">//让q指向头结点的下一个</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//核心代码部分</span></span><br><span class="line">        <span class="keyword">while</span> (q-&gt;next != q)                                            <span class="comment">//只剩一个元素时，退出循环</span></span><br><span class="line">        &#123;</span><br><span class="line">                <span class="comment">//令q指向删除节点的前驱结点</span></span><br><span class="line">                <span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;k<span class="number">-1</span>; ++i)</span><br><span class="line">                &#123;</span><br><span class="line">                        q = q-&gt;next;</span><br><span class="line">                &#125;          </span><br><span class="line">                 s = q-&gt;next;                                                    <span class="comment">//s指向删除节点</span></span><br><span class="line">                q-&gt;next = s-&gt;next;                                              <span class="comment">//将去除s后的链表重新连接起来</span></span><br><span class="line">                q = q-&gt;next;                                                    <span class="comment">//让q指向下次循环的起始位置</span></span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d "</span>, s-&gt;data);</span><br><span class="line">                <span class="built_in">free</span>(s);</span><br><span class="line">                s = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="built_in">printf</span> (<span class="string">"%d\n"</span>, q-&gt;data);</span><br><span class="line">        <span class="built_in">free</span>(q);</span><br><span class="line">        q = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="built_in">free</span>(L);</span><br><span class="line">        L = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -546,8 +494,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/18/magical multivariate statistical analysis/" rel="next" title="神奇的多元统计">
-                <i class="fa fa-chevron-left"></i> 神奇的多元统计
+              <a href="/2020/01/31/数字黑洞-本地编译通过，OJ未通过/" rel="next" title="数字黑洞[本地编译通过，OJ未通过]">
+                <i class="fa fa-chevron-left"></i> 数字黑洞[本地编译通过，OJ未通过]
               </a>
             
           </div>
@@ -555,10 +503,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/29/liman/" rel="prev" title="黎曼函数的连续性">
-                黎曼函数的连续性 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -741,7 +685,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#时间序列的预处理"><span class="nav-number">1.</span> <span class="nav-text">时间序列的预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#特征统计量"><span class="nav-number">1.0.1.</span> <span class="nav-text">特征统计量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#宽平稳时间序列-只要求二阶平稳即可"><span class="nav-number">1.0.2.</span> <span class="nav-text">宽平稳时间序列(只要求二阶平稳即可)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平稳时间序列的统计性质"><span class="nav-number">1.0.3.</span> <span class="nav-text">平稳时间序列的统计性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平稳性检验"><span class="nav-number">1.0.4.</span> <span class="nav-text">平稳性检验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#纯随机性检验"><span class="nav-number">1.0.5.</span> <span class="nav-text">纯随机性检验</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平稳时间序列分析-key"><span class="nav-number">2.</span> <span class="nav-text">平稳时间序列分析(key!)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AR模型"><span class="nav-number">2.0.1.</span> <span class="nav-text">AR模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MA模型"><span class="nav-number">2.0.2.</span> <span class="nav-text">MA模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARMA模型"><span class="nav-number">2.0.3.</span> <span class="nav-text">ARMA模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型识别规则"><span class="nav-number">2.0.4.</span> <span class="nav-text">模型识别规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平稳序列建模"><span class="nav-number">2.0.5.</span> <span class="nav-text">平稳序列建模</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#序列预测"><span class="nav-number">2.0.6.</span> <span class="nav-text">序列预测</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非平稳序列的随机性分析"><span class="nav-number">3.</span> <span class="nav-text">非平稳序列的随机性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非平稳序列的确定性分析"><span class="nav-number">4.</span> <span class="nav-text">非平稳序列的确定性分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码解决"><span class="nav-number">2.</span> <span class="nav-text">代码解决</span></a></li></ol></div>
             
 
           </div>
@@ -968,30 +912,6 @@
   
   
 
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
   
 
 
