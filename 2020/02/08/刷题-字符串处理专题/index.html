@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="1.单词长度 你的程序要读入一行文本，其中以空格分隔为若干个单词，以.结束。你要输出每个单词的长度。这里的单词与语言无关，可以包括各种符号，比如it’s算一个单词，长度为4。注意，行中可能出现连续的空格；最后的.不计算在内。    输入格式：输入在一行中给出一行文本，以.结束  提示：用scanf(&amp;quot;%c&amp;quot;,...);来读入一个字符，直到读到.为止。  输出格式：在一行中输出这">
+<meta name="keywords" content="Share">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[刷题]字符串处理专题">
+<meta property="og:url" content="http://yoursite.com/2020/02/08/刷题-字符串处理专题/index.html">
+<meta property="og:site_name" content="一个大学狗的日常">
+<meta property="og:description" content="1.单词长度 你的程序要读入一行文本，其中以空格分隔为若干个单词，以.结束。你要输出每个单词的长度。这里的单词与语言无关，可以包括各种符号，比如it’s算一个单词，长度为4。注意，行中可能出现连续的空格；最后的.不计算在内。    输入格式：输入在一行中给出一行文本，以.结束  提示：用scanf(&amp;quot;%c&amp;quot;,...);来读入一个字符，直到读到.为止。  输出格式：在一行中输出这">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2020/02/08/刷题-字符串处理专题/1.png">
+<meta property="og:updated_time" content="2020-02-08T12:18:00.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[刷题]字符串处理专题">
+<meta name="twitter:description" content="1.单词长度 你的程序要读入一行文本，其中以空格分隔为若干个单词，以.结束。你要输出每个单词的长度。这里的单词与语言无关，可以包括各种符号，比如it’s算一个单词，长度为4。注意，行中可能出现连续的空格；最后的.不计算在内。    输入格式：输入在一行中给出一行文本，以.结束  提示：用scanf(&amp;quot;%c&amp;quot;,...);来读入一个字符，直到读到.为止。  输出格式：在一行中输出这">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/08/刷题-字符串处理专题/1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一个大学狗的日常" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/08/刷题-字符串处理专题/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[刷题]字符串处理专题 | 一个大学狗的日常</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个大学狗的日常</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">放弃不难，但坚持一定很酷</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-时间轴">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />时间轴</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/刷题-字符串处理专题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="大学狗的日常">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个大学狗的日常">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[刷题]字符串处理专题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-02-08 15:44:00 / 修改时间：20:18:00" itemprop="dateCreated datePublished" datetime="2020-02-08T15:44:00+08:00">2020-02-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-单词长度"><a href="#1-单词长度" class="headerlink" title="1.单词长度"></a>1.单词长度</h3><blockquote>
+<p>你的程序要读入一行文本，其中以空格分隔为若干个单词，以.结束。你要输出每个单词的长度。这里的单词与语言无关，可以包括各种符号，比如it’s算一个单词，长度为4。注意，行中可能出现连续的空格；最后的.不计算在内。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>输入格式：<br>输入在一行中给出一行文本，以<code>.</code>结束</p>
+</blockquote>
+<p><code>提示：用scanf(&quot;%c&quot;,...);来读入一个字符，直到读到.为止。</code></p>
+<blockquote>
+<p>输出格式：<br>在一行中输出这行文本对应的单词的长度，每个长度之间以空格隔开，行末没有最后的空格。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>输入样例：<br><code>It&#39;s great to see you here.</code></p>
+</blockquote>
+<blockquote>
+<p>输出样例：<br><code>4 5 2 3 3 4</code></p>
+</blockquote>
+<hr>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">char</span> str[<span class="number">1000</span>];<span class="comment">//接收字符串</span></span><br><span class="line">        <span class="keyword">int</span> a[<span class="number">1000</span>];<span class="comment">//存储待输出序列</span></span><br><span class="line"><span class="comment">//      gets(str);//不能用个gets()，否则不通过</span></span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%[^\n]"</span>,str);</span><br><span class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;<span class="comment">//统计每个单词的字母个数</span></span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(str)<span class="number">-1</span>;<span class="comment">//不考虑最后的句号</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt;len)</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="comment">//单词</span></span><br><span class="line">                <span class="keyword">while</span>(str[i]!=<span class="string">' '</span>&amp;&amp;i&lt;len)</span><br><span class="line">                &#123;</span><br><span class="line">                        cnt++;</span><br><span class="line">                        ++i;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(cnt!=<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                        a[j++]=cnt;</span><br><span class="line">                        cnt=<span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//空格</span></span><br><span class="line">                <span class="keyword">while</span>(str[i]==<span class="string">' '</span>&amp;&amp;i&lt;len)</span><br><span class="line">                        ++i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//打印结果</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;j;++k)</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d"</span>,a[k]);</span><br><span class="line">                <span class="keyword">if</span>(k&lt;j<span class="number">-1</span>)</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-说反话"><a href="#2-说反话" class="headerlink" title="2.说反话"></a>2.说反话</h3><blockquote>
+<p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>输入样例：<br><code>Hello World Here I Come</code></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>输出样例：<br><code>Come I Here World Hello</code></p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">char</span> str[<span class="number">81</span>];</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%[^\n]"</span>,str);</span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(str);</span><br><span class="line">        <span class="keyword">char</span> a[<span class="number">88</span>][<span class="number">88</span>];</span><br><span class="line">        <span class="keyword">int</span> j=<span class="number">0</span>,k=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;len)</span><br><span class="line">        &#123;</span><br><span class="line">                k=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span>(i&lt;len&amp;&amp;str[i]!=<span class="string">' '</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                        a[j][k++]=str[i++];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//a[j][k]='\0';</span></span><br><span class="line">                ++j;</span><br><span class="line">                <span class="keyword">if</span>(str[i]==<span class="string">' '</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                        ++i;</span><br><span class="line">                        <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=j<span class="number">-1</span>;k&gt;=<span class="number">0</span>;--k)</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%s"</span>,a[k]);</span><br><span class="line">                <span class="keyword">if</span>(k&gt;<span class="number">0</span>)</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-说反话加强版【未AC】"><a href="#3-说反话加强版【未AC】" class="headerlink" title="3.说反话加强版【未AC】"></a>3.说反话加强版【未AC】</h3><blockquote>
+<p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过500 000的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用若干个空格分开。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子，并且保证单词间只有1个空格。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>输入样例：<br><code>Hello World   Here I Come</code></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>输出样例：<br><code>Come I Here World Hello</code></p>
+</blockquote>
+<p>我的代码（如下）没有通过最后一个测试点，可能是数组开小了<br><br><img src="1.png" alt=""> <br><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">char</span> str[<span class="number">81</span>];</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%[^\n]"</span>,str);</span><br><span class="line">        <span class="keyword">int</span> len=<span class="built_in">strlen</span>(str);</span><br><span class="line">        <span class="keyword">char</span> a[<span class="number">88</span>][<span class="number">88</span>];</span><br><span class="line">        <span class="keyword">int</span> j=<span class="number">0</span>,k=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;len)</span><br><span class="line">        &#123;</span><br><span class="line">                k=<span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span>(i&lt;len&amp;&amp;str[i]!=<span class="string">' '</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                        a[j][k++]=str[i++];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//a[j][k]='\0';</span></span><br><span class="line">                <span class="keyword">if</span>(k!=<span class="number">0</span>)</span><br><span class="line">                        ++j;</span><br><span class="line">                <span class="keyword">while</span>(str[i]==<span class="string">' '</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                        ++i;</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=j<span class="number">-1</span>;k&gt;=<span class="number">0</span>;--k)</span><br><span class="line">        &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%s"</span>,a[k]);</span><br><span class="line">                <span class="keyword">if</span>(k&gt;<span class="number">0</span>)</span><br><span class="line">                        <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>于是把数组开到500001，但是编译时会提示<code>段错误 (核心已转储)</code><br><br>大佬看到帮忙解决下，谢谢! <br></p>
+<h3 id="4-说反话新版-单词逆序，未AC"><a href="#4-说反话新版-单词逆序，未AC" class="headerlink" title="4.说反话新版(单词逆序，未AC)"></a>4.说反话新版(单词逆序，未AC)</h3><blockquote>
+<p>Description:<br><br>Sakeven 正在对一段文字进行加密，规则如下：<br>把字符串中的每个单词进行逆序，比如 acm 变成 mca，其他字符顺序不变。<br><br>但是这个工作让他一个手写太麻烦啦，于是他想请你写个程序帮助他。<br></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Input:<br>输入有包括多组数据。每组数据包括一行字符串。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Output:<br>输出加密后的字符串。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Sample Input:<br><code>I Love You</code> </p>
+</blockquote>
+<hr>
+<blockquote>
+<p>Sample Output:<br><code>I evoL uoY</code></p>
+</blockquote>
+<p>这题我在本地编译能通过，但是提交时会超时<br></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">        <span class="keyword">char</span> str[<span class="number">100</span>];</span><br><span class="line">        <span class="keyword">while</span>(gets(str)!=EOF)</span><br><span class="line">        &#123;</span><br><span class="line">		<span class="comment">//getchar();</span></span><br><span class="line">                <span class="keyword">char</span> out[<span class="number">100</span>][<span class="number">100</span>];<span class="comment">//二维数组存储每一个子字符串(可能是单词，也可能是其他)</span></span><br><span class="line"></span><br><span class="line">		<span class="comment">//清空数组out</span></span><br><span class="line">				<span class="built_in">memset</span>(out, <span class="number">0</span>, <span class="keyword">sizeof</span>(out)); </span><br><span class="line">                <span class="keyword">int</span> len=<span class="built_in">strlen</span>(str);</span><br><span class="line">                <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,k=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//将用空格分割开的每一个子字符串(可能是单词，也可能是其他)</span></span><br><span class="line">                <span class="keyword">while</span>(i&lt;len)</span><br><span class="line">                &#123;</span><br><span class="line">                        <span class="keyword">while</span>(str[i]!=<span class="string">' '</span>&amp;&amp;i&lt;len)</span><br><span class="line">                        &#123;</span><br><span class="line">                                out[j][k++]=str[i];</span><br><span class="line">                                ++i;</span><br><span class="line">                        &#125;</span><br><span class="line"></span><br><span class="line">                        k=<span class="number">0</span>;</span><br><span class="line">                        ++j;</span><br><span class="line">			</span><br><span class="line">                        <span class="keyword">if</span>(str[i]==<span class="string">' '</span>&amp;&amp;i&lt;len)<span class="comment">//跳过空格</span></span><br><span class="line">                                ++i;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//输出结果</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> m=<span class="number">0</span>;m&lt;j;++m)</span><br><span class="line">                &#123;</span><br><span class="line">                        <span class="keyword">int</span> l=<span class="built_in">strlen</span>(out[m]);</span><br><span class="line">			<span class="comment">//if-else:只逆序单词，其余字符原样输出</span></span><br><span class="line">                        <span class="keyword">if</span>(out[m][<span class="number">0</span>]&gt;=<span class="string">'a'</span>&amp;&amp;out[m][<span class="number">0</span>]&lt;=<span class="string">'z'</span>||out[m][<span class="number">0</span>]&gt;=<span class="string">'A'</span>&amp;&amp;out[m][<span class="number">0</span>]&lt;=<span class="string">'Z'</span>)</span><br><span class="line">                        &#123;</span><br><span class="line"> </span><br><span class="line">                                <span class="keyword">for</span>(<span class="keyword">int</span> j=l<span class="number">-1</span>;j&gt;=<span class="number">0</span>;--j)</span><br><span class="line">                                        <span class="built_in">printf</span>(<span class="string">"%c"</span>,out[m][j]);</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                        &#123;</span><br><span class="line">                                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;l;++j)</span><br><span class="line">                                        <span class="built_in">printf</span>(<span class="string">"%c"</span>,out[m][j]);</span><br><span class="line"> </span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">if</span>(m&lt;j<span class="number">-1</span>)</span><br><span class="line">                                <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>应该是gets()的原因，所以换了scanf，但是会陷入死循环<br></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>喜欢所以热爱，坚持干货分享，欢迎订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>呐，请我吃辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/06/约瑟夫环问题-丢手绢/" rel="next" title="约瑟夫环问题--丢手绢">
+                <i class="fa fa-chevron-left"></i> 约瑟夫环问题--丢手绢
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">大学狗的日常</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">87</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-单词长度"><span class="nav-number">1.</span> <span class="nav-text">1.单词长度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-说反话"><span class="nav-number">2.</span> <span class="nav-text">2.说反话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-说反话加强版【未AC】"><span class="nav-number">3.</span> <span class="nav-text">3.说反话加强版【未AC】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-说反话新版-单词逆序，未AC"><span class="nav-number">4.</span> <span class="nav-text">4.说反话新版(单词逆序，未AC)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom">微信公众号：我将在南极找寻你</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script
+</body>
+</html>
+
+
+
