@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="第一章、计算机网络体系结构1.计算机网络的定义 计算机网络就是一些互连的，自治的计算机系统的集合。  2.计算机网络的组成 (1)物理组成：硬件（由主机、通信处理剂、通信线路和交换设备组成），软件（实现资源共享的软件和方便用户使用的工具软件），协议（一种规则）;(2)工作方式组成：边缘部分(由所有连接在互联网上，供用户直接使用的主机组成，用来进行通信和资源共享)，核心部分(由大量的网络和连接这些网">
+<meta name="keywords" content="Share">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网问答">
+<meta property="og:url" content="http://yoursite.com/2020/03/07/计网问答/index.html">
+<meta property="og:site_name" content="一个大学狗的日常">
+<meta property="og:description" content="第一章、计算机网络体系结构1.计算机网络的定义 计算机网络就是一些互连的，自治的计算机系统的集合。  2.计算机网络的组成 (1)物理组成：硬件（由主机、通信处理剂、通信线路和交换设备组成），软件（实现资源共享的软件和方便用户使用的工具软件），协议（一种规则）;(2)工作方式组成：边缘部分(由所有连接在互联网上，供用户直接使用的主机组成，用来进行通信和资源共享)，核心部分(由大量的网络和连接这些网">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2020/03/07/计网问答/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/07/计网问答/2.jpg">
+<meta property="og:updated_time" content="2020-03-07T11:48:21.744Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计网问答">
+<meta name="twitter:description" content="第一章、计算机网络体系结构1.计算机网络的定义 计算机网络就是一些互连的，自治的计算机系统的集合。  2.计算机网络的组成 (1)物理组成：硬件（由主机、通信处理剂、通信线路和交换设备组成），软件（实现资源共享的软件和方便用户使用的工具软件），协议（一种规则）;(2)工作方式组成：边缘部分(由所有连接在互联网上，供用户直接使用的主机组成，用来进行通信和资源共享)，核心部分(由大量的网络和连接这些网">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/07/计网问答/1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一个大学狗的日常" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/07/计网问答/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>计网问答 | 一个大学狗的日常</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个大学狗的日常</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">放弃不难，但坚持一定很酷</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-时间轴">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />时间轴</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/07/计网问答/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="大学狗的日常">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个大学狗的日常">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计网问答
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-07 19:33:50 / 修改时间：19:48:21" itemprop="dateCreated datePublished" datetime="2020-03-07T19:33:50+08:00">2020-03-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/计算机网络/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一章、计算机网络体系结构"><a href="#第一章、计算机网络体系结构" class="headerlink" title="第一章、计算机网络体系结构"></a>第一章、计算机网络体系结构</h1><h3 id="1-计算机网络的定义"><a href="#1-计算机网络的定义" class="headerlink" title="1.计算机网络的定义"></a>1.计算机网络的定义</h3><blockquote>
+<p>计算机网络就是一些互连的，自治的计算机系统的集合。<br></p>
+</blockquote>
+<h3 id="2-计算机网络的组成"><a href="#2-计算机网络的组成" class="headerlink" title="2.计算机网络的组成"></a>2.计算机网络的组成</h3><blockquote>
+<p>(1)物理组成：硬件（<code>由主机、通信处理剂、通信线路和交换设备组成</code>），软件（<code>实现资源共享的软件和方便用户使用的工具软件</code>），协议（<code>一种规则</code>）;<br><br>(2)工作方式组成：边缘部分(<code>由所有连接在互联网上，供用户直接使用的主机组成，用来进行通信和资源共享</code>)，核心部分(<code>由大量的网络和连接这些网络的路由器组成，它为边缘部分提供连通性和交换服务</code>)；<br><br>(3)功能组成：通信子网(<code>由各种传输介质、通信设备和相应的网络协议组成，为网络提供数据传输、交换和控制能力，实现互联网计算机之间的数据通信</code>)，资源子网(<code>由主机、终端以及各种软件资源、信息资源组成，负责全网的数据处理业务，向网络用户提供各种网络资源与服务</code>)。<br><br>&ensp;&ensp;&ensp;&ensp;注意：通信子网包括物理层，数据链路层和网络层<br></p>
+</blockquote>
+<h3 id="3-计算机网络的功能"><a href="#3-计算机网络的功能" class="headerlink" title="3.计算机网络的功能"></a>3.计算机网络的功能</h3><blockquote>
+<p><strong>数据通信</strong>：计算机网络<code>最基本</code>和<code>最重要</code>的功能，包括连接控制、传输控制、差错控制、流量控制、路由选择、多路复用等子功能；<br><br><strong>资源共享</strong>：包括数据资源、软件资源以及硬件资源；<br><br><strong>分布式处理</strong>：当计算机网络中某个计算机系统负载过重时，可以将其处理的任务传送给网络中的其他计算机系统进行处理，利用空闲计算机资源提高整个系统的利用率；<br><br><strong>信息综合处理</strong>：将分散在各地计算机中的数据资料进行集中处理或分级处理；<br><br><strong>负载均衡</strong>：将工作任务均衡地分配给计算机网络中的各台计算机；<br><br><strong>提高可靠性</strong>：计算机网络中的各台计算机可以通过网络互为替代机。<br></p>
+</blockquote>
+<h3 id="4-计算机网络的分类"><a href="#4-计算机网络的分类" class="headerlink" title="4.计算机网络的分类"></a>4.计算机网络的分类</h3><blockquote>
+<p>(1)按分布范围分类：广域网、城域网、局域网、个人区域网；<br><br>(2)按拓扑结构分类：星形网络、总线型网络、环形网络、网状型网络；<br><br>(3)按传输技术分类：广播式网络、点对点网络；<br><br>(4)按使用者分类：公用网、专用网；<br><br>(5)按数据交换技术分类：电路交换网络、报文交换网络、分组交换网络；<br></p>
+</blockquote>
+<h3 id="5-计算机网络的标准化工作及相关组织"><a href="#5-计算机网络的标准化工作及相关组织" class="headerlink" title="5.计算机网络的标准化工作及相关组织"></a>5.计算机网络的标准化工作及相关组织</h3><blockquote>
+<p>互联网草案–&gt;建议标准（RFC文档）–&gt;草案标准–&gt;互联网标准。<br><br>ISO 、ITO 、IEEE<br></p>
+</blockquote>
+<h3 id="6-实体、对等层、对等实体"><a href="#6-实体、对等层、对等实体" class="headerlink" title="6. 实体、对等层、对等实体"></a>6. 实体、对等层、对等实体</h3><blockquote>
+<p>实体：任何可发送或接收信息的硬件或软件进程，通常是一个特定的软件模块；<br><br>对等层：不同机器上的同一层；<br><br>对等实体：同一层上的实体。<br></p>
+</blockquote>
+<h3 id="7-协议"><a href="#7-协议" class="headerlink" title="7.协议"></a>7.协议</h3><blockquote>
+<p>协议是控制两个对等实体进行通信的规则，也就是水平的。<br><br>协议的组成包括：<code>语义（对构成协议的元素含义的解释）</code>，<code>语法（数据与控制信息的结构或格式）</code>和<code>同步（规定了协议的控制顺序）</code>。<br></p>
+</blockquote>
+<h3 id="8-接口"><a href="#8-接口" class="headerlink" title="8.接口"></a>8.接口</h3><blockquote>
+<p>接口又称<code>服务访问点</code>，没有接口就不能提供服务；<br><br>SDU、PCI、ICI、PDU、IDU。<br></p>
+</blockquote>
+<h3 id="9-服务"><a href="#9-服务" class="headerlink" title="9.服务"></a>9.服务</h3><blockquote>
+<p>服务指下层为相邻上层提供的功能调用。<br><br>协议是水平的，而服务是垂直的。<br><br>服务主要包括以下三类：<br><br>&ensp;&ensp;&ensp;&ensp;(1)面向连接的服务（<code>建立连接、使用连接、释放连接</code>）和面<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;向无连接的服务（<code>把每个带有目的地址的包传送到线路上，由系统选定路线进行传输</code>）；<br><br>&ensp;&ensp;&ensp;&ensp;(2)有应答服务（<code>接收方收到数据后向发送方给出相应的应答</code>）<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;和无应答服务（<code>接收方收到数据后不自动给出应答</code>）；<br><br>&ensp;&ensp;&ensp;&ensp;(3)可靠服务(<code>网络具有检错、纠错、应答机制</code>)和不可靠服务（<code>尽力而为</code>）；<br></p>
+</blockquote>
+<h3 id="10-面向连接的服务和面向无连接服务的对比"><a href="#10-面向连接的服务和面向无连接服务的对比" class="headerlink" title="10.面向连接的服务和面向无连接服务的对比"></a>10.面向连接的服务和面向无连接服务的对比</h3><blockquote>
+<p>面向连接的服务：<br><br>&ensp;&ensp;&ensp;&ensp;优点：可靠信息流（<code>只要被接收的都是正确的</code>）;<br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;信息回复确认（<code>每收到一条信息就回复一次，若出错则告诉发送方，要求重传</code>）<br><br>&ensp;&ensp;&ensp;&ensp;缺点：占用通信信道<br><br>面向无连接的服务：<br><br>&ensp;&ensp;&ensp;&ensp;优点：不占用通信信道<br><br>&ensp;&ensp;&ensp;&ensp;缺点：信息流可能丢失（<code>在传输过程中，信息可能丢失，对方可能收不到信息</code>）；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;信息无回复确认（<code>收到信息就收下，不告诉对方已经收到</code>）。<br></p>
+</blockquote>
+<h3 id="11-计算机网络的性能指标"><a href="#11-计算机网络的性能指标" class="headerlink" title="11.计算机网络的性能指标"></a>11.计算机网络的性能指标</h3><blockquote>
+<p>(1)<strong>时延</strong>：发送时延(传输时延)+传播时延+处理时延+排队时延;<br><br>(2)<strong>时延带宽积</strong>：传播时延<em>带宽;<br><br>(3)<strong>往返时间</strong>：从发送方发送数据开始，到发送方收到来自接收方的确认消息为止<br><br>(4)<strong>利用率</strong></em>：信道利用率（某信道有百分之几的时间时被利用的）+网络利用率（全网络的信道利用率的平均值）。<br></p>
+</blockquote>
+<h3 id="12-五层参考模型总结"><a href="#12-五层参考模型总结" class="headerlink" title="12.五层参考模型总结"></a>12.五层参考模型总结</h3><p><img src="1.png" alt=""><br></p>
+<h3 id="13-OSI参考模型和TCP-IP参考模型的特性对比"><a href="#13-OSI参考模型和TCP-IP参考模型的特性对比" class="headerlink" title="13.OSI参考模型和TCP/IP参考模型的特性对比"></a>13.OSI参考模型和TCP/IP参考模型的特性对比</h3><p><img src="2.jpg" alt=""><br></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>喜欢所以热爱，坚持干货分享，欢迎订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>呐，请我吃辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/26/机器学习算法评估-ROC曲线/" rel="next" title="机器学习算法评估--ROC曲线">
+                <i class="fa fa-chevron-left"></i> 机器学习算法评估--ROC曲线
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">大学狗的日常</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">90</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章、计算机网络体系结构"><span class="nav-number">1.</span> <span class="nav-text">第一章、计算机网络体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-计算机网络的定义"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.计算机网络的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-计算机网络的组成"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.计算机网络的组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-计算机网络的功能"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.计算机网络的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-计算机网络的分类"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.计算机网络的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-计算机网络的标准化工作及相关组织"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.计算机网络的标准化工作及相关组织</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-实体、对等层、对等实体"><span class="nav-number">1.0.6.</span> <span class="nav-text">6. 实体、对等层、对等实体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-协议"><span class="nav-number">1.0.7.</span> <span class="nav-text">7.协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-接口"><span class="nav-number">1.0.8.</span> <span class="nav-text">8.接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-服务"><span class="nav-number">1.0.9.</span> <span class="nav-text">9.服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-面向连接的服务和面向无连接服务的对比"><span class="nav-number">1.0.10.</span> <span class="nav-text">10.面向连接的服务和面向无连接服务的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-计算机网络的性能指标"><span class="nav-number">1.0.11.</span> <span class="nav-text">11.计算机网络的性能指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-五层参考模型总结"><span class="nav-number">1.0.12.</span> <span class="nav-text">12.五层参考模型总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-OSI参考模型和TCP-IP参考模型的特性对比"><span class="nav-number">1.0.13.</span> <span class="nav-text">13.OSI参考模型和TCP/IP参考模型的特性对比</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom">微信公众号：我将在南极找寻你</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script
+</body>
+</html>
+
+
+
