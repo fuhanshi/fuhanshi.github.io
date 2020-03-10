@@ -125,7 +125,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2020/03/07/计网问答/1.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/07/计网问答/2.jpg">
-<meta property="og:updated_time" content="2020-03-07T11:48:21.744Z">
+<meta property="og:updated_time" content="2020-03-09T12:54:55.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计网问答">
 <meta name="twitter:description" content="第一章、计算机网络体系结构1.计算机网络的定义 计算机网络就是一些互连的，自治的计算机系统的集合。  2.计算机网络的组成 (1)物理组成：硬件（由主机、通信处理剂、通信线路和交换设备组成），软件（实现资源共享的软件和方便用户使用的工具软件），协议（一种规则）;(2)工作方式组成：边缘部分(由所有连接在互联网上，供用户直接使用的主机组成，用来进行通信和资源共享)，核心部分(由大量的网络和连接这些网">
@@ -363,12 +363,24 @@
                 
               
 
-              <time title="创建时间：2020-03-07 19:33:50 / 修改时间：19:48:21" itemprop="dateCreated datePublished" datetime="2020-03-07T19:33:50+08:00">2020-03-07</time>
+              <time title="创建时间：2020-03-07 19:33:50" itemprop="dateCreated datePublished" datetime="2020-03-07T19:33:50+08:00">2020-03-07</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-09 20:54:55" itemprop="dateModified" datetime="2020-03-09T20:54:55+08:00">2020-03-09</time>
               
             
           </span>
@@ -462,6 +474,46 @@
 </blockquote>
 <h3 id="12-五层参考模型总结"><a href="#12-五层参考模型总结" class="headerlink" title="12.五层参考模型总结"></a>12.五层参考模型总结</h3><p><img src="1.png" alt=""><br></p>
 <h3 id="13-OSI参考模型和TCP-IP参考模型的特性对比"><a href="#13-OSI参考模型和TCP-IP参考模型的特性对比" class="headerlink" title="13.OSI参考模型和TCP/IP参考模型的特性对比"></a>13.OSI参考模型和TCP/IP参考模型的特性对比</h3><p><img src="2.jpg" alt=""><br></p>
+<h1 id="第二章、物理层"><a href="#第二章、物理层" class="headerlink" title="第二章、物理层"></a>第二章、物理层</h1><h3 id="1-信号"><a href="#1-信号" class="headerlink" title="1.信号"></a>1.信号</h3><blockquote>
+<p><strong>信号</strong>是数据（<code>传送信息的实体</code>）的电气或电磁的表现。<br><br>信道上传送的信号可以分为<code>基带信号</code>和<code>宽带信号</code>。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>基带信号</strong>是将数字信号0和1直接用两种不同的电压表示，然后传送到数字信道上去传输，称为<strong>基带传输</strong>。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>宽带信号</strong>是将基带信号进行调制后形成模拟信号，然后再传送到模拟信道上去传输，称为<strong>宽带传输</strong>。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;一句话：基带对应数字信号，宽带对应模拟信号。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;注意：宽带传输==频带传输(in 考研）。<br></p>
+</blockquote>
+<h3 id="2-信源、信道、信宿"><a href="#2-信源、信道、信宿" class="headerlink" title="2.信源、信道、信宿"></a>2.信源、信道、信宿</h3><blockquote>
+<p><strong>信源</strong>：通信过程中产生和发送信息的设备或计算机。<br><br><strong>信道</strong>：信息传送的道路，也就是信号的传输媒质，分为有线信道和无线信道。<br><br><strong>信宿</strong>：通信过程中接收和处理信息的设备或计算机。<br></p>
+</blockquote>
+<h3 id="3-速率、波特、码元"><a href="#3-速率、波特、码元" class="headerlink" title="3.速率、波特、码元"></a>3.速率、波特、码元</h3><blockquote>
+<p>速率就是单位时间内传输的数据量，可用波特率和比特率来描述。<br><br>波特率：又称<code>码元传输速率</code>，表示单位时间内数字通信系统所能传输的<code>码元个数</code>。<br><br>比特率：又称<code>信息传输速率</code>，表示单位时间内数字通信系统所能传输的<code>二进制码元个数</code>，即<code>比特数</code>，单位为<code>bit/s</code>。<br></p>
+</blockquote>
+<h3 id="4-带宽"><a href="#4-带宽" class="headerlink" title="4.带宽"></a>4.带宽</h3><blockquote>
+<p>在计算机网络中，带宽是用来表示<code>网络的通信线路</code>所能<code>传送数据的能力</code>，表示单位时间内从网络中的某一点到另一点所能通过的<code>最高数据率</code>。<br><br>此时，带宽的单位不再是赫兹(Hz)，而是<code>bit/s</code>。<br></p>
+</blockquote>
+<h3 id="5-奈奎斯特定理"><a href="#5-奈奎斯特定理" class="headerlink" title="5.奈奎斯特定理"></a>5.奈奎斯特定理</h3><blockquote>
+<p>由来：寻找在保证不出现码间串扰的条件下的码元的最大传输速率。<br><br>（<code>码间串扰：具体的信道所能通过的频率范围总是有限的，所以信号中的大部分高频分量就过不去了，这样在传输共享中会衰减，导致在接收端收到的信号的波形就失去了码元之间的清晰界限，这种现象就是码间串扰</code>）<br><br><strong>奈奎斯特定理</strong>:<br><br>$$C_{max}=f_{采样}*log_2N(bit/s)$$<br>其中，<code>f</code>代表<code>理想低通信道</code>的带宽，<code>N</code>表示每个码元的离散电平的数目。<br></p>
+</blockquote>
+<h3 id="6-区分低通信道和带通信道"><a href="#6-区分低通信道和带通信道" class="headerlink" title="6.区分低通信道和带通信道"></a>6.区分低通信道和带通信道</h3><p><code>低通信道</code>就是信号的频率只要不超过某个上限值，都可以不失真地通过信道（有上限，无下限），理想低通信道的最高码元传输速率是每秒2个码元；<br><br><code>带通信道</code>既有上限也有下限，，理想带通信道的最高码元传输速率是每秒1个码元。<br></p>
+<h3 id="7-香农定理"><a href="#7-香农定理" class="headerlink" title="7.香农定理"></a>7.香农定理</h3><blockquote>
+<p>公式：<br><br>$$C_{max}=W*log_2(1+S/N)(bit/s)$$<br>其中，<code>W</code>为信道的带宽，$S/N$为信噪比。<br><br>想要提高信息的传输速率，需要增大信噪比或者提高带宽（注意：仅仅提高改善编码不可能超过香农公式算出的速率）。<br></p>
+</blockquote>
+<h3 id="8-对比奈奎斯特定理和香农定理"><a href="#8-对比奈奎斯特定理和香农定理" class="headerlink" title="8.对比奈奎斯特定理和香农定理"></a>8.对比奈奎斯特定理和香农定理</h3><blockquote>
+<p><strong>奈奎斯特定理</strong>：<br><br>(1)指出了码元的传输速率是受限的，不能任意提高，否则在接收端就无法判定码元是0还是1（码间串扰）;<br><br>(2)是在理想条件下推出来的(无噪声);<br><br>(3)并没有对信息传输速率给出限制（可以无限大，只要编码技术足够好）。<br><br><strong>香农定理</strong>:<br><br>(1)给出了信息传输速率的极限值，只要传输带宽（Hz）和信噪比确定了，传输速率也就确定了;<br><br>(2)有噪声。<br></p>
+</blockquote>
+<h3 id="9-编码与调制"><a href="#9-编码与调制" class="headerlink" title="9.编码与调制"></a>9.编码与调制</h3><blockquote>
+<p><strong>编码</strong>：将模拟数据或数字数据转换为数字信号的过程。<br><br><strong>调制</strong>：将模拟数据或数字数据转化为模拟信号的过程。<br></p>
+</blockquote>
+<h4 id="9-1调制"><a href="#9-1调制" class="headerlink" title="9.1调制"></a>9.1调制</h4><blockquote>
+<p>(1)数字数据调制为模拟信号：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;1)带通调制：将基带信号的频带范围搬移到较高的频段以便在信道中传输（3种方法：调频，调幅，调相）；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;2)基带调制：改变基带信号的低频成分的波形（仍是基带信号）。<br><br>(2)模拟数据调制为模拟信号：（原因）<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;1)为了实现传输的有效性，可能需要较高的频率；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;2)充分利用带宽。<br></p>
+</blockquote>
+<h4 id="9-2编码"><a href="#9-2编码" class="headerlink" title="9.2编码"></a>9.2编码</h4><blockquote>
+<p>(1)数字数据编码为数字信号：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;用于基带信号传输中。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;常用编码方式：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;1)非归零码；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2)曼彻斯特编码；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;3)差分曼彻斯特编码。<br><br>(2)模拟数据编码为数字信号：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;典型例子就是<code>脉冲编码调制</code>，有3个步骤：采样、量化、编码。<br></p>
+</blockquote>
+<h3 id="10-数据传输方式"><a href="#10-数据传输方式" class="headerlink" title="10.数据传输方式"></a>10.数据传输方式</h3><blockquote>
+<p>(1)电路交换：在通信之前，通信双方建立一条被双方独占的物理通路。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;优点：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;1)通信时延小；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2)实时性强；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;3)有序传输；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;4)使用范围广（数字/模拟信号均可传输）；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;5)控制简单；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;6)避免冲突。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;缺点：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;1)建立连接时间长；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2)信道利用率低；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;3)缺乏统一标准(电路交换时，数据之大，不同规格终端难以相互通信，也很难进行差错控制)；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;4)灵活性差（任一节点出错都需要建立新的连接）。<br></p>
+</blockquote>
+<blockquote>
+<p>(2)报文交换：数据交换的单位是报文，报文携带目的地址、源地址等信息；报文交换在交换节点时采用存储转发方式。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;优点：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;1)无需建立连接(因此不存在连接时延)；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2）动态分配线路；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;3提高了可靠性；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;4)提高线路利用率；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;5)提供多目标服务（一个报文可以发送到多个目的地址）。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;缺点：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;1)由于数据进入交换节点后要经理存储、转发这一过程，从而引起转发时延；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2)报文交换对报文的大小没有限制，这就要求网络节点有大量的存储缓存空间。<br><br>【注】：报文交换主要用于早起的电报通信网中，现在被较先进的分组交换方式取代。<br></p>
+</blockquote>
+<blockquote>
+<p>(3)分组交换：仍采用存储转发方式，丹江一个长报文先分割为若干较短的分组，然后逐个转发分组（每个分组都携带目的地址、源地址和编号信息）。<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;优点：<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;1)加速传输（）；<br><br>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;2)简化了存储管理</p>
+</blockquote>
 
       
     </div>
@@ -536,6 +588,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/03/08/在Ubuntu上安装RStudio遇到的问题以及解决方法/" rel="prev" title="在Ubuntu上安装RStudio遇到的问题以及解决方法">
+                在Ubuntu上安装RStudio遇到的问题以及解决方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -604,7 +660,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">90</span>
+                    <span class="site-state-item-count">92</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -717,7 +773,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章、计算机网络体系结构"><span class="nav-number">1.</span> <span class="nav-text">第一章、计算机网络体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-计算机网络的定义"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.计算机网络的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-计算机网络的组成"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.计算机网络的组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-计算机网络的功能"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.计算机网络的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-计算机网络的分类"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.计算机网络的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-计算机网络的标准化工作及相关组织"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.计算机网络的标准化工作及相关组织</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-实体、对等层、对等实体"><span class="nav-number">1.0.6.</span> <span class="nav-text">6. 实体、对等层、对等实体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-协议"><span class="nav-number">1.0.7.</span> <span class="nav-text">7.协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-接口"><span class="nav-number">1.0.8.</span> <span class="nav-text">8.接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-服务"><span class="nav-number">1.0.9.</span> <span class="nav-text">9.服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-面向连接的服务和面向无连接服务的对比"><span class="nav-number">1.0.10.</span> <span class="nav-text">10.面向连接的服务和面向无连接服务的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-计算机网络的性能指标"><span class="nav-number">1.0.11.</span> <span class="nav-text">11.计算机网络的性能指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-五层参考模型总结"><span class="nav-number">1.0.12.</span> <span class="nav-text">12.五层参考模型总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-OSI参考模型和TCP-IP参考模型的特性对比"><span class="nav-number">1.0.13.</span> <span class="nav-text">13.OSI参考模型和TCP/IP参考模型的特性对比</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章、计算机网络体系结构"><span class="nav-number">1.</span> <span class="nav-text">第一章、计算机网络体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-计算机网络的定义"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.计算机网络的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-计算机网络的组成"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.计算机网络的组成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-计算机网络的功能"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.计算机网络的功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-计算机网络的分类"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.计算机网络的分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-计算机网络的标准化工作及相关组织"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.计算机网络的标准化工作及相关组织</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-实体、对等层、对等实体"><span class="nav-number">1.0.6.</span> <span class="nav-text">6. 实体、对等层、对等实体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-协议"><span class="nav-number">1.0.7.</span> <span class="nav-text">7.协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-接口"><span class="nav-number">1.0.8.</span> <span class="nav-text">8.接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-服务"><span class="nav-number">1.0.9.</span> <span class="nav-text">9.服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-面向连接的服务和面向无连接服务的对比"><span class="nav-number">1.0.10.</span> <span class="nav-text">10.面向连接的服务和面向无连接服务的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-计算机网络的性能指标"><span class="nav-number">1.0.11.</span> <span class="nav-text">11.计算机网络的性能指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-五层参考模型总结"><span class="nav-number">1.0.12.</span> <span class="nav-text">12.五层参考模型总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-OSI参考模型和TCP-IP参考模型的特性对比"><span class="nav-number">1.0.13.</span> <span class="nav-text">13.OSI参考模型和TCP/IP参考模型的特性对比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章、物理层"><span class="nav-number">2.</span> <span class="nav-text">第二章、物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-信号"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.信号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-信源、信道、信宿"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.信源、信道、信宿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-速率、波特、码元"><span class="nav-number">2.0.3.</span> <span class="nav-text">3.速率、波特、码元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-带宽"><span class="nav-number">2.0.4.</span> <span class="nav-text">4.带宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-奈奎斯特定理"><span class="nav-number">2.0.5.</span> <span class="nav-text">5.奈奎斯特定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-区分低通信道和带通信道"><span class="nav-number">2.0.6.</span> <span class="nav-text">6.区分低通信道和带通信道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-香农定理"><span class="nav-number">2.0.7.</span> <span class="nav-text">7.香农定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-对比奈奎斯特定理和香农定理"><span class="nav-number">2.0.8.</span> <span class="nav-text">8.对比奈奎斯特定理和香农定理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-编码与调制"><span class="nav-number">2.0.9.</span> <span class="nav-text">9.编码与调制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#9-1调制"><span class="nav-number">2.0.9.1.</span> <span class="nav-text">9.1调制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-2编码"><span class="nav-number">2.0.9.2.</span> <span class="nav-text">9.2编码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-数据传输方式"><span class="nav-number">2.0.10.</span> <span class="nav-text">10.数据传输方式</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
