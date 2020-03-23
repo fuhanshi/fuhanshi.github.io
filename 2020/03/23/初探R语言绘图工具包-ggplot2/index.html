@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="一、在R中安装ggplot21install.packages(&quot;ggplot2&quot;) 二、ggplot2全局总览ggplot2中的函数可以分为以下几大类：1234567element_  主题设置中的参数，调整细节geom_     主要作图函数，区分作图类型，比如是柱状图还是点图scale_    修改默认颜色等设置stat_     数据变换theme_    主题设置coord_    坐标">
+<meta name="keywords" content="Share">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初探R语言绘图工具包--ggplot2">
+<meta property="og:url" content="http://yoursite.com/2020/03/23/初探R语言绘图工具包-ggplot2/index.html">
+<meta property="og:site_name" content="一个大学狗的日常">
+<meta property="og:description" content="一、在R中安装ggplot21install.packages(&quot;ggplot2&quot;) 二、ggplot2全局总览ggplot2中的函数可以分为以下几大类：1234567element_  主题设置中的参数，调整细节geom_     主要作图函数，区分作图类型，比如是柱状图还是点图scale_    修改默认颜色等设置stat_     数据变换theme_    主题设置coord_    坐标">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/home/fanxi/1.png">
+<meta property="og:image" content="http://yoursite.com/home/fanxi/2.png">
+<meta property="og:image" content="http://yoursite.com/home/fanxi/3.png">
+<meta property="og:updated_time" content="2020-03-23T08:53:16.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初探R语言绘图工具包--ggplot2">
+<meta name="twitter:description" content="一、在R中安装ggplot21install.packages(&quot;ggplot2&quot;) 二、ggplot2全局总览ggplot2中的函数可以分为以下几大类：1234567element_  主题设置中的参数，调整细节geom_     主要作图函数，区分作图类型，比如是柱状图还是点图scale_    修改默认颜色等设置stat_     数据变换theme_    主题设置coord_    坐标">
+<meta name="twitter:image" content="http://yoursite.com/home/fanxi/1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一个大学狗的日常" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/23/初探R语言绘图工具包-ggplot2/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>初探R语言绘图工具包--ggplot2 | 一个大学狗的日常</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个大学狗的日常</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">放弃不难，但坚持一定很酷</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-时间轴">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />时间轴</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/初探R语言绘图工具包-ggplot2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="大学狗的日常">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个大学狗的日常">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初探R语言绘图工具包--ggplot2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-23 16:51:08 / 修改时间：16:53:16" itemprop="dateCreated datePublished" datetime="2020-03-23T16:51:08+08:00">2020-03-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/R/" itemprop="url" rel="index"><span itemprop="name">R</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、在R中安装ggplot2"><a href="#一、在R中安装ggplot2" class="headerlink" title="一、在R中安装ggplot2"></a>一、在R中安装ggplot2</h3><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">install.packages(<span class="string">"ggplot2"</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="二、ggplot2全局总览"><a href="#二、ggplot2全局总览" class="headerlink" title="二、ggplot2全局总览"></a>二、ggplot2全局总览</h3><p>ggplot2中的函数可以分为以下几大类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">element_  主题设置中的参数，调整细节</span><br><span class="line">geom_     主要作图函数，区分作图类型，比如是柱状图还是点图</span><br><span class="line">scale_    修改默认颜色等设置</span><br><span class="line">stat_     数据变换</span><br><span class="line">theme_    主题设置</span><br><span class="line">coord_    坐标轴转换</span><br><span class="line">facet_    分面作图，分组作图，放在不同页面上</span><br></pre></td></tr></table></figure></p>
+<h3 id="三、gplot2的绘图步骤"><a href="#三、gplot2的绘图步骤" class="headerlink" title="三、gplot2的绘图步骤"></a>三、gplot2的绘图步骤</h3><h4 id="3-1-初始化一个ggplot对象"><a href="#3-1-初始化一个ggplot对象" class="headerlink" title="3.1.初始化一个ggplot对象"></a>3.1.初始化一个ggplot对象</h4><ul>
+<li><p>在绘制图形之前，需要使用ggplot函数(<code>ggplot()</code>)初始化一个ggplot对象，可以理解为创建一块画布，接下来的一切工作都在这块画布上进行。官网给出的初始化代码是这样的：<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot(data = NULL, mapping = aes(), ..., environment = parent.frame())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我们主要修改的是前两个参数，即<code>data</code>和<code>mapping</code></p>
+<blockquote>
+<p><strong>data</strong>：你的数据框；<br><br><strong>mapping</strong>：用于绘图的变量，通俗来说就是x轴和y轴所代表的变量。<br></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="3-2-画一个散点图"><a href="#3-2-画一个散点图" class="headerlink" title="3.2 画一个散点图"></a>3.2 画一个散点图</h4><ul>
+<li>上一步已经创建了一块画布，现在就在画布上画一幅散点图：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#首先生成自变量x和因变量y</span></span><br><span class="line">x = factor(rep(letters[<span class="number">1</span>:<span class="number">3</span>], each = <span class="number">10</span>))<span class="comment">#使用了rep函数生成因子a，b，c各10个</span></span><br><span class="line">y=rnorm(<span class="number">30</span>)</span><br><span class="line"><span class="comment">#然后将x和y组合成数据框,命名为df</span></span><br><span class="line">df=data.frame(x,y)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#现在可以画图了</span><br><span class="line">ggplot(df, aes(x, y))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>画出来是这样的：<br><br><img src="/home/fanxi/1.png" alt=""> <br></li>
+</ul>
+<p>上面什么都没显示，只是一张空画布，这是因为并没有指定绘图格式(<strong>此时我们仅仅告诉了系统要画一幅画，并且所用数据为df这个数据框，x和y轴分别是x，y这两个变量，但是并没有具体讲要怎么画，画什么</strong>)<br><br>现在加上一层<code>geom_point()</code>,用于绘制散点图。这样绘图代码就变成了这个样子：<br><br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot(df, aes(x, y)) +geom_point()</span><br></pre></td></tr></table></figure></p>
+<p>画出来的图像是这样的：<br><br><img src="/home/fanxi/2.png" alt=""> <br><br>这次的结果和预想的就一样了。</p>
+<h4 id="3-3-尝试再添加一层"><a href="#3-3-尝试再添加一层" class="headerlink" title="3.3 尝试再添加一层"></a>3.3 尝试再添加一层</h4><ul>
+<li>在上面已经绘制了散点图的画布上再添加一层（注意是在同一张画布上操作）：<br></li>
+</ul>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成新的数据框ds，本行代码具体解释见下方【注释】</span></span><br><span class="line">ds=do.call(rbind, lapply(split(df, df$x), <span class="keyword">function</span>(d) &#123;</span><br><span class="line">  data.frame(mean = mean(d$y), sd = sd(d$y), x = d$x)</span><br><span class="line">&#125;))</span><br><span class="line"><span class="comment">#可以画图啦</span></span><br><span class="line">ggplot(df, aes(x, y)) +</span><br><span class="line">  geom_point() +</span><br><span class="line">  geom_point(data = ds, aes(y = mean), colour = <span class="string">'red'</span>, size = <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/home/fanxi/3.png" alt=""> <br><br>【注释】<br></p>
+<blockquote>
+<p>在生成ds时，用到了<code>do.call()</code>和<code>lapply()</code>。<br><br>先看<code>lapply</code>，它有两个参数，一个是<code>split(df, df$x)</code>，另一个是匿名函数<code>function(d)</code>：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function(d) &#123;</span><br><span class="line">  data.frame(mean = mean(d$y), sd = sd(d$y), x = d$x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><code>split(df, df$x)</code>的作用是将df这个数据框按照x列的取值不同分为3部分(因为x可取a，b，c)：<br></p>
+</blockquote>
+ <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&gt; split(df, df$x)</span><br><span class="line">$a</span><br><span class="line">   x          y</span><br><span class="line"><span class="number">1</span>  a -<span class="number">2.0918912</span></span><br><span class="line"><span class="number">2</span>  a -<span class="number">2.2824544</span></span><br><span class="line"><span class="number">3</span>  a  <span class="number">0.1987116</span></span><br><span class="line"><span class="number">4</span>  a -<span class="number">1.7204838</span></span><br><span class="line"><span class="number">5</span>  a  <span class="number">1.6355444</span></span><br><span class="line"><span class="number">6</span>  a -<span class="number">0.3358297</span></span><br><span class="line"><span class="number">7</span>  a  <span class="number">1.0307883</span></span><br><span class="line"><span class="number">8</span>  a -<span class="number">0.6142356</span></span><br><span class="line"><span class="number">9</span>  a -<span class="number">0.7293628</span></span><br><span class="line"><span class="number">10</span> a -<span class="number">0.4128977</span></span><br><span class="line"></span><br><span class="line">$b</span><br><span class="line">   x           y</span><br><span class="line"><span class="number">11</span> b  <span class="number">1.99706479</span></span><br><span class="line"><span class="number">12</span> b  <span class="number">0.15562728</span></span><br><span class="line"><span class="number">13</span> b -<span class="number">1.58374617</span></span><br><span class="line"><span class="number">14</span> b  <span class="number">0.41752970</span></span><br><span class="line"><span class="number">15</span> b  <span class="number">0.53430369</span></span><br><span class="line"><span class="number">16</span> b  <span class="number">0.06285871</span></span><br><span class="line"><span class="number">17</span> b -<span class="number">0.53760935</span></span><br><span class="line"><span class="number">18</span> b  <span class="number">1.35068305</span></span><br><span class="line"><span class="number">19</span> b -<span class="number">0.91601690</span></span><br><span class="line"><span class="number">20</span> b  <span class="number">2.43169420</span></span><br><span class="line"></span><br><span class="line">$c</span><br><span class="line">   x          y</span><br><span class="line"><span class="number">21</span> c  <span class="number">1.4711247</span></span><br><span class="line"><span class="number">22</span> c  <span class="number">0.6199710</span></span><br><span class="line"><span class="number">23</span> c  <span class="number">0.9347642</span></span><br><span class="line"><span class="number">24</span> c  <span class="number">1.1362680</span></span><br><span class="line"><span class="number">25</span> c -<span class="number">1.5553590</span></span><br><span class="line"><span class="number">26</span> c -<span class="number">0.5053353</span></span><br><span class="line"><span class="number">27</span> c  <span class="number">0.8935274</span></span><br><span class="line"><span class="number">28</span> c -<span class="number">0.1612125</span></span><br><span class="line"><span class="number">29</span> c -<span class="number">0.3308873</span></span><br><span class="line"><span class="number">30</span> c -<span class="number">0.2126249</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>通过<code>lapply</code>函数，对上面的这3个子数据框分别用<code>匿名函数</code>进行作用，得到的结果是这样子的：<br></p>
+</blockquote>
+ <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"> &gt; lapply(split(df,df$x),<span class="keyword">function</span>(d)&#123;data.frame(mean=mean(d$y),sd=sd(d$y),x=d$x)&#125;)</span><br><span class="line">$a</span><br><span class="line">         mean       sd x</span><br><span class="line"><span class="number">1</span>  -<span class="number">0.5322111</span> <span class="number">1.277268</span> a</span><br><span class="line"><span class="number">2</span>  -<span class="number">0.5322111</span> <span class="number">1.277268</span> a</span><br><span class="line"><span class="number">3</span>  -<span class="number">0.5322111</span> <span class="number">1.277268</span> a</span><br><span class="line"><span class="number">4</span>  -<span class="number">0.5322111</span> <span class="number">1.277268</span> a</span><br><span class="line"><span class="number">5</span>  -<span class="number">0.5322111</span> <span class="number">1.277268</span> a</span><br><span class="line"><span class="number">6</span>  -<span class="number">0.5322111</span> <span class="number">1.277268</span> a</span><br><span class="line"><span class="number">7</span>  -<span class="number">0.5322111</span> <span class="number">1.277268</span> a</span><br><span class="line"><span class="number">8</span>  -<span class="number">0.5322111</span> <span class="number">1.277268</span> a</span><br><span class="line"><span class="number">9</span>  -<span class="number">0.5322111</span> <span class="number">1.277268</span> a</span><br><span class="line"><span class="number">10</span> -<span class="number">0.5322111</span> <span class="number">1.277268</span> a</span><br><span class="line"></span><br><span class="line">$b</span><br><span class="line">        mean       sd x</span><br><span class="line"><span class="number">1</span>  <span class="number">0.3912389</span> <span class="number">1.261367</span> b</span><br><span class="line"><span class="number">2</span>  <span class="number">0.3912389</span> <span class="number">1.261367</span> b</span><br><span class="line"><span class="number">3</span>  <span class="number">0.3912389</span> <span class="number">1.261367</span> b</span><br><span class="line"><span class="number">4</span>  <span class="number">0.3912389</span> <span class="number">1.261367</span> b</span><br><span class="line"><span class="number">5</span>  <span class="number">0.3912389</span> <span class="number">1.261367</span> b</span><br><span class="line"><span class="number">6</span>  <span class="number">0.3912389</span> <span class="number">1.261367</span> b</span><br><span class="line"><span class="number">7</span>  <span class="number">0.3912389</span> <span class="number">1.261367</span> b</span><br><span class="line"><span class="number">8</span>  <span class="number">0.3912389</span> <span class="number">1.261367</span> b</span><br><span class="line"><span class="number">9</span>  <span class="number">0.3912389</span> <span class="number">1.261367</span> b</span><br><span class="line"><span class="number">10</span> <span class="number">0.3912389</span> <span class="number">1.261367</span> b</span><br><span class="line"></span><br><span class="line">$c</span><br><span class="line">        mean        sd x</span><br><span class="line"><span class="number">1</span>  <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line"><span class="number">2</span>  <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line"><span class="number">3</span>  <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line"><span class="number">4</span>  <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line"><span class="number">5</span>  <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line"><span class="number">6</span>  <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line"><span class="number">7</span>  <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line"><span class="number">8</span>  <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line"><span class="number">9</span>  <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line"><span class="number">10</span> <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>最后在最外层用<code>do.call()</code>将上面的3个子数据框按行合并(使用<code>rbind()</code>)，就得到了最终的数据框ds了：<br></p>
+</blockquote>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&gt; ds</span><br><span class="line">           mean        sd x</span><br><span class="line">a.1  -<span class="number">0.5322111</span> <span class="number">1.2772680</span> a</span><br><span class="line">a.2  -<span class="number">0.5322111</span> <span class="number">1.2772680</span> a</span><br><span class="line">a.3  -<span class="number">0.5322111</span> <span class="number">1.2772680</span> a</span><br><span class="line">a.4  -<span class="number">0.5322111</span> <span class="number">1.2772680</span> a</span><br><span class="line">a.5  -<span class="number">0.5322111</span> <span class="number">1.2772680</span> a</span><br><span class="line">a.6  -<span class="number">0.5322111</span> <span class="number">1.2772680</span> a</span><br><span class="line">a.7  -<span class="number">0.5322111</span> <span class="number">1.2772680</span> a</span><br><span class="line">a.8  -<span class="number">0.5322111</span> <span class="number">1.2772680</span> a</span><br><span class="line">a.9  -<span class="number">0.5322111</span> <span class="number">1.2772680</span> a</span><br><span class="line">a.10 -<span class="number">0.5322111</span> <span class="number">1.2772680</span> a</span><br><span class="line">b.1   <span class="number">0.3912389</span> <span class="number">1.2613668</span> b</span><br><span class="line">b.2   <span class="number">0.3912389</span> <span class="number">1.2613668</span> b</span><br><span class="line">b.3   <span class="number">0.3912389</span> <span class="number">1.2613668</span> b</span><br><span class="line">b.4   <span class="number">0.3912389</span> <span class="number">1.2613668</span> b</span><br><span class="line">b.5   <span class="number">0.3912389</span> <span class="number">1.2613668</span> b</span><br><span class="line">b.6   <span class="number">0.3912389</span> <span class="number">1.2613668</span> b</span><br><span class="line">b.7   <span class="number">0.3912389</span> <span class="number">1.2613668</span> b</span><br><span class="line">b.8   <span class="number">0.3912389</span> <span class="number">1.2613668</span> b</span><br><span class="line">b.9   <span class="number">0.3912389</span> <span class="number">1.2613668</span> b</span><br><span class="line">b.10  <span class="number">0.3912389</span> <span class="number">1.2613668</span> b</span><br><span class="line">c.1   <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line">c.2   <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line">c.3   <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line">c.4   <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line">c.5   <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line">c.6   <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line">c.7   <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line">c.8   <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line">c.9   <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br><span class="line">c.10  <span class="number">0.2290236</span> <span class="number">0.9334836</span> c</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>喜欢所以热爱，坚持干货分享，欢迎订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>呐，请我吃辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/15/科学计数法【这题做了1个多小时才AC，记录一下】/" rel="next" title="科学计数法【这题做了1个多小时才AC，记录一下】">
+                <i class="fa fa-chevron-left"></i> 科学计数法【这题做了1个多小时才AC，记录一下】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">大学狗的日常</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">97</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、在R中安装ggplot2"><span class="nav-number">1.</span> <span class="nav-text">一、在R中安装ggplot2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、ggplot2全局总览"><span class="nav-number">2.</span> <span class="nav-text">二、ggplot2全局总览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、gplot2的绘图步骤"><span class="nav-number">3.</span> <span class="nav-text">三、gplot2的绘图步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-初始化一个ggplot对象"><span class="nav-number">3.1.</span> <span class="nav-text">3.1.初始化一个ggplot对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-画一个散点图"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 画一个散点图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-尝试再添加一层"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 尝试再添加一层</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom">微信公众号：我将在南极找寻你</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script
+</body>
+</html>
+
+
+
