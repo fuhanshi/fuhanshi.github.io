@@ -115,18 +115,21 @@
 
 
 
-  <meta name="description" content="在分类问题中，正负样本不均衡时，使用ROC比准确率更佳。细节以后再来补充…">
+  <meta name="description" content="在二分类问题中，正负样本不均衡时，使用ROC比准确率更佳。  准确度的陷阱一个癌症预测系统，预测的准确度达到了99.9%，如果癌症的发病率仅为0.1%，那么根本不需要任何机器学习算法，只要系统预测所有人都是健康，该系统的准确度就达到了99.9%。那么，真正患病的人就会被误诊，糟了。。。 这种情况是属于数据样本极度偏斜，对于这种数据，只是用分类准确度是远远不够的，所以需要引入新的分类指标。 二分类">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习算法评估--ROC曲线">
 <meta property="og:url" content="http://yoursite.com/2020/02/26/机器学习算法评估-ROC曲线/index.html">
 <meta property="og:site_name" content="一个大学狗的日常">
-<meta property="og:description" content="在分类问题中，正负样本不均衡时，使用ROC比准确率更佳。细节以后再来补充…">
+<meta property="og:description" content="在二分类问题中，正负样本不均衡时，使用ROC比准确率更佳。  准确度的陷阱一个癌症预测系统，预测的准确度达到了99.9%，如果癌症的发病率仅为0.1%，那么根本不需要任何机器学习算法，只要系统预测所有人都是健康，该系统的准确度就达到了99.9%。那么，真正患病的人就会被误诊，糟了。。。 这种情况是属于数据样本极度偏斜，对于这种数据，只是用分类准确度是远远不够的，所以需要引入新的分类指标。 二分类">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-07T11:43:10.894Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/26/机器学习算法评估-ROC曲线/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/26/机器学习算法评估-ROC曲线/2.png">
+<meta property="og:updated_time" content="2020-03-28T05:37:14.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习算法评估--ROC曲线">
-<meta name="twitter:description" content="在分类问题中，正负样本不均衡时，使用ROC比准确率更佳。细节以后再来补充…">
+<meta name="twitter:description" content="在二分类问题中，正负样本不均衡时，使用ROC比准确率更佳。  准确度的陷阱一个癌症预测系统，预测的准确度达到了99.9%，如果癌症的发病率仅为0.1%，那么根本不需要任何机器学习算法，只要系统预测所有人都是健康，该系统的准确度就达到了99.9%。那么，真正患病的人就会被误诊，糟了。。。 这种情况是属于数据样本极度偏斜，对于这种数据，只是用分类准确度是远远不够的，所以需要引入新的分类指标。 二分类">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/26/机器学习算法评估-ROC曲线/1.png">
 
 
 
@@ -377,7 +380,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-07 19:43:10" itemprop="dateModified" datetime="2020-03-07T19:43:10+08:00">2020-03-07</time>
+                <time title="修改时间：2020-03-28 13:37:14" itemprop="dateModified" datetime="2020-03-28T13:37:14+08:00">2020-03-28</time>
               
             
           </span>
@@ -418,7 +421,41 @@
       
 
       
-        <p>在分类问题中，正负样本不均衡时，使用ROC比准确率更佳。<br><br>细节以后再来补充…</p>
+        <blockquote>
+<p>在二分类问题中，正负样本不均衡时，使用ROC比准确率更佳。<br></p>
+</blockquote>
+<h3 id="准确度的陷阱"><a href="#准确度的陷阱" class="headerlink" title="准确度的陷阱"></a>准确度的陷阱</h3><p>一个癌症预测系统，预测的准确度达到了99.9%，如果癌症的发病率仅为0.1%，那么根本不需要任何机器学习算法，只要系统预测所有人都是健康，该系统的准确度就达到了99.9%。<br><br>那么，真正患病的人就会被误诊，糟了。。。<br></p>
+<p>这种情况是属于数据样本极度偏斜，对于这种数据，只是用分类准确度是远远不够的，所以需要引入新的分类指标。<br></p>
+<h3 id="二分类问题的混淆矩阵"><a href="#二分类问题的混淆矩阵" class="headerlink" title="二分类问题的混淆矩阵"></a>二分类问题的混淆矩阵</h3><p><img src="1.png" alt=""> <br><br>混淆矩阵中，第一个字母代表是否预测对了，第二个字母代表预测的是什么。<br></p>
+<ul>
+<li>TP：预测对了，并且预测的是positive(1) <br></li>
+<li>TN：预测对了，并且预测的是negtive(0) <br></li>
+<li>FP：预测错了，并且预测的是positive(1) <br></li>
+<li>FN：预测错了，并且预测的是negtive(0) <br></li>
+</ul>
+<p>通过混淆矩阵，可以构造许多新的指标，往下看…<br></p>
+<h3 id="精准率"><a href="#精准率" class="headerlink" title="精准率"></a>精准率</h3><ul>
+<li>含义：预测数据为positive(1)，并且预测对了的概率<br></li>
+<li>计算公式：precision=TP/(TP+FP) <br></li>
+</ul>
+<h3 id="召回率"><a href="#召回率" class="headerlink" title="召回率"></a>召回率</h3><ul>
+<li>含义：我们关注的事件(positive(1))真实发生了，真实发生的这些事件中我们成功的预测对了多少<br></li>
+<li>计算公式：recall=TP/(TP+FN) <br></li>
+</ul>
+<h3 id="F1-Score-兼顾精准率和召回率"><a href="#F1-Score-兼顾精准率和召回率" class="headerlink" title="F1 Score(兼顾精准率和召回率)"></a>F1 Score(兼顾精准率和召回率)</h3><ul>
+<li>含义：F1 Score 是precision和recall的调和平均值<br></li>
+<li>计算公式：F1=(2.precision.recall)/(precision+recall)<br></li>
+</ul>
+<p>精准率和召回率两者是互相矛盾的，此升彼消。<br><br>这一点可以通过绘制精准率和召回率分别与阈值之间的图形来直观看出。<br><br><code>sklearn</code>中的代码如下,其中的decision_function()就是WX=threshold（这里以LR为栗）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">precision=[]</span><br><span class="line">recalls=[]</span><br><span class="line">thresholds=np.arrange(np.min(decision_scores),np.max(decision_scores),<span class="number">0.1</span>)<span class="comment">#0.1是步长</span></span><br><span class="line"><span class="keyword">for</span> threshold <span class="keyword">in</span> thresholds:</span><br><span class="line">	y_predict=np.array(decision_score&gt;=threshold,dtype=<span class="string">'int)</span></span><br><span class="line"><span class="string">    precision.append(precision_score(y_test,y_predict))</span></span><br><span class="line"><span class="string">    recalls.append(recalls_score(y_test,y_predict))</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string"> plt.plot(thresholds,precisions)</span></span><br><span class="line"><span class="string"> plt.plot(thresholds,recalls)</span></span><br><span class="line"><span class="string"> plt.show()</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="PR-Precision-Recall-曲线"><a href="#PR-Precision-Recall-曲线" class="headerlink" title="PR(Precision-Recall)曲线"></a>PR(Precision-Recall)曲线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(precisions,recalls)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>精准率和召回率此消彼长的趋势很明显了<br></p>
+<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>坐标轴分别是FPR和TPR<br></p>
+<ul>
+<li>TPR(True Positive Rate)：预测为positive(1)，并且预测对了的数量占所有真实值为positive(1)的样本的比率 <br></li>
+<li>FPR(False Positive Rate)：预测为positive(1)，但是预测错了的数量占真实值为negtive(0)样本的比率<br></li>
+</ul>
+<p><img src="2.png" alt=""> <br></p>
+<p>两者也是此消彼长的关系<br><br>常用于不均衡数据，可用来比较各个模型的预测能力。<br></p>
 
       
     </div>
@@ -540,8 +577,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -651,6 +697,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#准确度的陷阱"><span class="nav-number">1.</span> <span class="nav-text">准确度的陷阱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二分类问题的混淆矩阵"><span class="nav-number">2.</span> <span class="nav-text">二分类问题的混淆矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#精准率"><span class="nav-number">3.</span> <span class="nav-text">精准率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#召回率"><span class="nav-number">4.</span> <span class="nav-text">召回率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F1-Score-兼顾精准率和召回率"><span class="nav-number">5.</span> <span class="nav-text">F1 Score(兼顾精准率和召回率)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PR-Precision-Recall-曲线"><span class="nav-number">6.</span> <span class="nav-text">PR(Precision-Recall)曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ROC曲线"><span class="nav-number">7.</span> <span class="nav-text">ROC曲线</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
