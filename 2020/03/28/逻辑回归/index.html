@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="一、逻辑回归综述先做线性回归，得到预测值$\hat{y}$ $$\hat{y}=\theta^Tx_b,\hat{y}\in(-\infty,+\infty)$$ 然后利用$Sigmoid$函数$$\sigma(t)=\frac{1}{1+e^{-t}}$$  将$\hat{y}$的值域映射到$[0,1]$，用于表示概率，即$$\hat{p}=\sigma(\hat{y})=\sigma(\the">
+<meta name="keywords" content="Share">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逻辑回归">
+<meta property="og:url" content="http://yoursite.com/2020/03/28/逻辑回归/index.html">
+<meta property="og:site_name" content="一个大学狗的日常">
+<meta property="og:description" content="一、逻辑回归综述先做线性回归，得到预测值$\hat{y}$ $$\hat{y}=\theta^Tx_b,\hat{y}\in(-\infty,+\infty)$$ 然后利用$Sigmoid$函数$$\sigma(t)=\frac{1}{1+e^{-t}}$$  将$\hat{y}$的值域映射到$[0,1]$，用于表示概率，即$$\hat{p}=\sigma(\hat{y})=\sigma(\the">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/逻辑回归/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/逻辑回归/2.png">
+<meta property="og:updated_time" content="2020-03-30T08:37:38.861Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="逻辑回归">
+<meta name="twitter:description" content="一、逻辑回归综述先做线性回归，得到预测值$\hat{y}$ $$\hat{y}=\theta^Tx_b,\hat{y}\in(-\infty,+\infty)$$ 然后利用$Sigmoid$函数$$\sigma(t)=\frac{1}{1+e^{-t}}$$  将$\hat{y}$的值域映射到$[0,1]$，用于表示概率，即$$\hat{p}=\sigma(\hat{y})=\sigma(\the">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/28/逻辑回归/1.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一个大学狗的日常" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/28/逻辑回归/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>逻辑回归 | 一个大学狗的日常</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个大学狗的日常</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">放弃不难，但坚持一定很酷</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-时间轴">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />时间轴</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/逻辑回归/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="大学狗的日常">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个大学狗的日常">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">逻辑回归
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-28 18:02:30" itemprop="dateCreated datePublished" datetime="2020-03-28T18:02:30+08:00">2020-03-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-30 16:37:38" itemprop="dateModified" datetime="2020-03-30T16:37:38+08:00">2020-03-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/入门机器学习/" itemprop="url" rel="index"><span itemprop="name">入门机器学习</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、逻辑回归综述"><a href="#一、逻辑回归综述" class="headerlink" title="一、逻辑回归综述"></a>一、逻辑回归综述</h3><p>先做线性回归，得到预测值$\hat{y}$ <br><br>$$\hat{y}=\theta^Tx_b,\hat{y}\in(-\infty,+\infty)$$ <br><br>然后利用$Sigmoid$函数<br><br>$$\sigma(t)=\frac{1}{1+e^{-t}}$$ <br><br><img src="1.png" alt="sigmoid函数图像"> <br><br>将$\hat{y}$的值域映射到$[0,1]$，用于表示概率，即<br><br>$$\hat{p}=\sigma(\hat{y})=\sigma(\theta^Tx_b)==\frac{1}{1+e^{-\theta^Tx_b}},\hat{p}\in(0,1)$$ <br><br>由于$Sigmoid$函数$\sigma(t)=\frac{1}{1+e^{-t}}$具有如下性质<br><br>$$ \begin{cases}<br>\sigma(t)&gt;0.5  &amp; t&gt;0\<br>\sigma(t)&lt;0.5 &amp; t&lt;0<br>\end{cases}$$ <br><br>并且t越大，$\sigma(t)$越接近于1，t越小，$\sigma(t)$越接近于0（这一点从图像上很容易看出来）. <br></p>
+<p>所以按照以下标准 <br><br>$$ lable_{pred}=\begin{cases}<br>1 &amp; \hat{p}&gt;0.5 \<br>0 &amp; \hat{p}&lt;0.5<br>\end{cases}$$ <br><br>便完成了$lable$的分类。<br></p>
+<h3 id="二、求解-theta"><a href="#二、求解-theta" class="headerlink" title="二、求解$\theta$"></a>二、求解$\theta$</h3><h4 id="2-1-寻找损失函数"><a href="#2-1-寻找损失函数" class="headerlink" title="2.1 寻找损失函数"></a>2.1 寻找损失函数</h4><p>和线性回归中使用均方误差作为损失函数一样，在逻辑回归中我们也需要一个损失函数$cost$。<br><br>在前面我们已经定义了分类标准<br>$$ lable_{pred}=\begin{cases}<br>1 &amp; \hat{p}&gt;0.5 \<br>0 &amp; \hat{p}&lt;0.5<br>\end{cases}$$ <br><br>为了统一，将$lable_{pred}$用$\hat{y}$表示。注意，不要和最开始的线性回归的预测值搞混了，我们这里只是为了统一起来，便于读写和记忆。你只要记住从现在开始，$\hat{y}$代表逻辑回归的预测标签就好了。<br><br>于是，我们有以下分类标准<br><br>$$ \hat{y}=\begin{cases}<br>1 &amp; \hat{p}&gt;0.5 \<br>0 &amp; \hat{p}&lt;0.5<br>\end{cases}$$ <br><br>则逻辑回归的损失函数$cost$的字面理解如下<br><br>$$ cost=\begin{cases}<br>如果y=1 &amp; p越小，cost越大 \<br>如果y=0 &amp; p越大，cost越大<br>\end{cases}$$ <br><br>这里的$y$代表的是真实标签。<br><br>可以这样理解，拿第一个为例，已知我们的真实标签是1，若p越小，则p是更接近于0的(因为p的值域已经被$Sigmoid$函数限定在$(0,1)$了)，这样子的分类结果就犯错了，所以此时的损失应该大些。<br></p>
+<p>将以上思想转换成数学语言，得到</p>
+<p>$$ cost=\begin{cases}<br>-log(\hat{p})&amp; if –y=1 \<br>-log(1-\hat{p}) &amp; if –y=0<br>\end{cases}$$ <br></p>
+<p><img src="2.png" alt="cost图像"> <br></p>
+<p>我们可以将上面的函数cost用一个式子来表达，也就是<br>$$cost=-ylog(\hat{p})-(1-y)log(1-\hat{p})$$ <br><br>这是对于一个样本点而言，那对于全部样本点，只需要把他们加起来就好了，最后再求平均值，便得到了最终的损失函数<br>$$J(\theta)=-\frac{1}{m}\sum_{i=1}^my^{(i)}log(\hat{p^{(i)}})+(1-y^{(i)})log(1-\hat{p^{(i)}})$$ <br><br>其中<br>$$\hat{p^{(i)}}=\sigma({X_b}^{(i)}\theta)=\frac{1}{1+e^{-{X_b}^{(i)}\theta}}$$ <br></p>
+<p>接下来寻找一组$\theta$，使得$J(\theta)$最小。<br></p>
+<h4 id="2-2-梯度下降法求解-theta"><a href="#2-2-梯度下降法求解-theta" class="headerlink" title="2.2 梯度下降法求解$\theta$"></a>2.2 梯度下降法求解$\theta$</h4><p>$J(\theta)$为下凸函数，存在全局最小值，但是$J(\theta)$不存在数学解析解，所以使用梯度下降法求解使得$J(\theta)$最小的一组$\theta$。<br></p>
+<p>只需让$J(\theta)$对$\theta$求导，即可得到梯度<br>$$\nabla J(\theta)=\frac{1}{m}{X_b}^{T}(\sigma(X_b\theta)-y)$$ <br></p>
+<p>然后利用<br>$$\theta=theta-学习率*\nabla J(\theta)$$<br>经过多次迭代更新便得到了要求的$\theta$。<br></p>
+<p>到这里，逻辑回归的全部数学原理便介绍完了。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>喜欢所以热爱，坚持干货分享，欢迎订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>呐，请我吃辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/28/常用排序算法总结/" rel="next" title="常用排序算法总结">
+                <i class="fa fa-chevron-left"></i> 常用排序算法总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">大学狗的日常</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">100</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、逻辑回归综述"><span class="nav-number">1.</span> <span class="nav-text">一、逻辑回归综述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、求解-theta"><span class="nav-number">2.</span> <span class="nav-text">二、求解$\theta$</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-寻找损失函数"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 寻找损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-梯度下降法求解-theta"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 梯度下降法求解$\theta$</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom">微信公众号：我将在南极找寻你</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script
+</body>
+</html>
+
+
+
