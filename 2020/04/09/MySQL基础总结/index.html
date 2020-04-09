@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="登录1mysql -u root -p 基本操作命令123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919">
+<meta name="keywords" content="Share">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础总结">
+<meta property="og:url" content="http://yoursite.com/2020/04/09/MySQL基础总结/index.html">
+<meta property="og:site_name" content="一个大学狗的日常">
+<meta property="og:description" content="登录1mysql -u root -p 基本操作命令123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-09T10:13:51.284Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL基础总结">
+<meta name="twitter:description" content="登录1mysql -u root -p 基本操作命令123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="一个大学狗的日常" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/09/MySQL基础总结/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>MySQL基础总结 | 一个大学狗的日常</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个大学狗的日常</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">放弃不难，但坚持一定很酷</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-主页">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />主页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-关于">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-时间轴">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />时间轴</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/09/MySQL基础总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="凡希">
+      <meta itemprop="description" content="大学狗的日常">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个大学狗的日常">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL基础总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-09 18:11:29 / 修改时间：18:13:51" itemprop="dateCreated datePublished" datetime="2020-04-09T18:11:29+08:00">2020-04-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<h3 id="基本操作命令"><a href="#基本操作命令" class="headerlink" title="基本操作命令"></a>基本操作命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#显示全部已有的数据库</span><br><span class="line">show databases;</span><br><span class="line"></span><br><span class="line">#创建一个新的数据库</span><br><span class="line">create database test;</span><br><span class="line"></span><br><span class="line">#选择/切换要使用的某一个数据库</span><br><span class="line">use test;</span><br><span class="line"></span><br><span class="line">#显示选中的数据库中的全部表</span><br><span class="line">show tables;</span><br><span class="line"></span><br><span class="line">#在数据库test中创建一个新的表</span><br><span class="line">create table pet(name VARCHAR(20),owner VARCHAR(20),species VARCHAR(20),sex CHAR(1),birth DATE,death DATE);</span><br><span class="line"></span><br><span class="line">#查看表的结构</span><br><span class="line">mysql&gt; desc(ribe) pet;</span><br><span class="line">+---------+-------------+------+-----+---------+-------+</span><br><span class="line">| Field   | Type        | Null | Key | Default | Extra |</span><br><span class="line">+---------+-------------+------+-----+---------+-------+</span><br><span class="line">| name    | varchar(20) | YES  |     | NULL    |       |</span><br><span class="line">| owner   | varchar(20) | YES  |     | NULL    |       |</span><br><span class="line">| species | varchar(20) | YES  |     | NULL    |       |</span><br><span class="line">| sex     | char(1)     | YES  |     | NULL    |       |</span><br><span class="line">| birth   | date        | YES  |     | NULL    |       |</span><br><span class="line">| death   | date        | YES  |     | NULL    |       |</span><br><span class="line">+---------+-------------+------+-----+---------+-------+</span><br><span class="line">6 rows in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">#插入几条数据</span><br><span class="line">insert into pet values(&apos;Puffball&apos;,&apos;Diane&apos;,&apos;hamster&apos;,&apos;f&apos;,&apos;1999-03-30&apos;,NULL);</span><br><span class="line">insert into pet values(&apos;旺财&apos;,&apos;周星驰&apos;,&apos;狗&apos;,&apos;公&apos;,&apos;1990-01-01&apos;,NULL);</span><br><span class="line">insert into pet values(&apos;Fluffy&apos;,&apos;Harold&apos;,&apos;cat&apos;,&apos;f&apos;,&apos;1993-02-04&apos;,NULL);</span><br><span class="line">insert into pet values(&apos;Claws&apos;,&apos;Gwen&apos;,&apos;cat&apos;,&apos;m&apos;,&apos;1994-03-17&apos;,NULL);</span><br><span class="line">insert into pet values(&apos;Buffy&apos;,&apos;Harold&apos;,&apos;dog&apos;,&apos;f&apos;,&apos;1989-05-03&apos;,NULL);</span><br><span class="line">insert into pet values(&apos;Fang&apos;,&apos;Benny&apos;,&apos;dog&apos;,&apos;m&apos;,&apos;1979-08-31&apos;,&apos;1995-07-29&apos;);</span><br><span class="line"></span><br><span class="line">#查询表pet中的所有元素</span><br><span class="line">mysql&gt; select * from pet;</span><br><span class="line">+----------+-----------+---------+------+------------+------------+</span><br><span class="line">| name     | owner     | species | sex  | birth      | death      |</span><br><span class="line">+----------+-----------+---------+------+------------+------------+</span><br><span class="line">| Puffball | Diane     | hamster | f    | 1999-03-30 | NULL       |</span><br><span class="line">| 旺财     | 周星驰    | 狗      | 公   | 1990-01-01 | NULL       |</span><br><span class="line">| Fluffy   | Harold    | cat     | f    | 1993-02-04 | NULL       |</span><br><span class="line">| Claws    | Gwen      | cat     | m    | 1994-03-17 | NULL       |</span><br><span class="line">| Buffy    | Harold    | dog     | f    | 1989-05-03 | NULL       |</span><br><span class="line">| Fang     | Benny     | dog     | m    | 1979-08-31 | 1995-07-29 |</span><br><span class="line">+----------+-----------+---------+------+------------+------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#删除一条数据</span><br><span class="line">mysql&gt; delete from pet where name=&apos;Fluffy&apos;;</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from pet;</span><br><span class="line">+----------+-----------+---------+------+------------+------------+</span><br><span class="line">| name     | owner     | species | sex  | birth      | death      |</span><br><span class="line">+----------+-----------+---------+------+------------+------------+</span><br><span class="line">| Puffball | Diane     | hamster | f    | 1999-03-30 | NULL       |</span><br><span class="line">| 旺财     | 周星驰    | 狗      | 公   | 1990-01-01 | NULL       |</span><br><span class="line">| Claws    | Gwen      | cat     | m    | 1994-03-17 | NULL       |</span><br><span class="line">| Buffy    | Harold    | dog     | f    | 1989-05-03 | NULL       |</span><br><span class="line">| Fang     | Benny     | dog     | m    | 1979-08-31 | 1995-07-29 |</span><br><span class="line">+----------+-----------+---------+------+------------+------------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#修改一条数据</span><br><span class="line">mysql&gt; update pet set name=&apos;旺旺财&apos; where owner=&apos;周星驰&apos;;</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from pet;</span><br><span class="line">+-----------+-----------+---------+------+------------+------------+</span><br><span class="line">| name      | owner     | species | sex  | birth      | death      |</span><br><span class="line">+-----------+-----------+---------+------+------------+------------+</span><br><span class="line">| Puffball  | Diane     | hamster | f    | 1999-03-30 | NULL       |</span><br><span class="line">| 旺旺财    | 周星驰    | 狗      | 公   | 1990-01-01 | NULL       |</span><br><span class="line">| Claws     | Gwen      | cat     | m    | 1994-03-17 | NULL       |</span><br><span class="line">| Buffy     | Harold    | dog     | f    | 1989-05-03 | NULL       |</span><br><span class="line">| Fang      | Benny     | dog     | m    | 1979-08-31 | 1995-07-29 |</span><br><span class="line">+-----------+-----------+---------+------+------------+------------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#查询满足特定条件的元组</span><br><span class="line">mysql&gt; select name from pet where sex=&apos;m&apos;;</span><br><span class="line">+-------+</span><br><span class="line">| name  |</span><br><span class="line">+-------+</span><br><span class="line">| Claws |</span><br><span class="line">| Fang  |</span><br><span class="line">+-------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h3 id="建表约束"><a href="#建表约束" class="headerlink" title="建表约束"></a>建表约束</h3><h4 id="主键约束"><a href="#主键约束" class="headerlink" title="主键约束"></a>主键约束</h4><blockquote>
+<p> 作为主键的字段，其值不能重复，不能为空。</p>
+</blockquote>
+<p>声明某个属性作为主键，常用有以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#方法1</span><br><span class="line">mysql&gt; create table user(</span><br><span class="line">    -&gt; id int primary key,#主键是id</span><br><span class="line">    -&gt; name varchar(20)</span><br><span class="line">    -&gt; );</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#方法2</span><br><span class="line">mysql&gt; create table user(</span><br><span class="line">    -&gt; id int,</span><br><span class="line">    -&gt; name varchar(20),</span><br><span class="line">    -&gt; primary key (id)#主键是id</span><br><span class="line">    -&gt; );</span><br></pre></td></tr></table></figure>
+<p>如果一开始并没有定义主键，也可以之后再添加(两种方法)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#一开始并没有声明主键</span><br><span class="line">mysql&gt; create table user(</span><br><span class="line">    -&gt; id int,</span><br><span class="line">    -&gt; name varchar(20)</span><br><span class="line">    -&gt; );</span><br><span class="line"></span><br><span class="line">#现在使id作为主键</span><br><span class="line">#方法1</span><br><span class="line">alter table user add primary key(id);</span><br><span class="line">#方法2</span><br><span class="line">alter table user modify id int primary key;</span><br></pre></td></tr></table></figure>
+<p>当然也可以删除主键</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table user drop primary key;</span><br></pre></td></tr></table></figure>
+<p>还有一种<strong>联合主键</strong>，这种主键是由两个或两个以上的字段形成一个元组，把这个元组整体作为主键</p>
+<p>在添加一条记录时，只要联合主键中有一个字段的值不一样就能添加成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table user2(</span><br><span class="line">    -&gt; id int,</span><br><span class="line">    -&gt; name varchar(20),</span><br><span class="line">    -&gt; password varchar(20),</span><br><span class="line">    -&gt; primary key (id,name)#id与name作为联合主键</span><br><span class="line">    -&gt; );</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; desc user2;</span><br><span class="line">+----------+-------------+------+-----+---------+-------+</span><br><span class="line">| Field    | Type        | Null | Key | Default | Extra |</span><br><span class="line">+----------+-------------+------+-----+---------+-------+</span><br><span class="line">| id       | int(11)     | NO   | PRI | NULL    |       |</span><br><span class="line">| name     | varchar(20) | NO   | PRI | NULL    |       |</span><br><span class="line">| password | varchar(20) | YES  |     | NULL    |       |</span><br><span class="line">+----------+-------------+------+-----+---------+-------+</span><br><span class="line">3 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="自增约束"><a href="#自增约束" class="headerlink" title="自增约束"></a>自增约束</h4><blockquote>
+<p> 主键由系统自动递增分配</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table user3(</span><br><span class="line">    -&gt; id int primary key auto_increment,</span><br><span class="line">    -&gt; name varchar(20)</span><br><span class="line">    -&gt; );</span><br></pre></td></tr></table></figure>
+<p>这样就可以在添加元组时只添加name字段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table user3(</span><br><span class="line">    -&gt; id int primary key auto_increment,</span><br><span class="line">    -&gt; name varchar(20)</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into user3 values(1,&apos;狗子&apos;);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from user3;</span><br><span class="line">+----+--------+</span><br><span class="line">| id | name   |</span><br><span class="line">+----+--------+</span><br><span class="line">|  1 | 狗子   |</span><br><span class="line">+----+--------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into user3 (name)values(&apos;小猫&apos;);#只写了name字段</span><br><span class="line">Query OK, 1 row affected (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from user3;</span><br><span class="line">+----+--------+</span><br><span class="line">| id | name   |</span><br><span class="line">+----+--------+</span><br><span class="line">|  1 | 狗子   |</span><br><span class="line">|  2 | 小猫   |</span><br><span class="line">+----+--------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="唯一约束"><a href="#唯一约束" class="headerlink" title="唯一约束"></a>唯一约束</h4><blockquote>
+<p>使用unique来表明某字段必须是唯一的</p>
+</blockquote>
+<p>可以在定义表时就说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table user4(</span><br><span class="line">    -&gt; id int,</span><br><span class="line">    -&gt; name varchar(20),</span><br><span class="line">    -&gt; unique(name)#name具有唯一性</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; describe user4;</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| Field | Type        | Null | Key | Default | Extra |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| id    | int(11)     | YES  |     | NULL    |       |</span><br><span class="line">| name  | varchar(20) | YES  | UNI | NULL    |       |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br></pre></td></tr></table></figure>
+<p>也可以在定义完一个表之后再添加唯一约束</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table user5(</span><br><span class="line">    -&gt; id int ,</span><br><span class="line">    -&gt; name varchar(20)</span><br><span class="line">    -&gt; );</span><br><span class="line"></span><br><span class="line">#方法1</span><br><span class="line">alter table user5 add unique(name);</span><br><span class="line">#方法2</span><br><span class="line">alter table user5 modify name varchar(20) unique;</span><br></pre></td></tr></table></figure>
+<p>删除唯一约束可以使用以下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table user5 drop index name;</span><br></pre></td></tr></table></figure>
+<p>类似联合主键，也可以定义如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table user7(</span><br><span class="line">    -&gt; id int,</span><br><span class="line">    -&gt; name varchar(20),</span><br><span class="line">    -&gt; unique(id,name)#保证了id和name不能同时一样</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; describe user7;</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| Field | Type        | Null | Key | Default | Extra |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| id    | int(11)     | YES  | MUL | NULL    |       |</span><br><span class="line">| name  | varchar(20) | YES  |     | NULL    |       |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">2 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="非空约束"><a href="#非空约束" class="headerlink" title="非空约束"></a>非空约束</h4><p>表明某字段不能为空</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table user9(</span><br><span class="line">    -&gt; id int,</span><br><span class="line">    -&gt; name varchar(20) not null#name字段不允许为空</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; desc user9;</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| Field | Type        | Null | Key | Default | Extra |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">| id    | int(11)     | YES  |     | NULL    |       |</span><br><span class="line">| name  | varchar(20) | NO   |     | NULL    |       |</span><br><span class="line">+-------+-------------+------+-----+---------+-------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into user9 (name)values(&apos;狗&apos;);</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">#添加失败，因为name字段没有传值，默认为空了</span><br><span class="line">mysql&gt; insert into user9 (id)values(2);</span><br><span class="line">ERROR 1364 (HY000): Field &apos;name&apos; doesn&apos;t have a default value</span><br></pre></td></tr></table></figure>
+<h4 id="默认约束"><a href="#默认约束" class="headerlink" title="默认约束"></a>默认约束</h4><p>当插入字段值时，如果没有传值，就会使用默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table user10(</span><br><span class="line">    -&gt; id int,</span><br><span class="line">    -&gt; name varchar(20),</span><br><span class="line">    -&gt; age int default 10#默认值为10</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into user10 (id,name ) values(1,&apos;猫咪&apos;);#没有给age传值</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from user10;</span><br><span class="line">+------+--------+------+</span><br><span class="line">| id   | name   | age  |</span><br><span class="line">+------+--------+------+</span><br><span class="line">|    1 | 猫咪   |   10 |</span><br><span class="line">+------+--------+------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h4><p>涉及到两个表</p>
+<p>子表的操作要参照父表，父表只有在未被子表refer时才能变动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#父表</span><br><span class="line">mysql&gt; create table classes(</span><br><span class="line">    -&gt; id int primary key,</span><br><span class="line">    -&gt; name varchar(20)</span><br><span class="line">    -&gt; );</span><br><span class="line"></span><br><span class="line">#子表</span><br><span class="line">mysql&gt; create table students(</span><br><span class="line">    -&gt; id int primary key,</span><br><span class="line">    -&gt; name varchar(20),</span><br><span class="line">    -&gt; class_id int,</span><br><span class="line">    -&gt; foreign key(class_id) references classes(id)</span><br><span class="line">    -&gt; );</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#在父表中插入数据</span><br><span class="line">mysql&gt; insert into classes values(1,&apos;一班&apos;);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into classes values(2,&apos;二班&apos;);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into classes values(3,&apos;三班&apos;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into classes values(4,&apos;四班&apos;);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">#查看父表</span><br><span class="line">mysql&gt; select * from classes;</span><br><span class="line">+----+--------+</span><br><span class="line">| id | name   |</span><br><span class="line">+----+--------+</span><br><span class="line">|  1 | 一班   |</span><br><span class="line">|  2 | 二班   |</span><br><span class="line">|  3 | 三班   |</span><br><span class="line">|  4 | 四班   |</span><br><span class="line">+----+--------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#在子表中插入数据</span><br><span class="line">mysql&gt; insert into students values(1001,&apos;张安&apos;,1);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into students values(1002,&apos;张安&apos;,2);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into students values(1003,&apos;张安&apos;,3);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into students values(1004,&apos;张安&apos;,4);</span><br><span class="line">Query OK, 1 row affected (0.03 sec)</span><br></pre></td></tr></table></figure>
+<p>但是当插入<code>(1005,&#39;李四&#39;，5)</code>时会报错，因为父表的id字段中只有1，2，3，4而没有5</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; insert into students values(1005,&apos;李四&apos;,5);</span><br><span class="line">ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`test`.`students`, CONSTRAINT `students_ibfk_1` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`))</span><br></pre></td></tr></table></figure>
+<p><strong>总结一下</strong>：</p>
+<p>父表classes中没有的数据值，在子表中，是不能使用的</p>
+<p>父表中的记录若被子表引用，是不可被删除的</p>
+<h3 id="数据库的三大设计范式"><a href="#数据库的三大设计范式" class="headerlink" title="数据库的三大设计范式"></a>数据库的三大设计范式</h3><h4 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h4><p>数据包中的所有字段都是不可分割的原子值</p>
+<h4 id="第二范式"><a href="#第二范式" class="headerlink" title="第二范式"></a>第二范式</h4><p> 在满足第一范式的前提下，除主键以外的其他列都必须完全依赖于主键列。如果出现不完全依赖，只可能发生在联合主键的情况下 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table myoder(</span><br><span class="line">    -&gt; product_id int,</span><br><span class="line">    -&gt; customer_id int,</span><br><span class="line">    -&gt; product_name varchar(20),</span><br><span class="line">    -&gt; customer_name varchar(20),</span><br><span class="line">    -&gt; primary key(product_id,customer_id)</span><br><span class="line">    -&gt; );</span><br></pre></td></tr></table></figure>
+<p>在表<code>myorder</code>中，<code>product_name</code> 只依赖于 <code>product_id</code> ，<code>customer_name</code> 只依赖于 <code>customer_id</code> 。也就是说，<code>product_name</code> 和 <code>customer_id</code> 是没有关系的，<code>customer_name</code> 和 <code>product_id</code> 也是没有关系的 </p>
+<p>这就不满足第二范式：其他列都必须完全依赖于主键列！ </p>
+<p>可以通过拆分的方法使其满足第二范式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create table myorder(</span><br><span class="line">    -&gt; order_id int primary key,</span><br><span class="line">    -&gt; product_id int,</span><br><span class="line">    -&gt; customer_id int</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.08 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; create table product (</span><br><span class="line">    -&gt; id int primary key,</span><br><span class="line">    -&gt; name varchar(20)</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; create table customer(</span><br><span class="line">    -&gt; id int primary key,</span><br><span class="line">    -&gt; name varchar(20)</span><br><span class="line">    -&gt; );</span><br><span class="line">Query OK, 0 rows affected (0.06 sec)</span><br></pre></td></tr></table></figure>
+<p>这三个表都分别满足第二范式</p>
+<h4 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h4><p>在满足第二范式的前提下，除了主键列之外，其他列之间不能有传递依赖关系</p>
+<p>也就是要确保数据表中的每一列数据都和主键直接相关，而不能间接相关 ，这样能减小数据冗余</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE myorder (</span><br><span class="line">    order_id INT PRIMARY KEY,</span><br><span class="line">    product_id INT,</span><br><span class="line">    customer_id INT,</span><br><span class="line">    customer_phone VARCHAR(15)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>表中的 <code>customer_phone</code> 有可能依赖于 <code>order_id</code> （主键）、 <code>customer_id</code>（非主键） 两列，也就不满足第三范式的设计：其他列之间不能有传递依赖关系。</p>
+<p>同样可以通过拆分来使其满足第三范式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE myorder (</span><br><span class="line">    order_id INT PRIMARY KEY,</span><br><span class="line">    product_id INT,</span><br><span class="line">    customer_id INT</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">CREATE TABLE customer (</span><br><span class="line">    id INT PRIMARY KEY,</span><br><span class="line">    name VARCHAR(20),</span><br><span class="line">    phone VARCHAR(15)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>修改后就不存在其他列之间的传递依赖关系，其他列都只依赖于主键列，满足了第三范式的设计！</p>
+<h3 id="查询练习"><a href="#查询练习" class="headerlink" title="查询练习"></a>查询练习</h3><h4 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">#创建一个新的数据库</span><br><span class="line">create database selectTest;</span><br><span class="line">#选择该数据库</span><br><span class="line">use selectTest;</span><br><span class="line"></span><br><span class="line">#创建学生表</span><br><span class="line">mysql&gt; create table student(</span><br><span class="line">    -&gt; sno varchar(20) primary key,</span><br><span class="line">    -&gt; sname varchar(20) not null,</span><br><span class="line">    -&gt; ssex varchar(10) not null,</span><br><span class="line">    -&gt; sbirthday datetime,</span><br><span class="line">    -&gt; class varchar(20)</span><br><span class="line">    -&gt; );</span><br><span class="line"></span><br><span class="line">#创建教师表</span><br><span class="line">CREATE TABLE teacher (</span><br><span class="line">    tno VARCHAR(20) PRIMARY KEY,</span><br><span class="line">    tname VARCHAR(20) NOT NULL,</span><br><span class="line">    tsex VARCHAR(10) NOT NULL,</span><br><span class="line">    tbirthday datetime,</span><br><span class="line">    prof VARCHAR(20) NOT NULL, -- 职称</span><br><span class="line">    depart VARCHAR(20) NOT NULL -- 部门</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">#创建课程表</span><br><span class="line">CREATE TABLE course (</span><br><span class="line">    cno VARCHAR(20) PRIMARY KEY,</span><br><span class="line">    cname VARCHAR(20) NOT NULL,</span><br><span class="line">    tno VARCHAR(20) NOT NULL, -- 教师编号</span><br><span class="line">    -- 表示该 tno 来自于 teacher 表中的 tno 字段值</span><br><span class="line">    FOREIGN KEY(tno) REFERENCES teacher(tno) </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">#创建成绩表</span><br><span class="line">CREATE TABLE score (</span><br><span class="line">    sno VARCHAR(20),-- 学生编号</span><br><span class="line">    cno VARCHAR(20) NOT NULL, -- 课程号</span><br><span class="line">    degree DECIMAL,	-- 成绩</span><br><span class="line">    -- 表示该 sno, cno 分别来自于 student, course 表中的 no 字段值</span><br><span class="line">    FOREIGN KEY(sno) REFERENCES student(sno),	</span><br><span class="line">    FOREIGN KEY(cno) REFERENCES course(cno),</span><br><span class="line">    PRIMARY KEY(sno,cno)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">-- 添加学生表数据</span><br><span class="line">INSERT INTO student VALUES(&apos;101&apos;, &apos;曾华&apos;, &apos;男&apos;, &apos;1977-09-01&apos;, &apos;95033&apos;);</span><br><span class="line">INSERT INTO student VALUES(&apos;102&apos;, &apos;匡明&apos;, &apos;男&apos;, &apos;1975-10-02&apos;, &apos;95031&apos;);</span><br><span class="line">INSERT INTO student VALUES(&apos;103&apos;, &apos;王丽&apos;, &apos;女&apos;, &apos;1976-01-23&apos;, &apos;95033&apos;);</span><br><span class="line">INSERT INTO student VALUES(&apos;104&apos;, &apos;李军&apos;, &apos;男&apos;, &apos;1976-02-20&apos;, &apos;95033&apos;);</span><br><span class="line">INSERT INTO student VALUES(&apos;105&apos;, &apos;王芳&apos;, &apos;女&apos;, &apos;1975-02-10&apos;, &apos;95031&apos;);</span><br><span class="line">INSERT INTO student VALUES(&apos;106&apos;, &apos;陆军&apos;, &apos;男&apos;, &apos;1974-06-03&apos;, &apos;95031&apos;);</span><br><span class="line">INSERT INTO student VALUES(&apos;107&apos;, &apos;王尼玛&apos;, &apos;男&apos;, &apos;1976-02-20&apos;, &apos;95033&apos;);</span><br><span class="line">INSERT INTO student VALUES(&apos;108&apos;, &apos;张全蛋&apos;, &apos;男&apos;, &apos;1975-02-10&apos;, &apos;95031&apos;);</span><br><span class="line">INSERT INTO student VALUES(&apos;109&apos;, &apos;赵铁柱&apos;, &apos;男&apos;, &apos;1974-06-03&apos;, &apos;95031&apos;);</span><br><span class="line"></span><br><span class="line">-- 添加教师表数据</span><br><span class="line">INSERT INTO teacher VALUES(&apos;804&apos;, &apos;李诚&apos;, &apos;男&apos;, &apos;1958-12-02&apos;, &apos;副教授&apos;, &apos;计算机系&apos;);</span><br><span class="line">INSERT INTO teacher VALUES(&apos;856&apos;, &apos;张旭&apos;, &apos;男&apos;, &apos;1969-03-12&apos;, &apos;讲师&apos;, &apos;电子工程系&apos;);</span><br><span class="line">INSERT INTO teacher VALUES(&apos;825&apos;, &apos;王萍&apos;, &apos;女&apos;, &apos;1972-05-05&apos;, &apos;助教&apos;, &apos;计算机系&apos;);</span><br><span class="line">INSERT INTO teacher VALUES(&apos;831&apos;, &apos;刘冰&apos;, &apos;女&apos;, &apos;1977-08-14&apos;, &apos;助教&apos;, &apos;电子工程系&apos;);</span><br><span class="line"></span><br><span class="line">-- 添加课程表数据</span><br><span class="line">INSERT INTO course VALUES(&apos;3-105&apos;, &apos;计算机导论&apos;, &apos;825&apos;);</span><br><span class="line">INSERT INTO course VALUES(&apos;3-245&apos;, &apos;操作系统&apos;, &apos;804&apos;);</span><br><span class="line">INSERT INTO course VALUES(&apos;6-166&apos;, &apos;数字电路&apos;, &apos;856&apos;);</span><br><span class="line">INSERT INTO course VALUES(&apos;9-888&apos;, &apos;高等数学&apos;, &apos;831&apos;);</span><br><span class="line"></span><br><span class="line">-- 添加添加成绩表数据</span><br><span class="line">INSERT INTO score VALUES(&apos;103&apos;, &apos;3-105&apos;, &apos;92&apos;);</span><br><span class="line">INSERT INTO score VALUES(&apos;103&apos;, &apos;3-245&apos;, &apos;86&apos;);</span><br><span class="line">INSERT INTO score VALUES(&apos;103&apos;, &apos;6-166&apos;, &apos;85&apos;);</span><br><span class="line">INSERT INTO score VALUES(&apos;105&apos;, &apos;3-105&apos;, &apos;88&apos;);</span><br><span class="line">INSERT INTO score VALUES(&apos;105&apos;, &apos;3-245&apos;, &apos;75&apos;);</span><br><span class="line">INSERT INTO score VALUES(&apos;105&apos;, &apos;6-166&apos;, &apos;79&apos;);</span><br><span class="line">INSERT INTO score VALUES(&apos;109&apos;, &apos;3-105&apos;, &apos;76&apos;);</span><br><span class="line">INSERT INTO score VALUES(&apos;109&apos;, &apos;3-245&apos;, &apos;68&apos;);</span><br><span class="line">INSERT INTO score VALUES(&apos;109&apos;, &apos;6-166&apos;, &apos;81&apos;);</span><br></pre></td></tr></table></figure>
+<h4 id="1-10"><a href="#1-10" class="headerlink" title="1-10"></a>1-10</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line">#1.查询student表的所有记录</span><br><span class="line">mysql&gt; select * from student;</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| sno | sname     | ssex | sbirthday           | class |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| 101 | 曾华      | 男   | 1977-09-01 00:00:00 | 95033 |</span><br><span class="line">| 102 | 匡明      | 男   | 1975-10-02 00:00:00 | 95031 |</span><br><span class="line">| 103 | 王丽      | 女   | 1976-01-23 00:00:00 | 95033 |</span><br><span class="line">| 104 | 李军      | 男   | 1976-02-20 00:00:00 | 95033 |</span><br><span class="line">| 105 | 王芳      | 女   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 106 | 陆军      | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">| 107 | 王尼玛    | 男   | 1976-02-20 00:00:00 | 95033 |</span><br><span class="line">| 108 | 张全蛋    | 男   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 109 | 赵铁柱    | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#2.查询student表中的所有记录的sname、ssex和class列</span><br><span class="line">mysql&gt; select sname ,ssex,class from student;</span><br><span class="line">+-----------+------+-------+</span><br><span class="line">| sname     | ssex | class |</span><br><span class="line">+-----------+------+-------+</span><br><span class="line">| 曾华      | 男   | 95033 |</span><br><span class="line">| 匡明      | 男   | 95031 |</span><br><span class="line">| 王丽      | 女   | 95033 |</span><br><span class="line">| 李军      | 男   | 95033 |</span><br><span class="line">| 王芳      | 女   | 95031 |</span><br><span class="line">| 陆军      | 男   | 95031 |</span><br><span class="line">| 王尼玛    | 男   | 95033 |</span><br><span class="line">| 张全蛋    | 男   | 95031 |</span><br><span class="line">| 赵铁柱    | 男   | 95031 |</span><br><span class="line">+-----------+------+-------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"># 3.查询教师的所有单位，即不重复的depart列</span><br><span class="line">mysql&gt; select distinct depart from teacher;#distinct用于去重</span><br><span class="line">+-----------------+</span><br><span class="line">| depart          |</span><br><span class="line">+-----------------+</span><br><span class="line">| 计算机系        |</span><br><span class="line">| 电子工程系      |</span><br><span class="line">+-----------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"># 4.查询score表中成绩在60到80之间的所有记录</span><br><span class="line"></span><br><span class="line">### 方法1：使用between...and...</span><br><span class="line">mysql&gt; select * from score where degree between 60 and 80;</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 105 | 3-245 |     75 |</span><br><span class="line">| 105 | 6-166 |     79 |</span><br><span class="line">| 109 | 3-105 |     76 |</span><br><span class="line">| 109 | 3-245 |     68 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">### 方法2：使用比较运算符</span><br><span class="line">mysql&gt; select * from score where degree &gt;60 and degree &lt;80;</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 105 | 3-245 |     75 |</span><br><span class="line">| 105 | 6-166 |     79 |</span><br><span class="line">| 109 | 3-105 |     76 |</span><br><span class="line">| 109 | 3-245 |     68 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#5.查询score表中成绩为85，86或88的记录</span><br><span class="line">mysql&gt; select* from score where degree in(85,86,88);</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 103 | 3-245 |     86 |</span><br><span class="line">| 103 | 6-166 |     85 |</span><br><span class="line">| 105 | 3-105 |     88 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 6.查询student表中“95031”班或性别为女的同学的记录</span><br><span class="line">mysql&gt; select * from student where class =&apos;95031&apos; or ssex=&apos;女&apos;;</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| sno | sname     | ssex | sbirthday           | class |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| 102 | 匡明      | 男   | 1975-10-02 00:00:00 | 95031 |</span><br><span class="line">| 103 | 王丽      | 女   | 1976-01-23 00:00:00 | 95033 |</span><br><span class="line">| 105 | 王芳      | 女   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 106 | 陆军      | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">| 108 | 张全蛋    | 男   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 109 | 赵铁柱    | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"># 7.以class降序查询student表的所有记录</span><br><span class="line">mysql&gt; select * from student order by class desc;#默认是升序asc，desc表示降序</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| sno | sname     | ssex | sbirthday           | class |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| 101 | 曾华      | 男   | 1977-09-01 00:00:00 | 95033 |</span><br><span class="line">| 103 | 王丽      | 女   | 1976-01-23 00:00:00 | 95033 |</span><br><span class="line">| 104 | 李军      | 男   | 1976-02-20 00:00:00 | 95033 |</span><br><span class="line">| 107 | 王尼玛    | 男   | 1976-02-20 00:00:00 | 95033 |</span><br><span class="line">| 102 | 匡明      | 男   | 1975-10-02 00:00:00 | 95031 |</span><br><span class="line">| 105 | 王芳      | 女   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 106 | 陆军      | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">| 108 | 张全蛋    | 男   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 109 | 赵铁柱    | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"># 8.以cno升序、degree降序(当cno相同时)查询score表的所有记录</span><br><span class="line">mysql&gt; select* from score order by cno asc,degree desc;</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 103 | 3-105 |     92 |</span><br><span class="line">| 105 | 3-105 |     88 |</span><br><span class="line">| 109 | 3-105 |     76 |</span><br><span class="line">| 103 | 3-245 |     86 |</span><br><span class="line">| 105 | 3-245 |     75 |</span><br><span class="line">| 109 | 3-245 |     68 |</span><br><span class="line">| 103 | 6-166 |     85 |</span><br><span class="line">| 109 | 6-166 |     81 |</span><br><span class="line">| 105 | 6-166 |     79 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 9.查询“95031”班的学生人数</span><br><span class="line">mysql&gt; select count(*) from student where class=&apos;95031&apos;;</span><br><span class="line">+----------+</span><br><span class="line">| count(*) |</span><br><span class="line">+----------+</span><br><span class="line">|        5 |</span><br><span class="line">+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"># 10.查询score表中的最高分的学生学号和课程号(子查询或者排序)</span><br><span class="line"></span><br><span class="line"># 子查询方式</span><br><span class="line">mysql&gt; select sno,cno from score where degree =(select max(degree) from score);</span><br><span class="line">+-----+-------+</span><br><span class="line">| sno | cno   |</span><br><span class="line">+-----+-------+</span><br><span class="line">| 103 | 3-105 |</span><br><span class="line">+-----+-------+</span><br><span class="line">1 row in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">#排序方式</span><br><span class="line">mysql&gt; select sno,cno from score order by degree (desc) limit 0,1;</span><br><span class="line">+-----+-------+</span><br><span class="line">| sno | cno   |</span><br><span class="line">+-----+-------+</span><br><span class="line">| 109 | 3-245 |</span><br><span class="line">+-----+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line">#注释：limit和python中的range作用类似</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"># 11.查询每门课的平均成绩</span><br><span class="line"></span><br><span class="line">#先看一下总共有哪些课程</span><br><span class="line">mysql&gt; select * from course;</span><br><span class="line">+-------+-----------------+-----+</span><br><span class="line">| cno   | cname           | tno |</span><br><span class="line">+-------+-----------------+-----+</span><br><span class="line">| 3-105 | 计算机导论      | 825 |</span><br><span class="line">| 3-245 | 操作系统        | 804 |</span><br><span class="line">| 6-166 | 数字电路        | 856 |</span><br><span class="line">| 9-888 | 高等数学        | 831 |</span><br><span class="line">+-------+-----------------+-----+</span><br><span class="line">4 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#然后可以使用avg函数求平均值</span><br><span class="line">mysql&gt; select avg(degree) from score where cno=&apos;3-105&apos;;</span><br><span class="line">+-------------+</span><br><span class="line">| avg(degree) |</span><br><span class="line">+-------------+</span><br><span class="line">|     85.3333 |</span><br><span class="line">+-------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select avg(degree) from score where cno=&apos;3-245&apos;;</span><br><span class="line">+-------------+</span><br><span class="line">| avg(degree) |</span><br><span class="line">+-------------+</span><br><span class="line">|     76.3333 |</span><br><span class="line">+-------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select avg(degree) from score where cno=&apos;6-166&apos;;</span><br><span class="line">+-------------+</span><br><span class="line">| avg(degree) |</span><br><span class="line">+-------------+</span><br><span class="line">|     81.6667 |</span><br><span class="line">+-------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select avg(degree) from score where cno=&apos;9-888&apos;;</span><br><span class="line">+-------------+</span><br><span class="line">| avg(degree) |</span><br><span class="line">+-------------+</span><br><span class="line">|        NULL |</span><br><span class="line">+-------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#也可以写在一条SQL语句中（使用group by）</span><br><span class="line">mysql&gt; select cno,avg(degree) from score group by cno;</span><br><span class="line">+-------+-------------+</span><br><span class="line">| cno   | avg(degree) |</span><br><span class="line">+-------+-------------+</span><br><span class="line">| 3-105 |     85.3333 |</span><br><span class="line">| 3-245 |     76.3333 |</span><br><span class="line">| 6-166 |     81.6667 |</span><br><span class="line">+-------+-------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#12.查询score表中至少有2名学生选修的并以3开头的课程的平均分数</span><br><span class="line">mysql&gt; select cno,avg(degree) from score group by cno;</span><br><span class="line">+-------+-------------+</span><br><span class="line">| cno   | avg(degree) |</span><br><span class="line">+-------+-------------+</span><br><span class="line">| 3-105 |     85.3333 |</span><br><span class="line">| 3-245 |     76.3333 |</span><br><span class="line">| 6-166 |     81.6667 |</span><br><span class="line">+-------+-------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line">#这样查出来是所有课程的平均成绩，接下来只选出以3开头的(使用like)</span><br><span class="line">mysql&gt; select cno,avg(degree) from score group by cno</span><br><span class="line">    -&gt; having cno like &apos;3%&apos;;</span><br><span class="line">+-------+-------------+</span><br><span class="line">| cno   | avg(degree) |</span><br><span class="line">+-------+-------------+</span><br><span class="line">| 3-105 |     85.3333 |</span><br><span class="line">| 3-245 |     76.3333 |</span><br><span class="line">+-------+-------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#那还有&quot;至少有两名同学选修&quot;这个条件，这个例子只是刚好凑巧了，我们需要这样写才对：</span><br><span class="line">mysql&gt; select cno,avg(degree) from score group by cno</span><br><span class="line">    -&gt; having count(cno)&gt;=2 and cno like &apos;3%&apos;;</span><br><span class="line">+-------+-------------+</span><br><span class="line">| cno   | avg(degree) |</span><br><span class="line">+-------+-------------+</span><br><span class="line">| 3-105 |     85.3333 |</span><br><span class="line">| 3-245 |     76.3333 |</span><br><span class="line">+-------+-------------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>注释 ：having(过滤的意思) 用于分组后，where用于分组前</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># 13. 查询分数大于70，小于90的sno列</span><br><span class="line">mysql&gt; select sno ,degree from score where degree &gt;70 and degree &lt; 90;</span><br><span class="line">+-----+--------+</span><br><span class="line">| sno | degree |</span><br><span class="line">+-----+--------+</span><br><span class="line">| 103 |     86 |</span><br><span class="line">| 103 |     85 |</span><br><span class="line">| 105 |     88 |</span><br><span class="line">| 105 |     75 |</span><br><span class="line">| 105 |     79 |</span><br><span class="line">| 109 |     76 |</span><br><span class="line">| 109 |     81 |</span><br><span class="line">+-----+--------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br><span class="line">#或者</span><br><span class="line">mysql&gt; select sno ,degree from score where degree between 70 and 90;</span><br><span class="line">+-----+--------+</span><br><span class="line">| sno | degree |</span><br><span class="line">+-----+--------+</span><br><span class="line">| 103 |     86 |</span><br><span class="line">| 103 |     85 |</span><br><span class="line">| 105 |     88 |</span><br><span class="line">| 105 |     75 |</span><br><span class="line">| 105 |     79 |</span><br><span class="line">| 109 |     76 |</span><br><span class="line">| 109 |     81 |</span><br><span class="line">+-----+--------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 14.查询所有学生的sname、cno和degree列</span><br><span class="line">mysql&gt; select sname ,cno,degree from student,score where student.sno=score.sno ;</span><br><span class="line">+-----------+-------+--------+</span><br><span class="line">| sname     | cno   | degree |</span><br><span class="line">+-----------+-------+--------+</span><br><span class="line">| 王丽      | 3-105 |     92 |</span><br><span class="line">| 王丽      | 3-245 |     86 |</span><br><span class="line">| 王丽      | 6-166 |     85 |</span><br><span class="line">| 王芳      | 3-105 |     88 |</span><br><span class="line">| 王芳      | 3-245 |     75 |</span><br><span class="line">| 王芳      | 6-166 |     79 |</span><br><span class="line">| 赵铁柱    | 3-105 |     76 |</span><br><span class="line">| 赵铁柱    | 3-245 |     68 |</span><br><span class="line">| 赵铁柱    | 6-166 |     81 |</span><br><span class="line">+-----------+-------+--------+</span><br><span class="line">9 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 15.查询所有学生的sno、cname和degree列</span><br><span class="line">mysql&gt; select sno,cname,degree from course,score where course.cno=score.cno;</span><br><span class="line">+-----+-----------------+--------+</span><br><span class="line">| sno | cname           | degree |</span><br><span class="line">+-----+-----------------+--------+</span><br><span class="line">| 103 | 计算机导论      |     92 |</span><br><span class="line">| 103 | 操作系统        |     86 |</span><br><span class="line">| 103 | 数字电路        |     85 |</span><br><span class="line">| 105 | 计算机导论      |     88 |</span><br><span class="line">| 105 | 操作系统        |     75 |</span><br><span class="line">| 105 | 数字电路        |     79 |</span><br><span class="line">| 109 | 计算机导论      |     76 |</span><br><span class="line">| 109 | 操作系统        |     68 |</span><br><span class="line">| 109 | 数字电路        |     81 |</span><br><span class="line">+-----+-----------------+--------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#16. 查询所有学生的sname、cname和degree列</span><br><span class="line">mysql&gt; select sname,cname,degree from student,course,score where student.sno=score.sno and course.cno=score.cno;</span><br><span class="line">+-----------+-----------------+--------+</span><br><span class="line">| sname     | cname           | degree |</span><br><span class="line">+-----------+-----------------+--------+</span><br><span class="line">| 王丽      | 计算机导论      |     92 |</span><br><span class="line">| 王丽      | 操作系统        |     86 |</span><br><span class="line">| 王丽      | 数字电路        |     85 |</span><br><span class="line">| 王芳      | 计算机导论      |     88 |</span><br><span class="line">| 王芳      | 操作系统        |     75 |</span><br><span class="line">| 王芳      | 数字电路        |     79 |</span><br><span class="line">| 赵铁柱    | 计算机导论      |     76 |</span><br><span class="line">| 赵铁柱    | 操作系统        |     68 |</span><br><span class="line">| 赵铁柱    | 数字电路        |     81 |</span><br><span class="line">+-----------+-----------------+--------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#more,用as给字段起个别名</span><br><span class="line">mysql&gt; select sname,cname,degree ,student.sno as stu_no,course.cno as cour_no from student,course,score where student.sno=score.sno and course.cno=score.cno;</span><br><span class="line">+-----------+-----------------+--------+--------+---------+</span><br><span class="line">| sname     | cname           | degree | stu_no | cour_no |</span><br><span class="line">+-----------+-----------------+--------+--------+---------+</span><br><span class="line">| 王丽      | 计算机导论      |     92 | 103    | 3-105   |</span><br><span class="line">| 王丽      | 操作系统        |     86 | 103    | 3-245   |</span><br><span class="line">| 王丽      | 数字电路        |     85 | 103    | 6-166   |</span><br><span class="line">| 王芳      | 计算机导论      |     88 | 105    | 3-105   |</span><br><span class="line">| 王芳      | 操作系统        |     75 | 105    | 3-245   |</span><br><span class="line">| 王芳      | 数字电路        |     79 | 105    | 6-166   |</span><br><span class="line">| 赵铁柱    | 计算机导论      |     76 | 109    | 3-105   |</span><br><span class="line">| 赵铁柱    | 操作系统        |     68 | 109    | 3-245   |</span><br><span class="line">| 赵铁柱    | 数字电路        |     81 | 109    | 6-166   |</span><br><span class="line">+-----------+-----------------+--------+--------+---------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br><span class="line">#more，不指明哪个表的sno和cno会报错，因为有多个表(如score表中有这两个字段)都有该字段</span><br><span class="line">mysql&gt; select sname,cname,degree ,student.sno,course.cno from student,course,score where student.sno=score.sno and course.cno=score.cno;</span><br><span class="line">+-----------+-----------------+--------+-----+-------+</span><br><span class="line">| sname     | cname           | degree | sno | cno   |</span><br><span class="line">+-----------+-----------------+--------+-----+-------+</span><br><span class="line">| 王丽      | 计算机导论      |     92 | 103 | 3-105 |</span><br><span class="line">| 王丽      | 操作系统        |     86 | 103 | 3-245 |</span><br><span class="line">| 王丽      | 数字电路        |     85 | 103 | 6-166 |</span><br><span class="line">| 王芳      | 计算机导论      |     88 | 105 | 3-105 |</span><br><span class="line">| 王芳      | 操作系统        |     75 | 105 | 3-245 |</span><br><span class="line">| 王芳      | 数字电路        |     79 | 105 | 6-166 |</span><br><span class="line">| 赵铁柱    | 计算机导论      |     76 | 109 | 3-105 |</span><br><span class="line">| 赵铁柱    | 操作系统        |     68 | 109 | 3-245 |</span><br><span class="line">| 赵铁柱    | 数字电路        |     81 | 109 | 6-166 |</span><br><span class="line">+-----------+-----------------+--------+-----+-------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 17.查询“95031”班学生每门课的平均分</span><br><span class="line">mysql&gt; select cno ,avg(degree) from score where sno in(select sno from student where class=&apos;95031&apos;) group by cno;</span><br><span class="line">+-------+-------------+</span><br><span class="line">| cno   | avg(degree) |</span><br><span class="line">+-------+-------------+</span><br><span class="line">| 3-105 |     82.0000 |</span><br><span class="line">| 3-245 |     71.5000 |</span><br><span class="line">| 6-166 |     80.0000 |</span><br><span class="line">+-------+-------------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 18.查询选修“3-105”课程的成绩高于“109”号同学“3-105”成绩的所有同学的记录</span><br><span class="line">mysql&gt; select * from score where cno=&apos;3-105&apos;and  degree&gt;(select degree from score where sno=&apos;109&apos; and cno=&apos;3-105&apos;);</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 103 | 3-105 |     92 |</span><br><span class="line">| 105 | 3-105 |     88 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 19.查询成绩高于学号为“109”、课程号为“3-105”的成绩的所有记录</span><br><span class="line">mysql&gt; select * from score where degree&gt;(select degree from score where sno=&apos;109&apos; and cno=&apos;3-105&apos;);</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 103 | 3-105 |     92 |</span><br><span class="line">| 103 | 3-245 |     86 |</span><br><span class="line">| 103 | 6-166 |     85 |</span><br><span class="line">| 105 | 3-105 |     88 |</span><br><span class="line">| 105 | 6-166 |     79 |</span><br><span class="line">| 109 | 6-166 |     81 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 20. 查询和学号为108、101的同学同年出生的所有学生的sno、sanme和sbirthday列</span><br><span class="line">mysql&gt; select sno,sname,sbirthday from student  where year(sbirthday) in (select year(sbirthday) from student where sno in(108,101));</span><br><span class="line">+-----+-----------+---------------------+</span><br><span class="line">| sno | sname     | sbirthday           |</span><br><span class="line">+-----+-----------+---------------------+</span><br><span class="line">| 101 | 曾华      | 1977-09-01 00:00:00 |</span><br><span class="line">| 102 | 匡明      | 1975-10-02 00:00:00 |</span><br><span class="line">| 105 | 王芳      | 1975-02-10 00:00:00 |</span><br><span class="line">| 108 | 张全蛋    | 1975-02-10 00:00:00 |</span><br><span class="line">+-----+-----------+---------------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 21.查询“张旭”教师任课的学生成绩</span><br><span class="line">mysql&gt; select * from score where cno=(select cno from course where tno =( select tno from teacher where tname=&quot;张旭&quot;));</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 103 | 6-166 |     85 |</span><br><span class="line">| 105 | 6-166 |     79 |</span><br><span class="line">| 109 | 6-166 |     81 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 22. 查询选修某课程的同学人数多于5人的教师姓名</span><br><span class="line">#先再插入几条数据</span><br><span class="line">mysql&gt; insert into score values(&apos;101&apos;,&apos;3-105&apos;,&apos;90&apos;);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into score values(&apos;102&apos;,&apos;3-105&apos;,&apos;91&apos;);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; insert into score values(&apos;104&apos;,&apos;3-105&apos;,&apos;89&apos;);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">#开始查询</span><br><span class="line">mysql&gt; select tname from teacher where tno in (select tno from course where cno=(select cno from score  group by cno having count(*)&gt;5));</span><br><span class="line">+--------+</span><br><span class="line">| tname  |</span><br><span class="line">+--------+</span><br><span class="line">| 王萍   |</span><br><span class="line">+--------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 23.查询95033班和95031班全体学生的记录</span><br><span class="line">#先插入几条数据</span><br><span class="line">mysql&gt; insert into student values(&apos;110&apos;,&apos;张飞&apos;,&apos;男&apos;,&apos;1974-06-03&apos;,&apos;95038&apos;);</span><br><span class="line">Query OK, 1 row affected (0.04 sec)</span><br><span class="line">#查询</span><br><span class="line">mysql&gt; select * from student where class in(&apos;95031&apos;,&apos;95033&apos;);</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| sno | sname     | ssex | sbirthday           | class |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| 101 | 曾华      | 男   | 1977-09-01 00:00:00 | 95033 |</span><br><span class="line">| 102 | 匡明      | 男   | 1975-10-02 00:00:00 | 95031 |</span><br><span class="line">| 103 | 王丽      | 女   | 1976-01-23 00:00:00 | 95033 |</span><br><span class="line">| 104 | 李军      | 男   | 1976-02-20 00:00:00 | 95033 |</span><br><span class="line">| 105 | 王芳      | 女   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 106 | 陆军      | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">| 107 | 王尼玛    | 男   | 1976-02-20 00:00:00 | 95033 |</span><br><span class="line">| 108 | 张全蛋    | 男   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 109 | 赵铁柱    | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">+-----+-----------+------+--</span><br><span class="line">9 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 24查询存在有85分以上成绩的课程cno</span><br><span class="line">mysql&gt; select  cno,degree from score where degree&gt;85;</span><br><span class="line">+-------+--------+</span><br><span class="line">| cno   | degree |</span><br><span class="line">+-------+--------+</span><br><span class="line">| 3-105 |     90 |</span><br><span class="line">| 3-105 |     91 |</span><br><span class="line">| 3-105 |     92 |</span><br><span class="line">| 3-245 |     86 |</span><br><span class="line">| 3-105 |     89 |</span><br><span class="line">| 3-105 |     88 |</span><br><span class="line">+-------+--------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 25. 查询出“计算机系”教师所教课程的成绩表</span><br><span class="line">mysql&gt; select * from score where cno in (select cno from course where tno in (select tno from teacher where depart=&quot;计算机系&quot;));</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 103 | 3-245 |     86 |</span><br><span class="line">| 105 | 3-245 |     75 |</span><br><span class="line">| 109 | 3-245 |     68 |</span><br><span class="line">| 101 | 3-105 |     90 |</span><br><span class="line">| 102 | 3-105 |     91 |</span><br><span class="line">| 103 | 3-105 |     92 |</span><br><span class="line">| 104 | 3-105 |     89 |</span><br><span class="line">| 105 | 3-105 |     88 |</span><br><span class="line">| 109 | 3-105 |     76 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">9 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="union-求并集-和not-in"><a href="#union-求并集-和not-in" class="headerlink" title="union(求并集) 和not in"></a>union(求并集) 和not in</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 26. 查询“计算机系”与“电子工程系”不同职称的教师的tname和prof(取交集之外的记录)</span><br><span class="line">mysql&gt; select tname,prof from teacher where depart =&apos;计算机系&apos; and prof not in (select prof from teacher where depart =&apos;电子工程系&apos;)</span><br><span class="line">    -&gt; union</span><br><span class="line">    -&gt; select tname,prof from teacher where depart =&apos;电子工程系&apos; and prof not in (select prof from teacher where depart =&apos;计算机系&apos;);</span><br><span class="line">+--------+-----------+</span><br><span class="line">| tname  | prof      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">| 李诚   | 副教授    |</span><br><span class="line">| 张旭   | 讲师      |</span><br><span class="line">+--------+-----------+</span><br><span class="line">2 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="any：至少一个（只要有一个就行）"><a href="#any：至少一个（只要有一个就行）" class="headerlink" title="any：至少一个（只要有一个就行）"></a>any：至少一个（只要有一个就行）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 27. 查询选修编号为“3-105”课程且成绩至少高于选修编号为“3-245”的同学的成绩中的任意一个的cno、sno和degree</span><br><span class="line">mysql&gt; select cno,sno,degree from score</span><br><span class="line">    -&gt; where cno=&apos;3-105&apos;</span><br><span class="line">    -&gt; and degree&gt;any(select degree from score where cno=&apos;3-245&apos;)</span><br><span class="line">    -&gt; order by degree desc;</span><br><span class="line">+-------+-----+--------+</span><br><span class="line">| cno   | sno | degree |</span><br><span class="line">+-------+-----+--------+</span><br><span class="line">| 3-105 | 103 |     92 |</span><br><span class="line">| 3-105 | 102 |     91 |</span><br><span class="line">| 3-105 | 101 |     90 |</span><br><span class="line">| 3-105 | 104 |     89 |</span><br><span class="line">| 3-105 | 105 |     88 |</span><br><span class="line">| 3-105 | 109 |     76 |</span><br><span class="line">+-------+-----+--------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="all：全部（都要满足）"><a href="#all：全部（都要满足）" class="headerlink" title="all：全部（都要满足）"></a>all：全部（都要满足）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 28.查询编号为‘3-105’且成绩高于编号为‘3-245’课程的同学的cno、sno和degree</span><br><span class="line">mysql&gt; select cno,sno,degree from score</span><br><span class="line">    -&gt; where cno=&apos;3-105&apos;</span><br><span class="line">    -&gt; and degree&gt;all(select degree from score where cno=&apos;3-245&apos;)</span><br><span class="line">    -&gt; order by degree desc;</span><br><span class="line">+-------+-----+--------+</span><br><span class="line">| cno   | sno | degree |</span><br><span class="line">+-------+-----+--------+</span><br><span class="line">| 3-105 | 103 |     92 |</span><br><span class="line">| 3-105 | 102 |     91 |</span><br><span class="line">| 3-105 | 101 |     90 |</span><br><span class="line">| 3-105 | 104 |     89 |</span><br><span class="line">| 3-105 | 105 |     88 |</span><br><span class="line">+-------+-----+--------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="as取别名"><a href="#as取别名" class="headerlink" title="as取别名"></a>as取别名</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 29.查询所有教师和同学的name、sex和birthday</span><br><span class="line">mysql&gt; select tname as 姓名,tsex as 性别,tbirthday 生日 from teacher</span><br><span class="line">    -&gt; union#列名跟随第一个</span><br><span class="line">    -&gt; select sname,ssex,sbirthday from student;</span><br><span class="line">+-----------+--------+---------------------+</span><br><span class="line">| 姓名      | 性别   | 生日                |</span><br><span class="line">+-----------+--------+---------------------+</span><br><span class="line">| 李诚      | 男     | 1958-12-02 00:00:00 |</span><br><span class="line">| 王萍      | 女     | 1972-05-05 00:00:00 |</span><br><span class="line">| 刘冰      | 女     | 1977-08-14 00:00:00 |</span><br><span class="line">| 张旭      | 男     | 1969-03-12 00:00:00 |</span><br><span class="line">| 曾华      | 男     | 1977-09-01 00:00:00 |</span><br><span class="line">| 匡明      | 男     | 1975-10-02 00:00:00 |</span><br><span class="line">| 王丽      | 女     | 1976-01-23 00:00:00 |</span><br><span class="line">| 李军      | 男     | 1976-02-20 00:00:00 |</span><br><span class="line">| 王芳      | 女     | 1975-02-10 00:00:00 |</span><br><span class="line">| 陆军      | 男     | 1974-06-03 00:00:00 |</span><br><span class="line">| 王尼玛    | 男     | 1976-02-20 00:00:00 |</span><br><span class="line">| 张全蛋    | 男     | 1975-02-10 00:00:00 |</span><br><span class="line">| 赵铁柱    | 男     | 1974-06-03 00:00:00 |</span><br><span class="line">| 张飞      | 男     | 1974-06-03 00:00:00 |</span><br><span class="line">+-----------+--------+---------------------+</span><br><span class="line">14 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="union求并集"><a href="#union求并集" class="headerlink" title="union求并集"></a>union求并集</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 30.查询所有“女”教师和“女”同学的name，sex和birthday</span><br><span class="line">mysql&gt; select tname as 姓名,tsex as 性别,tbirthday 生日 from teacher where tsex=&apos;女&apos;</span><br><span class="line">    -&gt; union</span><br><span class="line">    -&gt; select sname,ssex,sbirthday from student where ssex=&apos;女&apos;;</span><br><span class="line">+--------+--------+---------------------+</span><br><span class="line">| 姓名   | 性别   | 生日                |</span><br><span class="line">+--------+--------+---------------------+</span><br><span class="line">| 王萍   | 女     | 1972-05-05 00:00:00 |</span><br><span class="line">| 刘冰   | 女     | 1977-08-14 00:00:00 |</span><br><span class="line">| 王丽   | 女     | 1976-01-23 00:00:00 |</span><br><span class="line">| 王芳   | 女     | 1975-02-10 00:00:00 |</span><br><span class="line">+--------+--------+---------------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># 31. 查询成绩比该课程平均成绩低的同学的成绩表</span><br><span class="line">mysql&gt; select * from score a where degree&lt;(select avg(degree) from score b where a.cno=b.cno);</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 105 | 3-245 |     75 |</span><br><span class="line">| 105 | 6-166 |     79 |</span><br><span class="line">| 109 | 3-105 |     76 |</span><br><span class="line">| 109 | 3-245 |     68 |</span><br><span class="line">| 109 | 6-166 |     81 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br><span class="line">-- 但是我感觉上面的不对，正确的如下：</span><br><span class="line">mysql&gt; select * from score a where degree&lt;(select avg(degree) from score b group by cno having a.cno=b.cno);</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 105 | 3-245 |     75 |</span><br><span class="line">| 105 | 6-166 |     79 |</span><br><span class="line">| 109 | 3-105 |     76 |</span><br><span class="line">| 109 | 3-245 |     68 |</span><br><span class="line">| 109 | 6-166 |     81 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="子查询-1"><a href="#子查询-1" class="headerlink" title="子查询"></a>子查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 32.查询所有任课教师的tname和depart</span><br><span class="line">mysql&gt; select tname ,depart from teacher where tno in (select tno from course);</span><br><span class="line">+--------+-----------------+</span><br><span class="line">| tname  | depart          |</span><br><span class="line">+--------+-----------------+</span><br><span class="line">| 李诚   | 计算机系        |</span><br><span class="line">| 王萍   | 计算机系        |</span><br><span class="line">| 刘冰   | 电子工程系      |</span><br><span class="line">| 张旭   | 电子工程系      |</span><br><span class="line">+--------+-----------------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 33. 查询至少有两名男生的班号</span><br><span class="line">mysql&gt; select class from student  where ssex=&apos;男&apos; group by class having count(class)&gt;=2;</span><br><span class="line">+-------+</span><br><span class="line">| class |</span><br><span class="line">+-------+</span><br><span class="line">| 95031 |</span><br><span class="line">| 95033 |</span><br><span class="line">+-------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="not-like"><a href="#not-like" class="headerlink" title="not like"></a>not like</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 查询student表中不姓“王”的同学记录</span><br><span class="line">mysql&gt; select * from student where sname not like &apos;王%&apos; ;</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| sno | sname     | ssex | sbirthday           | class |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| 101 | 曾华      | 男   | 1977-09-01 00:00:00 | 95033 |</span><br><span class="line">| 102 | 匡明      | 男   | 1975-10-02 00:00:00 | 95031 |</span><br><span class="line">| 104 | 李军      | 男   | 1976-02-20 00:00:00 | 95033 |</span><br><span class="line">| 106 | 陆军      | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">| 108 | 张全蛋    | 男   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 109 | 赵铁柱    | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">| 110 | 张飞      | 男   | 1974-06-03 00:00:00 | 95038 |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">7 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="year和now函数"><a href="#year和now函数" class="headerlink" title="year和now函数"></a>year和now函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 35.查询student表中每个学生的姓名和年龄</span><br><span class="line">mysql&gt; select sname,year(now())-year(sbirthday) as &apos;年龄&apos; from student;#as可省略</span><br><span class="line">+-----------+--------+</span><br><span class="line">| sname     | 年龄   |</span><br><span class="line">+-----------+--------+</span><br><span class="line">| 曾华      |     43 |</span><br><span class="line">| 匡明      |     45 |</span><br><span class="line">| 王丽      |     44 |</span><br><span class="line">| 李军      |     44 |</span><br><span class="line">| 王芳      |     45 |</span><br><span class="line">| 陆军      |     46 |</span><br><span class="line">| 王尼玛    |     44 |</span><br><span class="line">| 张全蛋    |     45 |</span><br><span class="line">| 赵铁柱    |     46 |</span><br><span class="line">| 张飞      |     46 |</span><br><span class="line">+-----------+--------+</span><br><span class="line">10 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="max与min"><a href="#max与min" class="headerlink" title="max与min"></a>max与min</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 36. 查询student表中最大和最小的sbirthday日期值</span><br><span class="line">mysql&gt; select max(sbirthday)as &apos;最大&apos;,min(sbirthday) as &apos;最小&apos; from student;</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| 最大                | 最小                |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">| 1977-09-01 00:00:00 | 1974-06-03 00:00:00 |</span><br><span class="line">+---------------------+---------------------+</span><br><span class="line">1 row in set (0.04 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="多字段排序"><a href="#多字段排序" class="headerlink" title="多字段排序"></a>多字段排序</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 37.以班号和年龄从大到小的顺序查询student表中的全部记录</span><br><span class="line">mysql&gt; select * from student order by class desc,sbirthday;</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| sno | sname     | ssex | sbirthday           | class |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">| 110 | 张飞      | 男   | 1974-06-03 00:00:00 | 95038 |</span><br><span class="line">| 103 | 王丽      | 女   | 1976-01-23 00:00:00 | 95033 |</span><br><span class="line">| 104 | 李军      | 男   | 1976-02-20 00:00:00 | 95033 |</span><br><span class="line">| 107 | 王尼玛    | 男   | 1976-02-20 00:00:00 | 95033 |</span><br><span class="line">| 101 | 曾华      | 男   | 1977-09-01 00:00:00 | 95033 |</span><br><span class="line">| 106 | 陆军      | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">| 109 | 赵铁柱    | 男   | 1974-06-03 00:00:00 | 95031 |</span><br><span class="line">| 105 | 王芳      | 女   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 108 | 张全蛋    | 男   | 1975-02-10 00:00:00 | 95031 |</span><br><span class="line">| 102 | 匡明      | 男   | 1975-10-02 00:00:00 | 95031 |</span><br><span class="line">+-----+-----------+------+---------------------+-------+</span><br><span class="line">10 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="子查询-2"><a href="#子查询-2" class="headerlink" title="子查询"></a>子查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 38.查询“男”教师及其所上的课程</span><br><span class="line">mysql&gt; select * from course where tno in (select tno from teacher where tsex=&apos;男&apos;);</span><br><span class="line">+-------+--------------+-----+</span><br><span class="line">| cno   | cname        | tno |</span><br><span class="line">+-------+--------------+-----+</span><br><span class="line">| 3-245 | 操作系统     | 804 |</span><br><span class="line">| 6-166 | 数字电路     | 856 |</span><br><span class="line">+-------+--------------+-----+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="max函数与子查询"><a href="#max函数与子查询" class="headerlink" title="max函数与子查询"></a>max函数与子查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 39.查询最高分同学的sno、cno和degree列</span><br><span class="line">mysql&gt; select sno,cno,degree from score where degree =(select max(degree) from score);</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 103 | 3-105 |     92 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="继续子查询"><a href="#继续子查询" class="headerlink" title="继续子查询"></a>继续子查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 40.查询和“李军”同性别的所有同学的sname</span><br><span class="line">mysql&gt; select sname from student where ssex =(select ssex from student where sname=&apos;李军&apos;);</span><br><span class="line">+-----------+</span><br><span class="line">| sname     |</span><br><span class="line">+-----------+</span><br><span class="line">| 曾华      |</span><br><span class="line">| 匡明      |</span><br><span class="line">| 李军      |</span><br><span class="line">| 陆军      |</span><br><span class="line">| 王尼玛    |</span><br><span class="line">| 张全蛋    |</span><br><span class="line">| 赵铁柱    |</span><br><span class="line">| 张飞      |</span><br><span class="line">+-----------+</span><br><span class="line">8 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 41.查询和&quot;李军&quot;同性别且同班级的同学的sname</span><br><span class="line">mysql&gt; select sname from student</span><br><span class="line">    -&gt; where ssex =(select ssex from student where sname=&apos;李军&apos;)</span><br><span class="line">    -&gt; and</span><br><span class="line">    -&gt; class=(select class from student where sname =&apos;李军&apos;);</span><br><span class="line">+-----------+</span><br><span class="line">| sname     |</span><br><span class="line">+-----------+</span><br><span class="line">| 曾华      |</span><br><span class="line">| 李军      |</span><br><span class="line">| 王尼玛    |</span><br><span class="line">+-----------+</span><br><span class="line">3 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 42.查询所有选修“计算机导论”课程的“男”同学的成绩</span><br><span class="line">mysql&gt; select * from score where</span><br><span class="line">    -&gt; cno=(select cno from course where cname=&apos;计算机导论&apos;)</span><br><span class="line">    -&gt; and</span><br><span class="line">    -&gt; sno in (select sno from student where ssex=&apos;男&apos;);</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| sno | cno   | degree |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">| 101 | 3-105 |     90 |</span><br><span class="line">| 102 | 3-105 |     91 |</span><br><span class="line">| 104 | 3-105 |     89 |</span><br><span class="line">| 109 | 3-105 |     76 |</span><br><span class="line">+-----+-------+--------+</span><br><span class="line">4 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="按等级查询"><a href="#按等级查询" class="headerlink" title="按等级查询"></a>按等级查询</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"># 43.假设建立一个 grade 表代表学生的成绩等级，并插入数据：</span><br><span class="line"></span><br><span class="line">CREATE TABLE grade (</span><br><span class="line">    low INT(3),</span><br><span class="line">    upp INT(3),</span><br><span class="line">    grade char(1)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">INSERT INTO grade VALUES (90, 100, &apos;A&apos;);</span><br><span class="line">INSERT INTO grade VALUES (80, 89, &apos;B&apos;);</span><br><span class="line">INSERT INTO grade VALUES (70, 79, &apos;C&apos;);</span><br><span class="line">INSERT INTO grade VALUES (60, 69, &apos;D&apos;);</span><br><span class="line">INSERT INTO grade VALUES (0, 59, &apos;E&apos;);</span><br><span class="line"></span><br><span class="line">SELECT * FROM grade;</span><br><span class="line">+------+------+-------+</span><br><span class="line">| low  | upp  | grade |</span><br><span class="line">+------+------+-------+</span><br><span class="line">|   90 |  100 | A     |</span><br><span class="line">|   80 |   89 | B     |</span><br><span class="line">|   70 |   79 | C     |</span><br><span class="line">|   60 |   69 | D     |</span><br><span class="line">|    0 |   59 | E     |</span><br><span class="line">+------+------+-------+</span><br><span class="line"></span><br><span class="line"># 现在查询所有同学的sno,cno和grade列</span><br><span class="line">mysql&gt; select sno ,cno,grade from score,grade where degree between low and upp;</span><br><span class="line">+-----+-------+-------+</span><br><span class="line">| sno | cno   | grade |</span><br><span class="line">+-----+-------+-------+</span><br><span class="line">| 101 | 3-105 | A     |</span><br><span class="line">| 102 | 3-105 | A     |</span><br><span class="line">| 103 | 3-105 | A     |</span><br><span class="line">| 103 | 3-245 | B     |</span><br><span class="line">| 103 | 6-166 | B     |</span><br><span class="line">| 104 | 3-105 | B     |</span><br><span class="line">| 105 | 3-105 | B     |</span><br><span class="line">| 105 | 3-245 | C     |</span><br><span class="line">| 105 | 6-166 | C     |</span><br><span class="line">| 109 | 3-105 | C     |</span><br><span class="line">| 109 | 3-245 | D     |</span><br><span class="line">| 109 | 6-166 | B     |</span><br><span class="line">+-----+-------+-------+</span><br><span class="line">12 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="SQL的四种连接查询"><a href="#SQL的四种连接查询" class="headerlink" title="SQL的四种连接查询"></a>SQL的四种连接查询</h4><p>内连接：inner join 或者join</p>
+<p>外连接：</p>
+<p>​    左连接：left join 或者left outer join</p>
+<p>​    右连接：right join 或者right outer join</p>
+<p>完全外连接：full join 或者full outer join</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"># 先准备一些数据，用于连接查询练习</span><br><span class="line">CREATE DATABASE testJoin;</span><br><span class="line"></span><br><span class="line">CREATE TABLE person (</span><br><span class="line">    id INT,</span><br><span class="line">    name VARCHAR(20),</span><br><span class="line">    cardId INT</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">CREATE TABLE card (</span><br><span class="line">    id INT,</span><br><span class="line">    name VARCHAR(20)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">INSERT INTO card VALUES (1, &apos;饭卡&apos;), (2, &apos;建行卡&apos;), (3, &apos;农行卡&apos;), (4, &apos;工商卡&apos;), (5, &apos;邮政卡&apos;);</span><br><span class="line">SELECT * FROM card;</span><br><span class="line">+------+-----------+</span><br><span class="line">| id   | name      |</span><br><span class="line">+------+-----------+</span><br><span class="line">|    1 | 饭卡      |</span><br><span class="line">|    2 | 建行卡    |</span><br><span class="line">|    3 | 农行卡    |</span><br><span class="line">|    4 | 工商卡    |</span><br><span class="line">|    5 | 邮政卡    |</span><br><span class="line">+------+-----------+</span><br><span class="line"></span><br><span class="line">INSERT INTO person VALUES (1, &apos;张三&apos;, 1), (2, &apos;李四&apos;, 3), (3, &apos;王五&apos;, 6);</span><br><span class="line">SELECT * FROM person;</span><br><span class="line">+------+--------+--------+</span><br><span class="line">| id   | name   | cardId |</span><br><span class="line">+------+--------+--------+</span><br><span class="line">|    1 | 张三   |      1 |</span><br><span class="line">|    2 | 李四   |      3 |</span><br><span class="line">|    3 | 王五   |      6 |</span><br><span class="line">+------+--------+--------+</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<p>​    我们并没有创建外键</p>
+<p>​    王五的cardID不能对应id</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"># inner join (内连接)查询(求交集，其实就是两张表中的数据通过某个字段相等查询出相关记录)</span><br><span class="line">mysql&gt; select * from person (inner) join card on person.cardId=card.id;</span><br><span class="line">+------+--------+--------+------+-----------+</span><br><span class="line">| id   | name   | cardId | id   | name      |</span><br><span class="line">+------+--------+--------+------+-----------+</span><br><span class="line">|    1 | 张三   |      1 |    1 | 饭卡      |</span><br><span class="line">|    2 | 李四   |      3 |    3 | 农行卡    |</span><br><span class="line">+------+--------+--------+------+-----------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"># left join (左外连接)查询，这种方式会把左边表的所有数据取出来，而右边的数据，如果有相等的就取出来，如果没有就会补NULL</span><br><span class="line">mysql&gt; select * from person left (outer) join card on person.cardId =card.id;</span><br><span class="line">+------+--------+--------+------+-----------+</span><br><span class="line">| id   | name   | cardId | id   | name      |</span><br><span class="line">+------+--------+--------+------+-----------+</span><br><span class="line">|    1 | 张三   |      1 |    1 | 饭卡      |</span><br><span class="line">|    2 | 李四   |      3 |    3 | 农行卡    |</span><br><span class="line">|    3 | 王五   |      6 | NULL | NULL      |</span><br><span class="line">+------+--------+--------+------+-----------+</span><br><span class="line">3 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line"># right join(右外连接)，这种方式会把右边表的所有数据取出来，而左边的数据，如果有相等的就显示出来，如果没有就会补NULL</span><br><span class="line">mysql&gt; select * from person right (outer) join card on person.cardId =card.id;</span><br><span class="line">+------+--------+--------+------+-----------+</span><br><span class="line">| id   | name   | cardId | id   | name      |</span><br><span class="line">+------+--------+--------+------+-----------+</span><br><span class="line">|    1 | 张三   |      1 |    1 | 饭卡      |</span><br><span class="line">|    2 | 李四   |      3 |    3 | 农行卡    |</span><br><span class="line">| NULL | NULL   |   NULL |    2 | 建行卡    |</span><br><span class="line">| NULL | NULL   |   NULL |    4 | 工商卡    |</span><br><span class="line">| NULL | NULL   |   NULL |    5 | 邮政卡    |</span><br><span class="line">+------+--------+--------+------+-----------+</span><br><span class="line">5 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#  full join (全外连接)：没有就补NULL，一个也不能落下</span><br><span class="line">-- mysql不支持</span><br></pre></td></tr></table></figure>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h4><p> 在 MySQL 中，事务其实是一个最小的不可分割的工作单元。事务能够<strong>保证一个业务的完整性</strong>。 </p>
+<p>在实际项目中，假设只有一条 SQL 语句执行成功，而另外一条执行失败了，就会出现数据前后不一致。</p>
+<p>因此，在执行多条有关联 SQL 语句时，<strong>事务</strong>可能会要求这些 SQL 语句要么同时执行成功，要么就都执行失败。</p>
+<h5 id="如何控制事务"><a href="#如何控制事务" class="headerlink" title="如何控制事务"></a>如何控制事务</h5><p>在MySQL中，事务的自动提交默认开启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select @@autocommit;</span><br><span class="line">+--------------+</span><br><span class="line">| @@autocommit |</span><br><span class="line">+--------------+</span><br><span class="line">|            1 |</span><br><span class="line">+--------------+</span><br><span class="line">1 row in set (0.04 sec)</span><br></pre></td></tr></table></figure>
+<p>开启之后，不能回滚(无法反悔)，可以设置autocommit为0来关闭自动提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set autocommit=0;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select @@autocommit;</span><br><span class="line">+--------------+</span><br><span class="line">| @@autocommit |</span><br><span class="line">+--------------+</span><br><span class="line">|            0 |</span><br><span class="line">+--------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<p>此时可以通过rollback回滚来回到上一次提交的状态，通过commit来手动提交，举个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE bank;</span><br><span class="line"></span><br><span class="line">USE bank;</span><br><span class="line"></span><br><span class="line">CREATE TABLE user (</span><br><span class="line">    id INT PRIMARY KEY,</span><br><span class="line">    name VARCHAR(20),</span><br><span class="line">    money INT</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">INSERT INTO user VALUES (1, &apos;a&apos;, 1000);</span><br><span class="line">INSERT INTO user VALUES (2, &apos;b&apos;, 1000);</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from user;</span><br><span class="line">+----+------+-------+</span><br><span class="line">| id | name | money |</span><br><span class="line">+----+------+-------+</span><br><span class="line">|  1 | a    |  1000 |</span><br><span class="line">|  2 | b    |  1000 |</span><br><span class="line">+----+------+-------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#由于关闭了autocommit，所以可以回滚到上一次提交的状态（上一次提交时我们还没有创建这里的表，所以是空了）</span><br><span class="line">mysql&gt; rollback;</span><br><span class="line">Query OK, 0 rows affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from user;</span><br><span class="line">Empty set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#现在再把数据插入一条</span><br><span class="line">mysql&gt; INSERT INTO user VALUES (1, &apos;a&apos;, 1000);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br><span class="line"></span><br><span class="line">#select * from user;</span><br><span class="line">+----+------+-------+</span><br><span class="line">| id | name | money |</span><br><span class="line">+----+------+-------+</span><br><span class="line">|  1 | a    |  1000 |</span><br><span class="line">+----+------+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#然后手动提交</span><br><span class="line">mysql&gt; commit;</span><br><span class="line">Query OK, 0 rows affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">#现在再插入一条数据</span><br><span class="line">mysql&gt; INSERT INTO user VALUES (2, &apos;b&apos;, 1000);</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from user;</span><br><span class="line">+----+------+-------+</span><br><span class="line">| id | name | money |</span><br><span class="line">+----+------+-------+</span><br><span class="line">|  1 | a    |  1000 |</span><br><span class="line">|  2 | b    |  1000 |</span><br><span class="line">+----+------+-------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#再次回滚</span><br><span class="line">mysql&gt; rollback;</span><br><span class="line">Query OK, 0 rows affected (0.04 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from user;</span><br><span class="line">+----+------+-------+</span><br><span class="line">| id | name | money |</span><br><span class="line">+----+------+-------+</span><br><span class="line">|  1 | a    |  1000 |</span><br><span class="line">+----+------+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line">#由于手动提交了一次，所以现在只能回到上次提交时的状态了</span><br></pre></td></tr></table></figure>
+<h5 id="手动开启一个事务-局部"><a href="#手动开启一个事务-局部" class="headerlink" title="手动开启一个事务(局部)"></a>手动开启一个事务(局部)</h5><p>可以使用 begin 或者 start transaction</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">-- 使用 BEGIN 或者 START TRANSACTION 手动开启一个事务</span><br><span class="line">#先开启自动提交</span><br><span class="line">mysql&gt; set autocommit=1;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select@@autocommit;</span><br><span class="line">+--------------+</span><br><span class="line">| @@autocommit |</span><br><span class="line">+--------------+</span><br><span class="line">|            1 |</span><br><span class="line">+--------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">#开启一个事务</span><br><span class="line">-- START TRANSACTION;</span><br><span class="line">BEGIN;</span><br><span class="line">UPDATE user set money = money - 100 WHERE name = &apos;a&apos;;</span><br><span class="line">UPDATE user set money = money + 100 WHERE name = &apos;b&apos;;</span><br><span class="line"></span><br><span class="line">-- 由于手动开启的事务没有开启自动提交，</span><br><span class="line">-- 此时发生变化的数据仍然是被保存在一张临时表中。</span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+------+-------+</span><br><span class="line">| id | name | money |</span><br><span class="line">+----+------+-------+</span><br><span class="line">|  1 | a    |   900 |</span><br><span class="line">|  2 | b    |  1100 |</span><br><span class="line">+----+------+-------+</span><br><span class="line"></span><br><span class="line">-- 测试回滚</span><br><span class="line">ROLLBACK;</span><br><span class="line">#看，在开启自动提交时，使用beigin或者start transaction可以回滚</span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+------+-------+</span><br><span class="line">| id | name | money |</span><br><span class="line">+----+------+-------+</span><br><span class="line">|  1 | a    |  1000 |</span><br><span class="line">|  2 | b    |  1000 |</span><br><span class="line">+----+------+-------+</span><br></pre></td></tr></table></figure>
+<p>仍然使用 <code>COMMIT</code> 提交数据，提交后无法再发生本次事务的回滚。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#此时已开启自动提交，但是之后又开启了一个事务，当事务结束时，我们可以通过手动提交的方式来结束事务，现在再来测试</span><br><span class="line">BEGIN;</span><br><span class="line">UPDATE user set money = money - 100 WHERE name = &apos;a&apos;;</span><br><span class="line">UPDATE user set money = money + 100 WHERE name = &apos;b&apos;;</span><br><span class="line"></span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+------+-------+</span><br><span class="line">| id | name | money |</span><br><span class="line">+----+------+-------+</span><br><span class="line">|  1 | a    |   900 |</span><br><span class="line">|  2 | b    |  1100 |</span><br><span class="line">+----+------+-------+</span><br><span class="line"></span><br><span class="line">-- 手动提交数据</span><br><span class="line">COMMIT;</span><br><span class="line"></span><br><span class="line">-- 测试回滚（无效，因为表的数据已经被提交）</span><br><span class="line">ROLLBACK;</span><br><span class="line">mysql&gt; SELECT * FROM user;</span><br><span class="line">+----+------+-------+</span><br><span class="line">| id | name | money |</span><br><span class="line">+----+------+-------+</span><br><span class="line">|  1 | a    |   900 |</span><br><span class="line">|  2 | b    |  1100 |</span><br><span class="line">+----+------+-------+</span><br><span class="line">2 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h5 id="事务的四大特性"><a href="#事务的四大特性" class="headerlink" title="事务的四大特性"></a>事务的四大特性</h5><p>A 原子性</p>
+<blockquote>
+<p> 原子性是指事务包含的所有操作要么全部成功，要么全部失败回滚，这和前面两篇博客介绍事务的功能是一样的概念，因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。 </p>
+</blockquote>
+<p>C 一致性</p>
+<blockquote>
+<p> 一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执行之前和执行之后都必须处于一致性状态。　拿转账来说，假设用户A和用户B两者的钱加起来一共是5000，那么不管A和B之间如何转账，转几次账，事务结束后两个用户的钱相加起来应该还得是5000，这就是事务的一致性。</p>
+</blockquote>
+<p>I 隔离性</p>
+<blockquote>
+<p>事务1和是事务2之间是具有隔离性的</p>
+</blockquote>
+<p>D 持久性</p>
+<blockquote>
+<p>事务一旦结束，就不可返回(比如commit之后就不能rollback)</p>
+</blockquote>
+<h5 id="事务的隔离性可分为4种-性能由低到高-：隔离级别越高，性能越低"><a href="#事务的隔离性可分为4种-性能由低到高-：隔离级别越高，性能越低" class="headerlink" title="事务的隔离性可分为4种(性能由低到高)：隔离级别越高，性能越低"></a>事务的隔离性可分为4种(性能由低到高)：隔离级别越高，性能越低</h5><ol>
+<li><p><strong>READ UNCOMMITTED ( 读取未提交 )</strong></p>
+<p>如果有多个事务，那么任意事务都可以看见其他事务的<strong>未提交数据</strong>。</p>
+</li>
+<li><p><strong>READ COMMITTED ( 读取已提交 )</strong></p>
+<p>只能读取到其他事务<strong>已经提交的数据</strong>。</p>
+</li>
+<li><p><strong>REPEATABLE READ ( 可被重复读 )</strong>,默认是这个</p>
+<p>如果有多个连接都开启了事务，那么事务之间不能共享数据记录，否则只能共享已提交的记录。</p>
+</li>
+<li><p><strong>SERIALIZABLE ( 串行化 )</strong></p>
+<p>所有的事务都会按照<strong>固定顺序执行</strong>，执行完一个事务后再继续执行下一个事务的<strong>写入操作</strong>。</p>
+</li>
+</ol>
+<p>查看当前数据库的默认隔离级别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-- MySQL 8.x, GLOBAL 表示系统级别，不加表示会话级别。</span><br><span class="line">SELECT @@GLOBAL.TRANSACTION_ISOLATION;</span><br><span class="line">SELECT @@TRANSACTION_ISOLATION;</span><br><span class="line">+--------------------------------+</span><br><span class="line">| @@GLOBAL.TRANSACTION_ISOLATION |</span><br><span class="line">+--------------------------------+</span><br><span class="line">| REPEATABLE-READ                | -- MySQL的默认隔离级别，可以重复读。</span><br><span class="line">+--------------------------------+</span><br><span class="line"></span><br><span class="line">-- MySQL 5.x</span><br><span class="line">SELECT @@GLOBAL.TX_ISOLATION;</span><br><span class="line">SELECT @@TX_ISOLATION;</span><br></pre></td></tr></table></figure>
+<p>修改隔离级别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 设置系统隔离级别，LEVEL 后面表示要设置的隔离级别 (READ UNCOMMITTED)。</span><br><span class="line">SET GLOBAL TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;</span><br><span class="line"></span><br><span class="line">-- 查询系统隔离级别，发现已经被修改。</span><br><span class="line">SELECT @@GLOBAL.TRANSACTION_ISOLATION;</span><br><span class="line">+--------------------------------+</span><br><span class="line">| @@GLOBAL.TRANSACTION_ISOLATION |</span><br><span class="line">+--------------------------------+</span><br><span class="line">| READ-UNCOMMITTED               |</span><br><span class="line">+--------------------------------+</span><br></pre></td></tr></table></figure>
+<p><strong>1.脏读（READ UNCOMMITTED）</strong></p>
+<p>测试 <strong>READ UNCOMMITTED ( 读取未提交的 )</strong> 的隔离性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO user VALUES (3, &apos;小明&apos;, 1000);</span><br><span class="line">INSERT INTO user VALUES (4, &apos;淘宝店&apos;, 1000);</span><br><span class="line"></span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">| id | name      | money |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">|  1 | a         |   900 |</span><br><span class="line">|  2 | b         |  1100 |</span><br><span class="line">|  3 | 小明      |  1000 |</span><br><span class="line">|  4 | 淘宝店    |  1000 |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line"></span><br><span class="line">-- 开启一个事务操作数据</span><br><span class="line">-- 假设小明在淘宝店买了一双800块钱的鞋子：</span><br><span class="line">START TRANSACTION;</span><br><span class="line">UPDATE user SET money = money - 800 WHERE name = &apos;小明&apos;;</span><br><span class="line">UPDATE user SET money = money + 800 WHERE name = &apos;淘宝店&apos;;</span><br><span class="line"></span><br><span class="line">-- 然后淘宝店在另一方查询结果，发现钱已到账。</span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">| id | name      | money |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">|  1 | a         |   900 |</span><br><span class="line">|  2 | b         |  1100 |</span><br><span class="line">|  3 | 小明      |   200 |</span><br><span class="line">|  4 | 淘宝店    |  1800 |</span><br><span class="line">+----+-----------+-------+</span><br></pre></td></tr></table></figure>
+<p>由于小明的转账是在新开启的事务上进行操作的，而该操作的结果是可以被其他事务（另一方的淘宝店）看见的，因此淘宝店的查询结果是正确的，淘宝店确认到账。但就在这时，如果小明在它所处的事务上又执行了 <code>ROLLBACK</code> 命令，会发生什么？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-- 小明所处的事务</span><br><span class="line">ROLLBACK;</span><br><span class="line"></span><br><span class="line">-- 此时无论对方是谁，如果再去查询结果就会发现：</span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">| id | name      | money |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">|  1 | a         |   900 |</span><br><span class="line">|  2 | b         |  1100 |</span><br><span class="line">|  3 | 小明      |  1000 |</span><br><span class="line">|  4 | 淘宝店    |  1000 |</span><br><span class="line">+----+-----------+-------+</span><br></pre></td></tr></table></figure>
+<p>这就是所谓的<strong>脏读</strong>，一个事务读取到另外一个事务还未提交的数据。这在实际开发中是不允许出现的。</p>
+<p><strong>2.不可重复读：READ COMMITTED ( 读取已提交 的)  </strong></p>
+<p>把隔离级别设置为 <strong>READ COMMITTED</strong> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL TRANSACTION ISOLATION LEVEL READ COMMITTED;</span><br><span class="line">SELECT @@GLOBAL.TRANSACTION_ISOLATION;</span><br><span class="line">+--------------------------------+</span><br><span class="line">| @@GLOBAL.TRANSACTION_ISOLATION |</span><br><span class="line">+--------------------------------+</span><br><span class="line">| READ-COMMITTED                 |</span><br><span class="line">+--------------------------------+</span><br></pre></td></tr></table></figure>
+<p>这样，再有新的事务连接进来时，它们就只能查询到已经提交过的事务数据了。但是对于当前事务来说，它们看到的还是未提交的数据，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">-- 正在操作数据事务（当前事务）</span><br><span class="line">START TRANSACTION;</span><br><span class="line">UPDATE user SET money = money - 800 WHERE name = &apos;小明&apos;;</span><br><span class="line">UPDATE user SET money = money + 800 WHERE name = &apos;淘宝店&apos;;</span><br><span class="line"></span><br><span class="line">-- 虽然隔离级别被设置为了 READ COMMITTED，但在当前事务中，</span><br><span class="line">-- 它看到的仍然是数据表中临时改变数据，而不是真正提交过的数据。</span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">| id | name      | money |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">|  1 | a         |   900 |</span><br><span class="line">|  2 | b         |  1100 |</span><br><span class="line">|  3 | 小明      |   200 |</span><br><span class="line">|  4 | 淘宝店    |  1800 |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 假设此时在远程开启了一个新事务，连接到数据库。</span><br><span class="line">$ mysql -u root -p</span><br><span class="line"></span><br><span class="line">-- 此时远程连接查询到的数据只能是已经提交过的</span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">| id | name      | money |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">|  1 | a         |   900 |</span><br><span class="line">|  2 | b         |  1100 |</span><br><span class="line">|  3 | 小明      |  1000 |</span><br><span class="line">|  4 | 淘宝店    |  1000 |</span><br><span class="line">+----+-----------+-------+</span><br></pre></td></tr></table></figure>
+<p>但是这样还有问题，那就是假设一个事务在操作数据时，其他事务干扰了这个事务的数据。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">-- 小张在查询数据的时候发现：</span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">| id | name      | money |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">|  1 | a         |   900 |</span><br><span class="line">|  2 | b         |  1100 |</span><br><span class="line">|  3 | 小明      |   200 |</span><br><span class="line">|  4 | 淘宝店    |  1800 |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line"></span><br><span class="line">-- 在小张求表的 money 平均值之前，小王做了一个操作：</span><br><span class="line">START TRANSACTION;</span><br><span class="line">INSERT INTO user VALUES (5, &apos;c&apos;, 100);</span><br><span class="line">COMMIT;</span><br><span class="line"></span><br><span class="line">-- 此时表的真实数据是：</span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">| id | name      | money |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">|  1 | a         |   900 |</span><br><span class="line">|  2 | b         |  1100 |</span><br><span class="line">|  3 | 小明      |  1000 |</span><br><span class="line">|  4 | 淘宝店    |  1000 |</span><br><span class="line">|  5 | c         |   100 |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line"></span><br><span class="line">-- 这时小张再求平均值的时候，就会出现计算不相符合的情况：</span><br><span class="line">SELECT AVG(money) FROM user;</span><br><span class="line">+------------+</span><br><span class="line">| AVG(money) |</span><br><span class="line">+------------+</span><br><span class="line">|  820.0000  |</span><br><span class="line">+------------+</span><br></pre></td></tr></table></figure>
+<p>虽然 <strong>READ COMMITTED</strong> 让我们只能读取到其他事务已经提交的数据，但还是会出现问题，就是<strong>在读取同一个表的数据时，可能会发生前后不一致的情况。这被称为</strong>不可重复读现象 ( READ COMMITTED )。</p>
+<p><strong>3.幻读：REPEATABLE READ ( 可被重复读 )</strong></p>
+<p>将隔离级别设置为 <strong>REPEATABLE READ ( 可被重复读取 )</strong> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL TRANSACTION ISOLATION LEVEL REPEATABLE READ;</span><br><span class="line">SELECT @@GLOBAL.TRANSACTION_ISOLATION;</span><br><span class="line">+--------------------------------+</span><br><span class="line">| @@GLOBAL.TRANSACTION_ISOLATION |</span><br><span class="line">+--------------------------------+</span><br><span class="line">| REPEATABLE-READ                |</span><br><span class="line">+--------------------------------+</span><br></pre></td></tr></table></figure>
+<p>测试 <strong>REPEATABLE READ</strong> ，假设在两个不同的连接上分别执行 <code>START TRANSACTION</code> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 小张 - 成都</span><br><span class="line">START TRANSACTION;</span><br><span class="line">INSERT INTO user VALUES (6, &apos;d&apos;, 1000);</span><br><span class="line"></span><br><span class="line">-- 小王 - 北京</span><br><span class="line">START TRANSACTION;</span><br><span class="line"></span><br><span class="line">-- 小张 - 成都</span><br><span class="line">COMMIT;</span><br></pre></td></tr></table></figure>
+<p>当前事务开启后，没提交之前，查询不到，提交后可以被查询到。但是，在提交之前其他事务被开启了，那么在这条事务线上，就不会查询到当前有操作事务的连接。相当于开辟出一条单独的线程。</p>
+<p>无论小张是否执行过 <code>COMMIT</code> ，在小王这边，都不会查询到小张的事务记录，而是只会查询到自己所处事务的记录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM user;</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">| id | name      | money |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">|  1 | a         |   900 |</span><br><span class="line">|  2 | b         |  1100 |</span><br><span class="line">|  3 | 小明      |  1000 |</span><br><span class="line">|  4 | 淘宝店    |  1000 |</span><br><span class="line">|  5 | c         |   100 |</span><br><span class="line">+----+-----------+-------+</span><br></pre></td></tr></table></figure>
+<p>这是<strong>因为小王在此之前开启了一个新的事务 ( <code>START TRANSACTION</code> ) ，那么在他的这条新事务的线上，跟其他事务是没有联系的</strong>，也就是说，此时如果其他事务正在操作数据，它是不知道的。</p>
+<p>然而事实是，在真实的数据表中，小张已经插入了一条数据。但是小王此时并不知道，也插入了同一条数据，会发生什么呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO user VALUES (6, &apos;d&apos;, 1000);</span><br><span class="line">-- ERROR 1062 (23000): Duplicate entry &apos;6&apos; for key &apos;PRIMARY&apos;</span><br></pre></td></tr></table></figure>
+<p>报错了，操作被告知已存在主键为 <code>6</code> 的字段。这种现象也被称为<strong>幻读，一个事务提交的数据，不能被其他事务读取到</strong>。</p>
+<p><strong>4.串行化：SERIALIZABLE</strong> </p>
+<p>顾名思义，就是所有事务的<strong>写入操作</strong>全都是串行化的。什么意思？把隔离级别修改成 <strong>SERIALIZABLE</strong> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SET GLOBAL TRANSACTION ISOLATION LEVEL SERIALIZABLE;</span><br><span class="line">SELECT @@GLOBAL.TRANSACTION_ISOLATION;</span><br><span class="line">+--------------------------------+</span><br><span class="line">| @@GLOBAL.TRANSACTION_ISOLATION |</span><br><span class="line">+--------------------------------+</span><br><span class="line">| SERIALIZABLE                   |</span><br><span class="line">+--------------------------------+</span><br></pre></td></tr></table></figure>
+<p>还是拿小张和小王来举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">-- 小张 - 成都</span><br><span class="line">START TRANSACTION;</span><br><span class="line"></span><br><span class="line">-- 小王 - 北京</span><br><span class="line">START TRANSACTION;</span><br><span class="line"></span><br><span class="line">-- 开启事务之前先查询表，准备操作数据。</span><br><span class="line">SELECT * FROM user;</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">| id | name      | money |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line">|  1 | a         |   900 |</span><br><span class="line">|  2 | b         |  1100 |</span><br><span class="line">|  3 | 小明      |  1000 |</span><br><span class="line">|  4 | 淘宝店    |  1000 |</span><br><span class="line">|  5 | c         |   100 |</span><br><span class="line">|  6 | d         |  1000 |</span><br><span class="line">+----+-----------+-------+</span><br><span class="line"></span><br><span class="line">-- 发现没有 7 号王小花，于是插入一条数据：</span><br><span class="line">INSERT INTO user VALUES (7, &apos;王小花&apos;, 1000);</span><br></pre></td></tr></table></figure>
+<p>此时会发生什么呢？由于现在的隔离级别是 <strong>SERIALIZABLE ( 串行化 )</strong> ，串行化的意思就是：假设把所有的事务都放在一个串行的队列中，那么所有的事务都会按照<strong>固定顺序执行</strong>，执行完一个事务后再继续执行下一个事务的<strong>写入操作</strong> ( <strong>这意味着队列中同时只能执行一个事务的写入操作</strong> ) 。</p>
+<p>根据这个解释，小王在插入数据时，会出现等待状态，直到小张执行 <code>COMMIT</code> 结束它所处的事务，或者出现等待超时。</p>
+<blockquote>
+<p> 参考：</p>
+</blockquote>
+<p> <a href="https://www.bilibili.com/video/BV1Vt411z7wy?p=64" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1Vt411z7wy?p=64</a> </p>
+<p><a href="https://github.com/hjzCy/sql_node/blob/master/mysql/MySQL学习笔记.md" target="_blank" rel="noopener">https://github.com/hjzCy/sql_node/blob/master/mysql/MySQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md</a> </p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="凡希 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>喜欢所以热爱，坚持干货分享，欢迎订阅我的微信公众号</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>呐，请我吃辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="凡希 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="凡希 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/05/挖掘机技术哪家强/" rel="next" title="[C语言刷题]挖掘机技术哪家强">
+                <i class="fa fa-chevron-left"></i> [C语言刷题]挖掘机技术哪家强
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">凡希</p>
+              <p class="site-description motion-element" itemprop="description">大学狗的日常</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">102</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#登录"><span class="nav-number">1.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本操作命令"><span class="nav-number">2.</span> <span class="nav-text">基本操作命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建表约束"><span class="nav-number">3.</span> <span class="nav-text">建表约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主键约束"><span class="nav-number">3.1.</span> <span class="nav-text">主键约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自增约束"><span class="nav-number">3.2.</span> <span class="nav-text">自增约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#唯一约束"><span class="nav-number">3.3.</span> <span class="nav-text">唯一约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非空约束"><span class="nav-number">3.4.</span> <span class="nav-text">非空约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认约束"><span class="nav-number">3.5.</span> <span class="nav-text">默认约束</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外键约束"><span class="nav-number">3.6.</span> <span class="nav-text">外键约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库的三大设计范式"><span class="nav-number">4.</span> <span class="nav-text">数据库的三大设计范式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一范式"><span class="nav-number">4.1.</span> <span class="nav-text">第一范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二范式"><span class="nav-number">4.2.</span> <span class="nav-text">第二范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三范式"><span class="nav-number">4.3.</span> <span class="nav-text">第三范式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询练习"><span class="nav-number">5.</span> <span class="nav-text">查询练习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备数据"><span class="nav-number">5.1.</span> <span class="nav-text">准备数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-10"><span class="nav-number">5.2.</span> <span class="nav-text">1-10</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多表查询"><span class="nav-number">5.3.</span> <span class="nav-text">多表查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子查询"><span class="nav-number">5.4.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#union-求并集-和not-in"><span class="nav-number">5.5.</span> <span class="nav-text">union(求并集) 和not in</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#any：至少一个（只要有一个就行）"><span class="nav-number">5.6.</span> <span class="nav-text">any：至少一个（只要有一个就行）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#all：全部（都要满足）"><span class="nav-number">5.7.</span> <span class="nav-text">all：全部（都要满足）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#as取别名"><span class="nav-number">5.8.</span> <span class="nav-text">as取别名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#union求并集"><span class="nav-number">5.9.</span> <span class="nav-text">union求并集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子查询-1"><span class="nav-number">5.10.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#not-like"><span class="nav-number">5.11.</span> <span class="nav-text">not like</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#year和now函数"><span class="nav-number">5.12.</span> <span class="nav-text">year和now函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#max与min"><span class="nav-number">5.13.</span> <span class="nav-text">max与min</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多字段排序"><span class="nav-number">5.14.</span> <span class="nav-text">多字段排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子查询-2"><span class="nav-number">5.15.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#max函数与子查询"><span class="nav-number">5.16.</span> <span class="nav-text">max函数与子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继续子查询"><span class="nav-number">5.17.</span> <span class="nav-text">继续子查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按等级查询"><span class="nav-number">5.18.</span> <span class="nav-text">按等级查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL的四种连接查询"><span class="nav-number">5.19.</span> <span class="nav-text">SQL的四种连接查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#事务"><span class="nav-number">5.20.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#如何控制事务"><span class="nav-number">5.20.1.</span> <span class="nav-text">如何控制事务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#手动开启一个事务-局部"><span class="nav-number">5.20.2.</span> <span class="nav-text">手动开启一个事务(局部)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事务的四大特性"><span class="nav-number">5.20.3.</span> <span class="nav-text">事务的四大特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事务的隔离性可分为4种-性能由低到高-：隔离级别越高，性能越低"><span class="nav-number">5.20.4.</span> <span class="nav-text">事务的隔离性可分为4种(性能由低到高)：隔离级别越高，性能越低</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">凡希</span>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="footer-custom">微信公众号：我将在南极找寻你</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script
+</body>
+</html>
+
+
+
