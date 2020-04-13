@@ -115,18 +115,18 @@
 
 
 
-  <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;//链表的的的结构体定义typedef struct lineStack&amp;#12">
+  <meta name="description" content="一、线性SVM思想 寻找一个超平面，使得支撑向量到该超平面(决策边界)的距离最大。  Hard Margin在n维空间中，超平面的表达式为$$w^{T}x+b=0$$支撑向量到该超平面的距离为$$\frac {|w^{T}x+b|}{||w||}$$以二维空间为例，设某一类支撑向量到超平面的距离为d，两个类别分别用1和-1来表示，则有$$\frac {w^{T}x^{(i)}+b}{||w||}\">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ch3-栈和队列-链栈的入栈与出栈操作">
-<meta property="og:url" content="http://yoursite.com/2019/05/16/ch3-栈和队列-链栈的入栈与出栈操作/index.html">
+<meta property="og:title" content="SVM">
+<meta property="og:url" content="http://yoursite.com/2020/04/13/SVM/index.html">
 <meta property="og:site_name" content="一个大学狗的日常">
-<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;//链表的的的结构体定义typedef struct lineStack&amp;#12">
+<meta property="og:description" content="一、线性SVM思想 寻找一个超平面，使得支撑向量到该超平面(决策边界)的距离最大。  Hard Margin在n维空间中，超平面的表达式为$$w^{T}x+b=0$$支撑向量到该超平面的距离为$$\frac {|w^{T}x+b|}{||w||}$$以二维空间为例，设某一类支撑向量到超平面的距离为d，两个类别分别用1和-1来表示，则有$$\frac {w^{T}x^{(i)}+b}{||w||}\">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-20T03:51:00.134Z">
+<meta property="og:updated_time" content="2020-04-13T12:29:40.011Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ch3-栈和队列-链栈的入栈与出栈操作">
-<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;//链表的的的结构体定义typedef struct lineStack&amp;#12">
+<meta name="twitter:title" content="SVM">
+<meta name="twitter:description" content="一、线性SVM思想 寻找一个超平面，使得支撑向量到该超平面(决策边界)的距离最大。  Hard Margin在n维空间中，超平面的表达式为$$w^{T}x+b=0$$支撑向量到该超平面的距离为$$\frac {|w^{T}x+b|}{||w||}$$以二维空间为例，设某一类支撑向量到超平面的距离为d，两个类别分别用1和-1来表示，则有$$\frac {w^{T}x^{(i)}+b}{||w||}\">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/16/ch3-栈和队列-链栈的入栈与出栈操作/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/13/SVM/"/>
 
 
 
@@ -145,7 +145,7 @@
   };
 </script>
 
-  <title>ch3-栈和队列-链栈的入栈与出栈操作 | 一个大学狗的日常</title>
+  <title>SVM | 一个大学狗的日常</title>
   
 
 
@@ -318,7 +318,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/ch3-栈和队列-链栈的入栈与出栈操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/13/SVM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="凡希">
@@ -335,7 +335,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ch3-栈和队列-链栈的入栈与出栈操作
+          <h1 class="post-title" itemprop="name headline">SVM
               
             
           </h1>
@@ -360,24 +360,12 @@
                 
               
 
-              <time title="创建时间：2019-05-16 22:26:10" itemprop="dateCreated datePublished" datetime="2019-05-16T22:26:10+08:00">2019-05-16</time>
+              <time title="创建时间：2020-04-13 20:27:34 / 修改时间：20:29:40" itemprop="dateCreated datePublished" datetime="2020-04-13T20:27:34+08:00">2020-04-13</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-20 11:51:00" itemprop="dateModified" datetime="2019-06-20T11:51:00+08:00">2019-06-20</time>
               
             
           </span>
@@ -394,7 +382,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构与算法的上机代码实现/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法的上机代码实现</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/入门机器学习/" itemprop="url" rel="index"><span itemprop="name">入门机器学习</span></a></span>
 
                 
                 
@@ -436,8 +424,55 @@
       
 
       
-        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//链表的的的结构体定义</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">lineStack</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">lineStack</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;lineStack;</span><br><span class="line"></span><br><span class="line"><span class="comment">//入栈函数push，stack为当前的链栈，a表示入栈元素</span></span><br><span class="line"><span class="comment">//通常我们将链表的头部作为栈顶，尾部作为栈底,所以采用头插法</span></span><br><span class="line"><span class="comment">//stack初始为头结点</span></span><br><span class="line"><span class="function">lineStack *<span class="title">push</span><span class="params">(lineStack *<span class="built_in">stack</span>,<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">	<span class="comment">//创建存储新元素的结点</span></span><br><span class="line">	lineStack *line=(lineStack*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(lineStack));</span><br><span class="line">	line-&gt;data=a;</span><br><span class="line">	<span class="comment">//创建好的结点，该建立新结点与头结点stack的逻辑关系了</span></span><br><span class="line">	line-&gt;next=<span class="built_in">stack</span>;</span><br><span class="line">	<span class="comment">//更新头指针的指向</span></span><br><span class="line">	<span class="built_in">stack</span>=line;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">stack</span>;<span class="comment">//返回头结点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//栈顶元素出链栈的实现函数</span></span><br><span class="line"><span class="function">lineStack *<span class="title">pop</span><span class="params">(lineStack *<span class="built_in">stack</span>)</span></span>&#123;</span><br><span class="line">	<span class="comment">//当栈不空时方可出栈</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">stack</span>)&#123;</span><br><span class="line">		<span class="comment">//声明一个新指针指向栈顶节点</span></span><br><span class="line">		lineStack *p=<span class="built_in">stack</span>;</span><br><span class="line">		<span class="comment">//更新头指针</span></span><br><span class="line">		<span class="built_in">stack</span>=<span class="built_in">stack</span>-&gt;next;<span class="comment">//stack=p-&gt;next;</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"出栈元素：%d\n"</span>,p-&gt;data);<span class="comment">//这里必须是p-&gt;data，不能是stack-&gt;data</span></span><br><span class="line">		<span class="keyword">if</span>(<span class="built_in">stack</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"新栈顶元素：%d\n"</span>,<span class="built_in">stack</span>-&gt;data);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"栈已空\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">free</span>(p);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"栈内无元素"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">stack</span>;</span><br><span class="line">	&#125;	</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">stack</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    lineStack * <span class="built_in">stack</span>=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">stack</span>=push(<span class="built_in">stack</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">stack</span>=push(<span class="built_in">stack</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="built_in">stack</span>=push(<span class="built_in">stack</span>, <span class="number">3</span>);</span><br><span class="line">    <span class="built_in">stack</span>=push(<span class="built_in">stack</span>, <span class="number">4</span>);</span><br><span class="line">    <span class="built_in">stack</span>=pop(<span class="built_in">stack</span>);</span><br><span class="line">    <span class="built_in">stack</span>=pop(<span class="built_in">stack</span>);</span><br><span class="line">    <span class="built_in">stack</span>=pop(<span class="built_in">stack</span>);</span><br><span class="line">    <span class="built_in">stack</span>=pop(<span class="built_in">stack</span>);</span><br><span class="line">    <span class="built_in">stack</span>=pop(<span class="built_in">stack</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">出栈元素：4</span><br><span class="line">新栈顶元素：3</span><br><span class="line">出栈元素：3</span><br><span class="line">新栈顶元素：2</span><br><span class="line">出栈元素：2</span><br><span class="line">新栈顶元素：1</span><br><span class="line">出栈元素：1</span><br><span class="line">栈已空</span><br><span class="line">栈内无元素</span><br></pre></td></tr></table></figure></p>
+        <h1 id="一、线性SVM"><a href="#一、线性SVM" class="headerlink" title="一、线性SVM"></a>一、线性SVM</h1><h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><blockquote>
+<p>寻找一个超平面，使得支撑向量到该超平面(决策边界)的距离最大。</p>
+</blockquote>
+<h3 id="Hard-Margin"><a href="#Hard-Margin" class="headerlink" title="Hard Margin"></a>Hard Margin</h3><p>在n维空间中，超平面的表达式为<br>$$<br>w^{T}x+b=0<br>$$<br>支撑向量到该超平面的距离为<br>$$<br>\frac {|w^{T}x+b|}{||w||}<br>$$<br>以二维空间为例，设某一类支撑向量到超平面的距离为d，两个类别分别用1和-1来表示，则有<br>$$<br>\frac {w^{T}x^{(i)}+b}{||w||}\geq d,\forall y^{(i)}=1<br>$$</p>
+<p>$$<br>\frac {w^{T}x^{(i)}+b}{||w||}\leq -d,\forall y^{(i)}=-1<br>$$</p>
+<p>上下同除以d，得<br>$$<br>\frac {w^{T}x^{(i)}+b}{||w||d}\geq 1,\forall y^{(i)}=1<br>$$</p>
+<p>$$<br>\frac {w^{T}x^{(i)}+b}{||w||d}\leq -1,\forall y^{(i)}=-1<br>$$</p>
+<p>记<br>$$<br>\frac {w^{T}}{||w||d}=w_d^{T}<br>$$</p>
+<p>$$<br>\frac{b}{||w||d}=b_d<br>$$</p>
+<p>则有<br>$$<br>w_d^{T}x^{(i)}+b_d\geq 1,\forall y^{(i)}=1<br>$$</p>
+<p>$$<br>w_d^{T}x^{(i)}+b_d\leq -1,\forall y^{(i)}=-1<br>$$</p>
+<p>为了后续方便书写，这里再记<br>$$<br>w_d=w<br>$$</p>
+<p>$$<br>b_d=b<br>$$</p>
+<p>于是得到<br>$$<br>w^{T}x^{(i)}+b\geq 1,\forall y^{(i)}=1<br>$$</p>
+<p>$$<br>w^{T}x^{(i)}+b\leq -1,\forall y^{(i)}=-1<br>$$</p>
+<p>上面得式子又可以合并为一个式子<br>$$<br>y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1<br>$$<br>这便是优化目标的限制条件</p>
+<p>现在，我们已经得到了优化目标和限制条件，即<br>$$<br>max\ \ \  \frac{|w^{T}x+b|}{||w||}<br>$$</p>
+<p>$$<br>s.t. \ \ \ y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1<br>$$</p>
+<p>其中x是支撑向量的位置坐标，并且当x为支撑向量时，满足<br>$$<br>|w^Tx+b|=1<br>$$<br>所以我们的优化目标又可以写成<br>$$<br>max \ \ \ \frac{1}{||w||}<br>$$<br>也就是<br>$$<br>min \ \ \ ||w||<br>$$<br>为了便于求解，写为<br>$$<br>min \ \ \ \frac12||w||^2<br>$$<br>我们得到了最终的优化目标和限制条件<br>$$<br>min \ \ \ \frac12||w||^2<br>$$</p>
+<p>$$<br>s.t. \ \ \ y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1<br>$$</p>
+<p>这是一个有条件的最优化问题</p>
+<h3 id="Soft-Margin"><a href="#Soft-Margin" class="headerlink" title="Soft Margin"></a>Soft Margin</h3><p>上面的数学推导是关于Hard Margin的，但是在实际的应用中，为了提高模型的泛化能力，要求SVM模型对训练数据集要有一定的容错能力(也就是牺牲一部分预测精度，以获得较强的泛化能力)。</p>
+<p>在Hard Margin的基础上，增加正则化项$\zeta_i$，便得到了Soft Margin的优化目标和限制条件<br>$$<br>min \ \ \ \frac12||w||^2+C\sum_{i=1}^{m}\zeta_i<br>$$</p>
+<p>$$<br>s.t. \ \ \ y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1-\zeta_i<br>$$</p>
+<p>$$<br>\zeta \geq 0<br>$$</p>
+<p>或者<br>$$<br>min \ \ \ \frac12||w||^2+C\sum_{i=1}^{m}\zeta_i^2<br>$$</p>
+<p>$$<br>s.t. \ \ \ y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1-\zeta_i<br>$$</p>
+<p>$$<br>\zeta_i \geq 0<br>$$</p>
+<p>前者是L1正则，后者为L2正则。</p>
+<h1 id="二、非线性SVM"><a href="#二、非线性SVM" class="headerlink" title="二、非线性SVM"></a>二、非线性SVM</h1><h3 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h3><p>在求解<br>$$<br>min \ \ \ \frac12||w||^2+C\sum_{i=1}^{m}\zeta_i<br>$$</p>
+<p>$$<br>s.t. \ \ \ y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1-\zeta_i<br>$$</p>
+<p>$$<br>\zeta \geq 0<br>$$</p>
+<p>的过程中，可以通过变换，得到其等价形式<br>$$<br>max \ \ \ \sum_{i=1}^{m}\alpha_i-\frac12\sum_{i=1}^{m}\sum_{j=1}^{m}\alpha_i\alpha_jy_iy_jx_ix_j<br>$$</p>
+<p>$$<br>s.t.\ \ \ 0\leq \alpha_i \leq C<br>$$</p>
+<p>$$<br>\sum_{i=1}^{m} \alpha_i y_i=0<br>$$</p>
+<p>上面的形式是求解线性SVM的</p>
+<p>只要改变$x_iy_i$，便可以转化为非线性SVM，这里的转化便使用了核函数<br>$$<br>K(x_i,y_i)<br>$$<br>于是我们得到了更一般的优化目标和限制条件<br>$$<br>max \ \ \ \sum_{i=1}^{m}\alpha_i-\frac12\sum_{i=1}^{m}\sum_{j=1}^{m}\alpha_i\alpha_jy_iy_jK(x_ix_j)<br>$$</p>
+<p>$$<br>s.t.\ \ \ 0\leq \alpha_i \leq C<br>$$</p>
+<p>$$<br>\sum_{i=1}^{m} \alpha_i y_i=0<br>$$</p>
+<p>若核函数取<br>$$<br>K(x_i,y_i)=xy<br>$$<br>便得到了前面推导的线性SVM</p>
+<p>当核函数取其他函数时，便可以得到非线性SVM的优化目标和限制条件了。</p>
+<h3 id="常用核函数"><a href="#常用核函数" class="headerlink" title="常用核函数"></a>常用核函数</h3><ul>
+<li>多项式核函数<br>$$<br>K(x,y)={(xy+c)}^d<br>$$<br>其中c和d是超参数</li>
+</ul>
+<ul>
+<li>高斯核函数<br>$$<br>K(x,y)=e^{-\gamma {||x-y||}^2}<br>$$</li>
+</ul>
+<p>其中$\gamma$是超参数</p>
+<p><strong>基本思想</strong>就是将低维的数据映射到高维（m*n–&gt;m*m），使得在低维空间中线性不可分的情况在高维空间中变得线性可分了。</p>
 
       
     </div>
@@ -502,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/16/ch3-栈和队列-顺序栈的入栈与出栈操作/" rel="next" title="ch3-栈和队列-顺序栈的入栈与出栈操作">
-                <i class="fa fa-chevron-left"></i> ch3-栈和队列-顺序栈的入栈与出栈操作
+              <a href="/2020/04/09/MySQL基础总结/" rel="next" title="MySQL基础总结">
+                <i class="fa fa-chevron-left"></i> MySQL基础总结
               </a>
             
           </div>
@@ -511,10 +546,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/16/ch3-栈和队列-循环队列的实现/" rel="prev" title="ch3-栈和队列-循环队列的实现">
-                ch3-栈和队列-循环队列的实现 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -559,8 +590,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -674,6 +714,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、线性SVM"><span class="nav-number">1.</span> <span class="nav-text">一、线性SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#思想"><span class="nav-number">1.0.1.</span> <span class="nav-text">思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hard-Margin"><span class="nav-number">1.0.2.</span> <span class="nav-text">Hard Margin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Soft-Margin"><span class="nav-number">1.0.3.</span> <span class="nav-text">Soft Margin</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、非线性SVM"><span class="nav-number">2.</span> <span class="nav-text">二、非线性SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#核函数"><span class="nav-number">2.0.1.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用核函数"><span class="nav-number">2.0.2.</span> <span class="nav-text">常用核函数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -895,6 +951,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 

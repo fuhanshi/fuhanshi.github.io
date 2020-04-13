@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-04-09T10:13:51.284Z</updated>
+  <updated>2020-04-13T12:29:40.011Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SVM</title>
+    <link href="http://yoursite.com/2020/04/13/SVM/"/>
+    <id>http://yoursite.com/2020/04/13/SVM/</id>
+    <published>2020-04-13T12:27:34.000Z</published>
+    <updated>2020-04-13T12:29:40.011Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、线性SVM"><a href="#一、线性SVM" class="headerlink" title="一、线性SVM"></a>一、线性SVM</h1><h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><blockquote><p>寻找一个超平面，使得支撑向量到该超平面(决策边界)的距离最大。</p></blockquote><h3 id="Hard-Margin"><a href="#Hard-Margin" class="headerlink" title="Hard Margin"></a>Hard Margin</h3><p>在n维空间中，超平面的表达式为<br>$$<br>w^{T}x+b=0<br>$$<br>支撑向量到该超平面的距离为<br>$$<br>\frac {|w^{T}x+b|}{||w||}<br>$$<br>以二维空间为例，设某一类支撑向量到超平面的距离为d，两个类别分别用1和-1来表示，则有<br>$$<br>\frac {w^{T}x^{(i)}+b}{||w||}\geq d,\forall y^{(i)}=1<br>$$</p><p>$$<br>\frac {w^{T}x^{(i)}+b}{||w||}\leq -d,\forall y^{(i)}=-1<br>$$</p><p>上下同除以d，得<br>$$<br>\frac {w^{T}x^{(i)}+b}{||w||d}\geq 1,\forall y^{(i)}=1<br>$$</p><p>$$<br>\frac {w^{T}x^{(i)}+b}{||w||d}\leq -1,\forall y^{(i)}=-1<br>$$</p><p>记<br>$$<br>\frac {w^{T}}{||w||d}=w_d^{T}<br>$$</p><p>$$<br>\frac{b}{||w||d}=b_d<br>$$</p><p>则有<br>$$<br>w_d^{T}x^{(i)}+b_d\geq 1,\forall y^{(i)}=1<br>$$</p><p>$$<br>w_d^{T}x^{(i)}+b_d\leq -1,\forall y^{(i)}=-1<br>$$</p><p>为了后续方便书写，这里再记<br>$$<br>w_d=w<br>$$</p><p>$$<br>b_d=b<br>$$</p><p>于是得到<br>$$<br>w^{T}x^{(i)}+b\geq 1,\forall y^{(i)}=1<br>$$</p><p>$$<br>w^{T}x^{(i)}+b\leq -1,\forall y^{(i)}=-1<br>$$</p><p>上面得式子又可以合并为一个式子<br>$$<br>y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1<br>$$<br>这便是优化目标的限制条件</p><p>现在，我们已经得到了优化目标和限制条件，即<br>$$<br>max\ \ \  \frac{|w^{T}x+b|}{||w||}<br>$$</p><p>$$<br>s.t. \ \ \ y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1<br>$$</p><p>其中x是支撑向量的位置坐标，并且当x为支撑向量时，满足<br>$$<br>|w^Tx+b|=1<br>$$<br>所以我们的优化目标又可以写成<br>$$<br>max \ \ \ \frac{1}{||w||}<br>$$<br>也就是<br>$$<br>min \ \ \ ||w||<br>$$<br>为了便于求解，写为<br>$$<br>min \ \ \ \frac12||w||^2<br>$$<br>我们得到了最终的优化目标和限制条件<br>$$<br>min \ \ \ \frac12||w||^2<br>$$</p><p>$$<br>s.t. \ \ \ y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1<br>$$</p><p>这是一个有条件的最优化问题</p><h3 id="Soft-Margin"><a href="#Soft-Margin" class="headerlink" title="Soft Margin"></a>Soft Margin</h3><p>上面的数学推导是关于Hard Margin的，但是在实际的应用中，为了提高模型的泛化能力，要求SVM模型对训练数据集要有一定的容错能力(也就是牺牲一部分预测精度，以获得较强的泛化能力)。</p><p>在Hard Margin的基础上，增加正则化项$\zeta_i$，便得到了Soft Margin的优化目标和限制条件<br>$$<br>min \ \ \ \frac12||w||^2+C\sum_{i=1}^{m}\zeta_i<br>$$</p><p>$$<br>s.t. \ \ \ y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1-\zeta_i<br>$$</p><p>$$<br>\zeta \geq 0<br>$$</p><p>或者<br>$$<br>min \ \ \ \frac12||w||^2+C\sum_{i=1}^{m}\zeta_i^2<br>$$</p><p>$$<br>s.t. \ \ \ y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1-\zeta_i<br>$$</p><p>$$<br>\zeta_i \geq 0<br>$$</p><p>前者是L1正则，后者为L2正则。</p><h1 id="二、非线性SVM"><a href="#二、非线性SVM" class="headerlink" title="二、非线性SVM"></a>二、非线性SVM</h1><h3 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h3><p>在求解<br>$$<br>min \ \ \ \frac12||w||^2+C\sum_{i=1}^{m}\zeta_i<br>$$</p><p>$$<br>s.t. \ \ \ y^{(i)}(w_d^{T}x^{(i)}+b_d)\geq 1-\zeta_i<br>$$</p><p>$$<br>\zeta \geq 0<br>$$</p><p>的过程中，可以通过变换，得到其等价形式<br>$$<br>max \ \ \ \sum_{i=1}^{m}\alpha_i-\frac12\sum_{i=1}^{m}\sum_{j=1}^{m}\alpha_i\alpha_jy_iy_jx_ix_j<br>$$</p><p>$$<br>s.t.\ \ \ 0\leq \alpha_i \leq C<br>$$</p><p>$$<br>\sum_{i=1}^{m} \alpha_i y_i=0<br>$$</p><p>上面的形式是求解线性SVM的</p><p>只要改变$x_iy_i$，便可以转化为非线性SVM，这里的转化便使用了核函数<br>$$<br>K(x_i,y_i)<br>$$<br>于是我们得到了更一般的优化目标和限制条件<br>$$<br>max \ \ \ \sum_{i=1}^{m}\alpha_i-\frac12\sum_{i=1}^{m}\sum_{j=1}^{m}\alpha_i\alpha_jy_iy_jK(x_ix_j)<br>$$</p><p>$$<br>s.t.\ \ \ 0\leq \alpha_i \leq C<br>$$</p><p>$$<br>\sum_{i=1}^{m} \alpha_i y_i=0<br>$$</p><p>若核函数取<br>$$<br>K(x_i,y_i)=xy<br>$$<br>便得到了前面推导的线性SVM</p><p>当核函数取其他函数时，便可以得到非线性SVM的优化目标和限制条件了。</p><h3 id="常用核函数"><a href="#常用核函数" class="headerlink" title="常用核函数"></a>常用核函数</h3><ul><li>多项式核函数<br>$$<br>K(x,y)={(xy+c)}^d<br>$$<br>其中c和d是超参数</li></ul><ul><li>高斯核函数<br>$$<br>K(x,y)=e^{-\gamma {||x-y||}^2}<br>$$</li></ul><p>其中$\gamma$是超参数</p><p><strong>基本思想</strong>就是将低维的数据映射到高维（m*n–&gt;m*m），使得在低维空间中线性不可分的情况在高维空间中变得线性可分了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;一、线性SVM&quot;&gt;&lt;a href=&quot;#一、线性SVM&quot; class=&quot;headerlink&quot; title=&quot;一、线性SVM&quot;&gt;&lt;/a&gt;一、线性SVM&lt;/h1&gt;&lt;h3 id=&quot;思想&quot;&gt;&lt;a href=&quot;#思想&quot; class=&quot;headerlink&quot; title=&quot;思
+      
+    
+    </summary>
+    
+      <category term="入门机器学习" scheme="http://yoursite.com/categories/%E5%85%A5%E9%97%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>MySQL基础总结</title>
@@ -461,28 +484,6 @@
     </summary>
     
       <category term="C" scheme="http://yoursite.com/categories/C/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>数据链路层</title>
-    <link href="http://yoursite.com/2020/01/30/%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/"/>
-    <id>http://yoursite.com/2020/01/30/数据链路层/</id>
-    <published>2020-01-30T11:45:03.000Z</published>
-    <updated>2020-01-30T12:41:52.591Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="数据链路层基本概念"><a href="#数据链路层基本概念" class="headerlink" title="数据链路层基本概念"></a>数据链路层基本概念</h3><p>结点：主机，路由器<br></p><p>链路：网络中两个结点之间的物理通道，链路的传输介质主要有双绞线、光纤和微波。分为有线链路和无线链路<br></p><p>数据链路：网络中两个结点之间的逻辑通道，把实现控制数据传输协议的硬件和软件加到链路上就构成数据链路<br></p><p>帧：链路层的协议数据单元，封装网络层数据报<br></p><blockquote><p>数据链路层负责通过一条链路从一个加到向另一个物理链路直接相连的相邻结点传送数据报<br></p></blockquote><h3 id="数据链路层功能概述"><a href="#数据链路层功能概述" class="headerlink" title="数据链路层功能概述"></a>数据链路层功能概述</h3><p>数据链路层在物理层提供服务的基础上向网络层提供服务，其最基本的服务是将源自网络层来的数据可靠地传送到相邻结点的目标机网络层。其主要作用是<code>加强物理层传送原始比特流的功能</code>，将物理层提供的可能出错的物理连接改造为<code>逻辑上无差错的数据链路</code>，使之对网络层表现为一条无差错的链路。<br></p><blockquote><p>功能一：为网络层提供服务。无确认无连接服务，有确认无连接服务，有确认面向连接服务(tip:有链连接一定有确认)<br><br>功能二：链路管理，即连接的建立，维持，释放(用于面向连接的服务)<br><br>功能三：组帧<br><br>功能四：流量控制(限制发送方)<br><br>功能五：差错控制（帧错/位错）<br></p></blockquote><h3 id="封装成帧与透明传输"><a href="#封装成帧与透明传输" class="headerlink" title="封装成帧与透明传输"></a>封装成帧与透明传输</h3><p><img src="1.png" alt=""> <br><br><code>透明传输</code>是指不管所传数据时什么样的比特组合，都应当能够在链路上传送。因此，链路层就“看不见”有什么妨碍数据传输的东西<br><br>当所传数据的比特组合恰巧与某一个控制信息完全一样时，就必须采取适当的措施，使接收方不会将这样的数据误认为是某种控制信息（例如下面的字符填充法中那样），这样才能保证数据链路层的传输是透明的。<br><br><img src="2.png" alt=""> <br><br><img src="3.png" alt=""> <br><br><img src="4.png" alt=""> <br><br><img src="5.png" alt=""> <br><br><img src="6.png" alt=""> <br></p><p>总结：由于字节计数法中count字段的脆弱性(其值若有差错将导致灾难性后果)以及字符填充法实现上的复杂性和不兼容性，目前较普遍使用的帧同步法时比特填充和违规编码法<br></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;数据链路层基本概念&quot;&gt;&lt;a href=&quot;#数据链路层基本概念&quot; class=&quot;headerlink&quot; title=&quot;数据链路层基本概念&quot;&gt;&lt;/a&gt;数据链路层基本概念&lt;/h3&gt;&lt;p&gt;结点：主机，路由器&lt;br&gt;&lt;/p&gt;
-&lt;p&gt;链路：网络中两个结点之间的物理通道，链路的
-      
-    
-    </summary>
     
     
   </entry>
