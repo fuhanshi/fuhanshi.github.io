@@ -115,18 +115,18 @@
 
 
 
-  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940import numpy as npfrom tensorflow.keras.datasets import mnistfrom tensorflow.python.keras.utils.np_utils import to_categoricalfro">
+  <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/*题目：x进制转为y进制思路：先将x进制的数转为10进制，再将10进制转为y进制（将10进制作为桥梁）注：本方法适用性强，可处理位数较多的x进制数*/#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;st">
 <meta name="keywords" content="Share">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用keras进行手写数字识别">
-<meta property="og:url" content="http://yoursite.com/2020/01/29/使用keras进行手写数字识别/index.html">
+<meta property="og:title" content="进制转换通用版">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/进制转换通用版/index.html">
 <meta property="og:site_name" content="一个大学狗的日常">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940import numpy as npfrom tensorflow.keras.datasets import mnistfrom tensorflow.python.keras.utils.np_utils import to_categoricalfro">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/*题目：x进制转为y进制思路：先将x进制的数转为10进制，再将10进制转为y进制（将10进制作为桥梁）注：本方法适用性强，可处理位数较多的x进制数*/#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;st">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-29T13:36:39.322Z">
+<meta property="og:updated_time" content="2020-04-26T05:46:54.652Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用keras进行手写数字识别">
-<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940import numpy as npfrom tensorflow.keras.datasets import mnistfrom tensorflow.python.keras.utils.np_utils import to_categoricalfro">
+<meta name="twitter:title" content="进制转换通用版">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647/*题目：x进制转为y进制思路：先将x进制的数转为10进制，再将10进制转为y进制（将10进制作为桥梁）注：本方法适用性强，可处理位数较多的x进制数*/#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;st">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/01/29/使用keras进行手写数字识别/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/26/进制转换通用版/"/>
 
 
 
@@ -145,7 +145,7 @@
   };
 </script>
 
-  <title>使用keras进行手写数字识别 | 一个大学狗的日常</title>
+  <title>进制转换通用版 | 一个大学狗的日常</title>
   
 
 
@@ -318,7 +318,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/使用keras进行手写数字识别/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/进制转换通用版/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="凡希">
@@ -335,7 +335,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用keras进行手写数字识别
+          <h1 class="post-title" itemprop="name headline">进制转换通用版
               
             
           </h1>
@@ -360,7 +360,7 @@
                 
               
 
-              <time title="创建时间：2020-01-29 21:20:58 / 修改时间：21:36:39" itemprop="dateCreated datePublished" datetime="2020-01-29T21:20:58+08:00">2020-01-29</time>
+              <time title="创建时间：2020-04-26 13:46:03 / 修改时间：13:46:54" itemprop="dateCreated datePublished" datetime="2020-04-26T13:46:03+08:00">2020-04-26</time>
             
 
             
@@ -382,7 +382,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/keras实战/" itemprop="url" rel="index"><span itemprop="name">keras实战</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C</span></a></span>
 
                 
                 
@@ -424,9 +424,7 @@
       
 
       
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.datasets <span class="keyword">import</span> mnist</span><br><span class="line"><span class="keyword">from</span> tensorflow.python.keras.utils.np_utils <span class="keyword">import</span> to_categorical</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras.optimizers <span class="keyword">import</span> SGD</span><br><span class="line"></span><br><span class="line"><span class="comment">#载入数据</span></span><br><span class="line">(x_train,y_train),(x_test,y_test)=mnist.load_data()</span><br><span class="line"></span><br><span class="line">print(<span class="string">'x_shape'</span>,x_train.shape)<span class="comment">#(60000,28,28)</span></span><br><span class="line">print(<span class="string">'y_shape:'</span>,y_train.shape)<span class="comment">#(6000)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#(60000,28,28)--&gt;(60000,784)</span></span><br><span class="line">x_train=x_train.reshape(x_train.shape[<span class="number">0</span>],<span class="number">-1</span>)/<span class="number">255.0</span><span class="comment">#除以255是做归一化，下同</span></span><br><span class="line">x_test=x_test.reshape(x_test.shape[<span class="number">0</span>],<span class="number">-1</span>)/<span class="number">255.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#换one hot格式(独热编码)</span></span><br><span class="line">y_train=to_categorical(y_train,num_classes=<span class="number">10</span>)</span><br><span class="line">y_test=to_categorical(y_test,num_classes=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建模型，输入28*28=784个神经元，输出10个神经元</span></span><br><span class="line">model=Sequential([</span><br><span class="line">    Dense(units=<span class="number">10</span>,input_dim=<span class="number">784</span>,bias_initializer=<span class="string">'one'</span>,activation=<span class="string">'softmax'</span>)</span><br><span class="line">])</span><br><span class="line"><span class="comment">#定义优化器,训练过程中计算准确率</span></span><br><span class="line">sgd=SGD(lr=<span class="number">0.2</span>)</span><br><span class="line">model.compile(</span><br><span class="line">    optimizer=sgd,</span><br><span class="line">    loss=<span class="string">'mse'</span>,</span><br><span class="line">    metrics=[<span class="string">'accuracy'</span>]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">#训练模型</span></span><br><span class="line">model.fit(x_train,y_train,batch_size=<span class="number">32</span>,epochs=<span class="number">1</span>)<span class="comment">#epochs是训练周期</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#评估模型</span></span><br><span class="line">loss,accuracy=model.evaluate(x_test,y_test)</span><br><span class="line">print(<span class="string">'\ntest loss'</span>,loss)</span><br><span class="line">print(<span class="string">'accuracy'</span>,accuracy)</span><br></pre></td></tr></table></figure>
-<p>运行上述代码，得到如下结果：<br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test loss 0.021694928619265558</span><br><span class="line">accuracy 0.8772</span><br></pre></td></tr></table></figure></p>
-<p>可以提高训练周期epochs来提高准确率<br></p>
+        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">题目：x进制转为y进制</span></span><br><span class="line"><span class="comment">思路：先将x进制的数转为10进制，再将10进制转为y进制（将10进制作为桥梁）</span></span><br><span class="line"><span class="comment">注：本方法适用性强，可处理位数较多的x进制数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> x,y;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;x,&amp;y);</span><br><span class="line">    <span class="keyword">char</span> s[<span class="number">105</span>];</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;<span class="comment">//存储10进制数</span></span><br><span class="line">    <span class="keyword">int</span> len=<span class="built_in">strlen</span>(s);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将x进制的数转为10进制（非常规方法，不易理解）</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)</span><br><span class="line">    &#123;</span><br><span class="line">        ans=ans*x;</span><br><span class="line">        <span class="keyword">if</span>(s[i]&gt;=<span class="string">'0'</span>&amp;&amp;s[i]&lt;=<span class="string">'9'</span>)</span><br><span class="line">            ans+=(s[i]-<span class="string">'0'</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ans+=(s[i]-<span class="string">'A'</span>+<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//将10进制转为y进制（常规方法，容易理解）</span></span><br><span class="line">    <span class="keyword">char</span> out[<span class="number">105</span>];</span><br><span class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(ans&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> w=(ans%y);</span><br><span class="line">        <span class="keyword">if</span>(w&lt;<span class="number">10</span>)</span><br><span class="line">            out[cnt++]=w+<span class="string">'0'</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            out[cnt++]=(w<span class="number">-10</span>)+<span class="string">'A'</span>;</span><br><span class="line">        ans/=y;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//打印y进制结果</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=cnt<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%c"</span>,out[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -491,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/29/keras中导入utls失败的解决办法/" rel="next" title="keras中导入utls失败的解决办法">
-                <i class="fa fa-chevron-left"></i> keras中导入utls失败的解决办法
+              <a href="/2020/04/13/SVM/" rel="next" title="SVM">
+                <i class="fa fa-chevron-left"></i> SVM
               </a>
             
           </div>
@@ -500,10 +498,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/01/30/字符数组/" rel="prev" title="字符数组">
-                字符数组 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
