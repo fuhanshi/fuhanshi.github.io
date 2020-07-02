@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-13T07:00:35.156Z</updated>
+  <updated>2020-07-02T13:14:31.950Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【置顶】博客地址更新公告</title>
+    <link href="http://yoursite.com/2020/07/02/%E3%80%90%E7%BD%AE%E9%A1%B6%E3%80%91%E5%8D%9A%E5%AE%A2%E5%9C%B0%E5%9D%80%E6%9B%B4%E6%96%B0%E5%85%AC%E5%91%8A/"/>
+    <id>http://yoursite.com/2020/07/02/【置顶】博客地址更新公告/</id>
+    <published>2020-07-02T11:42:51.000Z</published>
+    <updated>2020-07-02T13:14:31.950Z</updated>
+    
+    <content type="html"><![CDATA[<p>以后的博客将发布在新的地址：<a href="https://fx0809.gitee.io" target="_blank" rel="noopener">https://fx0809.gitee.io</a> <br></p><p>原地址<a href="https://fuhanshi.github.io" target="_blank" rel="noopener">https://fuhanshi.github.io</a> 也算是陪伴我走过了一半的大学时光吧，总有些感慨要表达一下<br></p><p>持续发了两年的干货，今天作为最后一次，发点不那么”干”的内容</p><p>######## 华丽的分割线######### <br></p><p>时光飞逝，转眼间大学已经毕业<br></p><p>我仍记得当初写下人生第一篇博客并成功发布时的喜悦<br></p><p>翻看自己以前写的博客 <br></p><p>发现这些不仅仅是博客，更是一段美好的回忆<br></p><p>与其说写博客是为了记录知识，不如说是记录生活<br></p><p>因为，未来会有一天，当我不经意间读到博客中的某段话<br></p><p>记忆就会回溯<br></p><p>所有开心的、不开心的，欣喜的、苦闷的情绪都将涌来<br></p><p>仿佛那就在昨天<br></p><p>我记得，那时为了准备期末考，我连续整理了一天”多元统计分析”简答题笔记<br></p><p>我也记得有一篇博客，从下课写到黑夜降临 <br></p><p>期间人来人往<br></p><p>最后抬头却已不见一人<br></p><p>我还记得那里的一年四季<br></p><p>那一年的夏天，和你们一起熬夜写报告、写论文<br></p><p>我那天早早的起来，推开窗户，看向操场<br></p><p>太阳还没升起，我朝着宿舍楼的方向走去<br></p><p>那代表了一半大学时光的终结<br></p><p>吉林的冬季，室内室外两重天 <br></p><p>和”两个寝室”的室友们躺在寝室，吃着零食，有一搭无一搭的聊着<br></p><p>是最惬意的时候 <br></p><p>时而探讨”大事 <br></p><p>时而打打闹闹<br></p><p>每当节日便会出动<br></p><p>聚餐<br></p><p>K歌，即使不在调上也还是怡然自乐<br></p><p>还有那几个傻子<br></p><p>那天在操场躺了一夜<br></p><p>看着繁星，数着世界<br></p><p>在理科楼奋斗的那段日子<br></p><p>每天讲着自己的进度<br></p><p>每天倒数着距离考研还有多少天<br></p><p>每天为了能多在理科楼学一会，和楼下的大爷斗智斗勇<br></p><p>那段时间，几乎每天我们都是最后一批离开的<br></p><p>数学很难，算法很难<br></p><p>政治很难背 ，单词很难记 <br></p><p>可回头一看，那些日子啊<br></p><p>全是喜悦<br></p><p>全是美好<br></p><p>因为，有你啊 <br></p><p>… <br></p><p>那天在路上，我遇到了楼下那个瘦瘦的大爷<br></p><p>嗯，他问我去哪儿<br></p><p>要去哪儿呢？<br></p><p>…<br></p><p>往事如烟<br></p><p>回首已经是沧海桑田 <br></p><p>希望我们跃入人海 <br></p><p>各自灿烂 <br></p><p><br></p><p><img src="" alt="1.png"> <br></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;以后的博客将发布在新的地址：&lt;a href=&quot;https://fx0809.gitee.io&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://fx0809.gitee.io&lt;/a&gt; &lt;br&gt;&lt;/p&gt;
+&lt;p&gt;原地址&lt;a href=&quot;https:
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Python基础第二部分</title>
@@ -467,30 +489,6 @@
       
         &lt;h1 id=&quot;第一题&quot;&gt;&lt;a href=&quot;#第一题&quot; class=&quot;headerlink&quot; title=&quot;第一题&quot;&gt;&lt;/a&gt;第一题&lt;/h1&gt;&lt;p&gt;打印出一个旋转方阵,见样例输出。&lt;/p&gt;
 &lt;h5 id=&quot;输入输出格式&quot;&gt;&lt;a href=&quot;#输入输出格式&quot; class=&quot;head
-      
-    
-    </summary>
-    
-      <category term="C" scheme="http://yoursite.com/categories/C/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>sprintf与sscanf</title>
-    <link href="http://yoursite.com/2020/05/03/sprintf%E4%B8%8Esscanf/"/>
-    <id>http://yoursite.com/2020/05/03/sprintf与sscanf/</id>
-    <published>2020-05-03T03:57:07.000Z</published>
-    <updated>2020-05-03T04:42:50.339Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="sscanf与sprintf"><a href="#sscanf与sprintf" class="headerlink" title="sscanf与sprintf"></a>sscanf与sprintf</h3><blockquote><p>str与int的互转</p></blockquote><ul><li><p>sscanf()：str-&gt;int</p><ul><li><p>用法：<code>sscanf(str,&quot;%d&quot;,&amp;n);</code></p><ul><li><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">100</span>]=<span class="string">"1223343"</span>;</span><br><span class="line">    <span class="built_in">sscanf</span>(str,<span class="string">"%d"</span>,&amp;n);<span class="comment">//从左向右传值</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>,n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1223343</span><br></pre></td></tr></table></figure></li></ul></li></ul></li><li><p>sprintf()：int-&gt;str</p><ul><li><p>用法：<code>sprintf(str,&quot;%d&quot;,&amp;n);</code></p><ul><li><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">2333</span>;</span><br><span class="line">    <span class="keyword">char</span> str[<span class="number">100</span>];</span><br><span class="line">    <span class="built_in">sprintf</span>(str,<span class="string">"%d"</span>,n);<span class="comment">//从右向左传值</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s"</span>,str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2333</span><br></pre></td></tr></table></figure></li></ul></li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;sscanf与sprintf&quot;&gt;&lt;a href=&quot;#sscanf与sprintf&quot; class=&quot;headerlink&quot; title=&quot;sscanf与sprintf&quot;&gt;&lt;/a&gt;sscanf与sprintf&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;str与int的互
       
     
     </summary>
